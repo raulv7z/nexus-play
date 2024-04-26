@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('platforms', function (Blueprint $table) {
+        Schema::create('platform_groups', function (Blueprint $table) {
             $table->id();
-
-            $table->string('name', 15);
-            $table->float('plus');
-            $table->foreignId('platform_group_id')->nullable()->constrained('platform_groups')->onDelete('set null');
+            $table->string('name'); 
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('platforms');
+        Schema::dropIfExists('platform_groups');
     }
 };
