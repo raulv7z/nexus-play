@@ -30,6 +30,7 @@ function initializeTheme() {
 }
 
 function setTheme({theme}) {
+    const backgroundColor = (theme === 'dark' ? '#3a93f2' : '#adb5bd'); // blue/gray on HxD
     if (theme === 'dark') {
         html.addClass('dark');
         themeToggle.prop('checked', true);
@@ -39,8 +40,11 @@ function setTheme({theme}) {
         themeToggle.prop('checked', false);
         themeIndicator.css('transform', 'translateX(0)');
     }
+    $('#theme-toggle').next('label').find('.block').css('background-color', backgroundColor); // adjust bg color
     localStorage.setItem('theme', theme);
 }
+
+
 
 function attachEventHandlers() {
     themeToggle.on('change', function() {

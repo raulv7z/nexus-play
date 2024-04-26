@@ -43,9 +43,9 @@
                             
                             <!-- Toggler -->
                             <div class="relative">
-            <div class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></div>
-            <div id="toggle-dot" class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 ease-in-out"></div>
-        </div>
+                                <div class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></div>
+                                <div id="toggle-dot" class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 ease-in-out"></div>
+                            </div>
 
 
                             <!-- Icons -->
