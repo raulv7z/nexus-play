@@ -7,7 +7,6 @@ import Alpine from 'alpinejs';
 // Requires
 ////////////////////////////////////
 require('datatables.net');
-require('datatables.net-dt/css/jquery.dataTables.css');
 
 // Inits
 ////////////////////////////////////
