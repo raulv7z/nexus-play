@@ -33,6 +33,21 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                
+                <!-- Toggle para modo oscuro -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    
+                    <input id="theme-toggle" type="checkbox" class="hidden">
+                        <label for="theme-toggle" class="inline-flex items-center cursor-pointer">
+                            <span class="relative">
+                                <span class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
+                                <span class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></span>
+                            </span>
+                            <!-- <span class="ml-3 text-gray-700 dark:text-gray-200 font-medium">tog</span> -->
+                        </label>
+
+                </div>    
+                
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">

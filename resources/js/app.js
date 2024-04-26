@@ -21,7 +21,23 @@ Alpine.start();
 ////////////////////////////////////
 
 $(function() {
+    const themeToggle = $('#theme-toggle');
+    const html = $('html');
 
-    console.log('jquery is ready');
+    // Inicializar el estado del tema desde localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+        html.addClass('dark');
+        themeToggle.prop('checked', true);
+    }
 
+    // Evento de cambio para el toggle
+    themeToggle.on('change', function() {
+        if (this.checked) {
+            html.addClass('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            html.removeClass('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    });
 });
