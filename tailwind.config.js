@@ -15,6 +15,13 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+        screens: {
+            'sm': '640px',
+            'md': '800px',  // Cambiado de 768px a 800px
+            'lg': '1024px',
+            'xl': '1280px',
+            '2xl': '1536px',
+        },
     },
 
     darkMode: 'class', // Agrega esta línea aquí

@@ -33,6 +33,7 @@
             </div>
 
             <!-- Settings Dropdown -->
+            <!-- change this to md:flex -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
 
                 <!-- Dark/Light Mode Toggler -->
