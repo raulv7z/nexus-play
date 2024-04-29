@@ -16,20 +16,23 @@ class PlatformGroupSeeder extends Seeder
     {
         //
 
-        PlatformGroup::create([
-            'name' => 'Sobremesa',
-        ]);
-        
-        PlatformGroup::create([
-            'name' => 'Play Station',
-        ]);
+        $platformGroups = [
+            [
+                'name' => 'PC',
+            ],
+            [
+                'name' => 'Play Station',
+            ],
+            [
+                'name' => 'X Box',
+            ],
+            [
+                'name' => 'Nintendo',
+            ],
+        ];
 
-        PlatformGroup::create([
-            'name' => 'X Box',
-        ]);
-
-        PlatformGroup::create([
-            'name' => 'Nintendo',
-        ]);
+        foreach($platformGroups as $group) {
+            PlatformGroup::create($group);
+        }
     }
 }

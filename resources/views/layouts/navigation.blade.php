@@ -20,7 +20,7 @@
 
                 <!-- Load platform links -->
                 @foreach ($platformGroups as $group)
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 md:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
 
                         <!-- //todo change links to real routes on web.php, same with :active -->
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('COMPLETE_THIS')">
@@ -142,7 +142,7 @@
                 </x-dropdown>
 
                 <!-- Cart link -->
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('COMPLETE_THIS')">
+                <a href="route('dashboard')" :active="request()->routeIs('COMPLETE_THIS')">
                     <svg class="dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
 
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
@@ -172,7 +172,7 @@
                         </svg>
 
                     </svg>
-                </x-nav-link>
+                </a>
 
             </div>
 
