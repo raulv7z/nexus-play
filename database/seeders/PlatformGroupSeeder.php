@@ -28,8 +28,8 @@ class PlatformGroupSeeder extends Seeder
             'name' => 'X Box',
         ]);
 
-        // PlatformGroup::create([
-        //     'name' => 'Nintendo',
-        // ]);
+        PlatformGroup::create([
+            'name' => 'Nintendo',
+        ]);
     }
 }
