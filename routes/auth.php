@@ -59,6 +59,8 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
-
+    // platformGroups
+    Route::get('/platform-groups/show/{id}', [PlatformGroupController::class, 'show'])->name('platform-groups.show');
+    
 
 });
