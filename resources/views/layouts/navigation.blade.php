@@ -21,13 +21,13 @@
                 <!-- Load platform links -->
                 @foreach ($platformGroups as $group)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
-
-                        <!-- //todo change links to real routes on web.php, same with :active -->
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('COMPLETE_THIS')">
+                        <!-- Change links to real routes on web.php, using the route names and parameters -->
+                        <x-nav-link :href="route('platform-groups.show', $group->id)" :active="request()->routeIs('platform-groups.show') && request()->route('id') == $group->id">
                             {{ $group->name }}
                         </x-nav-link>
                     </div>
                 @endforeach
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -142,7 +142,7 @@
                 </x-dropdown>
 
                 <!-- Cart link -->
-                <a href="route('dashboard')" :active="request()->routeIs('COMPLETE_THIS')">
+                <a href="route('dashboard')" :active="request() - > routeIs('COMPLETE_THIS')">
                     <svg class="dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
 
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
