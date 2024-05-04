@@ -15,11 +15,11 @@ class StoreCartRequest extends FormRequest
     {
         return [
             'user_id' => 'required|exists:users,id',
+            'cart_state_id' => 'required|exists:cart_states,id',
             'iva' => 'required|numeric',
             'base_amount' => 'required|numeric|min:0',
             'full_amount' => 'required|numeric|min:0',
-            'status' => 'required|string|max:30',
-            'purchased_at' => 'required|date'
+            'purchased_at' => 'nullable|date'
         ];
     }
 }

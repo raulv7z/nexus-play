@@ -15,11 +15,11 @@ class UpdateCartRequest extends FormRequest
     {
         return [
             'user_id' => 'sometimes|exists:users,id',
+            'cart_state_id' => 'sometimes|exists:cart_states,id',
             'iva' => 'sometimes|numeric',
             'base_amount' => 'sometimes|numeric|min:0',
             'full_amount' => 'sometimes|numeric|min:0',
-            'status' => 'sometimes|string|max:30',
-            'purchased_at' => 'sometimes|date'
+            'purchased_at' => 'nullable|date'
         ];
     }
 }
