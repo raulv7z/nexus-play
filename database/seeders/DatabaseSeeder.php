@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(PlatformGroupSeeder::class);
         $this->call(PlatformSeeder::class);
+        $this->call(CartStateSeeder::class);
     }
 }
