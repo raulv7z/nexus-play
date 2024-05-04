@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->float('iva');
             $table->decimal('base_amount', 10, 2);
             $table->decimal('full_amount', 10, 2);
+            $table->string('status', 30)->default('pending');
             $table->timestamp('purchased_at');
             
             $table->timestamps();
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('carts');
     }
 };
