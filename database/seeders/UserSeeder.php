@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,18 +13,21 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $users = [
+            [
+                'name' => 'Administrador',
+                'email' => 'admin@example.com',
+                'password' => Hash::make('admin'),
+            ],
+            [
+                'name' => 'Usuario',
+                'email' => 'usuario@example.com',
+                'password' => Hash::make('usuario'), 
+            ]
+        ];
 
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('admin'),
-        ]);
-
-        User::create([
-            'name' => 'Usuario',
-            'email' => 'usuario@example.com',
-            'password' => Hash::make('usuario'),
-        ]);
+        foreach ($users as $user) {
+            User::create($user);
+        }
     }
 }
