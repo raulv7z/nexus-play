@@ -12,6 +12,22 @@
                     
                     {{ $platformGroup->name }}
 
+                    {{-- testeo --}}
+
+                    {{-- @foreach ($platformGroup->platforms as $itPlatform)
+                        
+                    
+                        {{ $itPlatform->name }}
+
+                        @foreach ($itPlatform->editions as $eachEdition)
+                            
+                            {{ $eachEdition->videogame->name }}
+
+                        @endforeach
+
+
+                    @endforeach --}}
+
                 </div>
             </div>
         </div>
