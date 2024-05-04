@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cart_state_id')->constrained('cart_states')->onDelete('cascade');
             $table->float('iva')->default(21.0);
             $table->decimal('base_amount', 10, 2);
             $table->decimal('full_amount', 10, 2);
-            $table->string('status', 30)->default('pending');
             $table->timestamp('purchased_at');
-            
             $table->timestamps();
         });
     }
