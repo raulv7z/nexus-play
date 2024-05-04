@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
-
             $table->foreignId('platform_id')->constrained();
             $table->foreignId('videogame_id')->constrained();
             $table->float('amount');
-            $table->unsignedInteger('stock')->default(100);
-            
+            $table->unsignedInteger('stock')->default(100);        
             $table->timestamps();
         });
     }

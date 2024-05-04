@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->float('iva');
+            $table->float('iva')->default(21.0);
             $table->decimal('base_amount', 10, 2);
             $table->decimal('full_amount', 10, 2);
             $table->string('status', 30)->default('pending');

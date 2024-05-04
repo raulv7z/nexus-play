@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('platforms', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 15);
+            $table->string('name', 30);
             $table->float('plus');
             $table->foreignId('platform_group_id')->nullable()->constrained('platform_groups')->onDelete('set null');
             $table->timestamps();

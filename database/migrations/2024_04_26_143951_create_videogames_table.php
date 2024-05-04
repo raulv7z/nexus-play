@@ -16,9 +16,9 @@ return new class extends Migration
             
             $table->string('name', 60);
             $table->string('description', 120);
-            $table->string('front_page', 60)->default('portada-defecto.png');
+            $table->string('front_page', 60)->default('default-fpage.png');
             $table->string('developer', 30);
-            $table->string('genre', 60);
+            $table->string('genre', 30);
             $table->float('base_price');
             
             $table->timestamps();
