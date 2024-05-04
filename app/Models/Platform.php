@@ -9,7 +9,7 @@ class Platform extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'plus', 'platform_group_id'];
+    protected $fillable = ['platform_group_id', 'name', 'plus'];
 
     public function group()
     {
