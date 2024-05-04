@@ -8,21 +8,26 @@ class CartEntryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        // Suponiendo que cualquier usuario autenticado pueda modificar sus entradas de carrito
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'cart_id' => 'required|exists:carts,id',
+            'edition_id' => 'required|exists:editions,id',
+            'quantity' => 'required|integer|min:1'
         ];
     }
 }

@@ -8,21 +8,26 @@ class EditionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        return true; // Ajusta según la lógica de autorización específica de tu aplicación.
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'platform_id' => 'required|exists:platforms,id',
+            'videogame_id' => 'required|exists:videogames,id',
+            'amount' => 'required|numeric',
+            'stock' => 'sometimes|integer|min:0'
         ];
     }
 }

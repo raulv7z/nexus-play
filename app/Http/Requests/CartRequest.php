@@ -8,21 +8,36 @@ class CartRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        // Considerar la lógica para autorizar si el usuario puede realizar esta operación
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
-        return [
-            //
+        $rules = [
+            'user_id' => 'required|exists:users,id',
+            'iva' => 'required|numeric|between:0,100',
+            'base_amount' => 'required|numeric|min:0',
+            'full_amount' => 'required|numeric|min:0',
+            'status' => 'required|string|in:pending,completed,canceled',
         ];
+
+        if ($this->isMethod('post')) { // Creating a new cart
+            $rules['purchased_at'] = 'nullable|date';
+        } elseif ($this->isMethod('put')) { // Updating an existing cart
+            $rules['purchased_at'] = 'required|date';
+        }
+
+        return $rules;
     }
 }

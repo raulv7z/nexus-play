@@ -8,21 +8,23 @@ class PlatformGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        return true; // Esto se puede ajustar según la lógica de autorización específica de tu aplicación.
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:30',
         ];
     }
 }
