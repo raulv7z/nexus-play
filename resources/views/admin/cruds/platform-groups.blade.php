@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('Dashboard') }}
+        {{ __('Redefine this!') }}
     </x-slot>
 
     <x-interface.info-block>

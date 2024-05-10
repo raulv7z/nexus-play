@@ -18,16 +18,27 @@ class UserSeeder extends Seeder
                 'name' => 'Administrador',
                 'email' => 'admin@example.com',
                 'password' => Hash::make('admin'),
+                'role' => 'admin',
             ],
             [
                 'name' => 'Usuario',
                 'email' => 'usuario@example.com',
                 'password' => Hash::make('usuario'), 
+                'role' => 'user',
             ]
         ];
 
         foreach ($users as $user) {
-            User::create($user);
+            $createdUser = User::create([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'password' => $user['password'],
+            ]);
+
+            // Asigna el rol si está definido
+            if (isset($user['role'])) {
+                $createdUser->assignRole($user['role']);
+            }
         }
     }
 }
