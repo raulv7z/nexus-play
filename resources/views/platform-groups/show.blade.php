@@ -12,21 +12,11 @@
                     
                     {{ $platformGroup->name }}
 
-                    {{-- testeo --}}
+                    @foreach ($platformGroup->platforms as $platform)
+                    <x-cards.platform-card :platform="$platform">
 
-                    {{-- @foreach ($platformGroup->platforms as $itPlatform)
-                        
-                    
-                        {{ $itPlatform->name }}
-
-                        @foreach ($itPlatform->editions as $eachEdition)
-                            
-                            {{ $eachEdition->videogame->name }}
-
-                        @endforeach
-
-
-                    @endforeach --}}
+                    </x-cards.platform-card>
+                    @endforeach
 
                 </div>
             </div>

@@ -205,7 +205,7 @@
             <div class="pt-1 pb-1 space-y-1">
 
                 <!-- //todo change links to real routes on web.php, same with :active -->
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('COMPLETE_THIS')">
+                <x-responsive-nav-link :href="route('platform-groups.show', $group->id)" :active="request()->routeIs('platform-groups.show') && request()->route('id') == $group->id">
                     {{ $group->name }}
                 </x-responsive-nav-link>
             </div>
