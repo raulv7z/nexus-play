@@ -7,6 +7,10 @@
 
     <x-interface.info-block>
 
+        <x-buttons.add :url="route('admin.users.create')">
+        
+        </x-buttons.add>
+        
         <x-tables.crud :url="route('admin.users.crud')">
 
         </x-tables.crud>
