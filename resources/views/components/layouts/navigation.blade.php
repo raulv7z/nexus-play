@@ -7,7 +7,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-presets.application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <x-presets.application-logo
+                            class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
 
@@ -22,7 +23,8 @@
                 @foreach ($platformGroups as $group)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
                         <!-- Change links to real routes on web.php, using the route names and parameters -->
-                        <x-presets.nav-link :href="route('content.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') && request()->route('id') == $group->id">
+                        <x-presets.nav-link :href="route('content.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') &&
+                            request()->route('id') == $group->id">
                             {{ $group->name }}
                         </x-presets.nav-link>
                     </div>
@@ -146,10 +148,13 @@
                     <x-interface.cart-icon />
                 </a>
 
-                <!-- Admin link -->
-                <a href="{{ route('admin.dashboard') }}" :active="request() - > routeIs('COMPLETE_THIS')" class="ml-4">
-                    <x-interface.admin-icon />
-                </a>
+                @role('admin')
+                    <!-- Admin link -->
+                    <a href="{{ route('admin.dashboard') }}" :active="request() - > routeIs('admin.dashboard')" class="ml-4">
+                        <x-interface.admin-icon />
+                    </a>
+                @endrole
+
             </div>
 
             <!-- Hamburger -->

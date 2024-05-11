@@ -96,7 +96,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     //! Admin routes
-    Route::middleware('can:manage admin')->group(function () {
+    Route::middleware(['role:admin'])->group(function () {
 
         // admin views
         Route::prefix('admin')->group(function () {
