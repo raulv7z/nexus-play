@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\EditionController as AdminEditionController;
 use App\Http\Controllers\Admin\VideogameController as AdminVideogameController;
 use App\Http\Controllers\Admin\CartEntryController as AdminCartEntryController;
 use App\Http\Controllers\Admin\CartController as AdminCartController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 // User controllers
 
@@ -110,6 +111,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/editions', [AdminController::class, 'manageEditions'])->name('admin.editions.crud');
             Route::get('/platforms', [AdminController::class, 'managePlatforms'])->name('admin.platforms.crud');
             Route::get('/platform-groups', [AdminController::class, 'managePlatformGroups'])->name('admin.platform-groups.crud');
+        
+            // ajax routes
+            Route::get('/users/data', [AdminUserController::class, 'index'])->name('admin.users.data');
+            
         });
     });
 });

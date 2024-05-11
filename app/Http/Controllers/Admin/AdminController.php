@@ -30,8 +30,7 @@ class AdminController extends Controller
     
     public function manageUsers()
     {
-        $user = User::all();
-        return view('admin.users.crud', compact('user'));
+        return view('admin.users.crud');
     }
 
     public function managePlatformGroups()

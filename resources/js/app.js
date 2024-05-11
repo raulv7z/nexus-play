@@ -3,7 +3,6 @@
 import $ from 'jquery';
 import './bootstrap';
 import Alpine from 'alpinejs';
-import 'datatables.net';
 
 // Inits
 ////////////////////////////////////
