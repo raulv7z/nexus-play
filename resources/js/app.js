@@ -1,13 +1,19 @@
 // Imports
 ////////////////////////////////////
 import $ from 'jquery';
-import './bootstrap';
+import axios from 'axios';
 import Alpine from 'alpinejs';
+
+import 'flowbite';
+import './bootstrap';
 
 // Inits
 ////////////////////////////////////
 window.$ = window.jQuery = $;
+window.axios = axios;
 window.Alpine = Alpine;
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 Alpine.start();
 
 // Vars

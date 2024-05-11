@@ -26,5 +26,8 @@ export default {
 
     darkMode: 'class', // Agrega esta línea aquí
 
-    plugins: [forms],
+    plugins: [
+        require('flowbite/plugin'),
+        forms
+    ],
 };

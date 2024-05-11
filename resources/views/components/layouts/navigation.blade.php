@@ -144,13 +144,13 @@
                 </x-presets.dropdown>
 
                 <!-- Cart link -->
-                <a href="route('dashboard')" :active="request() - > routeIs('COMPLETE_THIS')">
+                <a href="route('dashboard')" :active="request()->routeIs('')">
                     <x-interface.cart-icon />
                 </a>
 
                 @role('admin')
                     <!-- Admin link -->
-                    <a href="{{ route('admin.dashboard') }}" :active="request() - > routeIs('admin.dashboard')" class="ml-4">
+                    <a href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')" class="ml-4">
                         <x-interface.admin-icon />
                     </a>
                 @endrole
