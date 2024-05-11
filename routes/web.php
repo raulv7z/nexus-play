@@ -16,14 +16,15 @@ use App\Http\Controllers\ProfileController;
 // Admin controllers
 
 use App\Http\Controllers\Admin\ManagerController as AdminManagerController;
+use App\Http\Controllers\Admin\CrudController as AdminCrudController;
+use App\Http\Controllers\Admin\ChartController as AdminChartController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\PlatformGroupController as AdminPlatformGroupController;
 use App\Http\Controllers\Admin\PlatformController as AdminPlatformController;
 use App\Http\Controllers\Admin\EditionController as AdminEditionController;
 use App\Http\Controllers\Admin\VideogameController as AdminVideogameController;
 use App\Http\Controllers\Admin\CartEntryController as AdminCartEntryController;
 use App\Http\Controllers\Admin\CartController as AdminCartController;
-use App\Http\Controllers\Admin\UserController as AdminUserController;
-use App\Http\Controllers\Admin\ChartController as AdminChartController;
 
 // User controllers
 
@@ -101,22 +102,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['role:admin'])->group(function () {
 
         // admin views
-        Route::prefix('admin')->group(function () {
+        Route::prefix('admin')->name('admin.')->group(function () {
 
             // dashboard
-            Route::get('/', [AdminManagerController::class, 'index'])->name('admin.dashboard');
-            // cruds
-            Route::get('/users', [AdminManagerController::class, 'manageUsers'])->name('admin.users.manager');
-            Route::get('/games', [AdminManagerController::class, 'manageGames'])->name('admin.videogames.manager');
-            Route::get('/editions', [AdminManagerController::class, 'manageEditions'])->name('admin.editions.manager');
-            Route::get('/platforms', [AdminManagerController::class, 'managePlatforms'])->name('admin.platforms.manager');
-            Route::get('/platform-groups', [AdminManagerController::class, 'managePlatformGroups'])->name('admin.platform-groups.manager');
-        
-            // charts
-            Route::get('/charts/user-registrations-per-month', [AdminChartController::class, 'userRegistrationsPerMonth']);
+            Route::get('/', [AdminManagerController::class, 'index'])->name('dashboard');
 
-            // ajax routes
-            Route::get('/users/data', [AdminUserController::class, 'index'])->name('admin.users.data');
+            // management routes
+            Route::get('/users', [AdminManagerController::class, 'manageUsers'])->name('users.manager');
+            Route::get('/games', [AdminManagerController::class, 'manageGames'])->name('videogames.manager');
+            Route::get('/editions', [AdminManagerController::class, 'manageEditions'])->name('editions.manager');
+            Route::get('/platforms', [AdminManagerController::class, 'managePlatforms'])->name('platforms.manager');
+            Route::get('/platform-groups', [AdminManagerController::class, 'managePlatformGroups'])->name('platform-groups.manager');
+        
+            // ajax routes for cruds
+            Route::get('/users/crud', [AdminCrudController::class, 'users'])->name('users.crud');
+
+            // ajax routes for charts
+            Route::get('/users/chart', [AdminChartController::class, 'userRegistrationsPerMonth'])->name('users.chart');
             
         });
     });

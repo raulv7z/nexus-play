@@ -1,10 +1,3 @@
-@props([
-    'canvasId',
-    'canvasClass' => '',
-    // 'divClass' => 'max-w-lg mx-auto',
-    // 'divStyle' => '',
-])
+@props(['url', 'chartId'])
 
-{{-- <div class="{{ $divClass }}" style="{{ $divStyle }}"> --}}
-<canvas id="{{ $canvasId }}" class="chart-graph {{ $canvasClass }}"></canvas>
-{{-- </div> --}}
+<canvas id="{{ $chartId }}" class="chart-graph" data-fetch-url="{{ $url }}"></canvas>

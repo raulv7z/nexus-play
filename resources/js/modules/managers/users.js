@@ -21,10 +21,10 @@ function startApp() {
 }
 
 function setupCrudTable() {
-    const selector = ".crud-table";
-    const fetchUrl = $(selector).data("fetch-url");
+    const crudSelector = ".crud-table";
+    const crudFetchUrl = $(crudSelector).data("fetch-url");
     
-    fetchDataTable(fetchUrl, selector);
+    fetchDataTable(crudFetchUrl, crudSelector);
 }
 
 async function fetchDataTable(url, selector) {
@@ -72,13 +72,21 @@ function renderActionButtons(row, actions) {
     `;
 }
 
-async function setupCharts() {
+function setupCharts() {
+    const chartSelector = ".chart-graph";
+    const chartFetchUrl = $(chartSelector).data("fetch-url");
+    const chartId = "users";
+    
+    fetchChart(chartFetchUrl, chartId);
+}
+
+async function fetchChart(url, chartId) {
     const apiUrl = "/admin/charts/user-registrations-per-month";
     try {
-        const data = await $.ajax({ url: apiUrl, type: "GET", dataType: "json" });
+        const data = await $.ajax({ url: url, type: "GET", dataType: "json" });
         const chartData = prepareChartData(data);
         const chartOptions = { responsive: true, maintainAspectRatio: false };
-        initializeChart("user-chart", "pie", chartData, chartOptions);
+        initializeChart(chartId, "pie", chartData, chartOptions);
     } catch (error) {
         console.error("Error loading chart data:", error);
         // Additionally, handle UI error feedback

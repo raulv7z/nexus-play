@@ -7,7 +7,7 @@
 
     <x-interface.info-block>
 
-        <x-tables.crud :url="route('admin.users.data')">
+        <x-tables.crud :url="route('admin.users.crud')">
 
         </x-tables.crud>
 
@@ -15,7 +15,7 @@
 
     <x-interface.info-block>
 
-        <x-graphs.chart :canvasId="'user-chart'">
+        <x-graphs.chart :chartId="'users'" :url="route('admin.users.chart')">
 
         </x-graphs.chart>
 
