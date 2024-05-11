@@ -81,7 +81,6 @@ function setupCharts() {
 }
 
 async function fetchChart(url, chartId) {
-    const apiUrl = "/admin/charts/user-registrations-per-month";
     try {
         const data = await $.ajax({ url: url, type: "GET", dataType: "json" });
         const chartData = prepareChartData(data);
