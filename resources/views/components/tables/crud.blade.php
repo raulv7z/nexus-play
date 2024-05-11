@@ -1,4 +1,4 @@
-[@props(['url'])]
+@props(['url'])
 
 <table class="crud-table" data-fetch-url="{{$url}}">
 

@@ -5,15 +5,15 @@
     </x-slot>
 
     <x-interface.info-block>
-        <x-sections.crud-section>
+        <x-sections.manager-section>
 
-            @foreach ($cruds as $crud)
-                <x-cards.crud-card :crud="$crud">
+            @foreach ($tablesInfo as $table)
+                <x-cards.manager-card :table="$table">
 
-                </x-cards.crud-card>
+                </x-cards.manager-card>
             @endforeach
 
-        </x-sections.crud-section>
+        </x-sections.manager-section>
     </x-interface.info-block>
 
 </x-layouts.app>

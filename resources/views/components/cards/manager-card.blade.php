@@ -1,4 +1,4 @@
-@props(['crud'])
+@props(['table'])
 
 <li class="flex justify-between gap-x-6 py-4">
     <div class="flex min-w-0 gap-x-4 items-center">
@@ -31,9 +31,11 @@
         </svg>
 
         <div class="min-w-0 flex-auto">
-            <a href="{{ route($crud['route']) }}"
-                class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">{{ $crud['name'] }}</a>
-            <p class="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-gray-400">{{ $crud['description'] }}
+            <a href="{{ route($table['route']) }}"
+                class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                {{ $table['name'] }}
+            </a>
+            <p class="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-gray-400">{{ $table['description'] }}
             </p>
         </div>
     </div>
