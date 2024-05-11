@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
 
     // Platform Groups
     Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
-        
+
         // Route to view a specific platform group (global access)
 
         Route::get('/', [PlatformGroupController::class, 'index'])->name('index');
@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
             Route::put('/{id}', [PlatformGroupController::class, 'update'])->name('update');
             Route::delete('/{id}', [PlatformGroupController::class, 'destroy'])->name('destroy');
         });
+        
     });
 
 

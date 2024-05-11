@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
 
     <x-slot name="header">
         {{ __('Admin') }} CRUDS
@@ -16,4 +16,4 @@
         </x-sections.crud-section>
     </x-interface.info-block>
 
-</x-app-layout>
+</x-layouts.app>
