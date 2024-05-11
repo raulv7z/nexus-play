@@ -66,10 +66,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Pre-setted routes
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    
     Route::get('verify-email', EmailVerificationPromptController::class)->name('verification.notice');
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)->middleware(['signed', 'throttle:6,1'])->name('verification.verify');
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->middleware('throttle:6,1')->name('verification.send');
@@ -83,17 +79,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Not pre-setted routes
 
-    // ..
-
     //! User routes
+    
+    Route::get('/content', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    // ..
 
     Route::prefix('content')->name('content.')->group(function () {
         
         Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
-            Route::get('/', [UserPlatformGroupController::class, 'index'])->name('index');
             Route::get('/{id}', [UserPlatformGroupController::class, 'show'])->name('show');
         });
-        
+
     });
 
     //! Admin routes
@@ -106,6 +105,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
             // cruds
+            Route::get('/users', [AdminController::class, 'manageUsers'])->name('admin.users.crud');
             Route::get('/games', [AdminController::class, 'manageGames'])->name('admin.videogames.crud');
             Route::get('/editions', [AdminController::class, 'manageEditions'])->name('admin.editions.crud');
             Route::get('/platforms', [AdminController::class, 'managePlatforms'])->name('admin.platforms.crud');

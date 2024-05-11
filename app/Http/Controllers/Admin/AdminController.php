@@ -9,6 +9,7 @@ use App\Models\Videogame;
 use App\Models\Edition;
 use App\Models\Platform;
 use App\Models\PlatformGroup;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -16,37 +17,44 @@ class AdminController extends Controller
     public function index()
     {
         $cruds = [
-            ['name' => 'Games', 'table' => 'videogames', 'description' => 'List of games currently registered', 'route' => 'admin.cruds.videogames'],
-            ['name' => 'Game Editions', 'table' => 'editions', 'description' => 'List of editions registered for each game', 'route' => 'admin.cruds.editions'],
-            ['name' => 'Platforms', 'table' => 'platforms', 'description' => 'List of platforms currently registered', 'route' => 'admin.cruds.platforms'],
-            ['name' => 'Platform Groups', 'table' => 'platform_groups', 'description' => 'List of platform groups currently registered', 'route' => 'admin.cruds.platform-groups'],
+            ['name' => 'Users', 'table' => 'users', 'description' => 'List of users currently registered', 'route' => 'admin.users.crud'],
+            ['name' => 'Games', 'table' => 'videogames', 'description' => 'List of games currently registered', 'route' => 'admin.videogames.crud'],
+            ['name' => 'Game Editions', 'table' => 'editions', 'description' => 'List of editions registered for each game', 'route' => 'admin.editions.crud'],
+            ['name' => 'Platforms', 'table' => 'platforms', 'description' => 'List of platforms currently registered', 'route' => 'admin.platforms.crud'],
+            ['name' => 'Platform Groups', 'table' => 'platform_groups', 'description' => 'List of platform groups currently registered', 'route' => 'admin.platform-groups.crud'],
         ];
         return view('admin.dashboard', ['cruds' => $cruds]);
     }
 
     // Métodos adicionales para cada tipo de CRUD
+    
+    public function manageUsers()
+    {
+        $user = User::all();
+        return view('admin.users.crud', compact('user'));
+    }
 
     public function managePlatformGroups()
     {
         $platformGroups = PlatformGroup::all();
-        return view('admin.cruds.platform-groups', compact('platformGroups'));
+        return view('admin.platform-groups.crud', compact('platformGroups'));
     }
 
     public function managePlatforms()
     {
         $platforms = Platform::all();
-        return view('admin.cruds.platforms', compact('platforms'));
+        return view('admin.platforms.crud', compact('platforms'));
     }
 
     public function manageEditions()
     {
         $editions = Edition::all();
-        return view('admin.cruds.editions', compact('editions'));
+        return view('admin.editions.crud', compact('editions'));
     }
 
     public function manageGames()
     {
         $games = Videogame::all();
-        return view('admin.cruds.videogames', compact('games'));
+        return view('admin.videogames.crud', compact('games'));
     }
 }
