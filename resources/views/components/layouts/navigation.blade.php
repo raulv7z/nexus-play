@@ -22,7 +22,7 @@
                 @foreach ($platformGroups as $group)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
                         <!-- Change links to real routes on web.php, using the route names and parameters -->
-                        <x-presets.nav-link :href="route('platform-groups.show', $group->id)" :active="request()->routeIs('platform-groups.show') && request()->route('id') == $group->id">
+                        <x-presets.nav-link :href="route('dashboard', $group->id)" :active="request()->routeIs('dashboard') && request()->route('id') == $group->id">
                             {{ $group->name }}
                         </x-presets.nav-link>
                     </div>
@@ -181,7 +181,7 @@
             <div class="pt-1 pb-1 space-y-1">
 
                 <!-- //todo change links to real routes on web.php, same with :active -->
-                <x-presets.responsive-nav-link :href="route('platform-groups.show', $group->id)" :active="request()->routeIs('platform-groups.show') && request()->route('id') == $group->id">
+                <x-presets.responsive-nav-link :href="route('dashboard', $group->id)" :active="request()->routeIs('dashboard') && request()->route('id') == $group->id">
                     {{ $group->name }}
                 </x-presets.responsive-nav-link>
             </div>
