@@ -119,7 +119,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
             // ajax
             Route::get('crud', [AdminCrudController::class, 'users'])->name('crud');
-            Route::get('chart', [AdminChartController::class, 'userRegistrationsPerMonth'])->name('chart');
+            Route::get('chart', [AdminChartController::class, 'userRolesDistribution'])->name('chart');
         });
 
         // Videogames Management

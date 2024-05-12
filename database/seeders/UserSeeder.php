@@ -13,11 +13,13 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+
+        // manual fills
         $users = [
             [
                 'name' => 'Administrador',
                 'email' => 'admin@example.com',
-                'password' => Hash::make('admin'),
+                'password' => Hash::make('administrador'),
                 'role' => 'admin',
             ],
             [
@@ -35,10 +37,17 @@ class UserSeeder extends Seeder
                 'password' => $user['password'],
             ]);
 
-            // Asigna el rol si está definido
+            // assign role
             if (isset($user['role'])) {
                 $createdUser->assignRole($user['role']);
             }
         }
+
+        // factory fills
+        User::factory()->count(20)->create()->each(function ($user) {
+            $user->assignRole('user'); // Asumiendo que todos son usuarios regulares
+        });
+        
+        
     }
 }

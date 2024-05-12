@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\ProfileStoreRequest; 
-use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -19,40 +20,67 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        $action = route('admin.users.store');
+
+        $fields = [
+            ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
+            ['name' => 'email', 'label' => 'Email', 'type' => 'text'],
+            ['name' => 'password', 'label' => 'Password', 'type' => 'password']
+        ];
+
+        return view('admin.users.create', compact('action', 'fields'));
     }
 
-    public function store(ProfileStoreRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $validated = $request->validated();
-        $validated['password'] = bcrypt($validated['password']); // encrypt password
-    
+        $validated['password'] = Hash::make($validated['password']); // encrypt password
+
         $user = User::create($validated);
         $user->assignRole('user');
-        
-        return redirect()->route('users.manager')->with('success', 'User created successfully.');
+
+        return redirect()->route('admin.users.manager')->with('success', 'User created successfully.');
     }
 
     public function show(User $user)
     {
-        return view('admin.users.show', compact('user'));
+        $fields = [
+            'title' => 'name',
+            'attributes' => [
+                'Name' => 'name',
+                'Email' => 'email',
+            ],
+        ];
+        $actions = [
+            'edit' => 'admin.users.edit',
+            'delete' => 'admin.users.destroy',
+        ];
+
+        return view('admin.users.show', compact('user', 'fields', 'actions'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $action = route('admin.users.update', $user->id);
+
+        $fields = [
+            ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
+            ['name' => 'email', 'label' => 'Email', 'type' => 'text'],
+            ['name' => 'password', 'label' => 'Password', 'type' => 'password']
+        ];
+
+        return view('admin.users.edit', compact('user', 'action', 'fields'));
     }
 
-    public function update(ProfileUpdateRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->validated());
-        return redirect()->route('users.manager')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.users.manager')->with('success', 'User updated successfully.');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.manager')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.users.manager')->with('success', 'User deleted successfully.');
     }
 }
-

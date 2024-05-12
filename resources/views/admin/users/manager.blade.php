@@ -25,7 +25,6 @@
 
     </x-interface.info-block>
 
-
     @section('scripts')
         @vite('resources/js/modules/managers/users.js')
     @endsection

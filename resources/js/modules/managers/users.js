@@ -50,6 +50,11 @@ function getTableColumns() {
         { data: "name", title: "NOMBRE" },
         { data: "email", title: "CORREO ELECTRÓNICO" },
         {
+            data: "deleted_at",
+            title: "BORRADO",
+            render: (data) => (data ? "Sí" : "No"),
+        },
+        {
             data: null,
             title: "ACCIONES",
             orderable: false,
@@ -95,7 +100,7 @@ async function fetchChart(url, chartId) {
     try {
         const data = await $.ajax({ url: url, type: "GET", dataType: "json" });
         const chartData = prepareChartData(data);
-        const chartOptions = { responsive: true, maintainAspectRatio: false };
+        const chartOptions = prepareChartOptions();
         initializeChart(chartId, "pie", chartData, chartOptions);
     } catch (error) {
         console.error("Error loading chart data:", error);
@@ -105,14 +110,66 @@ async function fetchChart(url, chartId) {
 
 function prepareChartData(data) {
     return {
-        labels: Object.keys(data),
+        labels: data.map((item) => item.role),
         datasets: [
             {
-                data: Object.values(data),
-                backgroundColor: ["#FF6384", "#36A2EB"],
-                hoverBackgroundColor: ["#FF6384", "#36A2EB"],
+                label: "Distribución de Roles",
+                data: data.map((item) => item.count),
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)",
+                    "rgba(54, 162, 235, 0.2)",
+                ],
+                borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+                borderWidth: 1,
             },
         ],
+    };
+}
+
+function prepareChartOptions() {
+    return {
+        responsive: true,
+        maintainAspectRatio: true,
+        aspectRatio: 1,  // Controla la relación de aspecto del gráfico
+        plugins: {
+            legend: {
+                position: "top",
+                labels: {
+                    padding: 20,
+                    color: "rgb(255, 99, 132)",
+                },
+            },
+            tooltip: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return `${tooltipItem.label}: ${
+                            tooltipItem.raw
+                        } usuarios (${(
+                            (tooltipItem.raw /
+                                data.reduce((acc, cur) => acc + cur.count, 0)) *
+                            100
+                        ).toFixed(2)}%)`;
+                    },
+                },
+                backgroundColor: "rgba(0,0,0,0.7)",
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 10,
+            },
+            title: {
+                display: true,
+                text: "Distribución de Roles en el Sistema",
+                color: "rgb(54, 162, 235)",
+                font: {
+                    size: 20,
+                    weight: "bold",
+                },
+            },
+        },
+        animation: {
+            animateRotate: true,
+            animateScale: true,
+        },
     };
 }
 

@@ -13,13 +13,13 @@ class CrudController extends Controller
 
     public function users(Request $request) {
         if ($request->ajax()) {
-            $users = User::all();
+            $users = User::withTrashed()->get();
             return response()->json($users);
         }
     
         abort(404);
     }
 
-
+    
 
 }
