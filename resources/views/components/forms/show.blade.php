@@ -23,8 +23,9 @@
         <!-- Acciones disponibles -->
         <div class="flex justify-end space-x-4 mt-4">
 
-            <x-buttons.cancel :text="'Return'">
-            </x-buttons.cancel>
+            <x-buttons.return>
+            </x-buttons.return>
+            
             <x-buttons.edit :url="route($actions['edit'], $item->id)">
             </x-buttons.edit>
 

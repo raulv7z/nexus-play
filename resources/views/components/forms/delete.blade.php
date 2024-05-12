@@ -55,8 +55,8 @@
     </div>
 
     <div class="flex justify-end space-x-4 mt-8">
-        <x-buttons.cancel>
-        </x-buttons.cancel>
+        <x-buttons.return>
+        </x-buttons.return>
 
         <x-buttons.submit :text="'Confirm'">
         </x-buttons.submit>
