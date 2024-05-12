@@ -109,67 +109,70 @@ async function fetchChart(url, chartId) {
 }
 
 function prepareChartData(data) {
+    // Generar colores distintos para cada punto de datos
+    const colors = data.map((item, index) => {
+        const hue = (360 * index / data.length) % 360; // Genera un hue (tono) diferente
+        return `hsl(${hue}, 100%, 50%)`; // Saturación y luminosidad al 50%
+    });
+
     return {
-        labels: data.map((item) => item.role),
-        datasets: [
-            {
-                label: "Distribución de Roles",
-                data: data.map((item) => item.count),
-                backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)",
-                    "rgba(54, 162, 235, 0.2)",
-                ],
-                borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
-                borderWidth: 1,
-            },
-        ],
+        labels: data.map(item => item.date),
+        datasets: [{
+            label: 'Número de Registros',
+            data: data.map(item => item.count),
+            fill: false,
+            borderColor: colors, // Aplicar el array de colores a los bordes
+            backgroundColor: colors, // También aplica colores a los fondos si necesitas barras o puntos llenos
+            tension: 0.1
+        }]
     };
 }
 
 function prepareChartOptions() {
+    const textColor = '#a5a5a5'; // Gris claro que funciona en ambos modos
+
     return {
         responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 1,  // Controla la relación de aspecto del gráfico
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: textColor // Usar el mismo color de texto neutro para los ticks
+                }
+            },
+            x: {
+                ticks: {
+                    color: textColor // Usar el mismo color de texto neutro para los ticks
+                }
+            }
+        },
         plugins: {
             legend: {
-                position: "top",
+                position: 'top',
                 labels: {
-                    padding: 20,
-                    color: "rgb(255, 99, 132)",
-                },
-            },
-            tooltip: {
-                callbacks: {
-                    label: function (tooltipItem) {
-                        return `${tooltipItem.label}: ${
-                            tooltipItem.raw
-                        } usuarios (${(
-                            (tooltipItem.raw /
-                                data.reduce((acc, cur) => acc + cur.count, 0)) *
-                            100
-                        ).toFixed(2)}%)`;
-                    },
-                },
-                backgroundColor: "rgba(0,0,0,0.7)",
-                titleFont: { size: 16 },
-                bodyFont: { size: 14 },
-                padding: 10,
+                    color: textColor // Usar el color neutro para la leyenda
+                }
             },
             title: {
                 display: true,
-                text: "Distribución de Roles en el Sistema",
-                color: "rgb(54, 162, 235)",
+                text: 'Usuarios registrados por día', // Define aquí el título del gráfico
+                color: textColor, // Color del título
                 font: {
-                    size: 20,
-                    weight: "bold",
-                },
+                    size: 16 // Tamaño de la fuente del título
+                }
             },
-        },
-        animation: {
-            animateRotate: true,
-            animateScale: true,
-        },
+            tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)', // Fondo más oscuro para mejor legibilidad
+                titleColor: textColor,
+                bodyColor: textColor,
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                    }
+                }
+            }
+        }
     };
 }
 
