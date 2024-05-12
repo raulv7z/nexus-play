@@ -16,15 +16,29 @@ const html = $("html");
 // Functions
 ////////////////////////////////////
 function startApp() {
-    setupCrudTable();
-    setupCharts();
+    // Parametrize
+
+    const crudSelector = ".crud-table";
+    const chartSelector = ".chart-graph";
+    const chartId = "users";
+
+    const crudFetchUrl = $(crudSelector).data("fetch-url");
+    const chartFetchUrl = $(chartSelector).data("fetch-url");
+
+    // Setup
+
+    setupDataTable(crudSelector, crudFetchUrl);
+    setupChart(chartId, chartFetchUrl);
 }
 
-function setupCrudTable() {
-    const crudSelector = ".crud-table";
-    const crudFetchUrl = $(crudSelector).data("fetch-url");
+function setupDataTable(crudSelector, crudFetchUrl) {
 
     fetchDataTable(crudFetchUrl, crudSelector);
+}
+
+function setupChart(chartId, chartFetchUrl) {
+
+    fetchChart(chartFetchUrl, chartId);
 }
 
 async function fetchDataTable(url, selector) {
@@ -34,11 +48,23 @@ async function fetchDataTable(url, selector) {
         createDataTable(selector, response, columns);
     } catch (error) {
         console.error("Error fetching table data:", error);
+    }
+}
+
+async function fetchChart(url, chartId) {
+    try {
+        const data = await $.ajax({ url: url, type: "GET", dataType: "json" });
+        const chartData = prepareChartData(data);
+        const chartOptions = prepareChartOptions();
+        initializeChart(chartId, "pie", chartData, chartOptions);
+    } catch (error) {
+        console.error("Error loading chart data:", error);
         // Additionally, handle UI error feedback
     }
 }
 
 function getTableColumns() {
+    
     const actions = {
         viewUrl: "/admin/users/show/:id",
         editUrl: "/admin/users/edit/:id",
@@ -52,7 +78,7 @@ function getTableColumns() {
         {
             data: "deleted_at",
             title: "BORRADO",
-            render: (data) => (data ? "Sí" : "No"),
+            render: (data) => (data ? "Si" : "No"),
         },
         {
             data: null,
@@ -88,48 +114,30 @@ function renderActionButtons(row, actions) {
     `;
 }
 
-function setupCharts() {
-    const chartSelector = ".chart-graph";
-    const chartFetchUrl = $(chartSelector).data("fetch-url");
-    const chartId = "users";
-
-    fetchChart(chartFetchUrl, chartId);
-}
-
-async function fetchChart(url, chartId) {
-    try {
-        const data = await $.ajax({ url: url, type: "GET", dataType: "json" });
-        const chartData = prepareChartData(data);
-        const chartOptions = prepareChartOptions();
-        initializeChart(chartId, "pie", chartData, chartOptions);
-    } catch (error) {
-        console.error("Error loading chart data:", error);
-        // Additionally, handle UI error feedback
-    }
-}
-
 function prepareChartData(data) {
     // Generar colores distintos para cada punto de datos
     const colors = data.map((item, index) => {
-        const hue = (360 * index / data.length) % 360; // Genera un hue (tono) diferente
+        const hue = ((360 * index) / data.length) % 360; // Genera un hue (tono) diferente
         return `hsl(${hue}, 100%, 50%)`; // Saturación y luminosidad al 50%
     });
 
     return {
-        labels: data.map(item => item.date),
-        datasets: [{
-            label: 'Número de Registros',
-            data: data.map(item => item.count),
-            fill: false,
-            borderColor: colors, // Aplicar el array de colores a los bordes
-            backgroundColor: colors, // También aplica colores a los fondos si necesitas barras o puntos llenos
-            tension: 0.1
-        }]
+        labels: data.map((item) => item.date),
+        datasets: [
+            {
+                label: "Número de Registros",
+                data: data.map((item) => item.count),
+                fill: false,
+                borderColor: colors, // Aplicar el array de colores a los bordes
+                backgroundColor: colors, // También aplica colores a los fondos si necesitas barras o puntos llenos
+                tension: 0.1,
+            },
+        ],
     };
 }
 
 function prepareChartOptions() {
-    const textColor = '#a5a5a5'; // Gris claro que funciona en ambos modos
+    const textColor = "#a5a5a5"; // Gris claro que funciona en ambos modos
 
     return {
         responsive: true,
@@ -138,41 +146,41 @@ function prepareChartOptions() {
             y: {
                 beginAtZero: true,
                 ticks: {
-                    color: textColor // Usar el mismo color de texto neutro para los ticks
-                }
+                    color: textColor, // Usar el mismo color de texto neutro para los ticks
+                },
             },
             x: {
                 ticks: {
-                    color: textColor // Usar el mismo color de texto neutro para los ticks
-                }
-            }
+                    color: textColor, // Usar el mismo color de texto neutro para los ticks
+                },
+            },
         },
         plugins: {
             legend: {
-                position: 'top',
+                position: "top",
                 labels: {
-                    color: textColor // Usar el color neutro para la leyenda
-                }
+                    color: textColor, // Usar el color neutro para la leyenda
+                },
             },
             title: {
                 display: true,
-                text: 'Usuarios registrados por día', // Define aquí el título del gráfico
+                text: "Usuarios registrados por día", // Define aquí el título del gráfico
                 color: textColor, // Color del título
                 font: {
-                    size: 16 // Tamaño de la fuente del título
-                }
+                    size: 16,
+                },
             },
             tooltip: {
-                backgroundColor: 'rgba(0, 0, 0, 0.8)', // Fondo más oscuro para mejor legibilidad
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
                 titleColor: textColor,
                 bodyColor: textColor,
                 callbacks: {
-                    label: function(tooltipItem) {
+                    label: function (tooltipItem) {
                         return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
-                    }
-                }
-            }
-        }
+                    },
+                },
+            },
+        },
     };
 }
 

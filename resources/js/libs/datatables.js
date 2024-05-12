@@ -18,7 +18,7 @@ export function createDataTable(selector, data, columns) {
         order: [[0, "asc"]],
         columns: columns,
         initComplete: function () {
-            
+
             const obApi = this.api();
 
             // Reaplicar los estilos después de cada redibujado de la tabla
@@ -46,7 +46,7 @@ export function createDataTable(selector, data, columns) {
                             `<span>${title}</span>
                     <select class="form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100">
                         <option value="">Todos</option>
-                        <option value="Sí">Sí</option>
+                        <option value="Si">Si</option>
                         <option value="No">No</option>
                     </select>`
                         )

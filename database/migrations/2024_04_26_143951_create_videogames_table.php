@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('genre', 30);
             $table->float('base_price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

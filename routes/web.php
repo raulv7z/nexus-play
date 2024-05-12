@@ -115,6 +115,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('store', [AdminUserController::class, 'store'])->name('store');
             Route::get('edit/{user}', [AdminUserController::class, 'edit'])->name('edit');
             Route::put('update/{user}', [AdminUserController::class, 'update'])->name('update');
+            Route::get('delete/{user}', [AdminUserController::class, 'delete'])->name('delete');
             Route::delete('destroy/{user}', [AdminUserController::class, 'destroy'])->name('destroy');
 
             // ajax

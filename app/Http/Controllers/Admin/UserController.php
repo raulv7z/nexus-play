@@ -20,6 +20,7 @@ class UserController extends Controller
 
     public function create()
     {
+
         $action = route('admin.users.store');
 
         $fields = [
@@ -44,6 +45,12 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+
+        $actions = [
+            'edit' => 'admin.users.edit',
+            'delete' => 'admin.users.delete',
+        ];
+
         $fields = [
             'title' => 'name',
             'attributes' => [
@@ -51,12 +58,8 @@ class UserController extends Controller
                 'Email' => 'email',
             ],
         ];
-        $actions = [
-            'edit' => 'admin.users.edit',
-            'delete' => 'admin.users.destroy',
-        ];
 
-        return view('admin.users.show', compact('user', 'fields', 'actions'));
+        return view('admin.users.show', compact('user', 'actions', 'fields'));
     }
 
     public function edit(User $user)
@@ -76,6 +79,19 @@ class UserController extends Controller
     {
         $user->update($request->validated());
         return redirect()->route('admin.users.manager')->with('success', 'User updated successfully.');
+    }
+
+    public function delete(User $user)
+    {
+        $action = route('admin.users.destroy', $user->id);
+
+        $fields = [
+            ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
+            ['name' => 'email', 'label' => 'Email', 'type' => 'text'],
+            ['name' => 'password', 'label' => 'Password', 'type' => 'password']
+        ];
+
+        return view('admin.users.delete', compact('user', 'action', 'fields'));
     }
 
     public function destroy(User $user)

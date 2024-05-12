@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('amount');
             $table->unsignedInteger('stock')->default(100);        
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
