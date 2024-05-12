@@ -56,7 +56,7 @@
         <x-buttons.cancel>
         </x-buttons.cancel>
 
-        <x-buttons.submit>
+        <x-buttons.submit :text="'Create'">
         </x-buttons.submit>
     </div>
 </form>

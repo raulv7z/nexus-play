@@ -107,7 +107,7 @@ function renderActionButtons(row, actions) {
             <a href="${actions.deleteUrl.replace(
                 ":id",
                 row.id
-            )}" class="p-2 text-red-500 hover:text-red-700 transition duration-150 ease-in-out" onclick="return confirm('Are you sure?')">
+            )}" class="p-2 text-red-500 hover:text-red-700 transition duration-150 ease-in-out">
                 <i class="fas fa-trash" title="Borrar"></i>
             </a>
         </div>
