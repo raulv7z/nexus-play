@@ -255,5 +255,10 @@
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
     "Delete confirmation": "Confirmación de eliminación",
     "You are about to delete a record. Please carefully review the data displayed before proceeding.": "Estás a punto de eliminar un registro. Por favor, revisa cuidadosamente los datos que se muestran antes de continuar.",
-    "Manage Users": "Administrar Usuarios"
+    "Manager": "Gestor",
+    "Users": "Usuarios",
+    "Manage Users": "Administrar Usuarios",
+    "Edit User": "Editar Usuario",
+    "Create User": "Crear Usuario",
+    "Delete User": "Borrar Usuario"
 }

@@ -45,7 +45,6 @@ use Illuminate\Support\Facades\Route;
 //! Routes for non-authenticated users
 Route::middleware('guest')->group(function () {
 
-    //! Main
     Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
     // Pre-setted routes
@@ -68,7 +67,6 @@ Route::middleware('guest')->group(function () {
 //! Routes for authenticated users
 Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 
-    //! Main
     Route::get('/content', [HomeController::class, 'dashboard'])->name('dashboard');
 
     // Pre-setted routes
@@ -88,12 +86,10 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 
     //! User routes
 
-    // ..
-
     Route::prefix('content')->name('content.')->group(function () {
 
         Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
-            Route::get('/{id}', [UserPlatformGroupController::class, 'show'])->name('show');
+            Route::get('show/{id}', [UserPlatformGroupController::class, 'show'])->name('show');
         });
     });
 
