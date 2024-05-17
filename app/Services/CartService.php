@@ -1,5 +1,7 @@
 <?php
 
+// app/Services/CartService.php
+
 namespace App\Services;
 
 use App\Models\Edition;
@@ -17,30 +19,21 @@ class CartService
 
     public function getOrCreatePendingCart(User $user)
     {
-        $cart = $this->cartRepository->getPendingCart($user);
-
-        if (!$cart) {
-            $cart = $this->cartRepository->createPendingCart($user);
-        }
-
-        return $cart;
+        return $this->cartRepository->getPendingCart($user) ?? $this->cartRepository->createPendingCart($user);
     }
 
     public function addToCart(User $user, Edition $edition, $quantity)
     {
-        $cart = $this->getOrCreatePendingCart($user);
+        return $this->cartRepository->addToCart($user, $edition, $quantity);
+    }
 
-        $entry = $cart->entries()->where('edition_id', $edition->id)->first();
-        if ($entry) {
-            $entry->quantity += $quantity;
-            $entry->save();
-        } else {
-            $cart->entries()->create([
-                'edition_id' => $edition->id,
-                'quantity' => $quantity,
-            ]);
-        }
+    public function decreaseQuantity(User $user, Edition $edition)
+    {
+        return $this->cartRepository->decreaseQuantity($user, $edition);
+    }
 
-        return $cart;
+    public function removeFromCart(User $user, Edition $edition)
+    {
+        return $this->cartRepository->removeFromCart($user, $edition);
     }
 }
