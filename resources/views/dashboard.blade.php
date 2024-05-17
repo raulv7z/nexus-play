@@ -1,6 +1,15 @@
+@php
+    $title = 'Home';
+    $breadcrumbs = [];
+@endphp
+
 <x-layouts.app>
     <x-slot name="header">
-        {{ __('Dashboard') }}
+        <x-interface.header-title :content="$title">
+        </x-interface.header-title>
+
+        <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+        </x-interface.breadcrumbs>
     </x-slot>
 
     <x-interface.info-block>

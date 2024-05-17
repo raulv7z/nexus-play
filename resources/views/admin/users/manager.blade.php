@@ -1,8 +1,20 @@
+@php
+    $title = 'Manage Users';
+
+    $breadcrumbs = [
+        ['title' => 'Home', 'url' => '/content'],
+        ['title' => 'Admin', 'url' => '/admin'],
+        ['title' => 'Manage Users', 'url' => '/admin/users'],
+    ];
+@endphp
+
 <x-layouts.app>
-
-
     <x-slot name="header">
-        {{ __('Redefine this!') }}
+        <x-interface.header-title :content="$title">
+        </x-interface.header-title>
+
+        <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+        </x-interface.breadcrumbs>
     </x-slot>
 
     <x-interface.info-block>
