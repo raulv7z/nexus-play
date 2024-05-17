@@ -54,4 +54,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+
+    public function pendingCart()
+    {
+        return $this->hasOne(Cart::class)->whereHas('cartState', function ($query) {
+            $query->where('state', 'pending');
+        });
+    }
 }

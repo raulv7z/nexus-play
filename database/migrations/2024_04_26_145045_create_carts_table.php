@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float('iva')->default(21.0);
             $table->decimal('base_amount', 10, 2);
             $table->decimal('full_amount', 10, 2);
-            $table->timestamp('purchased_at');  // cambiar por facturas
+            $table->timestamp('purchased_at')->nullable();  // cambiar por facturas
             $table->timestamps();
             $table->softDeletes();
         });

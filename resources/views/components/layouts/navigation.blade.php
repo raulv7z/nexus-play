@@ -144,7 +144,7 @@
                 </x-presets.dropdown>
 
                 <!-- Cart link -->
-                <a href="route('dashboard')" :active="request()->routeIs('')">
+                <a href="{{ route('content.carts.show', ['id' => Auth::id()]) }}" :active="request()->routeIs('')">
                     <x-interface.cart-icon />
                 </a>
 

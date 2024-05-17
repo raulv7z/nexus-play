@@ -88,6 +88,10 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 
     Route::prefix('content')->name('content.')->group(function () {
 
+        Route::prefix('carts')->name('carts.')->group(function () {
+            Route::get('show/', [UserCartController::class, 'show'])->name('show');
+        });
+
         Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
             Route::get('show/{id}', [UserPlatformGroupController::class, 'show'])->name('show');
         });
