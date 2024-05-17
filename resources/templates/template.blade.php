@@ -1,13 +1,3 @@
-@php
-    $title = 'Home';
-
-    $breadcrumbs = [
-        ['title' => 'Home', 'url' => '/'],
-        ['title' => 'XXX', 'url' => '/xxx'],
-        ['title' => 'XXX A', 'url' => '/xxx/a'],
-    ];
-@endphp
-
 <x-layouts.app>
     <x-slot name="header">
         <x-interface.header-title :content="$title">

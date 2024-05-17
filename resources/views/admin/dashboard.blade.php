@@ -1,12 +1,3 @@
-@php
-    $title = 'Dashboard';
-
-    $breadcrumbs = [
-        ['title' => 'Home', 'url' => '/content'],
-        ['title' => 'Admin', 'url' => '/admin'],
-    ];
-@endphp
-
 <x-layouts.app>
     <x-slot name="header">
         <x-interface.header-title :content="$title">

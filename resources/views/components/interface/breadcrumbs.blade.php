@@ -1,7 +1,5 @@
 @props([
-    'breadcrumbs' => [
-        ['title' => 'Home', 'url' => '/'],
-    ]
+    'breadcrumbs' => []
 ])
 
 <nav aria-label="breadcrumb" class="text-sm">

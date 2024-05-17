@@ -1,5 +1,8 @@
 <?php
 
+// Global controllers
+use App\Http\Controllers\HomeController;
+
 // Auth controllers
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -39,13 +42,11 @@ use App\Http\Controllers\User\CartController as UserCartController;
 
 use Illuminate\Support\Facades\Route;
 
-//! Main routes
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //! Routes for non-authenticated users
 Route::middleware('guest')->group(function () {
+
+    //! Main
+    Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
     // Pre-setted routes
 
@@ -65,7 +66,10 @@ Route::middleware('guest')->group(function () {
 });
 
 //! Routes for authenticated users
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
+
+    //! Main
+    Route::get('/content', [HomeController::class, 'dashboard'])->name('dashboard');
 
     // Pre-setted routes
 
@@ -84,10 +88,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //! User routes
 
-    Route::get('/content', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
     // ..
 
     Route::prefix('content')->name('content.')->group(function () {
@@ -98,6 +98,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     //! Admin routes
+
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
 
         // dashboard

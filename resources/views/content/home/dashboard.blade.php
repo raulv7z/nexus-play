@@ -1,8 +1,3 @@
-@php
-    $title = 'Home';
-    $breadcrumbs = [];
-@endphp
-
 <x-layouts.app>
     <x-slot name="header">
         <x-interface.header-title :content="$title">
