@@ -1,4 +1,6 @@
-<svg class="dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+@props(['width' => 16, 'height' => 16])
+
+<svg class="dark:hidden" width="{{$width}}" height="{{$height}}" xmlns="http://www.w3.org/2000/svg">
 
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -13,7 +15,7 @@
 
 </svg>
 
-<svg class="hidden dark:block" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+<svg class="hidden dark:block" width="{{$width}}" height="{{$height}}" xmlns="http://www.w3.org/2000/svg">
 
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
