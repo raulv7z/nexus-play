@@ -41,13 +41,29 @@ class CartRepository
 
         $entry = $cart->entries()->where('edition_id', $edition->id)->first();
         if ($entry) {
-            $entry->quantity += $quantity;
-            $entry->save();
+            // Si la entrada ya existe en el carrito, aumentamos la cantidad utilizando el método increaseQuantity
+            $this->increaseQuantity($user, $edition);
         } else {
+            // Si la entrada no existe, la creamos con la cantidad proporcionada
             $cart->entries()->create([
                 'edition_id' => $edition->id,
                 'quantity' => $quantity,
             ]);
+        }
+
+        return $cart;
+    }
+
+    public function increaseQuantity(User $user, Edition $edition)
+    {
+        $cart = $this->getPendingCart($user);
+
+        if ($cart) {
+            $entry = $cart->entries()->where('edition_id', $edition->id)->first();
+            if ($entry) {
+                $entry->quantity++;
+                $entry->save();
+            }
         }
 
         return $cart;

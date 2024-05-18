@@ -25,4 +25,10 @@ class Edition extends Model
     {
         return $this->hasMany(CartEntry::class);
     }
+
+    // Accessor to format amount to 2 decimal places
+    public function getAmountAttribute($value)
+    {
+        return number_format($value, 2);
+    }
 }

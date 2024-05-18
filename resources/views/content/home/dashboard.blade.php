@@ -8,7 +8,9 @@
     </x-slot>
 
     <x-interface.info-block>
-        {{ __('Write the content from here!') }}
+
+        <x-cards.game-card></x-cards.game-card>
+
     </x-interface.info-block>
 
 </x-layouts.app>

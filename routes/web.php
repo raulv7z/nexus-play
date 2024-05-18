@@ -65,7 +65,7 @@ Route::middleware('guest')->group(function () {
 });
 
 //! Routes for authenticated users
-Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
+Route::middleware(['auth', 'breadcrumbs'])->group(function () {
 
     Route::get('/content', [HomeController::class, 'dashboard'])->name('dashboard');
 
@@ -90,10 +90,17 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 
         Route::prefix('carts')->name('carts.')->group(function () {
             Route::get('show/', [UserCartController::class, 'show'])->name('show');
+            Route::delete('remove/{editionId}', [UserCartController::class, 'removeFromCart'])->name('remove');
+            Route::put('decrement/{editionId}', [UserCartController::class, 'decreaseQuantity'])->name('decrement');
+            Route::put('increment/{editionId}', [UserCartController::class, 'increaseQuantity'])->name('increment');
         });
 
         Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
             Route::get('show/{id}', [UserPlatformGroupController::class, 'show'])->name('show');
+        });
+
+        Route::prefix('editions')->name('editions.')->group(function () {
+            Route::get('show/{id}', [UserEditionController::class, 'show'])->name('show');
         });
     });
 

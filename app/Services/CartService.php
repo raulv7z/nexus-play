@@ -27,6 +27,11 @@ class CartService
         return $this->cartRepository->addToCart($user, $edition, $quantity);
     }
 
+    public function increaseQuantity(User $user, Edition $edition)
+    {
+        return $this->cartRepository->increaseQuantity($user, $edition);
+    }
+    
     public function decreaseQuantity(User $user, Edition $edition)
     {
         return $this->cartRepository->decreaseQuantity($user, $edition);

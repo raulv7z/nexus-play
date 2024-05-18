@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Edition;
 use App\Services\CartService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class CartController extends Controller
 {
@@ -24,6 +25,14 @@ class CartController extends Controller
         // Get 'pending' cart or create a new one
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
+        // añade productos de prueba
+        // $this->addToCart($request, 5);
+        // $this->addToCart($request, 10);
+        // $this->addToCart($request, 15);
+        // $this->addToCart($request, 20);
+        // $this->addToCart($request, 25);
+        // $this->addToCart($request, 30);
+
         return view('content.carts.show', compact('title', 'cart'));
     }
 
@@ -38,26 +47,35 @@ class CartController extends Controller
         // Añade la entrada al carrito
         $this->cartService->addToCart($user, $edition, $quantity);
 
-        return redirect()->refresh()->with('success', 'Producto añadido al carrito correctamente.');
+        return redirect()->route('content.carts.show')->with('success', 'Producto añadido al carrito correctamente.');
     }
 
     public function removeFromCart(Request $request, $editionId)
     {
         $user = $request->user();
-        
         $edition = Edition::findOrFail($editionId);
         $this->cartService->removeFromCart($user, $edition);
 
-        return redirect()->refresh()->with('success', 'Producto eliminado del carrito correctamente.');
+        return redirect()->route('content.carts.show')->with('success', 'Producto añadido al carrito correctamente.');
+    }
+
+    public function increaseQuantity(Request $request, $editionId)
+    {
+        $user = $request->user();
+
+        $edition = Edition::findOrFail($editionId);
+        $this->cartService->increaseQuantity($user, $edition);
+
+        return redirect()->route('content.carts.show')->with('success', 'Cantidad aumentada correctamente.');
     }
 
     public function decreaseQuantity(Request $request, $editionId)
     {
         $user = $request->user();
-        
+
         $edition = Edition::findOrFail($editionId);
         $this->cartService->decreaseQuantity($user, $edition);
 
-        return redirect()->refresh()->with('success', 'Cantidad del producto disminuida correctamente.');
+        return redirect()->route('content.carts.show')->with('success', 'Cantidad decrease correctamente.');
     }
 }
