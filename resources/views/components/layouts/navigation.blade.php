@@ -52,7 +52,7 @@
 
 
                         <!-- Icons -->
-                        <div class="flex flex-col justify-center ml-3">
+                        <div class="flex flex-col justify-center ml-2">
                             <input type="checkbox" name="light-switch" class="light-switch sr-only" />
                             <label class="relative cursor-pointer p-2" for="light-switch">
                                 <svg class="dark:hidden" width="16" height="16"

@@ -1,18 +1,25 @@
 <div
     class="relative max-w-sm mx-auto overflow-hidden rounded-xl shadow-2xl transform transition-transform duration-500 hover:">
-    <img src="{{ Storage::url('images/games/front-pages/gta-v-fpage.png') }}" alt="Cover" class="w-full h-72 object-cover transition-transform duration-500 ease-in-out">
+    <img src="{{ Storage::url('images/games/front-pages/gta-v-fpage.png') }}" alt="Cover"
+        class="w-full h-72 object-cover transition-transform duration-500 ease-in-out">
     <div
         class="absolute inset-0 bg-gray-800 bg-opacity-80 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-500 ease-in-out dark:bg-opacity-90">
         <div class="text-center p-6">
             <p class="text-white text-sm lg:text-base mb-4">Un juego de acción y aventura desarrollado por Rockstar
                 Games.</p>
-            <div class="flex justify-center space-x-2">
+            <div class="flex justify-center space-x-4">
                 <button
-                    class="bg-blue-500 text-white px-4 py-2 rounded-full transition-transform transform hover:scale-105 duration-300 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Ver
-                    juego</button>
+                    class="bg-violet-950 text-violet-400 border border-violet-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-full hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+                    <span
+                        class="bg-violet-400 shadow-violet-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-full opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+                    View game
+                </button>
                 <button
-                    class="bg-green-500 text-white px-4 py-2 rounded-full transition-transform transform hover:scale-105 duration-300 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Añadir
-                    al carrito</button>
+                    class="bg-pink-950 text-pink-400 border border-pink-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-full hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+                    <span
+                        class="bg-pink-400 shadow-pink-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-full opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+                    Add to cart
+                </button>
             </div>
             <!-- Estrellas de valoración -->
             <div class="flex items-center justify-center mt-4">

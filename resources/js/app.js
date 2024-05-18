@@ -35,7 +35,7 @@ function initializeTheme() {
 }
 
 function setTheme({theme}) {
-    const backgroundColor = (theme === 'dark' ? '#3a93f2' : '#adb5bd'); // blue/gray on HxD
+    const backgroundColor = (theme === 'dark' ? '#535de4' : '#adb5bd'); // blue/gray on HxD
     if (theme === 'dark') {
         html.addClass('dark');
         themeToggle.prop('checked', true);
