@@ -16,7 +16,8 @@ class HomeController extends Controller
         return view('content.home.dashboard', compact('title', 'breadcrumbs'));
     }
 
-    public function welcome() {
+    public function welcome()
+    {
         $title = 'Welcome';
         $breadcrumbs = [];
 
