@@ -25,4 +25,14 @@ class Cart extends Model
     {
         return $this->belongsTo(CartState::class);
     }
+
+    public function getBaseAmountAttribute($value)
+    {
+        return number_format($value, 2);
+    }
+
+    public function getFullAmountAttribute($value)
+    {
+        return number_format($value, 2);
+    }
 }

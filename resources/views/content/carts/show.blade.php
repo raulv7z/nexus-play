@@ -86,7 +86,7 @@
                                 
                                 {{-- original price here --}}
                                 {{-- !update --}}
-                                <x-blocks.original-price :price="'0.00'">
+                                <x-blocks.original-price :price="$cart->base_amount">
                                 </x-blocks.original-price>
 
                                 {{-- discounts here  --}}
@@ -97,7 +97,7 @@
 
                             {{-- total price here --}}
                             {{-- !update --}}
-                            <x-blocks.total-price :price="'0.00'">
+                            <x-blocks.total-price :price="$cart->full_amount">
                             </x-blocks.total-price>
                         </div>
 

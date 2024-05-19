@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Cart;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\PlatformGroup;
 use App\Models\Edition;
+use App\Observers\CartObserver;
 use App\Observers\EditionObserver;
 
 class AppServiceProvider extends ServiceProvider
@@ -38,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
     protected function registerObservers(): void
     {
         Edition::observe(EditionObserver::class);
+        Cart::observe(CartObserver::class);
     }
 }
