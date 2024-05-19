@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('cart_state_id')->constrained('cart_states')->onDelete('cascade');
-            $table->float('iva')->default(21.0);
-            $table->decimal('base_amount', 10, 2);
-            $table->decimal('full_amount', 10, 2);
+            $table->string('invoice_number')->unique();
+            $table->dateTime('issued_at');
+            $table->decimal('total_amount', 10, 2);
+            $table->string('currency', 3)->default('EUR');  // usd ...
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('invoices');
     }
 };

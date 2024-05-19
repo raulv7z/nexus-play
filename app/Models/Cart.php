@@ -9,7 +9,7 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'cart_state_id', 'iva', 'base_amount', 'full_amount', 'purchased_at'];
+    protected $fillable = ['user_id', 'cart_state_id', 'iva', 'base_amount', 'full_amount'];
 
     public function user()
     {
@@ -24,6 +24,11 @@ class Cart extends Model
     public function cartState()
     {
         return $this->belongsTo(CartState::class);
+    }
+
+    public function getIvaAttribute($value)
+    {
+        return number_format($value, 2);
     }
 
     public function getBaseAmountAttribute($value)

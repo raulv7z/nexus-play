@@ -37,6 +37,7 @@ use App\Http\Controllers\User\EditionController as UserEditionController;
 use App\Http\Controllers\User\VideogameController as UserVideogameController;
 use App\Http\Controllers\User\CartEntryController as UserCartEntryController;
 use App\Http\Controllers\User\CartController as UserCartController;
+use App\Http\Controllers\User\PaymentController as UserPaymentController;
 
 // Routes
 
@@ -93,6 +94,11 @@ Route::middleware(['auth', 'breadcrumbs'])->group(function () {
             Route::delete('remove/{editionId}', [UserCartController::class, 'removeFromCart'])->name('remove');
             Route::put('decrement/{editionId}', [UserCartController::class, 'decreaseQuantity'])->name('decrement');
             Route::put('increment/{editionId}', [UserCartController::class, 'increaseQuantity'])->name('increment');
+        });
+
+        Route::prefix('payments')->name('payments.')->group(function () {
+            Route::get('checkout', [UserPaymentController::class, 'checkout'])->name('checkout');
+            Route::post('payment', [UserPaymentController::class, 'makePayment'])->name('payment');
         });
 
         Route::prefix('platform-groups')->name('platform-groups.')->group(function () {

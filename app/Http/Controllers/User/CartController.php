@@ -25,13 +25,7 @@ class CartController extends Controller
         // Get 'pending' cart or create a new one
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
-        // añade productos de prueba
-        // $this->addToCart($request, 5);
         // $this->addToCart($request, 10);
-        // $this->addToCart($request, 15);
-        // $this->addToCart($request, 20);
-        // $this->addToCart($request, 25);
-        // $this->addToCart($request, 30);
 
         return view('content.carts.show', compact('title', 'cart'));
     }
@@ -48,6 +42,17 @@ class CartController extends Controller
         $this->cartService->addToCart($user, $edition, $quantity);
 
         return redirect()->route('content.carts.show')->with('success', 'Producto añadido al carrito correctamente.');
+    }
+
+    public function proceedToCheckout(Request $request) {
+        $user = $request->user();
+        $cart = $this->cartService->getOrCreatePendingCart($user);
+
+        if (!$cart || $cart->entries->isEmpty()) {
+            return redirect()->route('content.carts.show')->with('error', 'El carrito está vacío.');
+        }
+
+        return view('content.payments.checkout');
     }
 
     public function removeFromCart(Request $request, $editionId)
