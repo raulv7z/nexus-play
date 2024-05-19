@@ -25,7 +25,7 @@ class CartController extends Controller
         // Get 'pending' cart or create a new one
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
-        // $this->addToCart($request, 10);
+        // $this->addToCart($request, 11);
 
         return view('content.carts.show', compact('title', 'cart'));
     }

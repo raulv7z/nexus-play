@@ -9,8 +9,13 @@
 
     <x-interface.info-block>
         
-        <x-cards.game-card></x-cards.game-card>
+        <x-blocks.success>
+        </x-blocks.success>
 
     </x-interface.info-block>
+
+    {{-- @section('scripts')
+        @vite('resources/js/ROUTE_HERE')
+    @endsection --}}
 
 </x-layouts.app>

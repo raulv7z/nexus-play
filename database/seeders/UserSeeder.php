@@ -17,15 +17,15 @@ class UserSeeder extends Seeder
         // manual fills
         $users = [
             [
-                'name' => 'Administrador',
-                'email' => 'admin@example.com',
-                'password' => Hash::make('administrador'),
+                'name' => 'Nexus Admin',
+                'email' => 'nexus.play.info@gmail.com',
+                'password' => Hash::make('nexusplay'),
                 'role' => 'admin',
             ],
             [
-                'name' => 'Usuario',
-                'email' => 'usuario@example.com',
-                'password' => Hash::make('usuario'), 
+                'name' => 'Raúl',
+                'email' => 'rmm0.academics@gmail.com',
+                'password' => Hash::make('nexusplay'), 
                 'role' => 'user',
             ]
         ];
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
 
         // factory fills
         User::factory()->count(20)->create()->each(function ($user) {
-            $user->assignRole('user'); // Asumiendo que todos son usuarios regulares
+            $user->assignRole('user'); // Regular users
         });
         
         

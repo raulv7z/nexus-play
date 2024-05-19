@@ -9,8 +9,13 @@
 
     <x-interface.info-block>
         
-        <x-cards.game-card></x-cards.game-card>
+        <x-forms.checkout :action="route('content.payments.confirm')">
+        </x-forms.checkout>
 
     </x-interface.info-block>
+
+    {{-- @section('scripts')
+        @vite('resources/js/ROUTE_HERE')
+    @endsection --}}
 
 </x-layouts.app>

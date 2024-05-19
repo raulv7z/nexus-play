@@ -7,6 +7,9 @@ use App\Models\CartState;
 use App\Models\Invoice;
 use App\Services\CartService;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreInvoiceRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InvoiceEmail;
 
 class PaymentController extends Controller
 {
@@ -20,10 +23,8 @@ class PaymentController extends Controller
 
     public function checkout(Request $request)
     {
-        // Obtener el usuario actual
+        $title = "Checkout";
         $user = $request->user();
-
-        // Obtener el carrito del usuario
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
         // Verificar si el carrito está vacío
@@ -31,12 +32,23 @@ class PaymentController extends Controller
             return redirect()->route('content.carts.show')->with('error', 'The shopping cart is empty.');
         }
 
-        // !update
-        // todo no se debería crear aquí la factura, si no mostrar una vista de checkout con campos
-        // todo y al darle al botón de confirmar compra se crea la factura y demás
+        // Redirigir a la vista de checkout
+        return view('content.payments.checkout', compact('title', 'cart', 'user'));
+    }
 
-        // Crear la factura asociada al carrito
-        //* funciona
+    public function confirm(Request $request)
+    {        
+        $user = $request->user();
+        $cart = $this->cartService->getOrCreatePendingCart($user);
+
+        // Verificar si el carrito está vacío
+        if (!$cart || $cart->entries->isEmpty()) {
+            return redirect()->route('content.carts.show')->with('error', 'The shopping cart is empty.');
+        }
+
+        $paidStateId = CartState::where('state', 'Completed')->value('id');
+        $cart->update(['cart_state_id' => $paidStateId]);
+
         $invoice = Invoice::create([
             'user_id' => $user->id,
             'invoice_number' => 'INV-' . uniqid(), // Generar un número de factura único
@@ -45,16 +57,15 @@ class PaymentController extends Controller
             'currency' => 'EUR',
         ]);
 
-        // Actualizar el estado del carrito
-        // Obtener el ID del estado "Completed" de la tabla cart_states
-        $paidStateId = CartState::where('state', 'Completed')->value('id');
-
-        // Actualizar el estado del carrito a "pagado" o al estado "Completed"
-        $cart->update(['cart_state_id' => $paidStateId]);
-
         // Enviar correo electrónico con la factura
-        // Mail::to($user->email)->send(new InvoiceEmail($invoice));
+        Mail::to($user->email)->send(new InvoiceEmail($invoice));
 
         // Redirigir o mostrar mensaje de éxito
+        return redirect()->route('content.payments.paid')->with('success', 'The order was completed successfully. Check your email.');
+    }
+
+    public function paid() {
+        $title = 'Order Completed';
+        return view('content.payments.paid', compact('title'));
     }
 }

@@ -98,7 +98,8 @@ Route::middleware(['auth', 'breadcrumbs'])->group(function () {
 
         Route::prefix('payments')->name('payments.')->group(function () {
             Route::get('checkout', [UserPaymentController::class, 'checkout'])->name('checkout');
-            Route::post('payment', [UserPaymentController::class, 'makePayment'])->name('payment');
+            Route::get('paid', [UserPaymentController::class,'paid'])->name('paid');
+            Route::post('confirm', [UserPaymentController::class, 'confirm'])->name('confirm');
         });
 
         Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
