@@ -35,8 +35,6 @@ class CartObserver
 
         $cart->base_amount = $baseAmount;
         $cart->full_amount = $fullAmount;
-
-        // Guarda los cambios en la base de datos
         $cart->save();
     }
 }

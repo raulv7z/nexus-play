@@ -66,7 +66,7 @@ Route::middleware('guest')->group(function () {
 });
 
 //! Routes for authenticated users
-Route::middleware(['auth', 'breadcrumbs'])->group(function () {
+Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 
     Route::get('/content', [HomeController::class, 'dashboard'])->name('dashboard');
 

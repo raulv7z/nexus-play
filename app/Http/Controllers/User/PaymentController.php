@@ -41,30 +41,28 @@ class PaymentController extends Controller
         $user = $request->user();
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
-        // Verificar si el carrito está vacío
-        if (!$cart || $cart->entries->isEmpty()) {
-            return redirect()->route('content.carts.show')->with('error', 'The shopping cart is empty.');
-        }
-
-        $paidStateId = CartState::where('state', 'Completed')->value('id');
-        $cart->update(['cart_state_id' => $paidStateId]);
-
         $invoice = Invoice::create([
             'user_id' => $user->id,
-            'invoice_number' => 'INV-' . uniqid(), // Generar un número de factura único
+            'invoice_number' => 'INV-' . uniqid(), // unique invoice number
             'issued_at' => now(),
             'total_amount' => $cart->full_amount,
             'currency' => 'EUR',
         ]);
 
-        // Enviar correo electrónico con la factura
-        Mail::to($user->email)->send(new InvoiceEmail($invoice));
+        try {
+            Mail::to($user->email)->send(new InvoiceEmail($invoice, $user, $cart));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to send email. Please contact support.');
+        }
 
-        // Redirigir o mostrar mensaje de éxito
+        $paidStateId = CartState::where('state', 'Completed')->value('id');
+        $cart->update(['cart_state_id' => $paidStateId]);
+        $cart->delete();
+
         return redirect()->route('content.payments.paid')->with('success', 'The order was completed successfully. Check your email.');
     }
 
-    public function paid() {
+    public function paid(Request $request) {
         $title = 'Order Completed';
         return view('content.payments.paid', compact('title'));
     }

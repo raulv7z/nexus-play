@@ -2,7 +2,9 @@
 
 namespace App\Mail;
 
+use App\Models\Cart;
 use App\Models\Invoice;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -15,13 +17,17 @@ class InvoiceEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $invoice;
+    public $user;
+    public $cart;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Invoice $invoice)
+    public function __construct(Invoice $invoice, User $user, Cart $cart)
     {
         $this->invoice = $invoice;
+        $this->user = $user;
+        $this->cart = $cart;
     }
 
     /**
@@ -41,6 +47,11 @@ class InvoiceEmail extends Mailable
     {
         return new Content(
             view: 'components.emails.invoice',
+            with: [
+                'invoice' => $this->invoice,
+                'user' => $this->user,
+                'cart' => $this->cart,
+            ],
         );
     }
 
