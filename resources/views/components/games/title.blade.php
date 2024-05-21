@@ -1,5 +1,5 @@
-@props(['name' => 'Name'])
+@props(['title' => 'New game'])
 
-<h2 class="text-white text-xl lg:text-2xl font-bold tracking-wide leading-tight shadow-lg">
-    {{ __($name) }}
+<h2 class="text-white text-xl font-bold tracking-wide leading-tight shadow-lg">
+    {{ __($title) }}
 </h2>

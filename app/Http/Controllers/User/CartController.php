@@ -39,18 +39,7 @@ class CartController extends Controller
         // Añade la entrada al carrito
         $this->cartService->addToCart($user, $edition, $quantity);
 
-        return redirect()->route('content.carts.show')->with('success', 'Producto añadido al carrito correctamente.');
-    }
-
-    public function proceedToCheckout(Request $request) {
-        $user = $request->user();
-        $cart = $this->cartService->getOrCreatePendingCart($user);
-
-        if (!$cart || $cart->entries->isEmpty()) {
-            return redirect()->route('content.carts.show')->with('error', 'El carrito está vacío.');
-        }
-
-        return view('content.payments.checkout');
+        return back()->with('success', 'Producto añadido al carrito correctamente.');
     }
 
     public function removeFromCart(Request $request, $editionId)
@@ -80,5 +69,17 @@ class CartController extends Controller
         $this->cartService->decreaseQuantity($user, $edition);
 
         return redirect()->route('content.carts.show')->with('success', 'Cantidad decrease correctamente.');
+    }
+
+    public function proceedToCheckout(Request $request)
+    {
+        $user = $request->user();
+        $cart = $this->cartService->getOrCreatePendingCart($user);
+
+        if (!$cart || $cart->entries->isEmpty()) {
+            return redirect()->route('content.carts.show')->with('error', 'El carrito está vacío.');
+        }
+
+        return view('content.payments.checkout');
     }
 }

@@ -8,7 +8,7 @@
     </x-slot>
 
     <x-interface.info-block>
-        {{ __('Write the content from here!') }}
+        {{ __('SHOW EDITION') }}
     </x-interface.info-block>
 
     {{-- @section('scripts')

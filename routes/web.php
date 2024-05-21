@@ -91,6 +91,7 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 
         Route::prefix('carts')->name('carts.')->group(function () {
             Route::get('show', [UserCartController::class, 'show'])->name('show');
+            Route::post('add/{editionId}', [UserCartController::class, 'addToCart'])->name('add');
             Route::delete('remove/{editionId}', [UserCartController::class, 'removeFromCart'])->name('remove');
             Route::put('decrement/{editionId}', [UserCartController::class, 'decreaseQuantity'])->name('decrement');
             Route::put('increment/{editionId}', [UserCartController::class, 'increaseQuantity'])->name('increment');

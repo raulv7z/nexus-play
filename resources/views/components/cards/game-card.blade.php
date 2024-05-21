@@ -1,58 +1,64 @@
-@props(['game'])
+@props(['edition'])
 
-<div
-    class="relative max-w-sm mx-auto overflow-hidden rounded-xl shadow-2xl transform transition-transform duration-500 hover:">
+{{-- card container  --}}
 
-    <x-games.image>
-    </x-games.image>
+<div class="w-fit">
+
+    {{-- card body  --}}
 
     <div
-        class="absolute inset-0 bg-gray-800 bg-opacity-80 flex items-start justify-center opacity-0 hover:opacity-100 transition-opacity duration-500 ease-in-out dark:bg-opacity-90">
-        <div class="text-center p-6">
-            
-            {{-- !update --}}
-            <x-games.description>
-            </x-games.description>
+        class="relative max-w-sm mx-auto overflow-hidden rounded-xl shadow-2xl transform transition-transform duration-500">
 
-            <div class="flex justify-center space-x-4">
+        <x-games.image>
+        </x-games.image>
 
-                {{-- !update --}}
-                <x-links.show-edition>
-                </x-links.show-edition>
+        <div
+            class="absolute inset-0 bg-gray-800 bg-opacity-80 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-500 ease-in-out dark:bg-opacity-90">
+            <div class="text-center p-6">
 
-                {{-- !update --}}
-                <x-links.add-to-cart>
-                </x-links.add-to-cart>
+                <x-games.description :description="$edition->videogame->description">
+                </x-games.description>
 
-            </div>
+                <div class="flex justify-center space-x-4">
 
-            <!-- Rating stars -->
-            <div class="flex items-center justify-center mt-4">
+                    {{-- !update --}}
+                    <x-links.show-edition :link="route('content.editions.show', $edition->id)">
+                    </x-links.show-edition>
 
-                {{-- !update --}}
-                <x-games.rating>
-                </x-games.rating>
+                    {{-- !update --}}
+                    <x-forms.add-to-cart :editionId="$edition->id">
+                    </x-forms.add-to-cart>
 
+                </div>
+
+                <!-- Rating stars -->
+                <div class="flex items-center justify-center mt-4">
+
+                    {{-- !update --}}
+                    <x-games.rating>
+                    </x-games.rating>
+
+                </div>
             </div>
         </div>
     </div>
-    <div
-        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 via-gray-800 to-transparent p-4 flex justify-between items-center dark:from-black dark:via-gray-900">
-        <div class="flex flex-col items-start space-y-1">
 
-            {{-- !update --}}
-            <x-games.title>
-            </x-games.title>
+    {{-- card footer --}}
 
-            {{-- !update --}}
-            <x-games.platform>
-            </x-games.platform>
-
+    <div class="flex items-center justify-between text-gray-900 dark:text-white">
+        <div>
+            <h3 class="text-md font-semibold">
+                {{ $edition->videogame->name }}
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                {{ $edition->platform->name }}
+            </p>
         </div>
-
-        {{-- !update --}}
-        <x-games.price>
-        </x-games.price>
-
+        <div>
+            <p class="text-lg font-bold text-pink-600 dark:text-pink-400">
+                {{ number_format($edition->amount, 2) }}&nbsp;€
+            </p>
+        </div>
     </div>
+
 </div>

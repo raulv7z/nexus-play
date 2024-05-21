@@ -9,7 +9,16 @@
 
     <x-interface.info-block>
         
-        <x-cards.game-card></x-cards.game-card>
+        <x-blocks.success>
+        </x-blocks.success>
+        
+        @foreach ($editions as $edition)
+            <x-cards.game-card :edition="$edition">
+
+            </x-cards.game-card>
+        @endforeach
+
+
 
     </x-interface.info-block>
 
