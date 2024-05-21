@@ -1,5 +1,5 @@
 @props(['title' => 'New game'])
 
-<h2 class="text-white text-xl font-bold tracking-wide leading-tight shadow-lg">
+<h3 class="text-md font-semibold">
     {{ __($title) }}
-</h2>
+</h3>

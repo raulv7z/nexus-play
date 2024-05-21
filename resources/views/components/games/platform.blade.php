@@ -1,5 +1,5 @@
 @props(['platform' => 'Platform'])
 
-<span class="bg-gray-700 bg-opacity-50 text-gray-200 text-xs lg:text-sm px-2 py-1 rounded-full">
+<p class="text-sm text-gray-500 dark:text-gray-400">
     {{ __($platform) }}
-</span>
+</p>

@@ -1,7 +1,5 @@
-@props(['price' => '0.00'])
+@props(['amount' => 0.00])
 
-<div class="flex items-center space-x-2 bg-black bg-opacity-90 px-3 py-1 rounded-lg">
-    <span class="text-yellow-300 text-lg lg:text-xl font-semibold">
-        {{ __($price) }}&nbsp;€
-    </span>
-</div>
+<p class="text-lg font-bold text-pink-600 dark:text-pink-400">
+    {{ number_format($amount, 2) }}&nbsp;€
+</p>

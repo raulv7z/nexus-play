@@ -44,17 +44,14 @@
 
     <div class="flex items-center justify-between text-gray-900 dark:text-white">
         <div>
-            <h3 class="text-md font-semibold">
-                {{ $edition->videogame->name }}
-            </h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400">
-                {{ $edition->platform->name }}
-            </p>
+            <x-games.title :title="$edition->videogame->name">
+            </x-games.title>
+            <x-games.platform :platform="$edition->platform->name">
+            </x-games.platform>
         </div>
         <div>
-            <p class="text-lg font-bold text-pink-600 dark:text-pink-400">
-                {{ number_format($edition->amount, 2) }}&nbsp;€
-            </p>
+            <x-games.price :amount="$edition->amount">
+            </x-games.price>
         </div>
     </div>
 
