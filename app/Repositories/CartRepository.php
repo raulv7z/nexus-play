@@ -31,9 +31,13 @@ class CartRepository
         ]);
     }
 
+    public function getOrCreatePendingCart(User $user) {
+        return $this->getPendingCart($user) ?? $this->createPendingCart($user);
+    }
+
     public function addToCart(User $user, Edition $edition, $quantity)
     {
-        $cart = $this->getPendingCart($user);
+        $cart = $this->getOrCreatePendingCart($user);
 
         if (!$cart) {
             throw new Exception('At least a pending cart should have been created at this point');

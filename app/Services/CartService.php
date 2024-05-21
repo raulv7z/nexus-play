@@ -19,7 +19,7 @@ class CartService
 
     public function getOrCreatePendingCart(User $user)
     {
-        return $this->cartRepository->getPendingCart($user) ?? $this->cartRepository->createPendingCart($user);
+        return $this->cartRepository->getOrCreatePendingCart($user);
     }
 
     public function addToCart(User $user, Edition $edition, $quantity)

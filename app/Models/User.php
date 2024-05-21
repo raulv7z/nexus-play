@@ -61,4 +61,9 @@ class User extends Authenticatable
             $query->where('state', 'pending');
         });
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

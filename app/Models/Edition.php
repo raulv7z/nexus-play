@@ -31,4 +31,9 @@ class Edition extends Model
     {
         return number_format($value, 2);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
