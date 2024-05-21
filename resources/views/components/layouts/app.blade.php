@@ -37,8 +37,23 @@
         @endif
 
         <!-- Page Content -->
+
         <main>
+
+            <!-- Alerts -->
+
+            <div class="max-w-[1720px] mx-auto sm:px-6 lg:px-8 pt-5">
+                <x-blocks.error>
+                </x-blocks.error>
+
+                <x-blocks.success>
+                </x-blocks.success>
+            </div>
+
+            <!-- Dynamic content -->
+
             {{ $slot }}
+
         </main>
     </div>
 

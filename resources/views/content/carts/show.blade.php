@@ -12,9 +12,6 @@
                 {{ __('Shopping Cart') }}
             </h2>
 
-            <x-blocks.error>
-            </x-blocks.error>
-
             <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                     <div class="space-y-6">

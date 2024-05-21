@@ -1,5 +1,5 @@
 @if (session('error'))
-    <div class="bg-red-600 text-white px-6 py-4 border-0 rounded-lg relative mb-4 shadow-md dark:bg-red-800">
+    <div id="error-alert" class="bg-red-600 text-white px-6 py-4 border-0 rounded-lg relative shadow-md dark:bg-red-800">
         <div class="flex items-center">
             <div class="h-6 w-6 mr-4">
                 <svg class="fill-current h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

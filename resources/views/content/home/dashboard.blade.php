@@ -9,9 +9,6 @@
 
     <x-interface.info-block>
 
-        <x-blocks.success>
-        </x-blocks.success>
-
         <x-sections.game-section>
             @foreach ($editions as $edition)
             <div class="w-full flex justify-center">

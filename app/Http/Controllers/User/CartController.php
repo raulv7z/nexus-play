@@ -39,7 +39,7 @@ class CartController extends Controller
         // Añade la entrada al carrito
         $this->cartService->addToCart($user, $edition, $quantity);
 
-        return back()->with('success', 'Producto añadido al carrito correctamente.');
+        return back()->with('success', 'The item has been added to the cart successfully.');
     }
 
     public function removeFromCart(Request $request, $editionId)
@@ -48,7 +48,7 @@ class CartController extends Controller
         $edition = Edition::findOrFail($editionId);
         $this->cartService->removeFromCart($user, $edition);
 
-        return redirect()->route('content.carts.show')->with('success', 'Producto añadido al carrito correctamente.');
+        return redirect()->route('content.carts.show')->with('success', 'The item has been deleted from the cart successfully.');
     }
 
     public function increaseQuantity(Request $request, $editionId)
@@ -58,7 +58,7 @@ class CartController extends Controller
         $edition = Edition::findOrFail($editionId);
         $this->cartService->increaseQuantity($user, $edition);
 
-        return redirect()->route('content.carts.show')->with('success', 'Cantidad aumentada correctamente.');
+        return back();
     }
 
     public function decreaseQuantity(Request $request, $editionId)
@@ -68,7 +68,7 @@ class CartController extends Controller
         $edition = Edition::findOrFail($editionId);
         $this->cartService->decreaseQuantity($user, $edition);
 
-        return redirect()->route('content.carts.show')->with('success', 'Cantidad decrease correctamente.');
+        return back();
     }
 
     public function proceedToCheckout(Request $request)
@@ -77,7 +77,7 @@ class CartController extends Controller
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
         if (!$cart || $cart->entries->isEmpty()) {
-            return redirect()->route('content.carts.show')->with('error', 'El carrito está vacío.');
+            return back()->with('error', 'El carrito está vacío.');
         }
 
         return view('content.payments.checkout');

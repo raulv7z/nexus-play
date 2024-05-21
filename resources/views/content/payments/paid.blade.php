@@ -8,9 +8,6 @@
     </x-slot>
 
     <x-interface.info-block>
-        
-        <x-blocks.success>
-        </x-blocks.success>
 
     </x-interface.info-block>
 
