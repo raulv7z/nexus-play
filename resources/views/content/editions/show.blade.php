@@ -33,7 +33,7 @@
                 {{-- !refactor this, overall stock --}}
                 <div class="flex px-6 py-2 my-4 rounded-full bg-gray-200 dark:bg-gray-600">
                     <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">{{ $edition->videogame->genre }}</p>
-                    <span class="divider mx-2">|</span>
+                    <span class="divider mx-2 text-gray-500 dark:text-gray-400">|</span>
                     <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">{{ $edition->stock > 0 ? 'In stock' : 'No stock' }}</p>
                 </div>
 
