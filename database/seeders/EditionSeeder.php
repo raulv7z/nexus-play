@@ -50,7 +50,7 @@ class EditionSeeder extends Seeder
                     Edition::create([
                         'platform_id' => $platform->id,
                         'videogame_id' => $videogame->id,
-                        // 'amount' => $editionPrice,
+                        'rating' => 0,
                         'stock' => 100  // modifiable
                     ]);
                 }

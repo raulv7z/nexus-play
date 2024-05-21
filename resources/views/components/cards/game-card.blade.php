@@ -9,7 +9,7 @@
     <div
         class="relative max-w-sm mx-auto overflow-hidden rounded-xl shadow-2xl transform transition-transform duration-500">
 
-        <x-games.image>
+        <x-games.image :frontPage="$edition->videogame->front_page">
         </x-games.image>
 
         <div
@@ -21,11 +21,9 @@
 
                 <div class="flex justify-center space-x-4">
 
-                    {{-- !update --}}
                     <x-links.show-edition :link="route('content.editions.show', $edition->id)">
                     </x-links.show-edition>
 
-                    {{-- !update --}}
                     <x-forms.add-to-cart :editionId="$edition->id">
                     </x-forms.add-to-cart>
 
@@ -34,8 +32,7 @@
                 <!-- Rating stars -->
                 <div class="flex items-center justify-center mt-4">
 
-                    {{-- !update --}}
-                    <x-games.rating>
+                    <x-games.rating :value="$edition->rating">
                     </x-games.rating>
 
                 </div>
