@@ -37,14 +37,4 @@ class UserFactory extends Factory
             'updated_at' => $createdAt    // Ensure updated_at is the same or later than created_at
         ];
     }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
 }

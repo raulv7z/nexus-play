@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PlatformSeeder::class,
             VideogameSeeder::class,
             EditionSeeder::class,
+            ReviewSeeder::class,
         ];
 
         foreach ($seeders as $seeder) {

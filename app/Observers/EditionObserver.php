@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Edition;
+use App\Models\Review;
 use Exception;
 
 class EditionObserver
@@ -21,6 +22,23 @@ class EditionObserver
     public function updating(Edition $edition): void
     {
         $this->calculateAmount($edition);
+    }
+
+    public function retrieved(Edition $edition): void
+    {
+        $this->calculateRating($edition);
+    }
+
+    protected function calculateRating(Edition $edition)
+    {
+        $reviews = $edition->reviews;
+
+        // has reviews
+        if ($reviews->isNotEmpty()) {
+            $total = $reviews->reduce(fn($carry, $review) => $carry + $review->rating, 0);    
+            $edition->rating = $total / $reviews->count();
+            $edition->save();
+        }
     }
 
     protected function calculateAmount(Edition $edition)
