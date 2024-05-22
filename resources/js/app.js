@@ -29,12 +29,15 @@ const errorAlert = $("#error-alert");
 const successAlert = $("#success-alert");
 const alerts = [errorAlert, successAlert];
 
+const reactiveStars = $(".reactive-1");
+
 // Functions
 ////////////////////////////////////
 function startApp() {
     initializeTheme();
     attachEventHandlers();
     setAlertTimeouts(alerts);
+    addReactiveBehavior(reactiveStars);
 }
 
 function initializeTheme() {
@@ -70,12 +73,55 @@ function setAlertTimeouts(alerts) {
     alerts.forEach((alert) => {
         if (alert) {
             setTimeout(() => {
-                alert.fadeOut(500, function() {
+                alert.fadeOut(500, function () {
                     alert.remove();
                 });
             }, 5000); // 5000 ms = 5 seconds
         }
     });
+}
+
+function addReactiveBehavior(reactiveStars) {
+    let lastSelectedValue = 1; // Guardar el último valor seleccionado
+
+    reactiveStars.on("click", function () {
+        const clickedStar = $(this);
+        const order = clickedStar.data("order");
+
+        // Actualizar el valor de todas las estrellas según la estrella clickeada
+        reactiveStars.each(function () {
+            const starOrder = $(this).data("order");
+            $(this).toggleClass(
+                "text-yellow-400 dark:text-yellow-400",
+                starOrder <= order
+            );
+        });
+
+        lastSelectedValue = order; // Actualizar el último valor seleccionado
+    });
+
+    // Mostrar el valor en hover
+    reactiveStars.on("mouseenter", function () {
+        const hoveredStar = $(this);
+        const order = hoveredStar.data("order");
+        showValueOnHover(order);
+    });
+
+    // Restaurar el último valor seleccionado si el mouse sale sin hacer clic
+    reactiveStars.on("mouseleave", function () {
+        showValueOnHover(lastSelectedValue);
+    });
+
+    // Función para mostrar el valor en hover
+    function showValueOnHover(value) {
+        reactiveStars.each(function () {
+            const starOrder = $(this).data("order");
+            $(this).toggleClass(
+                "text-yellow-400 dark:text-yellow-400",
+                starOrder <= value
+            );
+        });
+    }
 }
 
 // Main execution
