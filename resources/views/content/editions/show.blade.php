@@ -61,10 +61,8 @@
 
         <h2>Reviews</h2>
 
-        <h3>Agrega tu review</h3>
-        <button class="btn px-5 py-1 bg-blue-300 rounded-full">
-            review
-        </button>
+        <x-modals.review>
+        </x-modals.review>
 
         <h3>reviews de otros usuarios</h3>
         <div>
