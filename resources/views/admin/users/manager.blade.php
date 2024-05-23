@@ -22,7 +22,7 @@
 
     <x-interface.info-block>
 
-        <x-graphs.chart :chartId="'users'" :url="route('admin.users.chart')">
+        <x-graphs.chart :chartId="'chart-users'" :url="route('admin.users.chart')">
 
         </x-graphs.chart>
 

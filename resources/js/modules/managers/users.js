@@ -2,8 +2,8 @@
 ////////////////////////////////////
 import $ from "jquery";
 import "../../bootstrap";
-import { createDataTable } from "../../libs/datatables";
-import { initializeChart } from "../../libs/chart";
+import DataTableManager from "../../libs/DataTableManager";
+import ChartManager from "../../libs/ChartManager";
 
 // Inits
 ////////////////////////////////////
@@ -12,181 +12,255 @@ window.$ = window.jQuery = $;
 // Vars
 ////////////////////////////////////
 const html = $("html");
+const apiDatatableUrl = $(".crud-table").data("fetch-url");
+const apiChartUrl = $(".chart-graph").data("fetch-url");
 
 // Functions
 ////////////////////////////////////
-function startApp() {
-    // Parametrize
 
-    const crudSelector = ".crud-table";
-    const chartSelector = ".chart-graph";
-    const chartId = "users";
-
-    const crudFetchUrl = $(crudSelector).data("fetch-url");
-    const chartFetchUrl = $(chartSelector).data("fetch-url");
-
-    // Setup
-
-    setupDataTable(crudSelector, crudFetchUrl);
-    setupChart(chartId, chartFetchUrl);
-}
-
-function setupDataTable(crudSelector, crudFetchUrl) {
-
-    fetchDataTable(crudFetchUrl, crudSelector);
-}
-
-function setupChart(chartId, chartFetchUrl) {
-
-    fetchChart(chartFetchUrl, chartId);
-}
-
-async function fetchDataTable(url, selector) {
+async function startApp({ requestDatatableUrl, requestChartUrl }) {
     try {
-        const response = await $.ajax({ url, type: "GET", dataType: "json" });
-        const columns = getTableColumns();
-        createDataTable(selector, response, columns);
+        // Datatable
+        ////////////////
+
+        // All users dynamic table
+        $.ajax({
+            url: requestDatatableUrl,
+            method: "GET",
+            success: async function (dataRequest) {
+                const [tableSelector, tableOptions, tableData, tableStyles] =
+                    customizeDataTable({ data: dataRequest });
+
+                await initializeDataTable({
+                    selector: tableSelector,
+                    options: tableOptions,
+                    data: tableData,
+                    styles: tableStyles,
+                });
+            },
+            error: function (error) {
+                reject(`Error on request: ${error}`);
+            },
+        });
+
+        // Charts
+        ///////////
+
+        // Users registered on the last 5 days
+        $.ajax({
+            url: requestChartUrl,
+            method: "GET",
+            success: async function (dataRequest) {
+                const [chartSelector, chartOptions, chartData, chartType] =
+                    customizeChart({ data: dataRequest });
+
+                await initializeChart({
+                    selector: chartSelector,
+                    options: chartOptions,
+                    data: chartData,
+                    type: chartType,
+                });
+            },
+            error: function (error) {
+                console.error(`Error fetching chart data: ${error}`);
+            },
+        });
     } catch (error) {
-        console.error("Error fetching table data:", error);
+        console.error(error);
     }
 }
 
-async function fetchChart(url, chartId) {
-    try {
-        const data = await $.ajax({ url: url, type: "GET", dataType: "json" });
-        const chartData = prepareChartData(data);
-        const chartOptions = prepareChartOptions();
-        initializeChart(chartId, "pie", chartData, chartOptions);
-    } catch (error) {
-        console.error("Error loading chart data:", error);
-        // Additionally, handle UI error feedback
-    }
-}
+function customizeDataTable({ data }) {
+    const tableSelector = ".crud-table";
 
-function getTableColumns() {
-    
-    const actions = {
-        viewUrl: "/admin/users/show/:id",
-        editUrl: "/admin/users/edit/:id",
-        deleteUrl: "/admin/users/delete/:id",
-    };
-
-    return [
-        { data: "id", title: "ID" },
-        { data: "name", title: "NOMBRE" },
-        { data: "email", title: "CORREO ELECTRÓNICO" },
-        {
-            data: "deleted_at",
-            title: "BORRADO",
-            render: (data) => (data ? "Si" : "No"),
-        },
-        {
-            data: null,
-            title: "ACCIONES",
-            orderable: false,
-            render: (data, type, row) => renderActionButtons(row, actions),
-        },
-    ];
-}
-
-function renderActionButtons(row, actions) {
-    return `
-        <div class="flex justify-center space-x-1">
-            <a href="${actions.viewUrl.replace(
-                ":id",
-                row.id
-            )}" class="p-2 text-blue-500 hover:text-blue-700 transition duration-150 ease-in-out">
-                <i class="fas fa-eye" title="Ver"></i>
-            </a>
-            <a href="${actions.editUrl.replace(
-                ":id",
-                row.id
-            )}" class="p-2 text-green-500 hover:text-green-700 transition duration-150 ease-in-out">
-                <i class="fas fa-edit" title="Editar"></i>
-            </a>
-            <a href="${actions.deleteUrl.replace(
-                ":id",
-                row.id
-            )}" class="p-2 text-red-500 hover:text-red-700 transition duration-150 ease-in-out">
-                <i class="fas fa-trash" title="Borrar"></i>
-            </a>
-        </div>
-    `;
-}
-
-function prepareChartData(data) {
-    // Generar colores distintos para cada punto de datos
-    const colors = data.map((item, index) => {
-        const hue = ((360 * index) / data.length) % 360; // Genera un hue (tono) diferente
-        return `hsl(${hue}, 100%, 50%)`; // Saturación y luminosidad al 50%
-    });
-
-    return {
-        labels: data.map((item) => item.date),
-        datasets: [
+    const tableOptions = {
+        responsive: true,
+        paging: true,
+        searching: true,
+        autoWidth: false,
+        info: true,
+        columnSearch: [
+            { type: "text" },
+            { type: "text" },
+            { type: "text" },
+            { type: "select", options: ["Si", "No"] },
+            { type: null },
+        ],
+        columns: [
+            { data: "id", title: "ID" },
+            { data: "name", title: "NOMBRE" },
+            { data: "email", title: "CORREO ELECTRÓNICO" },
             {
-                label: "Número de Registros",
-                data: data.map((item) => item.count),
-                fill: false,
-                borderColor: colors, // Aplicar el array de colores a los bordes
-                backgroundColor: colors, // También aplica colores a los fondos si necesitas barras o puntos llenos
-                tension: 0.1,
+                data: "deleted_at",
+                title: "BORRADO",
+                render: (data) => (data ? "Si" : "No"),
+            },
+            {
+                data: null,
+                title: "ACCIONES",
+                searchable: false,
+                render: function (data, type, row) {
+                    const actions = {
+                        viewUrl: "/admin/users/show/:id",
+                        editUrl: "/admin/users/edit/:id",
+                        deleteUrl: "/admin/users/delete/:id",
+                    };
+
+                    return `
+                    <div class="flex justify-center space-x-1">
+                        <a href="${actions.viewUrl.replace(
+                            ":id",
+                            row.id
+                        )}" class="p-2 text-blue-500 hover:text-blue-700 transition duration-150 ease-in-out">
+                            <i class="fas fa-eye" title="Ver"></i>
+                        </a>
+                        <a href="${actions.editUrl.replace(
+                            ":id",
+                            row.id
+                        )}" class="p-2 text-green-500 hover:text-green-700 transition duration-150 ease-in-out">
+                            <i class="fas fa-edit" title="Editar"></i>
+                        </a>
+                        <a href="${actions.deleteUrl.replace(
+                            ":id",
+                            row.id
+                        )}" class="p-2 text-red-500 hover:text-red-700 transition duration-150 ease-in-out">
+                            <i class="fas fa-trash" title="Borrar"></i>
+                        </a>
+                    </div>
+                `;
+                },
             },
         ],
     };
+
+    // const tableData = JSON.parse(data);  // if is needed to be post-processed
+    const tableData = data;
+
+    const tableStyles = "tailwind";
+
+    return [tableSelector, tableOptions, tableData, tableStyles];
 }
 
-function prepareChartOptions() {
-    const textColor = "#a5a5a5"; // Gris claro que funciona en ambos modos
+async function initializeDataTable({ selector, options, data, styles }) {
+    try {
+        const tableManager = new DataTableManager(selector);
+        tableManager.init(options, styles);
+        tableManager.loadData(data);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-    return {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    color: textColor, // Usar el mismo color de texto neutro para los ticks
+function customizeChart({ data }) {
+    const chartSelector = "#chart-users";
+
+    const chartOptions = (() => {
+        const textColor = "#a5a5a5";
+        const gridColor = "#a5a5a5";
+
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: gridColor,
+                    },
+                    ticks: {
+                        color: textColor,
+                        font: {
+                            size: 12,
+                        },
+                    },
                 },
-            },
-            x: {
-                ticks: {
-                    color: textColor, // Usar el mismo color de texto neutro para los ticks
-                },
-            },
-        },
-        plugins: {
-            legend: {
-                position: "top",
-                labels: {
-                    color: textColor, // Usar el color neutro para la leyenda
-                },
-            },
-            title: {
-                display: true,
-                text: "Usuarios registrados por día", // Define aquí el título del gráfico
-                color: textColor, // Color del título
-                font: {
-                    size: 16,
-                },
-            },
-            tooltip: {
-                backgroundColor: "rgba(0, 0, 0, 0.8)",
-                titleColor: textColor,
-                bodyColor: textColor,
-                callbacks: {
-                    label: function (tooltipItem) {
-                        return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                x: {
+                    grid: {
+                        color: gridColor,
+                    },
+                    ticks: {
+                        color: textColor,
+                        font: {
+                            size: 12,
+                        },
                     },
                 },
             },
-        },
-    };
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "top",
+                    labels: {
+                        color: textColor,
+                        font: {
+                            size: 16,
+                        },
+                    },
+                },
+                title: {
+                    display: true,
+                    text: "Usuarios registrados por día",
+                    color: textColor,
+                    font: {
+                        size: 24,
+                    },
+                },
+                tooltip: {
+                    backgroundColor: "rgba(0, 0, 0, 0.8)",
+                    titleColor: "#fff",
+                    bodyColor: "#fff",
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                        },
+                    },
+                },
+            },
+        };
+    })();
+
+    const chartData = (() => {
+        const colors = data.map((item, index) => {
+            const hue = ((360 * index) / data.length) % 360;
+            return `hsl(${hue}, 70%, 50%)`; // Saturación reducida para un aspecto más suave
+        });
+
+        return {
+            labels: data.map((item) => item.date),
+            datasets: [
+                {
+                    label: "Número de Registros",
+                    data: data.map((item) => item.count),
+                    fill: false,
+                    borderColor: colors,
+                    backgroundColor: colors,
+                    tension: 0.3, // Reducir la tensión para una curva más suave
+                    pointRadius: 3, // Tamaño de los puntos en la línea
+                },
+            ],
+        };
+    })();
+
+    const chartType = "pie";
+
+    return [chartSelector, chartOptions, chartData, chartType];
+}
+
+async function initializeChart({ selector, options, data, type }) {
+    try {
+        const chartManager = new ChartManager(selector);
+        chartManager.init(options, data, type);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 // Execs
 ////////////////////////////////////
 
 $(function () {
-    startApp();
+    startApp({
+        requestDatatableUrl: apiDatatableUrl,
+        requestChartUrl: apiChartUrl,
+    });
 });
