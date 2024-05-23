@@ -38,6 +38,7 @@ use App\Http\Controllers\User\VideogameController as UserVideogameController;
 use App\Http\Controllers\User\CartEntryController as UserCartEntryController;
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\PaymentController as UserPaymentController;
+use App\Http\Controllers\User\ReviewController as UserReviewController;
 
 // Routes
 
@@ -110,6 +111,12 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
         Route::prefix('editions')->name('editions.')->group(function () {
             Route::get('show/{id}', [UserEditionController::class, 'show'])->name('show');
         });
+
+        Route::prefix('reviews')->name('reviews.')->group(function () {
+            // Route::get('show/{id}', [UserReviewController::class, 'show'])->name('show');
+            Route::get('create/{editionId}', [UserReviewController::class, 'create'])->name('create');
+            Route::post('store', [UserReviewController::class, 'store'])->name('store');
+        });
     });
 
     //! Admin routes
@@ -130,9 +137,9 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
             Route::get('show/{user}', [AdminUserController::class, 'show'])->name('show');
             Route::post('store', [AdminUserController::class, 'store'])->name('store');
             Route::get('edit/{user}', [AdminUserController::class, 'edit'])->name('edit');
-            Route::put('update/{user}', [AdminUserController::class, 'update'])->name('update');
+            Route::put('update', [AdminUserController::class, 'update'])->name('update');
             Route::get('delete/{user}', [AdminUserController::class, 'delete'])->name('delete');
-            Route::delete('destroy/{user}', [AdminUserController::class, 'destroy'])->name('destroy');
+            Route::delete('destroy', [AdminUserController::class, 'destroy'])->name('destroy');
 
             // ajax
             Route::get('crud', [AdminCrudController::class, 'users'])->name('crud');

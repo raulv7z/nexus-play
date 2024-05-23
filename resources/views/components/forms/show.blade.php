@@ -12,6 +12,9 @@
 
         <!-- Información del recurso -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            {{ $slot }}
+            
             @foreach ($fields['attributes'] as $label => $attribute)
                 <div class="bg-gray-100 dark:bg-gray-600 p-4 rounded-lg">
                     <p class="text-gray-800 dark:text-gray-200 font-semibold">{{ __($label) }}:</p>

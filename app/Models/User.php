@@ -61,9 +61,23 @@ class User extends Authenticatable
             $query->where('state', 'pending');
         });
     }
-
+    
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function hasBoughtEdition($editionId) {
+        $carts = $this->carts()->withTrashed()->get();
+
+        foreach($carts as $cart) {
+            foreach($cart->entries as $entry) {
+                if ($entry->edition->id == $editionId) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

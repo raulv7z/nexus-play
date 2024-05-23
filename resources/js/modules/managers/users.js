@@ -241,7 +241,7 @@ function customizeChart({ data }) {
         };
     })();
 
-    const chartType = "pie";
+    const chartType = "polarArea";
 
     return [chartSelector, chartOptions, chartData, chartType];
 }

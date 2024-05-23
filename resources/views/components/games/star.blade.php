@@ -1,8 +1,12 @@
 @props(['fill' => false, 'reactive' => false, 'order'])
 
-<span class="{{$reactive ? "reactive-1 hover:cursor-pointer" : "reactive-0"}} {{ $fill ? 'text-yellow-400 dark:text-yellow-400' : 'text-gray-400 dark:text-gray-200' }}" data-order="{{$order}}">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 20 20" fill="currentColor">
+<span
+    class="{{ $reactive ? 'reactive-1 hover:cursor-pointer' : 'reactive-0' }} {{ $fill ? 'text-yellow-300 dark:text-yellow-300' : 'text-gray-400 dark:text-gray-200' }}"
+    data-order="{{ $order }}">
+    <svg class="h-5 w-5 fill-current" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        fill="currentColor" viewBox="0 0 24 24">
         <path
-            d="M10 1l2.598 6.71 6.902.502c.352.026.495.467.232.703l-5.298 5.157 1.255 7.287c.064.374-.332.67-.682.485L10 17.273l-6.408 3.375c-.35.184-.747-.111-.682-.485l1.255-7.287L.268 8.915c-.263-.236-.12-.677.232-.703l6.902-.502L10 1z" />
+            d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
     </svg>
 </span>
+

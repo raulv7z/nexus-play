@@ -30,7 +30,8 @@ const successAlert = $("#success-alert");
 const alertsArray = [errorAlert, successAlert];
 
 // Stars
-const reactiveStars = $(".reactive-1");
+const reactiveStars = $(".reactive-1");     // Star nodes
+const ratingInput = $("#rating");           // Rating input hidden
 
 // Functions
 ////////////////////////////////////
@@ -99,6 +100,7 @@ function attachReactiveBehavior({ stars }) {
         });
 
         lastSelectedValue = order; // update last value selected
+        ratingInput.val(order); // update the hidden input value
     });
 
     // Mostrar el valor en hover

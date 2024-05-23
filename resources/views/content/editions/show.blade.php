@@ -22,10 +22,12 @@
                 <h2 class="text-5xl font-bold text-[#4949de] dark:text-[#938ef5]">{{ $edition->videogame->name }}</h2>
                 <p class="text-md text-gray-600 dark:text-gray-300">{{ $edition->platform->name }}</p>
 
-                <div class="w-fit flex content-center justify-center mt-2 py-1">
+                <div class="w-fit flex content-center items-center justify-center mt-2 py-1">
+                    <p
+                        class="mr-3 bg-gray-800 dark:bg-black rounded-full p-3 font-bold text-yellow-300 dark:text-yellow-300">
+                        {{ number_format($edition->rating, 1) }}</p>
                     <x-games.rating :value="$edition->rating">
                     </x-games.rating>
-                    <p class="ml-2 font-bold text-yellow-400 dark:text-yellow-400">{{ number_format($edition->rating, 1) }}</p>
                 </div>
 
                 <div class="flex px-6 py-2 my-4 rounded-full items-center bg-gray-200 dark:bg-gray-900">
@@ -57,27 +59,30 @@
 
     </x-interface.info-block>
 
+    <x-interface.hidden-block>
+        <h2
+            class="text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+            {{ __('Reviews') }}
+        </h2>
+    </x-interface.hidden-block>
+
     <x-interface.info-block>
 
-        <h2>Reviews</h2>
+        <x-links.create-review :link="route('content.reviews.create', $edition->id)">
+        </x-links.create-review>
 
-        <x-modals.review>
-        </x-modals.review>
+        <div class="reviews">
+            @foreach ($reviews as $review)
+                <x-blocks.review :review="$review"></x-blocks.review>
 
-        <h3>reviews de otros usuarios</h3>
-        <div>
-            @foreach ($edition->reviews as $review)
-                <div class="p-3 my-4 rounded-lg bg-blue-100 dark:bg-blue-900">
-                    <p class="font-bold">Review de {{ $review->user->name }}</p>
-                    <div class="w-fit flex content-center justify-center mt-2">
-                        <x-games.rating :value="$review->rating">
-                        </x-games.rating>
-                    </div>
-                    <p class="">{{ $review->comment }}</p>
-                    <p class="text-emerald-600">{{ $review->verified ? 'Verificado' : 'No verificado' }}</p>
-                </div>
+                @if (!$loop->last)
+                    <x-interface.hr />
+                @endif
             @endforeach
         </div>
+
+        {{-- paginate link --}}
+        {{ $reviews->links() }}
 
     </x-interface.info-block>
 
