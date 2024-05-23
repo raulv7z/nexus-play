@@ -27,22 +27,23 @@ const themeIndicator = $("#toggle-dot");
 // Alerts
 const errorAlert = $("#error-alert");
 const successAlert = $("#success-alert");
-const alerts = [errorAlert, successAlert];
+const alertsArray = [errorAlert, successAlert];
 
+// Stars
 const reactiveStars = $(".reactive-1");
 
 // Functions
 ////////////////////////////////////
 function startApp() {
     initializeTheme();
-    attachEventHandlers();
-    setAlertTimeouts(alerts);
-    addReactiveBehavior(reactiveStars);
+    attachThemeBehavior({ toggle: themeToggle });
+    attachReactiveBehavior({ stars: reactiveStars });
+    setAlertTimeouts({ alerts: alertsArray });
 }
 
 function initializeTheme() {
-    const theme = localStorage.getItem("theme") || "light";
-    setTheme({ theme: theme });
+    const themeLocal = localStorage.getItem("theme") || "light";
+    setTheme({ theme: themeLocal });
 }
 
 function setTheme({ theme }) {
@@ -63,13 +64,13 @@ function setTheme({ theme }) {
     localStorage.setItem("theme", theme);
 }
 
-function attachEventHandlers() {
-    themeToggle.on("change", function () {
+function attachThemeBehavior({ toggle }) {
+    toggle.on("change", function () {
         setTheme({ theme: this.checked ? "dark" : "light" });
     });
 }
 
-function setAlertTimeouts(alerts) {
+function setAlertTimeouts({ alerts }) {
     alerts.forEach((alert) => {
         if (alert) {
             setTimeout(() => {
@@ -81,15 +82,15 @@ function setAlertTimeouts(alerts) {
     });
 }
 
-function addReactiveBehavior(reactiveStars) {
-    let lastSelectedValue = 1; // Guardar el último valor seleccionado
+function attachReactiveBehavior({ stars }) {
+    let lastSelectedValue = 1; // save last value selected
 
-    reactiveStars.on("click", function () {
+    stars.on("click", function () {
         const clickedStar = $(this);
         const order = clickedStar.data("order");
 
-        // Actualizar el valor de todas las estrellas según la estrella clickeada
-        reactiveStars.each(function () {
+        // update the value of all stars based on the selected star
+        stars.each(function () {
             const starOrder = $(this).data("order");
             $(this).toggleClass(
                 "text-yellow-400 dark:text-yellow-400",
@@ -97,24 +98,24 @@ function addReactiveBehavior(reactiveStars) {
             );
         });
 
-        lastSelectedValue = order; // Actualizar el último valor seleccionado
+        lastSelectedValue = order; // update last value selected
     });
 
     // Mostrar el valor en hover
-    reactiveStars.on("mouseenter", function () {
+    stars.on("mouseenter", function () {
         const hoveredStar = $(this);
         const order = hoveredStar.data("order");
         showValueOnHover(order);
     });
 
-    // Restaurar el último valor seleccionado si el mouse sale sin hacer clic
-    reactiveStars.on("mouseleave", function () {
+    // restore last value selected if mouse leaves without click on any star
+    stars.on("mouseleave", function () {
         showValueOnHover(lastSelectedValue);
     });
 
-    // Función para mostrar el valor en hover
+    // function for show value on hover
     function showValueOnHover(value) {
-        reactiveStars.each(function () {
+        stars.each(function () {
             const starOrder = $(this).data("order");
             $(this).toggleClass(
                 "text-yellow-400 dark:text-yellow-400",
