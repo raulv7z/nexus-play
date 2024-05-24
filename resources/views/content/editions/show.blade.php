@@ -60,25 +60,29 @@
     </x-interface.info-block>
 
     <x-interface.hidden-block>
-        <h2
-            class="text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            {{ __('Reviews') }}
-        </h2>
+        <x-interface.title :title="'Reviews'"></x-interface.title>
     </x-interface.hidden-block>
 
     <x-interface.info-block>
-
         <x-links.create-review :link="route('content.reviews.create', $edition->id)">
         </x-links.create-review>
 
-        <div class="reviews">
-            @foreach ($reviews as $review)
-                <x-blocks.review :review="$review"></x-blocks.review>
+        <x-interface.hr-xl>
+        </x-interface.hr-xl>
 
-                @if (!$loop->last)
-                    <x-interface.hr />
-                @endif
-            @endforeach
+        <div class="reviews">
+            @if ($reviews->isNotEmpty())
+                @foreach ($reviews as $review)
+                    <x-blocks.review :review="$review"></x-blocks.review>
+
+                    @if (!$loop->last)
+                        <x-interface.hr />
+                    @endif
+                @endforeach
+            @else
+                <x-interface.subtitle :subtitle="'There are no reviews for this game.'">
+                </x-interface.subtitle>
+            @endif
         </div>
 
         {{-- paginate link --}}

@@ -8,17 +8,28 @@
         </x-interface.breadcrumbs>
     </x-slot>
 
+    <x-interface.hidden-block>
+        <x-interface.title :title="'Datatable'">
+        </x-interface.title>
+    </x-interface.hidden-block>
+
     <x-interface.info-block>
 
         <x-buttons.add :url="route('admin.users.create')">
-        
         </x-buttons.add>
         
-        <x-tables.crud :url="route('admin.users.crud')">
+        <x-interface.hr-xl>
+        </x-interface.hr-xl>
 
+        <x-tables.crud :url="route('admin.users.crud')">
         </x-tables.crud>
 
     </x-interface.info-block>
+
+    <x-interface.hidden-block>
+        <x-interface.title :title="'Info graphs'">
+        </x-interface.title>
+    </x-interface.hidden-block>
 
     <x-interface.info-block>
 

@@ -241,7 +241,7 @@ function customizeChart({ data }) {
         };
     })();
 
-    const chartType = "polarArea";
+    const chartType = "doughnut";
 
     return [chartSelector, chartOptions, chartData, chartType];
 }

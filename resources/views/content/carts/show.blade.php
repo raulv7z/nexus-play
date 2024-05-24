@@ -4,21 +4,20 @@
         </x-interface.header-title>
     </x-slot>
 
+    <x-interface.hidden-block>
+        <x-interface.title :title="'My cart'">
+        </x-interface.title>
+    </x-interface.hidden-block>
+    
     <x-interface.info-block>
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-
-            <h2
-                class="text-2xl font-semibold text-gray-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-700 pb-2 mb-6">
-                {{ __('Shopping Cart') }}
-            </h2>
 
             <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                     <div class="space-y-6">
                         @if ($cart->entries->isEmpty())
-                            <p class="text-center text-gray-500 dark:text-gray-400">
-                                {{ __('You have no items in your cart.') }}
-                            </p>
+                            <x-interface.subtitle :subtitle="'You have no items in your cart.'">
+                            </x-interface.subtitle>
                         @else
                             @foreach ($cart->entries as $entry)
                                 <div
