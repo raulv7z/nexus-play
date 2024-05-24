@@ -31,7 +31,7 @@ class PaymentController extends Controller
         if (!$cart || $cart->entries->isEmpty()) {
             return redirect()->route('content.carts.show')->with('error', 'The shopping cart is empty.');
         }
-
+        
         // Redirigir a la vista de checkout
         return view('content.payments.checkout', compact('title', 'cart', 'user'));
     }

@@ -75,11 +75,6 @@ class CartController extends Controller
     {
         $user = $request->user();
         $cart = $this->cartService->getOrCreatePendingCart($user);
-
-        if (!$cart || $cart->entries->isEmpty()) {
-            return back()->with('error', 'El carrito está vacío.');
-        }
-
         return view('content.payments.checkout');
     }
 }
