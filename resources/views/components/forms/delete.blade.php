@@ -5,7 +5,7 @@
 ])
 
 <form method="POST" action="{{ $action }}"
-    class="space-y-6 bg-white dark:bg-gray-700 p-8 rounded-xl shadow-2xl border border-gray-300 dark:border-gray-700 transition-all duration-300 ease-in-out">
+    class="space-y-6 mx-5 transition-all duration-300 ease-in-out">
     @csrf
     @method('DELETE')
 
