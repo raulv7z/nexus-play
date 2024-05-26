@@ -1,7 +1,7 @@
 <x-layouts.app>
 
     <x-slot name="header">
-        <x-interface.header-title :content="$title">
+        <x-interface.header-title>
         </x-interface.header-title>
 
         <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">

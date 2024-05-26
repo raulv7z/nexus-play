@@ -23,7 +23,6 @@ class PaymentController extends Controller
 
     public function checkout(Request $request)
     {
-        $title = "Checkout";
         $user = $request->user();
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
@@ -33,7 +32,7 @@ class PaymentController extends Controller
         }
         
         // Redirigir a la vista de checkout
-        return view('content.payments.checkout', compact('title', 'cart', 'user'));
+        return view('content.payments.checkout', compact('cart', 'user'));
     }
 
     public function confirm(Request $request)

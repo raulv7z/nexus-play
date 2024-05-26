@@ -25,8 +25,6 @@ class ReviewController extends Controller
         $user = User::findOrFail($request->user()->id);
         $edition = Edition::findOrFail($editionId);
 
-        $title = 'Create Review';
-
         $action = route('content.reviews.store');
 
         $fields = [
@@ -37,7 +35,7 @@ class ReviewController extends Controller
             ['name' => 'comment', 'label' => 'Comment', 'type' => 'textarea'],
         ];
 
-        return view('content.reviews.create', compact('title', 'action', 'fields'));
+        return view('content.reviews.create', compact('action', 'fields'));
     }
 
     public function store(StoreReviewRequest $request)

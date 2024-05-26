@@ -10,17 +10,14 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $title = 'Home';
         $editions = Edition::all();
         $editionsMostRated = Edition::orderBy('rating', 'desc')->take(6)->get();
 
-        return view('content.home.dashboard', compact('title', 'editions', 'editionsMostRated'));
+        return view('content.home.dashboard', compact('editions', 'editionsMostRated'));
     }
 
     public function welcome()
     {
-        $title = 'Welcome';
-
-        return view('content.home.welcome', compact('title'));
+        return view('content.home.welcome');
     }
 }

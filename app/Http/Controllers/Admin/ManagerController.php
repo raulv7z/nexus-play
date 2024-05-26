@@ -16,13 +16,6 @@ class ManagerController extends Controller
 
     public function index()
     {
-        $title = 'Dashboard';
-
-        $breadcrumbs = [
-            ['title' => 'Home', 'url' => '/content'],
-            ['title' => 'Admin', 'url' => '/admin'],
-        ];
-
         $tablesInfo = [
             [
                 'name' => 'Users',
@@ -56,17 +49,15 @@ class ManagerController extends Controller
             ],
         ];
 
-        return view('admin.dashboard', compact('title', 'breadcrumbs', 'tablesInfo'));
+        return view('admin.dashboard', compact('tablesInfo'));
     }
 
     // Métodos adicionales para cada tipo de CRUD
 
     public function manageUsers()
     {
-        $title = 'Manage Users';
-
         $users = User::all();
-        return view('admin.users.manager', compact('title', 'users'));
+        return view('admin.users.manager', compact('users'));
     }
 
     public function managePlatformGroups()

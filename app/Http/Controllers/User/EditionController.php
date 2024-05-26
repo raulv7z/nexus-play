@@ -12,9 +12,8 @@ class EditionController extends Controller
 
     public function show(Request $request, $id)
     {
-        $title = 'Show Edition';
         $edition = Edition::findOrFail($id);
         $reviews = $edition->reviews()->orderBy('created_at', 'desc')->paginate(5);
-        return view('content.editions.show', compact('title', 'edition', 'reviews'));
+        return view('content.editions.show', compact('edition', 'reviews'));
     }
 }

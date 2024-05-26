@@ -19,13 +19,12 @@ class CartController extends Controller
 
     public function show(Request $request)
     {
-        $title = 'Show Cart';
         $user = $request->user();
 
         // Get 'pending' cart or create a new one
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
-        return view('content.carts.show', compact('title', 'cart'));
+        return view('content.carts.show', compact('cart'));
     }
 
     public function addToCart(Request $request, $editionId)
