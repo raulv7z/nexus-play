@@ -21,8 +21,15 @@ Alpine.start();
 const html = $("html");
 
 // Theme
-const themeToggle = $("#theme-toggle");
-const themeIndicator = $("#toggle-dot");
+const themeToggleSelector = ".theme-toggle";
+const themeIndicatorSelector = ".toggle-dot";
+const themeToggle = $(themeToggleSelector);
+const themeIndicator = $(themeIndicatorSelector);
+
+// const themeToggleSelectorResponsive = "#theme-toggle-responsive";
+// const themeIndicatorSelectorResponsive = "#theme-dot-responsive";
+// const themeToggleResponsive = $(themeToggleSelectorResponsive);
+// const themeIndicatorResponsive = $(themeIndicatorSelectorResponsive);
 
 // Alerts
 const errorAlert = $("#error-alert");
@@ -30,44 +37,64 @@ const successAlert = $("#success-alert");
 const alertsArray = [errorAlert, successAlert];
 
 // Stars
-const reactiveStars = $(".reactive-1");     // Star nodes
-const ratingInput = $("#rating");           // Rating input hidden
+const reactiveStars = $(".reactive-1"); // Star nodes
+const ratingInput = $("#rating"); // Rating input hidden
 
 // Functions
 ////////////////////////////////////
 function startApp() {
-    initializeTheme();
-    attachThemeBehavior({ toggle: themeToggle });
+    initializeTheme({
+        toggleSelector: themeToggleSelector,
+        toggle: themeToggle,
+        indicator: themeIndicator,
+    });
+
+    attachThemeBehavior({
+        toggleSelector: themeToggleSelector,
+        toggle: themeToggle,
+        indicator: themeIndicator,
+    });
+
     attachReactiveBehavior({ stars: reactiveStars });
     setAlertTimeouts({ alerts: alertsArray });
 }
 
-function initializeTheme() {
+function initializeTheme({ toggleSelector, toggle, indicator }) {
     const themeLocal = localStorage.getItem("theme") || "light";
-    setTheme({ theme: themeLocal });
+    setTheme({
+        theme: themeLocal,
+        toggleSelector: toggleSelector,
+        toggle: toggle,
+        indicator: indicator,
+    });
 }
 
-function setTheme({ theme }) {
+function setTheme({ theme, toggleSelector, toggle, indicator }) {
     const backgroundColor = theme === "dark" ? "#535de4" : "#adb5bd"; // blue/gray on HxD
     if (theme === "dark") {
         html.addClass("dark");
-        themeToggle.prop("checked", true);
-        themeIndicator.css("transform", "translateX(1rem)");
+        toggle.prop("checked", true);
+        indicator.css("transform", "translateX(1rem)");
     } else {
         html.removeClass("dark");
-        themeToggle.prop("checked", false);
-        themeIndicator.css("transform", "translateX(0)");
+        toggle.prop("checked", false);
+        indicator.css("transform", "translateX(0)");
     }
-    $("#theme-toggle")
+    $(toggleSelector)
         .next("label")
         .find(".block")
         .css("background-color", backgroundColor); // adjust bg color
     localStorage.setItem("theme", theme);
 }
 
-function attachThemeBehavior({ toggle }) {
+function attachThemeBehavior({ toggleSelector, toggle, indicator }) {
     toggle.on("change", function () {
-        setTheme({ theme: this.checked ? "dark" : "light" });
+        setTheme({
+            theme: this.checked ? "dark" : "light",
+            toggleSelector: toggleSelector,
+            toggle: toggle,
+            indicator: indicator,
+        });
     });
 }
 
