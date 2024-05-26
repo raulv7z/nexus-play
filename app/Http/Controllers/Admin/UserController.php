@@ -44,13 +44,15 @@ class UserController extends Controller
         return redirect()->route('admin.users.manager')->with('success', 'User created successfully.');
     }
 
-    public function show(User $user)
+    public function show($id)
     {
+        $user = User::withTrashed()->findOrFail($id);
+        
         $title = 'View User';
 
         $actions = [
-            'edit' => 'admin.users.edit',
-            'delete' => 'admin.users.delete',
+            'edit' => route('admin.users.edit', $user->id),
+            'delete' => route('admin.users.delete', $user->id),
         ];
 
         $fields = [
@@ -64,8 +66,10 @@ class UserController extends Controller
         return view('admin.users.show', compact('title', 'user', 'actions', 'fields'));
     }
 
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::withTrashed()->findOrFail($id);
+
         $title = 'Edit User';
 
         $action = route('admin.users.update', $user->id);
@@ -73,22 +77,27 @@ class UserController extends Controller
         $fields = [
             ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
             ['name' => 'email', 'label' => 'Email', 'type' => 'text'],
-            ['name' => 'password', 'label' => 'Password', 'type' => 'password']
         ];
 
         return view('admin.users.edit', compact('title', 'user', 'action', 'fields'));
     }
 
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, $id)
     {
+        $user = User::withTrashed()->findOrFail($id);
         $user->update($request->validated());
+
+        if ($user->trashed() && $request->has('restore') && $request->restore) {
+            $user->restore();
+        }
+
         return redirect()->route('admin.users.manager')->with('success', 'User updated successfully.');
     }
 
     public function delete(User $user)
     {
         $title = 'Delete User';
-        
+
         $action = route('admin.users.destroy', $user->id);
 
         $fields = [

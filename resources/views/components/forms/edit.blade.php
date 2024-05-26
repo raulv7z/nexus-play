@@ -4,8 +4,7 @@
     'fields' => [],
 ])
 
-<form method="POST" action="{{ $action }}"
-    class="space-y-6 mx-5 transition-all duration-300 ease-in-out">
+<form method="POST" action="{{ $action }}" class="space-y-6 mx-5 transition-all duration-300 ease-in-out">
     @csrf
     @method('PUT')
 
@@ -13,9 +12,20 @@
 
         {{ $slot }}
 
+        @if ($model->trashed())
+            <!-- Encabezado para advertencia sobre modelo eliminado -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-red-700 dark:text-red-400">{{ __('Deleted record') }}</h2>
+                <p class="text-gray-600 dark:text-gray-300">
+                    {{ __('This record is deleted. You can restore it if you want.') }}
+                </p>
+            </div>
+        @endif
+
         @foreach ($fields as $field)
             @if ($field['type'] === 'hidden')
-                <input type="hidden" id="{{ $field['name'] }}" name="{{ $field['name'] }}" value="{{ old($field['name'], $model->{$field['name']} ?? '') }}">
+                <input type="hidden" id="{{ $field['name'] }}" name="{{ $field['name'] }}"
+                    value="{{ old($field['name'], $model->{$field['name']} ?? '') }}">
             @else
                 <div class="form-group">
                     <label for="{{ $field['name'] }}"
@@ -44,7 +54,8 @@
                                 value="{{ $field['value'] }}"
                                 class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded dark:bg-gray-800 dark:border-gray-700"
                                 {{ old($field['name'], $model->{$field['name']} ?? '') == $field['value'] ? 'checked' : '' }}>
-                            <label for="{{ $field['name'] }}" class="ml-2 block text-sm text-gray-700 dark:text-gray-100">
+                            <label for="{{ $field['name'] }}"
+                                class="ml-2 block text-sm text-gray-700 dark:text-gray-100">
                                 {{ $field['label'] }}
                             </label>
                         </div>
@@ -59,11 +70,23 @@
                 </div>
             @endif
         @endforeach
+
+        @if ($model->trashed())
+            <div class="form-group">
+                <div class="flex items-center content-center mt-1">
+                    <input type="checkbox" id="restore" name="restore" value="1"
+                        class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded dark:bg-gray-800 dark:border-gray-700">
+                    <label for="restore" class="ml-2 block text-sm text-gray-700 dark:text-gray-100">
+                        {{ __('Restore') }}
+                    </label>
+                </div>
+            </div>
+        @endif
     </div>
 
     <div class="flex justify-end space-x-4 mt-4">
-        <x-buttons.return>
-        </x-buttons.return>
+        <x-links.return>
+        </x-links.return>
 
         <x-buttons.submit :text="'Save'">
         </x-buttons.submit>

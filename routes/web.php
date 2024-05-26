@@ -134,12 +134,12 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
             // actions
 
             Route::get('create', [AdminUserController::class, 'create'])->name('create');
-            Route::get('show/{user}', [AdminUserController::class, 'show'])->name('show');
             Route::post('store', [AdminUserController::class, 'store'])->name('store');
+            Route::get('show/{user}', [AdminUserController::class, 'show'])->name('show');
             Route::get('edit/{user}', [AdminUserController::class, 'edit'])->name('edit');
-            Route::put('update', [AdminUserController::class, 'update'])->name('update');
+            Route::put('update{user}', [AdminUserController::class, 'update'])->name('update');
             Route::get('delete/{user}', [AdminUserController::class, 'delete'])->name('delete');
-            Route::delete('destroy', [AdminUserController::class, 'destroy'])->name('destroy');
+            Route::delete('destroy/{user}', [AdminUserController::class, 'destroy'])->name('destroy');
 
             // ajax
             Route::get('crud', [AdminCrudController::class, 'users'])->name('crud');

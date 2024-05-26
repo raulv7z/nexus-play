@@ -61,8 +61,8 @@
     </div>
 
     <div class="flex justify-end space-x-4 mt-4">
-        <x-buttons.return>
-        </x-buttons.return>
+        <x-links.return>
+        </x-links.return>
 
         <x-buttons.submit :text="'Create'">
         </x-buttons.submit>

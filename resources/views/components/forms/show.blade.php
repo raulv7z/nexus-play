@@ -21,13 +21,13 @@
     <!-- Acciones disponibles -->
     <div class="flex justify-end space-x-4 mt-4">
 
-        <x-buttons.return>
-        </x-buttons.return>
+        <x-links.return>
+        </x-links.return>
 
-        <x-buttons.edit :url="route($actions['edit'], $item->id)">
-        </x-buttons.edit>
+        <x-links.edit :url="$actions['edit']">
+        </x-links.edit>
 
-        <x-buttons.delete :url="route($actions['delete'], $item->id)">
-        </x-buttons.delete>
+        <x-links.delete :url="$actions['delete']">
+        </x-links.delete>
     </div>
 </div>

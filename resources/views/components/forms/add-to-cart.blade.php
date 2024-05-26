@@ -4,6 +4,6 @@
     @csrf
     @method('POST')
 
-    <x-buttons.add-to-cart>
-    </x-buttons.add-to-cart>
+    <x-links.add-to-cart>
+    </x-links.add-to-cart>
 </form>

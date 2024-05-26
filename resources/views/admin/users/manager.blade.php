@@ -15,8 +15,8 @@
 
     <x-interface.info-block>
 
-        <x-buttons.add :url="route('admin.users.create')">
-        </x-buttons.add>
+        <x-links.add :url="route('admin.users.create')">
+        </x-links.add>
         
         <x-interface.hr-xl>
         </x-interface.hr-xl>
