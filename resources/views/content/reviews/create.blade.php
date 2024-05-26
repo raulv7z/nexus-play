@@ -10,6 +10,20 @@
 
     <x-interface.info-block>
 
+        {{-- !continue here --}}
+        {{-- <x-forms.template :method="'POST'" :action="$action">
+            <x-slot name="body">
+                
+                <x-blocks.form-group :type="'text'" :field="'test'" :label="'Testeo'" :placeholder="'Testea aqui...'">
+                </x-blocks.form-group>
+
+            </x-slot>
+
+            <x-slot name="foot">
+
+            </x-slot>
+        </x-forms.template> --}}
+
         <x-forms.create :action="$action" :fields="$fields">
 
             <div class="form-group">
