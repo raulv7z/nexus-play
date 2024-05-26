@@ -12,8 +12,9 @@ class HomeController extends Controller
     {
         $title = 'Home';
         $editions = Edition::all();
+        $editionsMostRated = Edition::orderBy('rating', 'desc')->take(6)->get();
 
-        return view('content.home.dashboard', compact('title', 'editions'));
+        return view('content.home.dashboard', compact('title', 'editions', 'editionsMostRated'));
     }
 
     public function welcome()
