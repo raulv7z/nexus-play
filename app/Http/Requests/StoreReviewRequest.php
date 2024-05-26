@@ -34,7 +34,7 @@ class StoreReviewRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $userId = decrypt($this->input('user_id')) ?? auth()->id();
+        $userId = decrypt($this->input('user_id')) ?: auth()->id();
         $editionId = decrypt($this->input('edition_id'));
         $verified = $this->user()->hasBoughtEdition($editionId);
 
