@@ -12,6 +12,10 @@
 
         {{-- !continue here --}}
         {{-- <x-forms.template :method="'POST'" :action="$action">
+            <x-slot name="header">
+            
+            </x-slot>
+            
             <x-slot name="body">
                 
                 <x-blocks.form-group :type="'text'" :field="'test'" :label="'Testeo'" :placeholder="'Testea aqui...'">

@@ -3,8 +3,15 @@
     'action' => '#',
 ])
 
-<form method="{{ $method }}" action="{{ $action }}" class="space-y-6 mx-5 transition-all duration-300 ease-in-out">
+<form method="{{ $method }}" action="{{ $action }}"
+    class="space-y-6 mx-5 transition-all duration-300 ease-in-out">
     @csrf
+
+    <div class="">
+
+        {{ $header }}
+
+    </div>
 
     <div class="space-y-6">
 
