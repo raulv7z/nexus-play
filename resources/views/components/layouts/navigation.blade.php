@@ -144,13 +144,14 @@
                 </x-presets.dropdown>
 
                 <!-- Cart link -->
-                <a href="{{ route('content.carts.show') }}" :active="request()->routeIs('')">
+                <a href="{{ route('content.carts.show') }}" :active="request() - > routeIs('')">
                     <x-interface.cart-icon />
                 </a>
 
                 @role('admin')
                     <!-- Admin link -->
-                    <a href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')" class="ml-4">
+                    <a href="{{ route('admin.dashboard') }}" :active="request() - > routeIs('admin.dashboard')"
+                        class="ml-4">
                         <x-interface.admin-icon />
                     </a>
                 @endrole
@@ -191,6 +192,21 @@
                 </x-presets.responsive-nav-link>
             </div>
         @endforeach
+
+        {{-- Color mode --}}
+        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+            <div class="px-4">
+                <div class="font-medium text-sm text-gray-500">
+                    {{ __("Color theme" )}}
+                </div>
+            </div>
+
+            <div class="mt-3 space-y-1">
+                <x-presets.responsive-nav-link :href="route('dashboard')">
+                    {{ __('Toggle dark/light') }}
+                </x-presets.responsive-nav-link>
+            </div>
+        </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

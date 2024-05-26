@@ -90,6 +90,8 @@ class DataTableManager {
                     searchElement += `<option value="${option}">${option}</option>`;
                 });
                 searchElement += `</select>`;
+            } else {
+                searchElement += `<div class="empty"></div>`;
             }
 
             if (searchElement !== "") {

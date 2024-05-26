@@ -96,6 +96,7 @@ function customizeDataTable({ data }) {
                 render: (data) => (data ? "Si" : "No"),
             },
             {
+                orderable: false,
                 data: null,
                 title: "ACCIONES",
                 searchable: false,
