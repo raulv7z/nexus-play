@@ -34,12 +34,14 @@ class StoreReviewRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $this->merge([
-            'user_id' => auth()->id(),
-        ]);
-
-        $editionId = $this->input('edition_id');
+        $userId = decrypt($this->input('user_id')) ?? auth()->id();
+        $editionId = decrypt($this->input('edition_id'));
         $verified = $this->user()->hasBoughtEdition($editionId);
-        $this->merge(['verified' => $verified]);
+
+        $this->merge([
+            'user_id' => $userId,
+            'edition_id' => $editionId,
+            'verified' => $verified
+        ]);
     }
 }
