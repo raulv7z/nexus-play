@@ -18,25 +18,6 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         return view('content.reviews.show', compact('review'));
     }
-
-
-    // public function create(Request $request, $editionId)
-    // {
-    //     $user = User::findOrFail($request->user()->id);
-    //     $edition = Edition::findOrFail($editionId);
-
-    //     $action = route('content.reviews.store');
-
-    //     $fields = [
-    //         ['name' => 'user_id', 'type' => 'hidden', 'value' => $user->id],
-    //         ['name' => 'edition_id', 'type' => 'hidden', 'value' => $edition->id],
-    //         ['name' => 'verified', 'type' => 'hidden', 'value' => 0],
-    //         ['name' => 'rating', 'type' => 'hidden', 'value' => 1],
-    //         ['name' => 'comment', 'label' => 'Comment', 'type' => 'textarea'],
-    //     ];
-
-    //     return view('content.reviews.create', compact('action', 'fields'));
-    // }
     
     public function create(Request $request, $editionId)
     {

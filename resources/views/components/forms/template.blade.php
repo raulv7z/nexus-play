@@ -3,9 +3,10 @@
     'action' => '#',
 ])
 
-<form method="{{ $method }}" action="{{ $action }}"
+<form method="{{ $method == 'GET' ? 'GET' : 'POST' }}" action="{{ $action }}"
     class="space-y-6 mx-5 transition-all duration-300 ease-in-out">
     @csrf
+    @method($method)
 
     <div class="">
 

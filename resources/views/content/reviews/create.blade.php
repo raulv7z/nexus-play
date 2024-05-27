@@ -10,8 +10,6 @@
 
     <x-interface.info-block>
 
-        {{-- !continue here --}}
-
         <x-forms.template :method="'POST'" :action="route('content.reviews.store')">
             <x-slot name="header">
 
@@ -48,19 +46,6 @@
                 </x-buttons.submit>
             </x-slot>
         </x-forms.template>
-
-        {{-- <x-forms.create :action="$action" :fields="$fields">
-
-            <div class="form-group">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-100">{{ __('Give a rating') }}</p>
-
-                    <div class="flex items-center">
-                        <x-games.rating :reactive="true">
-                        </x-games.rating>
-                    </div>
-            </div>
-
-        </x-forms.create> --}}
 
     </x-interface.info-block>
 

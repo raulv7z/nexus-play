@@ -20,16 +20,7 @@ class UserController extends Controller
 
     public function create()
     {
-
-        $action = route('admin.users.store');
-
-        $fields = [
-            ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
-            ['name' => 'email', 'label' => 'Email', 'type' => 'text'],
-            ['name' => 'password', 'label' => 'Password', 'type' => 'password']
-        ];
-
-        return view('admin.users.create', compact('action', 'fields'));
+        return view('admin.users.create');
     }
 
     public function store(StoreUserRequest $request)
@@ -46,35 +37,13 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::withTrashed()->findOrFail($id);
-
-        $actions = [
-            'edit' => route('admin.users.edit', $user->id),
-            'delete' => route('admin.users.delete', $user->id),
-        ];
-
-        $fields = [
-            'title' => 'name',
-            'attributes' => [
-                'Name' => 'name',
-                'Email' => 'email',
-            ],
-        ];
-
-        return view('admin.users.show', compact('user', 'actions', 'fields'));
+        return view('admin.users.show', compact('user'));
     }
 
     public function edit($id)
     {
         $user = User::withTrashed()->findOrFail($id);
-
-        $action = route('admin.users.update', $user->id);
-
-        $fields = [
-            ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
-            ['name' => 'email', 'label' => 'Email', 'type' => 'text'],
-        ];
-
-        return view('admin.users.edit', compact('user', 'action', 'fields'));
+        return view('admin.users.edit', compact('user'));
     }
 
     public function update(UpdateUserRequest $request, $id)
@@ -91,15 +60,7 @@ class UserController extends Controller
 
     public function delete(User $user)
     {
-        $action = route('admin.users.destroy', $user->id);
-
-        $fields = [
-            ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
-            ['name' => 'email', 'label' => 'Email', 'type' => 'text'],
-            ['name' => 'password', 'label' => 'Password', 'type' => 'password']
-        ];
-
-        return view('admin.users.delete', compact('user', 'action', 'fields'));
+        return view('admin.users.delete', compact('user'));
     }
 
     public function destroy(User $user)
