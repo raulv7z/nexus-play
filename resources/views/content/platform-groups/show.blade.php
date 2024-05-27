@@ -26,7 +26,8 @@
             </div>
 
             <div class="partials-list-editions">
-                @include('content.platform-groups.partials.list-editions', $editions)
+                {{-- @include('content.platform-groups.partials.list-editions', $editions) --}}
+                <x-sections.game-section :editions="$editions"/>
             </div>
         @endforeach
 
@@ -37,13 +38,15 @@
     @endsection
 
     <script>
+        
         setTimeout(() => {
             console.log('hola');
 
-        const elements = document.querySelectorAll(".partials-list-editions");
-        elements.forEach(element => {
-            element.innerHTML = '';
-        })
+            const elements = document.querySelectorAll(".partials-list-editions");
+            elements.forEach(element => {
+                element.innerHTML = '';
+            })
+
         }, 2000);
 
     </script>
