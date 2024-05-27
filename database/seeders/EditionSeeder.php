@@ -45,7 +45,7 @@ class EditionSeeder extends Seeder
 
                     // calculate the amount based on the platform plus + the videogame base price
                     // $editionPrice = $videogame->base_price * (1 + $platform->plus); //! not needed if boot() is called on model
-                    $editionPrice = 0;
+                    // $editionPrice = 0;
                     
                     Edition::create([
                         'platform_id' => $platform->id,

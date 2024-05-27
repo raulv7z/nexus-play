@@ -17,9 +17,7 @@ class RolePermissionSeeder extends Seeder
         // Definir roles
         $roles = [
             'admin' =>
-            [
-                // 'handle lo-que-sea' // sería una solución para unir permisos, pero es poco personalizable
-                
+            [                
                 'manage admin',
 
                 'view platform groups',

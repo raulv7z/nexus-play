@@ -23,12 +23,16 @@ class ReviewFactory extends Factory
      */
     public function definition()
     {
+        $user = User::all()->random();
+        $edition = Edition::all()->random();
+        $verified = $user->hasBoughtEdition($edition->id) ? 1 : 0;
+
         return [
-            'user_id' => User::all()->random()->id,
-            'edition_id' => Edition::all()->random()->id,
+            'user_id' => $user->id,
+            'edition_id' => $edition->id,
             'rating' => $this->faker->numberBetween(1, 5),
-            'comment' => $this->faker->text(120),
-            'verified' => $this->faker->boolean(),
+            'comment' => $this->faker->text(255),
+            'verified' => $verified,
         ];
     }
 }

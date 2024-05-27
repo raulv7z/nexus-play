@@ -27,7 +27,6 @@ class CartRepository
             'iva' => 21.0,
             'base_amount' => 0.00,
             'full_amount' => 0.00,
-            'purchased_at' => null,
         ]);
     }
 

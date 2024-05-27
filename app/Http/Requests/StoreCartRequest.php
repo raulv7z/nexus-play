@@ -19,7 +19,6 @@ class StoreCartRequest extends FormRequest
             'iva' => 'required|numeric',
             'base_amount' => 'required|numeric|min:0',
             'full_amount' => 'required|numeric|min:0',
-            'purchased_at' => 'nullable|date'
         ];
     }
 }

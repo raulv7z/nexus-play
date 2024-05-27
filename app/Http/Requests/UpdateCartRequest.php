@@ -19,7 +19,6 @@ class UpdateCartRequest extends FormRequest
             'iva' => 'sometimes|numeric',
             'base_amount' => 'sometimes|numeric|min:0',
             'full_amount' => 'sometimes|numeric|min:0',
-            'purchased_at' => 'nullable|date'
         ];
     }
 }

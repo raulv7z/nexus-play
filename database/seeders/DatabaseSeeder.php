@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             PlatformSeeder::class,
             VideogameSeeder::class,
             EditionSeeder::class,
+            CartEntrySeeder::class,
+            CartSeeder::class,
             ReviewSeeder::class,
         ];
 
