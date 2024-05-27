@@ -28,8 +28,10 @@
             <x-sections.game-section>
                 {{-- Mostrar las ediciones de la plataforma --}}
                 @foreach ($editions as $edition)
-                    <x-cards.game-card :edition="$edition">
-                    </x-cards.game-card>
+                    <div class="w-full flex justify-center">
+                        <x-cards.game-card :edition="$edition">
+                        </x-cards.game-card>
+                    </div>
                 @endforeach
             </x-sections.game-section>
         @endforeach

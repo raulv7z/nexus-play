@@ -1,6 +1,6 @@
 import $ from "jquery";
-import "datatables.net-responsive"; // 
-import "datatables.net-responsive-dt/css/responsive.dataTables.css"; // 
+import "datatables.net-responsive"; //
+import "datatables.net-responsive-dt/css/responsive.dataTables.css"; //
 
 class DataTableManager {
     table;
@@ -22,7 +22,7 @@ class DataTableManager {
             ...options,
             initComplete: () => {
                 this.addColumnSearch(options.columnSearch || []);
-            }
+            },
         };
 
         $(this.table).DataTable(this.options);
@@ -132,6 +132,8 @@ class DataTableManager {
     applyStyles(styles = "bootstrap") {
         const tableDOM = $(this.table);
 
+        // Custom styles
+
         switch (styles) {
             case "tailwind":
                 tableDOM.addClass("w-full overflow-x-auto");
@@ -153,21 +155,37 @@ class DataTableManager {
                     );
                 tableDOM
                     .find(".search-row th")
-                    .addClass("py-2 px-4 text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-800");
+                    .addClass(
+                        "py-2 px-4 text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-800"
+                    );
                 tableDOM
                     .find(".search-row th input, .search-row th select")
-                    .addClass("w-full py-2 px-3 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 border border-gray-300 dark:border-gray-700 rounded");
-                break;
+                    .addClass(
+                        "w-full py-2 px-3 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 border border-gray-300 dark:border-gray-700 rounded"
+                    );
 
             case "bootstrap":
                 break;
+
             default:
                 throw new Error(`Not supported style type`);
-                break;
         }
-    }
 
-    // Otros métodos que necesites...
+        // Common styles
+
+        const globalSearchInputSelector = "#dt-search-0";
+        const pageSizeSelectSelector = "#dt-length-0";
+        
+        $("html").find(globalSearchInputSelector).css({
+            "padding": "8px 12px",
+            "border-radius": "0.375rem",
+        });
+
+        $("html").find(pageSizeSelectSelector).css({
+            "padding": "8px 24px",
+            "border-radius": "0.375rem",
+        });
+    }
 }
 
 export default DataTableManager;
