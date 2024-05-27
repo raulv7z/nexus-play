@@ -25,11 +25,27 @@
                 </p>
             </div>
 
-            <x-sections.game-section :editions="$editions">
-            </x-sections.game-section>
+            <div class="partials-list-editions">
+                @include('content.platform-groups.partials.list-editions', $editions)
+            </div>
         @endforeach
 
     </x-interface.info-block>
 
+    @section('scripts')
+        {{-- @vite('resources/js/ROUTE_HERE') --}}
+    @endsection
+
+    <script>
+        setTimeout(() => {
+            console.log('hola');
+
+        const elements = document.querySelectorAll(".partials-list-editions");
+        elements.forEach(element => {
+            element.innerHTML = '';
+        })
+        }, 2000);
+
+    </script>
 
 </x-layouts.app>

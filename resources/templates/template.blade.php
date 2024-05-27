@@ -11,8 +11,8 @@
         {{ __('Write the content from here!') }}
     </x-interface.info-block>
 
-    {{-- @section('scripts')
-        @vite('resources/js/ROUTE_HERE')
-    @endsection --}}
+    @section('scripts')
+        {{-- @vite('resources/js/ROUTE_HERE') --}}
+    @endsection
 
 </x-layouts.app>

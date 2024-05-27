@@ -1,0 +1,1 @@
+<x-sections.game-section :editions="$editions"/>
