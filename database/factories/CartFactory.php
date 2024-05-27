@@ -33,8 +33,8 @@ class CartFactory extends Factory
             'user_id' => User::all()->random()->id,
             'cart_state_id' => $completedStateId,
             'iva' => 21.0,
-            'base_amount' => $this->faker->randomFloat(2, 10, 100),
-            'full_amount' => $this->faker->randomFloat(2, 10, 100),
+            'base_amount' => 0.00,
+            'full_amount' => 0.00,
             'deleted_at' => Carbon::now(), // check as soft deleted
         ];
     }
