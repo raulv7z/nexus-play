@@ -16,13 +16,7 @@
 
     <x-interface.info-block>
 
-        <x-sections.game-section>
-            @foreach ($editionsMostRated as $edition)
-                <div class="w-full flex justify-center">
-                    <x-cards.game-card :edition="$edition">
-                    </x-cards.game-card>
-                </div>
-            @endforeach
+        <x-sections.game-section :editions="$editionsMostRated">
         </x-sections.game-section>
 
     </x-interface.info-block>
@@ -36,13 +30,7 @@
 
     <x-interface.info-block>
 
-        <x-sections.game-section>
-            @foreach ($editionsBestSeller as $edition)
-                <div class="w-full flex justify-center">
-                    <x-cards.game-card :edition="$edition">
-                    </x-cards.game-card>
-                </div>
-            @endforeach
+        <x-sections.game-section :editions="$editionsBestSeller">
         </x-sections.game-section>
 
     </x-interface.info-block>
@@ -56,13 +44,7 @@
 
     <x-interface.info-block>
 
-        <x-sections.game-section>
-            @foreach ($editionsAll as $edition)
-                <div class="w-full flex justify-center">
-                    <x-cards.game-card :edition="$edition">
-                    </x-cards.game-card>
-                </div>
-            @endforeach
+        <x-sections.game-section :editions="$editionsAll">
         </x-sections.game-section>
 
     </x-interface.info-block>
