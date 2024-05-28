@@ -142,18 +142,20 @@
                     </x-slot>
                 </x-presets.dropdown>
 
-                <!-- Cart link -->
-                <a href="{{ route('content.carts.show') }}" :active="request() - > routeIs('')">
-                    <x-interface.cart-icon />
-                </a>
+                <div class="flex justify-center items-center content-center ">
+                    <!-- Cart link -->
 
-                @role('admin')
-                    <!-- Admin link -->
-                    <a href="{{ route('admin.dashboard') }}" :active="request() - > routeIs('admin.dashboard')"
-                        class="ml-4">
-                        <x-interface.admin-icon />
-                    </a>
-                @endrole
+                    <div id="cart-icon-link">
+                        {{-- rendered on js --}}
+                    </div>
+                    {{-- @role('admin')
+                        <!-- Admin link -->
+                        <a href="{{ route('admin.dashboard') }}" :active="request() - > routeIs('admin.dashboard')"
+                            class="ml-4">
+                            <x-interface.admin-icon />
+                        </a>
+                    @endrole --}}
+                </div>
 
             </div>
 

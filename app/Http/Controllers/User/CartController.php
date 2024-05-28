@@ -72,8 +72,6 @@ class CartController extends Controller
 
     public function proceedToCheckout(Request $request)
     {
-        $user = $request->user();
-        $cart = $this->cartService->getOrCreatePendingCart($user);
         return view('content.payments.checkout');
     }
 }

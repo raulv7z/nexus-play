@@ -54,6 +54,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('api')->name('api.')->group(function () {
 
         Route::prefix('render')->name('render.')->group(function() {
+            Route::get('/cart-icon-link', [RenderController::class, 'renderCartIconLink'])->name('cart-icon-link');
             Route::get('/editions', [RenderController::class, 'renderEditionSection'])->name('editions');
         });
     });

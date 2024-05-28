@@ -40,6 +40,9 @@ const alertsArray = [errorAlert, successAlert];
 const reactiveStars = $(".reactive-1"); // Star nodes
 const ratingInput = $("#rating"); // Rating input hidden
 
+// Cart icon
+const cartIconLink = $("#cart-icon-link");
+
 // Functions
 ////////////////////////////////////
 function startApp() {
@@ -57,6 +60,7 @@ function startApp() {
 
     attachReactiveBehavior({ stars: reactiveStars });
     setAlertTimeouts({ alerts: alertsArray });
+    renderCartIconLink({ linkNode: cartIconLink });
 }
 
 function initializeTheme({ toggleSelector, toggle, indicator }) {
@@ -107,6 +111,17 @@ function setAlertTimeouts({ alerts }) {
                 });
             }, 5000); // 5000 ms = 5 seconds
         }
+    });
+}
+
+function renderCartIconLink({ linkNode }) {
+    $.ajax({
+        url: "/api/render/cart-icon-link",
+        method: "GET",
+        dataType: "html",
+        success: function (data) {
+            linkNode.html(data);
+        },
     });
 }
 

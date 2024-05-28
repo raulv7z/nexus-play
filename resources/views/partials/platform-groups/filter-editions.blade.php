@@ -1,3 +1,16 @@
+@php
+$options = [
+    "" => 'Select a platform'
+];
+
+if ($platformGroup->platforms->count() > 0) {
+    foreach ($platformGroup->platforms as $platform) {
+        $encryptedId = encrypt($platform->id);
+        $options[$encryptedId] = $platform->name;
+    }
+}
+@endphp
+
 <x-forms.template :method="'GET'" :action="''" id="form-filter-editions">
     <x-slot name="header">
 
@@ -9,18 +22,6 @@
 
         <x-blocks.form-group :type="'text'" :field="'videogame_name'" :label="'Videogame'" :placeholder="'Write a videogame name here...'">
         </x-blocks.form-group>
-
-        @php
-        $options = [
-            "" => 'Select a platform'
-        ];
-        if ($platformGroup->platforms->count() > 0) {
-            foreach ($platformGroup->platforms as $platform) {
-                $encryptedId = encrypt($platform->id);
-                $options[$encryptedId] = $platform->name;
-            }
-        }
-        @endphp
 
         <x-blocks.form-group :type="'select'" :field="'platform_id'" :label="'Platforms'" :options="$options">
         </x-blocks.form-group>

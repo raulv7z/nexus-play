@@ -9,7 +9,7 @@
 
     <x-interface.info-block>
         <div class="filter-editions">
-            @include('content.platform-groups.partials.filter-editions', $platformGroup)
+            @include('partials.platform-groups.filter-editions', $platformGroup)
         </div>
     </x-interface.info-block>
     
@@ -22,7 +22,7 @@
 
     <x-interface.info-block>
         <div class="list-editions">
-            @include('content.platform-groups.partials.list-editions', $editions)
+            @include('partials.editions.list', $editions)
         </div>
     </x-interface.info-block>
 
