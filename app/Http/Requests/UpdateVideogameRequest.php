@@ -19,7 +19,7 @@ class UpdateVideogameRequest extends FormRequest
             'front_page' => 'sometimes|string|max:60',
             'developer' => 'sometimes|string|max:30',
             'genre' => 'sometimes|string|max:30',
-            'base_price' => 'sometimes|numeric|min:0'
+            'base_amount' => 'sometimes|numeric|min:0'
         ];
     }
 }

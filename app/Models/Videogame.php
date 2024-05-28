@@ -9,7 +9,7 @@ class Videogame extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'front_page', 'developer', 'genre', 'base_price'];
+    protected $fillable = ['name', 'description', 'front_page', 'developer', 'genre', 'iva', 'base_amount', 'sale_amount'];
 
     public function editions()
     {

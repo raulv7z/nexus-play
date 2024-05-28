@@ -19,7 +19,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'gta-v-fpage.png',
                 'developer' => 'Rockstar Games',
                 'genre' => 'Action',
-                'base_price' => 29.99,
+                'iva' => 21,
+                'base_amount' => 29.99,
             ],
             [
                 'name' => 'The Witcher 3',
@@ -27,7 +28,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'witcher3-fpage.png',
                 'developer' => 'CD Projekt Red',
                 'genre' => 'RPG',
-                'base_price' => 39.99,
+                'iva' => 21,
+                'base_amount' => 39.99,
             ],
             [
                 'name' => 'Minecraft',
@@ -35,7 +37,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'minecraft-fpage.png',
                 'developer' => 'Mojang Studios',
                 'genre' => 'Sandbox',
-                'base_price' => 26.95,
+                'iva' => 21,
+                'base_amount' => 26.95,
             ],
             [
                 'name' => 'Elden Ring',
@@ -43,7 +46,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'elden-ring-fpage.png',
                 'developer' => 'FromSoftware',
                 'genre' => 'Action RPG',
-                'base_price' => 59.99,
+                'iva' => 21,
+                'base_amount' => 59.99,
             ],
             [
                 'name' => 'Cyberpunk 2077',
@@ -51,7 +55,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'cyberpunk2077-fpage.png',
                 'developer' => 'CD Projekt',
                 'genre' => 'Action RPG',
-                'base_price' => 49.99,
+                'iva' => 21,
+                'base_amount' => 49.99,
             ],
             [
                 'name' => 'FIFA 23',
@@ -59,7 +64,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'fifa23-fpage.png',
                 'developer' => 'EA Sports',
                 'genre' => 'Sports',
-                'base_price' => 59.99,
+                'iva' => 21,
+                'base_amount' => 59.99,
             ],
             [
                 'name' => 'Call of Duty: Modern Warfare',
@@ -67,7 +73,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'cod-mw-fpage.png',
                 'developer' => 'Infinity Ward',
                 'genre' => 'Shooter',
-                'base_price' => 59.99,
+                'iva' => 21,
+                'base_amount' => 59.99,
             ],
             [
                 'name' => 'Dark Souls III',
@@ -75,7 +82,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'dark-souls-iii-fpage.png',
                 'developer' => 'FromSoftware',
                 'genre' => 'Action RPG',
-                'base_price' => 49.99,
+                'iva' => 21,
+                'base_amount' => 49.99,
             ],
             [
                 'name' => 'Legend of Zelda: Breath of the Wild',
@@ -83,7 +91,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'zelda-breath-fpage.png',
                 'developer' => 'Nintendo',
                 'genre' => 'Action Adventure',
-                'base_price' => 59.99,
+                'iva' => 21,
+                'base_amount' => 59.99,
             ],
             [
                 'name' => 'Red Dead Redemption 2',
@@ -91,7 +100,8 @@ class VideogameSeeder extends Seeder
                 'front_page' => 'rdr2-fpage.png',
                 'developer' => 'Rockstar Games',
                 'genre' => 'Action Adventure',
-                'base_price' => 59.99,
+                'iva' => 21,
+                'base_amount' => 59.99,
             ]
         ];
 

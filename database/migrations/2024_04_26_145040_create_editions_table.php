@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('platform_id')->constrained();
             $table->foreignId('videogame_id')->constrained();
-            $table->float('amount');
-            $table->unsignedInteger('stock')->default(100);      
-            $table->decimal('rating', 10, 2)->default(0);
+            $table->unsignedInteger('stock')->default(100);  
+            $table->decimal('amount', 10, 2);
+            $table->decimal('rating', 10, 2)->default(0);    
             $table->timestamps();
             $table->softDeletes();
         });

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('invoice_number')->unique();
             $table->dateTime('issued_at');
             $table->decimal('base_amount', 10, 2);
-            $table->decimal('total_amount', 10, 2);
+            $table->decimal('full_amount', 10, 2);
             $table->string('currency', 3)->default('EUR');  // usd ...
             $table->timestamps();
             $table->softDeletes();

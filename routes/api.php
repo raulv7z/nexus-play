@@ -47,16 +47,12 @@ use Illuminate\Support\Facades\Route;
 
 
 //! Routes for authenticated users
-Route::middleware(['auth', 'verified'])->group(function () {
 
-    //! Api routes
+//! Api routes
 
-    Route::prefix('api')->name('api.')->group(function () {
-
-        Route::prefix('render')->name('render.')->group(function() {
-            Route::get('/cart-icon-link', [RenderController::class, 'renderCartIconLink'])->name('cart-icon-link');
-            Route::get('/editions', [RenderController::class, 'renderEditionSection'])->name('editions');
-        });
+Route::prefix('api')->name('api.')->group(function () {
+    Route::prefix('render')->name('render.')->group(function () {
+        Route::get('/cart-icon-link', [RenderController::class, 'renderCartIconLink'])->name('cart-icon-link');
+        Route::get('/editions', [RenderController::class, 'renderEditionSection'])->name('editions');
     });
-
 });

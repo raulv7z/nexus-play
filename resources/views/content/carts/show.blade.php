@@ -97,10 +97,6 @@
                                 {{-- discounts here  --}}
                                 <x-blocks.discounts>
                                 </x-blocks.discounts>
-
-                                {{-- iva here  --}}
-                                <x-blocks.iva-price :iva="$cart->iva">
-                                </x-blocks.iva-price>
                             </div>
 
                             {{-- total price here --}}

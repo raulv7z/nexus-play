@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('front_page', 60)->default('default-fpage.png');
             $table->string('developer', 30);
             $table->string('genre', 30);
-            $table->float('base_price');
+            $table->float('iva')->default(21);
+            $table->decimal('base_amount', 10, 2);
+            $table->decimal('sale_amount', 10, 2)->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

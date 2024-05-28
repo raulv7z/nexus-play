@@ -147,6 +147,7 @@
 
                     <div id="cart-icon-link">
                         {{-- rendered on js --}}
+                        @include('partials.carts.icon-link', ['quantity'=>0])
                     </div>
                     {{-- @role('admin')
                         <!-- Admin link -->

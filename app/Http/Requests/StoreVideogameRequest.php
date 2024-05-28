@@ -19,7 +19,7 @@ class StoreVideogameRequest extends FormRequest
             'front_page' => 'sometimes|string|max:60',  // Optional with a default value
             'developer' => 'required|string|max:30',
             'genre' => 'required|string|max:30',
-            'base_price' => 'required|numeric|min:0'
+            'base_amount' => 'required|numeric|min:0'
         ];
     }
 }

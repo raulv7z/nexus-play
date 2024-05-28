@@ -16,7 +16,7 @@ class Invoice extends Model
         'invoice_number',
         'issued_at',
         'base_amount',
-        'total_amount',
+        'full_amount',
         'currency',
     ];
 

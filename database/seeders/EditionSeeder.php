@@ -35,6 +35,7 @@ class EditionSeeder extends Seeder
         // iterate on each game from the compatibility array
         foreach ($compatibility as $gameName => $platformNames) {
             $videogame = Videogame::where('name', $gameName)->first();
+            
             if (!$videogame) {
                 continue;
             }
@@ -42,10 +43,6 @@ class EditionSeeder extends Seeder
             foreach ($platformNames as $platformName) {
                 if (isset($platforms[$platformName])) {
                     $platform = $platforms[$platformName];
-
-                    // calculate the amount based on the platform plus + the videogame base price
-                    // $editionPrice = $videogame->base_price * (1 + $platform->plus); //! not needed if boot() is called on model
-                    // $editionPrice = 0;
                     
                     Edition::create([
                         'platform_id' => $platform->id,

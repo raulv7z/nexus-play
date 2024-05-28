@@ -44,10 +44,6 @@ use App\Http\Controllers\User\ReviewController as UserReviewController;
 
 use Illuminate\Support\Facades\Route;
 
-// Requires 
-
-require __DIR__ . '/api.php';
-
 // Routing
 
 //! Routes for non-authenticated users
@@ -174,3 +170,8 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
         });
     });
 });
+
+
+// Requires 
+
+require __DIR__ . '/api.php';

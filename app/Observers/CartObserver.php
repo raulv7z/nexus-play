@@ -22,6 +22,10 @@ class CartObserver
 
     public function deleted(Cart $cart)
     {
+        // update amounts for ensure the prices are setted properly for the invoice
+        $this->updateCartAmounts($cart);
+
+        // create their invoices
         $user = User::find($cart->user_id);
         $this->createInvoiceAndEntries($cart, $user);
     }
@@ -33,7 +37,7 @@ class CartObserver
             'invoice_number' => 'INV-' . uniqid(), // unique invoice number
             'issued_at' => now(),
             'base_amount' => $cart->base_amount,
-            'total_amount' => $cart->full_amount,
+            'full_amount' => $cart->full_amount,
             'currency' => 'EUR',
         ]);
 
@@ -62,11 +66,11 @@ class CartObserver
 
         foreach ($cart->entries as $entry) {
             $baseAmount += $entry->edition->amount * $entry->quantity;
-            $fullAmount += $entry->edition->amount * $entry->quantity * (1 + ($cart->iva / 100));
+            $fullAmount += $entry->edition->amount * $entry->quantity;
         }
 
-        $cart->base_amount = $baseAmount;
-        $cart->full_amount = $fullAmount;
+        $cart->base_amount = round($baseAmount, 2);
+        $cart->full_amount = round($fullAmount, 2);
         $cart->save();
     }
 }

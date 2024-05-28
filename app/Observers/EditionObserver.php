@@ -24,10 +24,14 @@ class EditionObserver
         $this->calculateAmount($edition);
     }
 
+    /**
+     * Handle the Edition "retrieved" event.
+     */
     public function retrieved(Edition $edition): void
     {
         $this->calculateRating($edition);
     }
+    
 
     protected function calculateRating(Edition $edition)
     {
@@ -50,6 +54,6 @@ class EditionObserver
             throw new Exception('Cannot calculate amount: Platform or Videogame is missing.');
         }
 
-        $edition->amount = $videogame->base_price * (1 + $platform->plus);
+        $edition->amount = $videogame->sale_amount * (1 + $platform->plus);
     }
 }

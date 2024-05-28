@@ -28,7 +28,8 @@ class StoreInvoiceRequest extends FormRequest
             'user_id' => 'required|exists:users,id',
             'invoice_number' => 'required|unique:invoices,invoice_number',
             'issued_at' => 'required|date',
-            'total_amount' => 'required|numeric|min:0',
+            'base_amount' => 'required|numeric|min:0',
+            'full_amount' => 'required|numeric|min:0',
             'currency' => 'required|string|max:3',
         ];
     }
