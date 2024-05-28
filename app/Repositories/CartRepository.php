@@ -3,6 +3,7 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\MaxAmountReachedException;
 use App\Models\Cart;
 use App\Models\CartState;
 use App\Models\Edition;
@@ -41,6 +42,8 @@ class CartRepository
             throw new Exception('At least a pending cart should have been created at this point');
         }
 
+        $this->handleAmountLimiter($cart, $edition);
+
         $entry = $cart->entries()->where('edition_id', $edition->id)->first();
         if ($entry) {
             // Si la entrada ya existe en el carrito, aumentamos la cantidad utilizando el método increaseQuantity
@@ -59,6 +62,7 @@ class CartRepository
     public function increaseQuantity(User $user, Edition $edition)
     {
         $cart = $this->getPendingCart($user);
+        $this->handleAmountLimiter($cart, $edition);
 
         if ($cart) {
             $entry = $cart->entries()->where('edition_id', $edition->id)->first();
@@ -99,5 +103,24 @@ class CartRepository
         }
 
         return $cart;
+    }
+
+    protected function handleAmountLimiter(Cart $cart, Edition $edition) {
+        $potentialNewTotal = $this->calculateFullAmount($cart) + $edition->amount;
+
+        if ($potentialNewTotal > 500) {
+            throw new MaxAmountReachedException('You have reached the maximum amount of the shopping cart. (500 EUR)');
+        }
+    }
+
+    protected function calculateFullAmount(Cart $cart)
+    {
+        $total = 0;
+
+        foreach ($cart->entries as $entry) {
+            $total += $entry->edition->amount * $entry->quantity;
+        }
+
+        return $total;
     }
 }

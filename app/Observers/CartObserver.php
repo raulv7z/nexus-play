@@ -30,7 +30,8 @@ class CartObserver
         $this->createInvoiceAndEntries($cart, $user);
     }
 
-    protected function createInvoiceAndEntries(Cart $cart, User $user) {
+    protected function createInvoiceAndEntries(Cart $cart, User $user)
+    {
         $invoice = Invoice::create([
             'user_id' => $user->id,
             'cart_id' => $cart->id,
@@ -41,7 +42,7 @@ class CartObserver
             'currency' => 'EUR',
         ]);
 
-        foreach($cart->entries as $entry) {
+        foreach ($cart->entries as $entry) {
             $invoice->entries()->create([
                 'invoice_id' => $invoice->id,
                 'edition_id' => $entry->edition->id,
