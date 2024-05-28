@@ -40,9 +40,15 @@ use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\PaymentController as UserPaymentController;
 use App\Http\Controllers\User\ReviewController as UserReviewController;
 
-// Routes
+// Other includes
 
 use Illuminate\Support\Facades\Route;
+
+// Requires 
+
+require __DIR__ . '/api.php';
+
+// Routing
 
 //! Routes for non-authenticated users
 Route::middleware('guest')->group(function () {
@@ -106,6 +112,7 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 
         Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
             Route::get('show/{id}', [UserPlatformGroupController::class, 'show'])->name('show');
+            Route::get('filter-editions', [UserPlatformGroupController::class, 'renderFilteredEditions'])->name('filter-editions');
         });
 
         Route::prefix('editions')->name('editions.')->group(function () {

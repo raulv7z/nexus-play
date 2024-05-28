@@ -4,8 +4,12 @@
 ])
 
 <form method="{{ $method == 'GET' ? 'GET' : 'POST' }}" action="{{ $action }}"
-    class="space-y-6 mx-5 transition-all duration-300 ease-in-out">
-    @csrf
+    class="space-y-6 mx-5 transition-all duration-300 ease-in-out" {{ $attributes }}>
+    
+    @if ($method != 'GET')
+        @csrf
+    @endif
+
     @method($method)
 
     <div class="">

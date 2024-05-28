@@ -7,6 +7,12 @@
         </x-interface.breadcrumbs>
     </x-slot>
 
+    <x-interface.info-block>
+        <div class="filter-editions">
+            @include('content.platform-groups.partials.filter-editions', $platformGroup)
+        </div>
+    </x-interface.info-block>
+    
     <x-interface.hidden-block>
 
         <x-interface.title :title="$platformGroup->name . ' Editions'">
@@ -14,41 +20,14 @@
 
     </x-interface.hidden-block>
 
-    {{-- ! All editions (change this) --}}
     <x-interface.info-block>
-
-        @foreach ($editionsByPlatform as $platformId => $editions)
-            {{-- Título de la plataforma --}}
-            <div class="flex justify-center text-center bg-gray-300 dark:bg-gray-600 rounded-lg p-5 my-5">
-                <p>
-                    {{ \App\Models\Platform::find($platformId)->name }}
-                </p>
-            </div>
-
-            <div class="partials-list-editions">
-                {{-- @include('content.platform-groups.partials.list-editions', $editions) --}}
-                <x-sections.game-section :editions="$editions"/>
-            </div>
-        @endforeach
-
+        <div class="list-editions">
+            @include('content.platform-groups.partials.list-editions', $editions)
+        </div>
     </x-interface.info-block>
 
     @section('scripts')
-        {{-- @vite('resources/js/ROUTE_HERE') --}}
+        @vite('resources/js/modules/services/platform-groups/list-editions.js')
     @endsection
-
-    <script>
-        
-        setTimeout(() => {
-            console.log('hola');
-
-            const elements = document.querySelectorAll(".partials-list-editions");
-            elements.forEach(element => {
-                element.innerHTML = '';
-            })
-
-        }, 2000);
-
-    </script>
 
 </x-layouts.app>

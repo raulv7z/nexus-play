@@ -4,6 +4,7 @@
     'label' => null,
     'value' => null,
     'old' => null,
+    'options' => null,
     'placeholder' => null,
 ])
 
