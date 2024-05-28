@@ -26,6 +26,11 @@ class Edition extends Model
         return $this->hasMany(CartEntry::class);
     }
 
+    public function invoiceEntries()
+    {
+        return $this->hasMany(InvoiceEntry::class);
+    }
+
     // Accessor to format amount to 2 decimal places
     public function getAmountAttribute($value)
     {

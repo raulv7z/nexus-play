@@ -12,8 +12,10 @@ class Invoice extends Model
 
     protected $fillable = [
         'user_id',
+        'cart_id',
         'invoice_number',
         'issued_at',
+        'base_amount',
         'total_amount',
         'currency',
     ];
@@ -23,6 +25,16 @@ class Invoice extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class);
+    }
+
+    public function entries()
+    {
+        return $this->hasMany(InvoiceEntry::class);
     }
 
     /**

@@ -17,6 +17,11 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function invoices()
+    {
+        return $this->hasOne(Invoice::class);
+    }
+
     public function entries()
     {
         return $this->hasMany(CartEntry::class);

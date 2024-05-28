@@ -25,12 +25,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($cart->entries as $entry)
+            @foreach ($invoice->entries as $entry)
                 <tr>
-                    <td class="text-left text-gray-700">{{ $entry->edition->videogame->name }}</td>
-                    <td class="text-right text-gray-700">{{ $entry->edition->platform->name }}</td>
+                    <td class="text-left text-gray-700">{{ $entry->videogame_name }}</td>
+                    <td class="text-right text-gray-700">{{ $entry->platform_name }}</td>
                     <td class="text-right text-gray-700">{{ $entry->quantity }}</td>
-                    <td class="text-right text-gray-700">${{ number_format($entry->edition->amount, 2) }}</td>
+                    <td class="text-right text-gray-700">${{ number_format($entry->unit_amount, 2) }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -38,12 +38,12 @@
             <tr>
                 <td class="text-left font-bold text-gray-700">Base Amount</td>
                 <td></td>
-                <td class="text-right font-bold text-gray-700">${{ number_format($cart->base_amount, 2) }}</td>
+                <td class="text-right font-bold text-gray-700">${{ number_format($invoice->base_amount, 2) }}</td>
             </tr>
             <tr>
                 <td class="text-left font-bold text-gray-700">Total</td>
                 <td></td>
-                <td class="text-right font-bold text-gray-700">${{ number_format($cart->full_amount, 2) }}</td>
+                <td class="text-right font-bold text-gray-700">${{ number_format($invoice->full_amount, 2) }}</td>
             </tr>
         </tfoot>
     </table>

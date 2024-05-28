@@ -54,6 +54,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+    
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 
     public function pendingCart()
     {
@@ -68,10 +73,10 @@ class User extends Authenticatable
     }
 
     public function hasBoughtEdition($editionId) {
-        $carts = $this->carts()->withTrashed()->get();
+        $invoices = $this->invoices()->get();
 
-        foreach($carts as $cart) {
-            foreach($cart->entries as $entry) {
+        foreach ($invoices as $invoice) {
+            foreach ($invoice->entries as $entry) {
                 if ($entry->edition->id == $editionId) {
                     return true;
                 }
@@ -79,5 +84,17 @@ class User extends Authenticatable
         }
 
         return false;
+
+        // $carts = $this->carts()->withTrashed()->get();
+
+        // foreach($carts as $cart) {
+        //     foreach($cart->entries as $entry) {
+        //         if ($entry->edition->id == $editionId) {
+        //             return true;
+        //         }
+        //     }
+        // }
+
+        // return false;
     }
 }

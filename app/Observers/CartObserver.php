@@ -3,6 +3,9 @@
 namespace App\Observers;
 
 use App\Models\Cart;
+use App\Models\Invoice;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class CartObserver
 {
@@ -15,6 +18,35 @@ class CartObserver
     public function retrieved(Cart $cart)
     {
         $this->updateCartAmounts($cart);
+    }
+
+    public function deleted(Cart $cart)
+    {
+        $user = User::find($cart->user_id);
+        $this->createInvoiceAndEntries($cart, $user);
+    }
+
+    protected function createInvoiceAndEntries(Cart $cart, User $user) {
+        $invoice = Invoice::create([
+            'user_id' => $user->id,
+            'cart_id' => $cart->id,
+            'invoice_number' => 'INV-' . uniqid(), // unique invoice number
+            'issued_at' => now(),
+            'base_amount' => $cart->base_amount,
+            'total_amount' => $cart->full_amount,
+            'currency' => 'EUR',
+        ]);
+
+        foreach($cart->entries as $entry) {
+            $invoice->entries()->create([
+                'invoice_id' => $invoice->id,
+                'edition_id' => $entry->edition->id,
+                'videogame_name' => $entry->edition->videogame->name,
+                'platform_name' => $entry->edition->platform->name,
+                'quantity' => $entry->quantity,
+                'unit_amount' => $entry->edition->amount,
+            ]);
+        }
     }
 
     /**

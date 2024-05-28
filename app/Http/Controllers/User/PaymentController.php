@@ -39,24 +39,16 @@ class PaymentController extends Controller
     {        
         $user = $request->user();
         $cart = $this->cartService->getOrCreatePendingCart($user);
-
-        $invoice = Invoice::create([
-            'user_id' => $user->id,
-            'invoice_number' => 'INV-' . uniqid(), // unique invoice number
-            'issued_at' => now(),
-            'total_amount' => $cart->full_amount,
-            'currency' => 'EUR',
-        ]);
-
-        try {
-            Mail::to($user->email)->send(new InvoiceEmail($invoice, $user, $cart));
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to send email. Please contact support.');
-        }
-
         $paidStateId = CartState::where('state', 'Completed')->value('id');
         $cart->update(['cart_state_id' => $paidStateId]);
         $cart->delete();
+        $invoice = Invoice::where('cart_id', $cart->id)->first();
+
+        try {
+            Mail::to($user->email)->send(new InvoiceEmail($invoice, $user));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to send email. Please contact support.');
+        }
 
         return redirect()->route('content.payments.paid')->with('success', 'The order was completed successfully. Check your email.');
     }

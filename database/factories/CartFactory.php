@@ -35,7 +35,6 @@ class CartFactory extends Factory
             'iva' => 21.0,
             'base_amount' => 0.00,
             'full_amount' => 0.00,
-            'deleted_at' => Carbon::now(), // check as soft deleted
         ];
     }
 }
