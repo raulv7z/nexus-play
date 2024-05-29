@@ -1,7 +1,7 @@
 <div class="h-screen hidden lg:flex">
 
     {{-- Sidebar --}}
-    <div class="bg-[#272770] text-white w-64 flex-none">
+    <div class="bg-[#1C1C72] text-white w-64 flex-none">
 
         <div class="flex flex-col justify-center items-start content-center p-4">
 
