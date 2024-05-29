@@ -1,14 +1,16 @@
-<x-layouts.app>
-    <x-slot name="header">
-        <x-interface.header-title>
-        </x-interface.header-title>
-    </x-slot>
+@extends('layouts.app')
 
+@section('header')
+    <x-interface.header-title>
+    </x-interface.header-title>
+@endsection
+
+@section('content')
     <x-interface.hidden-block>
         <x-interface.title :title="'My cart'">
         </x-interface.title>
     </x-interface.hidden-block>
-    
+
     <x-interface.info-block>
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
 
@@ -22,8 +24,7 @@
                             @foreach ($cart->entries as $entry)
                                 <div
                                     class="cart-entry rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
-                                    <div
-                                        class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
+                                    <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
 
                                         {{-- each product image here --}}
 
@@ -124,11 +125,8 @@
             </div>
 
     </x-interface.info-block>
+@endsection
 
-    {{-- *scripts --}}
-
-    @section('scripts')
-        @vite('resources/js/modules/services/cart.js')
-    @endsection
-
-</x-layouts.app>
+@section('scripts')
+    @vite('resources/js/modules/services/cart.js')
+@endsection

@@ -1,11 +1,11 @@
-<x-layouts.app>
-    <x-slot name="header">
+@extends('layouts.app')
+    @section('header')
         <x-interface.header-title>
         </x-interface.header-title>
 
         <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
         </x-interface.breadcrumbs>
-    </x-slot>
+    @endsection
 
     <x-interface.info-block>
         {{ __('Write the content from here!') }}
@@ -15,4 +15,4 @@
         {{-- @vite('resources/js/ROUTE_HERE') --}}
     @endsection
 
-</x-layouts.app>
+

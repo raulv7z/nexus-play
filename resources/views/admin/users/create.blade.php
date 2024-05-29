@@ -1,16 +1,16 @@
-<x-layouts.app>
+@extends('layouts.app')
 
+@section('header')
+    <x-interface.header-title>
+    </x-interface.header-title>
 
-    <x-slot name="header">
-        <x-interface.header-title>
-        </x-interface.header-title>
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    </x-interface.breadcrumbs>
+@endsection
 
-        <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
-        </x-interface.breadcrumbs>
-    </x-slot>
-
+@section('content')
     <x-interface.info-block>
-        
+
         <x-forms.template :method="'POST'" :action="route('admin.users.store')">
             <x-slot name="header">
 
@@ -19,7 +19,7 @@
             <x-slot name="body">
                 <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :placeholder="'Write a name here...'">
                 </x-blocks.form-group>
-                
+
                 <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :placeholder="'Write an email here...'">
                 </x-blocks.form-group>
 
@@ -40,5 +40,4 @@
         </x-forms.template>
 
     </x-interface.info-block>
-
-</x-layouts.app>
+@endsection

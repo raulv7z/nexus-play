@@ -1,12 +1,14 @@
-<x-layouts.app>
-    <x-slot name="header">
-        <x-interface.header-title>
-        </x-interface.header-title>
+@extends('layouts.app')
 
-        <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
-        </x-interface.breadcrumbs>
-    </x-slot>
+@section('header')
+    <x-interface.header-title>
+    </x-interface.header-title>
 
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    </x-interface.breadcrumbs>
+@endsection
+
+@section('content')
     {{-- Most rateds --}}
 
     <x-interface.hidden-block>
@@ -48,5 +50,4 @@
         </x-sections.game-section>
 
     </x-interface.info-block>
-
-</x-layouts.app>
+@endsection

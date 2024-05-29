@@ -1,13 +1,14 @@
-<x-layouts.app>
+@extends('layouts.app')
 
-    <x-slot name="header">
-        <x-interface.header-title>
-        </x-interface.header-title>
+@section('header')
+    <x-interface.header-title>
+    </x-interface.header-title>
 
-        <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
-        </x-interface.breadcrumbs>
-    </x-slot>
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    </x-interface.breadcrumbs>
+@endsection
 
+@section('content')
     <x-interface.info-block>
 
         <x-forms.template :method="'PUT'" :action="route('admin.users.update', $user->id)">
@@ -50,5 +51,4 @@
         </x-forms.template>
 
     </x-interface.info-block>
-
-</x-layouts.app>
+@endsection

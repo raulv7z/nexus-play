@@ -1,13 +1,14 @@
-<x-layouts.app>
+@extends('layouts.app')
 
-    <x-slot name="header">
-        <x-interface.header-title>
-        </x-interface.header-title>
+@section('header')
+    <x-interface.header-title>
+    </x-interface.header-title>
 
-        <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
-        </x-interface.breadcrumbs>
-    </x-slot>
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    </x-interface.breadcrumbs>
+@endsection
 
+@section('content')
     <x-interface.info-block>
 
         <x-forms.template :method="'DELETE'" :action="route('admin.users.destroy', $user->id)">
@@ -23,13 +24,16 @@
             </x-slot>
 
             <x-slot name="body">
-                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$user->name" :placeholder="'Write a name here...'" disabled>
+                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$user->name"
+                    :placeholder="'Write a name here...'" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :value="$user->email" :placeholder="'Write an email here...'" disabled>
+                <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :value="$user->email"
+                    :placeholder="'Write an email here...'" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'password'" :field="'password'" :label="'Password'" :value="$user->password" :placeholder="'Write the password here...'" disabled>
+                <x-blocks.form-group :type="'password'" :field="'password'" :label="'Password'" :value="$user->password"
+                    :placeholder="'Write the password here...'" disabled>
                 </x-blocks.form-group>
             </x-slot>
 
@@ -45,5 +49,4 @@
         {{-- <x-forms.delete :action="$action" :model="$user" :fields="$fields"/> --}}
 
     </x-interface.info-block>
-
-</x-layouts.app>
+@endsection

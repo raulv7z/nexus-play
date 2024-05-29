@@ -102,7 +102,7 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 
         Route::prefix('payments')->name('payments.')->group(function () {
             Route::get('checkout', [UserPaymentController::class, 'checkout'])->name('checkout');
-            Route::get('paid', [UserPaymentController::class,'paid'])->name('paid');
+            Route::get('paid', [UserPaymentController::class, 'paid'])->name('paid');
             Route::post('confirm', [UserPaymentController::class, 'confirm'])->name('confirm');
         });
 
@@ -121,53 +121,52 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
             Route::post('store', [UserReviewController::class, 'store'])->name('store');
         });
     });
+});
 
-    //! Admin routes
+//! Admin routes
+Route::middleware(['role:admin', 'breadcrumbs'])->prefix('admin')->name('admin.')->group(function () {
 
-    Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    // dashboard
+    Route::get('/', [AdminManagerController::class, 'index'])->name('dashboard');
 
-        // dashboard
-        Route::get('/', [AdminManagerController::class, 'index'])->name('dashboard');
+    // Users Management
+    Route::prefix('users')->name('users.')->group(function () {
+        // management
+        Route::get('/', [AdminManagerController::class, 'manageUsers'])->name('manager');
 
-        // Users Management
-        Route::prefix('users')->name('users.')->group(function () {
-            // management
-            Route::get('/', [AdminManagerController::class, 'manageUsers'])->name('manager');
+        // actions
 
-            // actions
+        Route::get('create', [AdminUserController::class, 'create'])->name('create');
+        Route::post('store', [AdminUserController::class, 'store'])->name('store');
+        Route::get('show/{user}', [AdminUserController::class, 'show'])->name('show');
+        Route::get('edit/{user}', [AdminUserController::class, 'edit'])->name('edit');
+        Route::put('update{user}', [AdminUserController::class, 'update'])->name('update');
+        Route::get('delete/{user}', [AdminUserController::class, 'delete'])->name('delete');
+        Route::delete('destroy/{user}', [AdminUserController::class, 'destroy'])->name('destroy');
 
-            Route::get('create', [AdminUserController::class, 'create'])->name('create');
-            Route::post('store', [AdminUserController::class, 'store'])->name('store');
-            Route::get('show/{user}', [AdminUserController::class, 'show'])->name('show');
-            Route::get('edit/{user}', [AdminUserController::class, 'edit'])->name('edit');
-            Route::put('update{user}', [AdminUserController::class, 'update'])->name('update');
-            Route::get('delete/{user}', [AdminUserController::class, 'delete'])->name('delete');
-            Route::delete('destroy/{user}', [AdminUserController::class, 'destroy'])->name('destroy');
+        // ajax
+        Route::get('crud', [AdminCrudController::class, 'users'])->name('crud');
+        Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+    });
 
-            // ajax
-            Route::get('crud', [AdminCrudController::class, 'users'])->name('crud');
-            Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
-        });
+    // Videogames Management
+    Route::prefix('games')->name('videogames.')->group(function () {
+        Route::get('/', [AdminManagerController::class, 'manageGames'])->name('manager');
+    });
 
-        // Videogames Management
-        Route::prefix('games')->name('videogames.')->group(function () {
-            Route::get('/', [AdminManagerController::class, 'manageGames'])->name('manager');
-        });
+    // Editions Management
+    Route::prefix('editions')->name('editions.')->group(function () {
+        Route::get('/', [AdminManagerController::class, 'manageEditions'])->name('manager');
+    });
 
-        // Editions Management
-        Route::prefix('editions')->name('editions.')->group(function () {
-            Route::get('/', [AdminManagerController::class, 'manageEditions'])->name('manager');
-        });
+    // Platforms Management
+    Route::prefix('platforms')->name('platforms.')->group(function () {
+        Route::get('/', [AdminManagerController::class, 'managePlatforms'])->name('manager');
+    });
 
-        // Platforms Management
-        Route::prefix('platforms')->name('platforms.')->group(function () {
-            Route::get('/', [AdminManagerController::class, 'managePlatforms'])->name('manager');
-        });
-
-        // Platform Groups Management
-        Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
-            Route::get('/', [AdminManagerController::class, 'managePlatformGroups'])->name('manager');
-        });
+    // Platform Groups Management
+    Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
+        Route::get('/', [AdminManagerController::class, 'managePlatformGroups'])->name('manager');
     });
 });
 

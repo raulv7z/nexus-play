@@ -1,21 +1,18 @@
-<x-layouts.app>
-    <x-slot name="header">
-        <x-interface.header-title>
-        </x-interface.header-title>
+@extends('layouts.app')
 
-        <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
-        </x-interface.breadcrumbs>
-    </x-slot>
+@section('header')
+    <x-interface.header-title>
+    </x-interface.header-title>
 
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    </x-interface.breadcrumbs>
+@endsection
+
+@section('content')
     <x-interface.info-block>
-        
+
         <x-forms.checkout :action="route('content.payments.confirm')">
         </x-forms.checkout>
 
     </x-interface.info-block>
-
-    {{-- @section('scripts')
-        @vite('resources/js/ROUTE_HERE')
-    @endsection --}}
-
-</x-layouts.app>
+@endsection

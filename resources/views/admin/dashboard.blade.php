@@ -1,12 +1,14 @@
-<x-layouts.app>
-    <x-slot name="header">
-        <x-interface.header-title>
-        </x-interface.header-title>
+@extends('layouts.app')
 
-        <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
-        </x-interface.breadcrumbs>
-    </x-slot>
+@section('header')
+    <x-interface.header-title>
+    </x-interface.header-title>
 
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    </x-interface.breadcrumbs>
+@endsection
+
+@section('content')
     <x-interface.info-block>
         <x-sections.manager-section>
 
@@ -18,5 +20,4 @@
 
         </x-sections.manager-section>
     </x-interface.info-block>
-
-</x-layouts.app>
+@endsection
