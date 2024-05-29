@@ -21,7 +21,7 @@ class VideogameSeeder extends Seeder
                 'genre' => 'Action',
                 'iva' => 21,
                 'base_amount' => 29.99,
-            ],
+            ],    
             [
                 'name' => 'The Witcher 3',
                 'description' => 'Open world RPG in a fantasy setting.',

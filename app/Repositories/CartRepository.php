@@ -42,7 +42,7 @@ class CartRepository
             throw new Exception('At least a pending cart should have been created at this point');
         }
 
-        $this->handleAmountLimiter($cart, $edition);
+        // $this->handleAmountLimiter($cart, $edition);
 
         $entry = $cart->entries()->where('edition_id', $edition->id)->first();
         if ($entry) {
@@ -62,7 +62,7 @@ class CartRepository
     public function increaseQuantity(User $user, Edition $edition)
     {
         $cart = $this->getPendingCart($user);
-        $this->handleAmountLimiter($cart, $edition);
+        // $this->handleAmountLimiter($cart, $edition);
 
         if ($cart) {
             $entry = $cart->entries()->where('edition_id', $edition->id)->first();

@@ -32,18 +32,15 @@ class Cart extends Model
         return $this->belongsTo(CartState::class);
     }
 
-    public function getIvaAttribute($value)
-    {
-        return number_format($value, 2);
-    }
+    // not needed, in db is decimal(10,2)
+    
+    // public function getBaseAmountAttribute($value)
+    // {
+    //     return round($value, 2);
+    // }
 
-    public function getBaseAmountAttribute($value)
-    {
-        return number_format($value, 2);
-    }
-
-    public function getFullAmountAttribute($value)
-    {
-        return number_format($value, 2);
-    }
+    // public function getFullAmountAttribute($value)
+    // {
+    //     return round($value, 2);
+    // }
 }
