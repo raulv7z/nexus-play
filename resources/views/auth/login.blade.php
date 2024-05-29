@@ -1,4 +1,6 @@
-<x-layouts.guest>
+@extends('layouts.' . $getLayout)
+
+@section('content')
     <!-- Session Status -->
     <x-presets.auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +46,4 @@
             </x-presets.primary-button>
         </div>
     </form>
-</x-layouts.guest>
+@endsection

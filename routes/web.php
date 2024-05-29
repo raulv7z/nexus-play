@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\Route;
 // Routing
 
 //! Routes for non-authenticated users
-Route::middleware('guest')->group(function () {
+Route::middleware('guest', 'layouts')->group(function () {
 
     Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
@@ -69,7 +69,7 @@ Route::middleware('guest')->group(function () {
 });
 
 //! Routes for authenticated users
-Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
+Route::middleware(['auth', 'verified', 'breadcrumbs', 'layouts'])->group(function () {
 
     Route::get('/content', [HomeController::class, 'dashboard'])->name('dashboard');
 
@@ -124,7 +124,7 @@ Route::middleware(['auth', 'verified', 'breadcrumbs'])->group(function () {
 });
 
 //! Admin routes
-Route::middleware(['role:admin', 'breadcrumbs'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->name('admin.')->group(function () {
 
     // dashboard
     Route::get('/', [AdminManagerController::class, 'index'])->name('dashboard');

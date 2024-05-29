@@ -14,12 +14,12 @@
 
     {{-- Icons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" />
 
     {{-- Datatable CDNs --}}
     <link rel="stylesheet" href="//cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
 
     <!-- Scripts -->
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -33,7 +33,9 @@
 
         <div
             class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-            {{ $slot }}
+
+            @yield('content')
+
         </div>
     </div>
 </body>

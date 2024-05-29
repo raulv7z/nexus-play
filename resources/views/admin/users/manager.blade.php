@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.' . $getLayout)
 
 @section('header')
     <x-interface.header-title>
