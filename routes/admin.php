@@ -50,14 +50,31 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-// Routes for non-authenticated users
-require __DIR__ . "/guest.php";
+Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->name('admin.')->group(function () {
 
-// Routes for authenticated users
-require __DIR__ . "/auth.php";
+    // dashboard
+    Route::get('/', [AdminManagerController::class, 'index'])->name('dashboard');
 
-// Routes for admins
-require __DIR__ . "/admin.php";
+    // Users Management
+    Route::prefix('users')->name('users.')->group(function () {
+        // management
+        Route::get('/', [AdminManagerController::class, 'manageUsers'])->name('manager');
 
-// Routes for API requests
-require __DIR__ . '/api.php';
+        // actions
+        Route::get('create', [AdminUserController::class, 'create'])->name('create');
+        Route::post('store', [AdminUserController::class, 'store'])->name('store');
+        Route::get('show/{user}', [AdminUserController::class, 'show'])->name('show');
+        Route::get('edit/{user}', [AdminUserController::class, 'edit'])->name('edit');
+        Route::put('update{user}', [AdminUserController::class, 'update'])->name('update');
+        Route::get('delete/{user}', [AdminUserController::class, 'delete'])->name('delete');
+        Route::delete('destroy/{user}', [AdminUserController::class, 'destroy'])->name('destroy');
+
+        // ajax
+        Route::get('crud', [AdminCrudController::class, 'users'])->name('crud');
+        Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+    });
+
+    //
+
+    
+});

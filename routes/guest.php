@@ -50,14 +50,23 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-// Routes for non-authenticated users
-require __DIR__ . "/guest.php";
+Route::middleware('guest', 'layouts')->group(function () {
 
-// Routes for authenticated users
-require __DIR__ . "/auth.php";
+    Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
-// Routes for admins
-require __DIR__ . "/admin.php";
+    // Pre-setted routes
 
-// Routes for API requests
-require __DIR__ . '/api.php';
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+    Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
+
+    // Not pre-setted routes
+
+    //
+
+});
