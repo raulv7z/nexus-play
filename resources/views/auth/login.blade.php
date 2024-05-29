@@ -1,4 +1,4 @@
-@extends('layouts.' . $getLayout)
+@extends($getLayout)
 
 @section('content')
     <!-- Session Status -->

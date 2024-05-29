@@ -14,11 +14,11 @@ class SetLayoutMiddleware
         $user = $request->user();
 
         if ($user && $user->hasRole('admin')) {
-            view()->share('getLayout', 'admin');
+            view()->share('getLayout', 'layouts.admin');
         } elseif ($user) {
-            view()->share('getLayout', 'app');
+            view()->share('getLayout', 'layouts.app');
         } else {
-            view()->share('getLayout', 'guest');
+            view()->share('getLayout', 'layouts.guest');
         }
 
         return $next($request);
