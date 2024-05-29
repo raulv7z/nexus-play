@@ -22,7 +22,7 @@ class CartEntryFactory extends Factory
             // 'cart_id' => Cart::where('cart_state_id', $completedStateId)->random()->id,
             'cart_id' => null,
             'edition_id' => Edition::all()->random()->id,
-            'quantity' => $this->faker->numberBetween(1, 5),
+            'quantity' => $this->faker->numberBetween(1, 3),
         ];
     }
 }

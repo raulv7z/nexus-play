@@ -14,7 +14,7 @@ class CartSeeder extends Seeder
 
         $carts->each(function ($cart) {
 
-            $entries = CartEntry::factory(3)->create([
+            $entries = CartEntry::factory(2)->create([
                 'cart_id' => $cart->id
             ]);
 

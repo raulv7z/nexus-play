@@ -11,7 +11,7 @@ class MaxAmountReachedException extends Exception
 
     public function __construct($message = null)
     {
-        $this->limit = 500;
+        $this->limit = 1000;
         $message = $message ?? "You have reached the maximum amount of the shopping cart. (($this->limit) EUR)";
         parent::__construct($message);
     }
