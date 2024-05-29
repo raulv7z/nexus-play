@@ -23,30 +23,6 @@ class ManagerController extends Controller
                 'description' => 'List of users currently registered',
                 'route' => 'admin.users.manager'
             ],
-            [
-                'name' => 'Games',
-                'table' => 'videogames',
-                'description' => 'List of games currently registered',
-                'route' => 'admin.videogames.manager'
-            ],
-            [
-                'name' => 'Game Editions',
-                'table' => 'editions',
-                'description' => 'List of editions registered for each game',
-                'route' => 'admin.editions.manager'
-            ],
-            [
-                'name' => 'Platforms',
-                'table' => 'platforms',
-                'description' => 'List of platforms currently registered',
-                'route' => 'admin.platforms.manager'
-            ],
-            [
-                'name' => 'Platform Groups',
-                'table' => 'platform_groups',
-                'description' => 'List of platform groups currently registered',
-                'route' => 'admin.platform-groups.manager'
-            ],
         ];
 
         return view('admin.dashboard', compact('tablesInfo'));
