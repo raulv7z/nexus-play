@@ -7,22 +7,16 @@ use App\Models\Edition;
 use App\Models\CartState;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     //
 
-    public function index(Request $request)
-    {
-        if ($request->user() && $request->user()->hasRole('admin')) {
-            return redirect()->route('admin.dashboard');
-        } elseif ($request->user()) {
-            return redirect()->route('user.dashboard');
-        } else {
-            return redirect()->route('guest.dashboard');
-        }
+    public function admin() {
+
+        return view('content.home.admin', compact('editionsAll', 'editionsMostRated', 'editionsBestSeller'));
     }
 
-    public function dashboard()
+    public function auth()
     {
         $editionsAll = Edition::inRandomOrder()->get();
         $editionsMostRated = Edition::orderBy('rating', 'desc')->take(6)->get();
@@ -69,10 +63,10 @@ class HomeController extends Controller
         //             total_sales DESC
         //         LIMIT 6";
 
-        return view('content.home.dashboard', compact('editionsAll', 'editionsMostRated', 'editionsBestSeller'));
+        return view('content.home.index', compact('editionsAll', 'editionsMostRated', 'editionsBestSeller'));
     }
 
-    public function welcome()
+    public function guest()
     {
         return view('content.home.welcome');
     }
