@@ -28,11 +28,11 @@ class PaymentController extends Controller
 
         // Verificar si el carrito está vacío
         if (!$cart || $cart->entries->isEmpty()) {
-            return redirect()->route('content.carts.show')->with('error', 'The shopping cart is empty.');
+            return redirect()->route('auth.carts.show')->with('error', 'The shopping cart is empty.');
         }
         
         // Redirigir a la vista de checkout
-        return view('content.payments.checkout', compact('cart', 'user'));
+        return view('content.auth.payments.checkout', compact('cart', 'user'));
     }
 
     public function confirm(Request $request)
@@ -50,11 +50,11 @@ class PaymentController extends Controller
             return redirect()->back()->with('error', 'Failed to send email. Please contact support.');
         }
 
-        return redirect()->route('content.payments.paid')->with('success', 'The order was completed successfully. Check your email.');
+        return redirect()->route('auth.payments.paid')->with('success', 'The order was completed successfully. Check your email.');
     }
 
     public function paid(Request $request) {
         $title = 'Order Completed';
-        return view('content.payments.paid', compact('title'));
+        return view('content.auth.payments.paid', compact('title'));
     }
 }

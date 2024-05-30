@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Breeze;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class ProfileController extends Controller
     {
         $title = "Edit Profile";
 
-        return view('profile.edit', [
+        return view('content.auth.profile.edit', [
             'title' => $title,
             'user' => $request->user(),
         ]);

@@ -1,4 +1,4 @@
-<a href="{{ route('dashboard') }}" title=""
+<a href="{{ route('root.dashboard') }}" title=""
     class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
 
     {{ __('Continue Shopping') }}

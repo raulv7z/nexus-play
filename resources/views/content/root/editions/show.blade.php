@@ -66,7 +66,7 @@
     </x-interface.hidden-block>
 
     <x-interface.info-block>
-        <x-links.create-review :link="route('content.reviews.create', $edition->id)">
+        <x-links.create-review :link="route('auth.reviews.create', $edition->id)">
         </x-links.create-review>
 
         <x-interface.hr-xl>

@@ -2,7 +2,7 @@
     'breadcrumbs' => []
 ])
 
-<nav aria-label="breadcrumb" class="text-sm">
+{{-- <nav aria-label="breadcrumb" class="text-sm">
     <ol class="breadcrumb flex">
         @foreach ($breadcrumbs as $key => $breadcrumb)
             @if ($loop->last)
@@ -20,4 +20,4 @@
             @endif
         @endforeach
     </ol>
-</nav>
+</nav> --}}

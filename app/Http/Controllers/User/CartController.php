@@ -27,7 +27,7 @@ class CartController extends Controller
         // Get 'pending' cart or create a new one
         $cart = $this->cartService->getOrCreatePendingCart($user);
 
-        return view('content.carts.show', compact('cart'));
+        return view('content.auth.carts.show', compact('cart'));
     }
 
     public function addToCart(Request $request, $editionId)
@@ -57,7 +57,7 @@ class CartController extends Controller
             $edition = Edition::findOrFail($editionId);
             $this->cartService->removeFromCart($user, $edition);
     
-            return redirect()->route('content.carts.show')->with('success', 'The item has been deleted from the cart successfully.');
+            return redirect()->route('auth.carts.show')->with('success', 'The item has been deleted from the cart successfully.');
         } catch(Exception $e) {
             return back()->with('error', '500:' + $e->getMessage());
         }

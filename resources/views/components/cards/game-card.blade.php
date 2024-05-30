@@ -21,7 +21,7 @@
 
                 <div class="flex justify-center space-x-4">
 
-                    <x-links.show-edition :link="route('content.editions.show', $edition->id)">
+                    <x-links.show-edition :link="route('root.editions.show', $edition->id)">
                     </x-links.show-edition>
 
                     <x-forms.add-to-cart :editionId="$edition->id">

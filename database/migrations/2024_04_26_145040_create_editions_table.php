@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('platform_id')->constrained();
-            $table->foreignId('videogame_id')->constrained();
+            $table->foreignId('platform_id')->constrained()->onDelete('cascade');
+            $table->foreignId('videogame_id')->constrained()->onDelete('cascade');
             $table->unsignedInteger('stock')->default(100);  
             $table->decimal('amount', 10, 2);
             $table->decimal('rating', 10, 2)->default(0);    

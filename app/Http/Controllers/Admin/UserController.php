@@ -15,12 +15,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users.index', compact('users'));
+        return view('content.admin.users.index', compact('users'));
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('content.admin.users.create');
     }
 
     public function store(StoreUserRequest $request)
@@ -37,13 +37,13 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::withTrashed()->findOrFail($id);
-        return view('admin.users.show', compact('user'));
+        return view('content.admin.users.show', compact('user'));
     }
 
     public function edit($id)
     {
         $user = User::withTrashed()->findOrFail($id);
-        return view('admin.users.edit', compact('user'));
+        return view('content.admin.users.edit', compact('user'));
     }
 
     public function update(UpdateUserRequest $request, $id)
@@ -60,7 +60,7 @@ class UserController extends Controller
 
     public function delete(User $user)
     {
-        return view('admin.users.delete', compact('user'));
+        return view('content.admin.users.delete', compact('user'));
     }
 
     public function destroy(User $user)

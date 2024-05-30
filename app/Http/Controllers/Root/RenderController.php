@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Root;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Edition;
 use App\Models\User;

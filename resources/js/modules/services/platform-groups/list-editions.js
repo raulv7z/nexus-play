@@ -24,7 +24,7 @@ function startApp() {
 
 function loadEditionSection({ sectionNode, formData }) {
     $.ajax({
-        url: "/content/platform-groups/filter-editions",
+        url: "/home/platform-groups/filter-editions",
         type: "GET",
         dataType: "html",
         data: formData,

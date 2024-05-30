@@ -6,7 +6,7 @@
         <div class="flex flex-col justify-center items-start content-center p-4">
 
             <div id="logo-icon" class="h-12 w-12">
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('root.dashboard') }}">
                     <x-presets.white-application-logo />
                 </a>
             </div>
@@ -30,6 +30,17 @@
                     </li>
                     <li><a href="#"
                             class="block py-2 px-4 text-gray-100 hover:bg-gray-600">Configuración</a>
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-presets.dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-presets.dropdown-link>
+                        </form>
                     </li>
                     <!-- Agrega más elementos de menú según tus necesidades -->
                 </ul>

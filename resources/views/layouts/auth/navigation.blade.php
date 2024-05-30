@@ -6,7 +6,7 @@
 
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('root.dashboard') }}">
                         <x-presets.application-logo
                             class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
@@ -14,7 +14,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex">
-                    <x-presets.nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-presets.nav-link :href="route('root.dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-presets.nav-link>
                 </div>
@@ -23,7 +23,7 @@
                 @foreach ($platformGroups as $group)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
                         <!-- Change links to real routes on web.php, using the route names and parameters -->
-                        <x-presets.nav-link :href="route('content.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') &&
+                        <x-presets.nav-link :href="route('root.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') &&
                             request()->route('id') == $group->id">
                             {{ $group->name }}
                         </x-presets.nav-link>
@@ -179,7 +179,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden lg:hidden">
         <div class="pt-1 pb-1 space-y-1">
-            <x-presets.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-presets.responsive-nav-link :href="route('root.dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Home') }}
             </x-presets.responsive-nav-link>
         </div>
@@ -189,7 +189,7 @@
             <div class="pt-1 pb-1 space-y-1">
 
                 <!-- //todo change links to real routes on web.php, same with :active -->
-                <x-presets.responsive-nav-link :href="route('content.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') && request()->route('id') == $group->id">
+                <x-presets.responsive-nav-link :href="route('root.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') && request()->route('id') == $group->id">
                     {{ $group->name }}
                 </x-presets.responsive-nav-link>
             </div>

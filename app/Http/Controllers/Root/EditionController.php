@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Root;
 
 use App\Http\Controllers\Controller;
 use App\Models\Edition;
@@ -14,6 +14,6 @@ class EditionController extends Controller
     {
         $edition = Edition::findOrFail($id);
         $reviews = $edition->reviews()->orderBy('created_at', 'desc')->paginate(5);
-        return view('content.editions.show', compact('edition', 'reviews'));
+        return view('content.root.editions.show', compact('edition', 'reviews'));
     }
 }

@@ -1,3 +1,3 @@
-<a href="{{ route('content.carts.show') }}">
+<a href="{{ route('auth.carts.show') }}">
     <x-interface.cart-icon :quantity="$quantity" />
 </a>

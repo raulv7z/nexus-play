@@ -11,7 +11,7 @@
 @section('content')
     <x-interface.info-block>
 
-        <x-forms.template :method="'POST'" :action="route('content.reviews.store')">
+        <x-forms.template :method="'POST'" :action="route('auth.reviews.store')">
             <x-slot name="header">
 
             </x-slot>

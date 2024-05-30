@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Root;
 
 use App\Http\Controllers\Controller;
+
 use App\Http\Controllers\RenderController;
 use App\Models\PlatformGroup;
 use App\Http\Requests\StorePlatformGroupRequest;
@@ -21,7 +22,7 @@ class PlatformGroupController extends Controller
             $query->where('platform_group_id', $platformGroup->id);
         })->get();
 
-        return view('content.platform-groups.show', compact('platformGroup', 'editions'));
+        return view('content.root.platform-groups.show', compact('platformGroup', 'editions'));
     }
 
     public function renderFilteredEditions(Request $request)
@@ -55,6 +56,6 @@ class PlatformGroupController extends Controller
         $editions = $query->get();
 
         // Usar el método renderEditionSection para renderizar las ediciones filtradas
-        return app('App\Http\Controllers\RenderController')->renderEditionSection($request, $editions);
+        return app('App\Http\Controllers\Root\RenderController')->renderEditionSection($request, $editions);
     }
 }
