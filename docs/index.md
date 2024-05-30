@@ -2,8 +2,8 @@
 
 Bienvenido a la documentación del proyecto. A continuación, se presenta un resumen de las secciones disponibles:
 
-- [Introducción](README.md)
-- [Documentación de Usuario](guides/user.md)
+- [Introducción](guides/intro.md)
+- [Documentación de Usuario](guides/users.md)
 - [Documentación de Instalación](guides/install.md)
 - [Guía de Desarrollo](guides/development.md)
 - [Guía de Producción](guides/production.md)

@@ -4,7 +4,8 @@ nav:
   - Home: index.md
   - Visuals: visuals/
   - Guides:
-    - 'Documentación de Usuario': guides/user.md
+    - 'Introducción': guides/intro.md
+    - 'Documentación de Usuario': guides/users.md
     - 'Documentación de Instalación': guides/install.md
     - 'Guía de Desarrollo': guides/development.md
     - 'Guía de Producción': guides/production.md
