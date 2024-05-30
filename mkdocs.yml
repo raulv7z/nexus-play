@@ -1,0 +1,19 @@
+site_name: Nexus Play
+
+nav:
+  - Home: index.md
+  - Visuals: visuals/
+  - Guides:
+    - 'Introducción': guides/intro.md
+    - 'Documentación de Usuario': guides/users.md
+    - 'Documentación de Instalación': guides/install.md
+    - 'Guía de Desarrollo': guides/development.md
+    - 'Guía de Producción': guides/production.md
+    - 'Estilos y UI/UX': guides/styles.md
+    - 'Documentación de la Base de Datos': guides/database.md
+    - 'Arquitectura del Sistema': guides/architecture.md
+    - 'API': guides/api.md
+    - 'Resolución de Problemas': guides/troubleshooting.md
+    - 'Contribuir al Proyecto': guides/contributing.md
+
+theme: null
