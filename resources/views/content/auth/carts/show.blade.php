@@ -28,7 +28,7 @@
 
                                         {{-- each product image here --}}
 
-                                        <x-links.edition-image :link="route('content.editions.show', $entry->edition->id)" :imageName="$entry->edition->videogame->front_page">
+                                        <x-links.edition-image :link="route('root.editions.show', $entry->edition->id)" :imageName="$entry->edition->videogame->front_page">
                                         </x-links.edition-image>
 
                                         <x-labels.choose-quantity>
@@ -63,7 +63,7 @@
 
                                             {{-- each edition name, platform and remove link here --}}
 
-                                            <x-links.edition-name :link="route('content.editions.show', $entry->edition->id)" :name="$entry->edition->videogame->name">
+                                            <x-links.edition-name :link="route('root.editions.show', $entry->edition->id)" :name="$entry->edition->videogame->name">
                                             </x-links.edition-name>
 
                                             <x-paragraphs.edition-platform :name="$entry->edition->platform->name">
@@ -107,7 +107,7 @@
 
                         {{-- link for checkout here --}}
                         {{-- !update --}}
-                        <x-links.checkout :link="route('content.payments.checkout')">
+                        <x-links.checkout :link="route('auth.payments.checkout')">
                         </x-links.checkout>
 
                         <div class="flex items-center justify-center gap-2">

@@ -11,7 +11,7 @@
 @section('content')
     <x-interface.info-block>
 
-        <x-forms.checkout :action="route('content.payments.confirm')">
+        <x-forms.checkout :action="route('auth.payments.confirm')">
         </x-forms.checkout>
 
     </x-interface.info-block>

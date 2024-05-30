@@ -1,6 +1,6 @@
 @props(['editionId'])
 
-<form action="{{ route('content.carts.increment', $editionId) }}" method="POST" class="inline">
+<form action="{{ route('auth.carts.increment', $editionId) }}" method="POST" class="inline">
     @csrf
     @method('PUT')
 
