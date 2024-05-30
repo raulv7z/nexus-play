@@ -35,13 +35,13 @@
 
         <!-- Header -->
 
-        <header class="bg-gray-200 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 p-4 h-fit">
+        <header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 p-4 h-fit">
             @yield('header')
         </header>
 
         <!-- Main Content -->
 
-        <main class="overflow-auto h-full bg-gray-100 dark:bg-gray-900">
+        <main class="overflow-auto h-full bg-gray-200 dark:bg-gray-700">
 
             <div class="flex justify-center items-center content-center p-3">
                 <x-blocks.error>
