@@ -1,4 +1,4 @@
-<div class="flex flex-col sm:justify-center items-center pt-10 bg-gray-100 dark:bg-gray-900">
+<div class="flex flex-col sm:justify-center items-center pt-2 bg-gray-100 dark:bg-gray-900">
     
     <div>
         <a href="/">

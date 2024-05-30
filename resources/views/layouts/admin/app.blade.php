@@ -31,19 +31,23 @@
 
     <!-- Rest of board -->
 
-    <div class="flex-1 flex flex-col">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex-1 flex flex-col">
 
         <!-- Header -->
 
-        <header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 p-4 h-fit">
-            @yield('header')
+        <header class="bg-white dark:bg-gray-800 shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                @yield('header')
+            </div>
         </header>
 
         <!-- Main Content -->
 
-        <main class="overflow-auto h-full bg-gray-200 dark:bg-gray-700">
+        <main class="overflow-auto flex-1 flex flex-col p-5">
 
-            <div class="flex justify-center items-center content-center p-3">
+            <!-- Alerts -->
+
+            <div class="max-w-75 mx-auto">
                 <x-blocks.error>
                 </x-blocks.error>
 
@@ -51,7 +55,9 @@
                 </x-blocks.success>
             </div>
 
-            <div>
+            <!-- Dynamic content -->
+            
+            <div class="flex-1">
                 @yield('content')
             </div>
 
