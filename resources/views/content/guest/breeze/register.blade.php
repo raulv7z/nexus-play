@@ -1,5 +1,10 @@
 @extends($getLayout)
 
+@section('header')
+    <x-interface.header-title>
+    </x-interface.header-title>
+@endsection
+
 @section('content')
     <form method="POST" action="{{ route('register') }}">
         @csrf

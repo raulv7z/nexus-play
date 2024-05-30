@@ -24,9 +24,9 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
 
-        @include('layouts.auth.navigation')
+        @include('layouts.guest.navigation')
 
         <header class="bg-white dark:bg-gray-800 shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -39,11 +39,11 @@
 
         <!-- Page Content -->
 
-        <main>
+        <main class="flex-1 flex flex-col p-5">
 
             <!-- Alerts -->
 
-            <div class="max-w-[1720px] mx-auto sm:px-6 lg:px-8 pt-5">
+            <div class="max-w-75 mx-auto">
                 <x-blocks.error>
                 </x-blocks.error>
 
@@ -52,8 +52,8 @@
             </div>
 
             <!-- Dynamic content -->
-
-            <div>
+            
+            <div class="flex-1">
                 @yield('content')
             </div>
 
@@ -64,5 +64,4 @@
     @yield('scripts')
 
 </body>
-
 </html>
