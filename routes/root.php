@@ -50,17 +50,6 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-// Routes for root auto-redirecting
-require __DIR__ . "/root.php";
-
 // Routes for non-authenticated users
-require __DIR__ . "/guest.php";
 
-// Routes for authenticated users
-require __DIR__ . "/auth.php";
-
-// Routes for admins
-require __DIR__ . "/admin.php";
-
-// Routes for API requests
-require __DIR__ . '/api.php';
+Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -5,10 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Edition;
 use App\Models\CartState;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     //
+
+    public function index(Request $request)
+    {
+        if ($request->user() && $request->user()->hasRole('admin')) {
+            return redirect()->route('admin.dashboard');
+        } elseif ($request->user()) {
+            return redirect()->route('user.dashboard');
+        } else {
+            return redirect()->route('welcome');
+        }
+    }
 
     public function dashboard()
     {
