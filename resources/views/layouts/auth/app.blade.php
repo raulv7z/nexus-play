@@ -34,9 +34,6 @@
             </div>
         </header>
 
-        <!-- Page Heading -->
-
-
         <!-- Page Content -->
 
         <main class="flex-1 flex flex-col p-5">
