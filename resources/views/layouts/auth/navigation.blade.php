@@ -14,7 +14,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex">
-                    <x-presets.nav-link :href="route('root.dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-presets.nav-link :href="route('root.dashboard')" :active="request()->routeIs('root.dashboard')">
                         {{ __('Home') }}
                     </x-presets.nav-link>
                 </div>
@@ -23,7 +23,7 @@
                 @foreach ($platformGroups as $group)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
                         <!-- Change links to real routes on web.php, using the route names and parameters -->
-                        <x-presets.nav-link :href="route('root.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') &&
+                        <x-presets.nav-link :href="route('root.platform-groups.show', $group->id)" :active="request()->routeIs('root.platform-groups.show') &&
                             request()->route('id') == $group->id">
                             {{ $group->name }}
                         </x-presets.nav-link>
