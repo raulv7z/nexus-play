@@ -1,4 +1,4 @@
-<div class="h-screen hidden lg:flex">
+<div class="h-screen flex">
 
     {{-- Sidebar --}}
     {{-- bg-gradient-to-b from-[#080826] to-[#141485] --}}
@@ -27,17 +27,20 @@
                     <li>
                         <a href="{{ route('admin.dashboard') }}"
                             class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
-                            {{ __('Inicio') }}
+                            {{ __('Home') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.users.manager') }}"
                             class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
-                            {{ __('Usuarios') }}
+                            {{ __('Users') }}
                         </a>
                     </li>
-                    <li><a href="#" class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
-                            {{ __('Otros...') }}</a>
+                    <li>
+                        <a href="{{ route('admin.videogames.manager') }}"
+                            class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
+                            {{ __('Videogames') }}
+                        </a>
                     </li>
                 </ul>
             </nav>

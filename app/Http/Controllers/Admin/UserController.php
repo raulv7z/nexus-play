@@ -12,12 +12,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::all();
-        return view('content.admin.users.index', compact('users'));
-    }
-
     public function create()
     {
         return view('content.admin.users.create');
@@ -63,7 +57,7 @@ class UserController extends Controller
         $user = User::withTrashed()->findOrFail($id);
 
         if ($user->trashed()) {
-            return redirect()->route('admin.users.manager')->with('error', 'User is already deleted. You have been redirected to manager.');
+            return redirect()->route('admin.users.manager')->with('error', 'User is already deleted. You have    been redirected to manager.');
         }
 
         return view('content.admin.users.delete', compact('user'));

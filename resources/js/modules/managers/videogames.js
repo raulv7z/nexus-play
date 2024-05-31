@@ -23,7 +23,7 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
         // Datatable
         ////////////////
 
-        // All users dynamic table
+        // All models dynamic table
         $.ajax({
             url: requestDatatableUrl,
             method: "GET",
@@ -47,24 +47,24 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
         ///////////
 
         // Users registered on the last 5 days
-        $.ajax({
-            url: requestChartUrl,
-            method: "GET",
-            success: async function (dataRequest) {
-                const [chartSelector, chartOptions, chartData, chartType] =
-                    customizeChart({ data: dataRequest });
+        // $.ajax({
+        //     url: requestChartUrl,
+        //     method: "GET",
+        //     success: async function (dataRequest) {
+        //         const [chartSelector, chartOptions, chartData, chartType] =
+        //             customizeChart({ data: dataRequest });
 
-                await initializeChart({
-                    selector: chartSelector,
-                    options: chartOptions,
-                    data: chartData,
-                    type: chartType,
-                });
-            },
-            error: function (error) {
-                console.error(`Error fetching chart data: ${error}`);
-            },
-        });
+        //         await initializeChart({
+        //             selector: chartSelector,
+        //             options: chartOptions,
+        //             data: chartData,
+        //             type: chartType,
+        //         });
+        //     },
+        //     error: function (error) {
+        //         console.error(`Error fetching chart data: ${error}`);
+        //     },
+        // });
     } catch (error) {
         console.error(error);
     }
@@ -83,13 +83,29 @@ function customizeDataTable({ data }) {
             { type: "text" },
             { type: "text" },
             { type: "text" },
+            { type: "text" },
+            { type: "text" },
             { type: "select", options: ["Si", "No"] },
             { type: null },
         ],
         columns: [
             { data: "id", title: "ID", width: '12%' },
             { data: "name", title: "NOMBRE" },
-            { data: "email", title: "CORREO ELECTRÓNICO" },
+            {
+                data: "iva",
+                title: "IVA",
+                render: (data) => (`${data} %`),
+            },
+            {
+                data: "base_amount",
+                title: "PRECIO BASE",
+                render: (data) => (`${data} €`),
+            },
+            {
+                data: "sale_amount",
+                title: "PRECIO VENTA",
+                render: (data) => (`${data} €`),
+            },
             {
                 data: "deleted_at",
                 title: "BORRADO",
@@ -102,9 +118,9 @@ function customizeDataTable({ data }) {
                 searchable: false,
                 render: function (data, type, row) {
                     const actions = {
-                        viewUrl: "/admin/users/show/:id",
-                        editUrl: "/admin/users/edit/:id",
-                        deleteUrl: "/admin/users/delete/:id",
+                        viewUrl: "/admin/videogames/show/:id",
+                        editUrl: "/admin/videogames/edit/:id",
+                        deleteUrl: "/admin/videogames/delete/:id",
                     };
 
                     return `

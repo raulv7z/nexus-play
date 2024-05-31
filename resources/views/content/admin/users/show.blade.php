@@ -17,16 +17,13 @@
             </x-slot>
 
             <x-slot name="body">
-                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$user->name"
-                    :placeholder="'Write a name here...'" disabled>
+                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$user->name" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :value="$user->email"
-                    :placeholder="'Write an email here...'" disabled>
+                <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :value="$user->email" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'password'" :field="'password'" :label="'Password'" :value="$user->password"
-                    :placeholder="'Write the password here...'" disabled>
+                <x-blocks.form-group :type="'password'" :field="'password'" :label="'Password'" :value="$user->password" disabled>
                 </x-blocks.form-group>
             </x-slot>
 

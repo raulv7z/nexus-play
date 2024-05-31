@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\ManagerController as AdminManagerController;
 use App\Http\Controllers\Admin\CrudController as AdminCrudController;
 use App\Http\Controllers\Admin\ChartController as AdminChartController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\VideogameController as AdminVideogameController;
 use App\Http\Controllers\Admin\PlatformGroupController as AdminPlatformGroupController;
 
 // User controllers
@@ -69,5 +70,22 @@ Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->na
         Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
     });
 
-    
+    Route::prefix('videogames')->name('videogames.')->group(function () {
+        // management
+        Route::get('/', [AdminManagerController::class, 'manageVideogames'])->name('manager');
+
+        // actions
+        Route::get('create', [AdminVideogameController::class, 'create'])->name('create');
+        Route::post('store', [AdminVideogameController::class, 'store'])->name('store');
+        Route::get('show/{videogame}', [AdminVideogameController::class, 'show'])->name('show');
+        Route::get('edit/{videogame}', [AdminVideogameController::class, 'edit'])->name('edit');
+        Route::put('update{videogame}', [AdminVideogameController::class, 'update'])->name('update');
+        Route::get('delete/{videogame}', [AdminVideogameController::class, 'delete'])->name('delete');
+        Route::delete('destroy/{videogame}', [AdminVideogameController::class, 'destroy'])->name('destroy');
+
+        // ajax
+        Route::get('crud', [AdminCrudController::class, 'videogames'])->name('crud');
+        // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+    });
+
 });

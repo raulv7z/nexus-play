@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Videogame;
 use Carbon\Carbon;
 
 class CrudController extends Controller
@@ -20,6 +21,14 @@ class CrudController extends Controller
         abort(404);
     }
 
+    public function videogames(Request $request) {
+
+        if ($request->ajax()) {
+            $videogames = Videogame::withTrashed()->get();
+            return response()->json($videogames);
+        }
     
+        abort(404);
+    }
 
 }

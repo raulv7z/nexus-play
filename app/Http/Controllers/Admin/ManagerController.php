@@ -18,8 +18,14 @@ class ManagerController extends Controller
 
     public function manageUsers()
     {
-        $users = User::all();
+        $users = User::withTrashed()->get();
         return view('content.admin.users.manager', compact('users'));
+    }
+
+    public function manageVideogames()
+    {
+        $videogames = User::withTrashed()->get();
+        return view('content.admin.videogames.manager', compact('videogames'));
     }
 
 }
