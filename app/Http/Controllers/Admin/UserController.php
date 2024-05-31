@@ -58,8 +58,14 @@ class UserController extends Controller
         return redirect()->route('admin.users.manager')->with('success', 'User updated successfully.');
     }
 
-    public function delete(User $user)
+    public function delete($id)
     {
+        $user = User::withTrashed()->findOrFail($id);
+
+        if ($user->trashed()) {
+            return redirect()->route('admin.users.manager')->with('error', 'User is already deleted. You have been redirected to manager.');
+        }
+
         return view('content.admin.users.delete', compact('user'));
     }
 
