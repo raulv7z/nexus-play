@@ -20,7 +20,7 @@ class DashboardController extends Controller
                 'table' => 'users',
                 'description' => 'List of users currently registered',
                 'route' => 'admin.users.manager'
-            ],
+            ],  
         ];
 
         return view('content.admin.dashboard', compact('tablesInfo'));
