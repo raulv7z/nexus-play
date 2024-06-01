@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-
+use App\Models\Edition;
+use App\Models\Platform;
+use App\Models\PlatformGroup;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Videogame;
@@ -13,6 +15,7 @@ class CrudController extends Controller
     //
 
     public function users(Request $request) {
+        
         if ($request->ajax()) {
             $users = User::withTrashed()->get();
             return response()->json($users);
@@ -31,4 +34,31 @@ class CrudController extends Controller
         abort(404);
     }
 
+    public function platformGroups(Request $request) { 
+
+        if ($request->ajax()) {
+            $platforms = PlatformGroup::withTrashed()->get();
+            return response()->json($platforms);
+        }
+    
+        abort(404);
+    }
+
+    public function platforms(Request $request) {
+        if ($request->ajax()) {
+            $platforms = Platform::withTrashed()->with('group')->get();
+
+            return response()->json($platforms);
+        }
+    
+        abort(404);
+    }
+
+    public function editions(Request $request) {
+        if ($request->ajax()) {
+            $editions = Edition::withTrashed()->with(['videogame', 'platform'])->get();
+            return response()->json($editions);
+        }
+        abort(404);
+    }
 }

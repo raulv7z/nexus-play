@@ -14,9 +14,9 @@ class StorePlatformRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:30',
-            'plus' => 'required|numeric',
-            'platform_group_id' => 'nullable|exists:platform_groups,id',
+            'name' => 'required|string|max:30|unique:platforms,name',
+            'plus' => 'required|numeric|min:1|max:100',
+            'platform_group_id' => 'required|exists:platform_groups,id',
         ];
     }
 }

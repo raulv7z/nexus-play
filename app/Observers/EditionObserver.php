@@ -25,6 +25,20 @@ class EditionObserver
     }
 
     /**
+     * Handle the Edition "deleting" event.
+     */
+    public function deleting(Edition $edition): void
+    {
+        foreach($edition->cartEntries as $cartEntry) {
+            $cartEntry->delete();
+        }
+
+        // foreach ($edition->reviews as $review) {
+        //     $review->delete();
+        // }
+    }
+
+    /**
      * Handle the Edition "retrieved" event.
      */
     public function retrieved(Edition $edition): void
@@ -54,6 +68,6 @@ class EditionObserver
             throw new Exception('Cannot calculate amount: Platform or Videogame is missing.');
         }
 
-        $edition->amount = $videogame->sale_amount * (1 + $platform->plus);
+        $edition->amount = $videogame->sale_amount * (1 + ($platform->plus/100));
     }
 }

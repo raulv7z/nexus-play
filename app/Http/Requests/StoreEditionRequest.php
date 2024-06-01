@@ -16,8 +16,7 @@ class StoreEditionRequest extends FormRequest
         return [
             'platform_id' => 'required|exists:platforms,id',
             'videogame_id' => 'required|exists:videogames,id',
-            'amount' => 'required|numeric',
-            'stock' => 'sometimes|numeric|min:0'
+            'stock' => 'required|numeric|min:0'
         ];
     }
 }

@@ -7,10 +7,13 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\PlatformGroup;
 use App\Models\Edition;
+use App\Models\Platform;
 use App\Models\Videogame;
 use App\Observers\CartObserver;
 use App\Observers\EditionObserver;
 use App\Observers\VideogameObserver;
+use App\Observers\PlatformGroupObserver;
+use App\Observers\PlatformObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,6 +45,8 @@ class AppServiceProvider extends ServiceProvider
     protected function registerObservers(): void
     {
         Videogame::observe(VideogameObserver::class);
+        PlatformGroup::observe(PlatformGroupObserver::class);
+        Platform::observe(PlatformObserver::class);
         Edition::observe(EditionObserver::class);
         Cart::observe(CartObserver::class);
     }

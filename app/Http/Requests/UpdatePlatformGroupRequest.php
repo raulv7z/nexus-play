@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePlatformGroupRequest extends FormRequest
 {
@@ -13,8 +14,13 @@ class UpdatePlatformGroupRequest extends FormRequest
 
     public function rules()
     {
+        $platformGroupId = $this->route('platformGroup');
+
         return [
-            'name' => 'sometimes|string|max:30',
+            'name' => [
+                'sometimes', 'string', 'max:30',
+                Rule::unique('platform_groups')->ignore($platformGroupId),
+            ],
         ];
     }
 }

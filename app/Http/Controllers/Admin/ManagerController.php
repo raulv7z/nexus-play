@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\Videogame;
-use App\Models\Edition;
-use App\Models\Platform;
-use App\Models\PlatformGroup;
 use App\Models\User;
+use App\Models\Videogame;
+use App\Models\Platform;
+use App\Models\Edition;
 
 class ManagerController extends Controller
 {
@@ -24,8 +23,26 @@ class ManagerController extends Controller
 
     public function manageVideogames()
     {
-        $videogames = User::withTrashed()->get();
+        $videogames = Videogame::withTrashed()->get();
         return view('content.admin.videogames.manager', compact('videogames'));
+    }
+
+    public function managePlatformGroups()
+    {
+        $platformGroups = Platform::withTrashed()->get();
+        return view('content.admin.platform-groups.manager', compact('platformGroups'));
+    }
+
+    public function managePlatforms()
+    {
+        $platforms = Platform::withTrashed()->get();
+        return view('content.admin.platforms.manager', compact('platforms'));
+    }
+
+    public function manageEditions()
+    {
+        $editions = Edition::withTrashed()->get();
+        return view('content.admin.editions.manager', compact('editions'));
     }
 
 }

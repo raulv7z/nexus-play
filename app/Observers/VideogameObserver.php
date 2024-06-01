@@ -16,6 +16,15 @@ class VideogameObserver
     }
 
     /**
+     * Handle the Videogame "deleting" event.
+     */
+    public function deleting(Videogame $videogame) {
+        foreach ($videogame->editions as $edition) {
+            $edition->delete();
+        }
+    }
+
+    /**
      * Handle the Videogame "updating" event.
      */
     public function updating(Videogame $videogame): void

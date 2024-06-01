@@ -5,6 +5,7 @@
     'value' => null,
     'old' => null,
     'options' => null,
+    'selected' => null,
     'placeholder' => null,
 ])
 
@@ -32,7 +33,7 @@
             {{ $attributes }}>
             @foreach ($options as $optionValue => $optionLabel)
                 <option value="{{ $optionValue }}"
-                    {{ (string) $optionValue === old($field, (string) $old) ? 'selected' : '' }}>
+                    {{ (string) $optionValue === old($field, (string) $selected) ? 'selected' : '' }}>
                     {{ $optionLabel }}
                 </option>
             @endforeach

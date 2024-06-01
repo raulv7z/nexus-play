@@ -18,62 +18,62 @@ class PlatformSeeder extends Seeder
         $platforms = [
             [
                 'name' => 'Steam',
-                'plus' => 0.15,
+                'plus' => 15,
                 'group' => 'PC'
             ],
             [
                 'name' => 'Epic Games',
-                'plus' => 0.10,
+                'plus' => 10,
                 'group' => 'PC'
             ],
             [
                 'name' => 'Rockstar Games',
-                'plus' => 0.20,
+                'plus' => 20,
                 'group' => 'PC'
             ],
             [
                 'name' => 'Play Station 3',
-                'plus' => 0.05,
+                'plus' => 5,
                 'group' => 'Play Station'
             ],
             [
                 'name' => 'Play Station 4',
-                'plus' => 0.07,
+                'plus' => 7,
                 'group' => 'Play Station'
             ],
             [
                 'name' => 'Play Station 5',
-                'plus' => 0.12,
+                'plus' => 12,
                 'group' => 'Play Station'
             ],
             [
                 'name' => 'X Box 360',
-                'plus' => 0.03,
+                'plus' => 3,
                 'group' => 'X Box'
             ],
             [
                 'name' => 'X Box One',
-                'plus' => 0.09,
+                'plus' => 9,
                 'group' => 'X Box'
             ],
             [
                 'name' => 'X Box Series X',
-                'plus' => 0.15,
+                'plus' => 15,
                 'group' => 'X Box'
             ],
             [
                 'name' => 'Nintendo 2DS',
-                'plus' => 0.02,
+                'plus' => 2,
                 'group' => 'Nintendo'
             ],
             [
                 'name' => 'Nintendo 3DS',
-                'plus' => 0.04,
+                'plus' => 4,
                 'group' => 'Nintendo'
             ],
             [
                 'name' => 'Nintendo Switch',
-                'plus' => 0.18,
+                'plus' => 18,
                 'group' => 'Nintendo'
             ]
         ];

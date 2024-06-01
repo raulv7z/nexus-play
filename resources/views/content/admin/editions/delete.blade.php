@@ -1,3 +1,25 @@
+@php
+    $optionsVideogames = [
+        '' => 'Select a videogame',
+    ];
+
+    foreach ($allVideogames as $videogame) {
+        $idKey = $videogame->id;
+        $name = $videogame->name;
+        $optionsVideogames[$idKey] = $name;
+    }
+    
+    $optionsPlatforms = [
+        '' => 'Select a platform',
+    ];
+
+    foreach ($allPlatforms as $platform) {
+        $idKey = $platform->id;
+        $name = $platform->name;
+        $optionsPlatforms[$idKey] = $name;
+    }
+@endphp
+
 @extends($getLayout)
 
 @section('header')
@@ -11,7 +33,7 @@
 @section('content')
     <x-interface.info-block>
 
-        <x-forms.template :method="'DELETE'" :action="route('admin.users.destroy', $user->id)">
+        <x-forms.template :method="'DELETE'" :action="route('admin.editions.destroy', $edition->id)">
             <x-slot name="header">
 
                 <div class="mb-6">
@@ -24,16 +46,16 @@
             </x-slot>
 
             <x-slot name="body">
-                <x-blocks.form-group :type="'text'" :field="'id'" :label="'ID'" :value="$user->id" disabled>
+                <x-blocks.form-group :type="'text'" :field="'id'" :label="'ID'" :value="$edition->id" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$user->name" disabled>
+                <x-blocks.form-group :type="'select'" :field="'videogame_id'" :label="'Videogame'" :options="$optionsVideogames" :selected="$edition->videogame->id" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :value="$user->email" disabled>
+                <x-blocks.form-group :type="'select'" :field="'platform_id'" :label="'Platform'" :options="$optionsPlatforms" :selected="$edition->platform->id" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'password'" :field="'password'" :label="'Password'" :value="$user->password" disabled>
+                <x-blocks.form-group :type="'number'" :field="'stock'" :label="'Stock'" :value="$edition->stock" disabled>
                 </x-blocks.form-group>
             </x-slot>
 
@@ -45,8 +67,6 @@
                 </x-buttons.submit>
             </x-slot>
         </x-forms.template>
-
-        {{-- <x-forms.delete :action="$action" :model="$user" :fields="$fields"/> --}}
 
     </x-interface.info-block>
 @endsection

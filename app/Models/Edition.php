@@ -11,6 +11,7 @@ class Edition extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['platform_id', 'videogame_id', 'amount', 'stock'];
+    protected $appends = ['platform_name', 'videogame_name'];
 
     public function videogame()
     {
@@ -41,5 +42,17 @@ class Edition extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    // Accesor para obtener el nombre del grupo de plataformas
+    public function getPlatformNameAttribute()
+    {
+        return $this->platform ? $this->platform->name : 'N/A';
+    }
+
+    // Accesor para obtener el nombre del grupo de plataformas
+    public function getVideogameNameAttribute()
+    {
+        return $this->videogame ? $this->videogame->name : 'N/A';
     }
 }

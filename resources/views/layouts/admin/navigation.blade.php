@@ -48,6 +48,24 @@
                             {{ __('Videogames') }}
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.platform-groups.manager') }}"
+                            class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
+                            {{ __('Platform Groups') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.platforms.manager') }}"
+                            class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
+                            {{ __('Platforms') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.editions.manager') }}"
+                            class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
+                            {{ __('Editions') }}
+                        </a>
+                    </li>
                 </ul>
             </nav>
 

@@ -31,7 +31,9 @@ use App\Http\Controllers\Admin\CrudController as AdminCrudController;
 use App\Http\Controllers\Admin\ChartController as AdminChartController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\VideogameController as AdminVideogameController;
+use App\Http\Controllers\Admin\PlatformController as AdminPlatformController;
 use App\Http\Controllers\Admin\PlatformGroupController as AdminPlatformGroupController;
+use App\Http\Controllers\Admin\EditionController as AdminEditionController;
 
 // User controllers
 
@@ -88,4 +90,57 @@ Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->na
         // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
     });
 
+    Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
+        // management
+        Route::get('/', [AdminManagerController::class, 'managePlatformGroups'])->name('manager');
+
+        // actions
+        Route::get('create', [AdminPlatformGroupController::class, 'create'])->name('create');
+        Route::post('store', [AdminPlatformGroupController::class, 'store'])->name('store');
+        Route::get('show/{platformGroup}', [AdminPlatformGroupController::class, 'show'])->name('show');
+        Route::get('edit/{platformGroup}', [AdminPlatformGroupController::class, 'edit'])->name('edit');
+        Route::put('update{platformGroup}', [AdminPlatformGroupController::class, 'update'])->name('update');
+        Route::get('delete/{platformGroup}', [AdminPlatformGroupController::class, 'delete'])->name('delete');
+        Route::delete('destroy/{platformGroup}', [AdminPlatformGroupController::class, 'destroy'])->name('destroy');
+
+        // ajax
+        Route::get('crud', [AdminCrudController::class, 'platformGroups'])->name('crud');
+        // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+    });
+
+    Route::prefix('platforms')->name('platforms.')->group(function () {
+        // management
+        Route::get('/', [AdminManagerController::class, 'managePlatforms'])->name('manager');
+
+        // actions
+        Route::get('create', [AdminPlatformController::class, 'create'])->name('create');
+        Route::post('store', [AdminPlatformController::class, 'store'])->name('store');
+        Route::get('show/{platform}', [AdminPlatformController::class, 'show'])->name('show');
+        Route::get('edit/{platform}', [AdminPlatformController::class, 'edit'])->name('edit');
+        Route::put('update{platform}', [AdminPlatformController::class, 'update'])->name('update');
+        Route::get('delete/{platform}', [AdminPlatformController::class, 'delete'])->name('delete');
+        Route::delete('destroy/{platform}', [AdminPlatformController::class, 'destroy'])->name('destroy');
+
+        // ajax
+        Route::get('crud', [AdminCrudController::class, 'platforms'])->name('crud');
+        // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+    });
+
+    Route::prefix('editions')->name('editions.')->group(function () {
+        // management
+        Route::get('/', [AdminManagerController::class, 'manageEditions'])->name('manager');
+
+        // actions
+        Route::get('create', [AdminEditionController::class, 'create'])->name('create');
+        Route::post('store', [AdminEditionController::class, 'store'])->name('store');
+        Route::get('show/{edition}', [AdminEditionController::class, 'show'])->name('show');
+        Route::get('edit/{edition}', [AdminEditionController::class, 'edit'])->name('edit');
+        Route::put('update{edition}', [AdminEditionController::class, 'update'])->name('update');
+        Route::get('delete/{edition}', [AdminEditionController::class, 'delete'])->name('delete');
+        Route::delete('destroy/{edition}', [AdminEditionController::class, 'destroy'])->name('destroy');
+
+        // ajax
+        Route::get('crud', [AdminCrudController::class, 'editions'])->name('crud');
+        // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+    });
 });

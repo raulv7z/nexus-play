@@ -11,7 +11,7 @@
 @section('content')
     <x-interface.info-block>
 
-        <x-forms.template :method="'DELETE'" :action="route('admin.users.destroy', $user->id)">
+        <x-forms.template :method="'DELETE'" :action="route('admin.platform-groups.destroy', $platformGroup->id)">
             <x-slot name="header">
 
                 <div class="mb-6">
@@ -24,16 +24,11 @@
             </x-slot>
 
             <x-slot name="body">
-                <x-blocks.form-group :type="'text'" :field="'id'" :label="'ID'" :value="$user->id" disabled>
+                <x-blocks.form-group :type="'text'" :field="'id'" :label="'ID'" :value="$platformGroup->id" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$user->name" disabled>
-                </x-blocks.form-group>
-
-                <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :value="$user->email" disabled>
-                </x-blocks.form-group>
-
-                <x-blocks.form-group :type="'password'" :field="'password'" :label="'Password'" :value="$user->password" disabled>
+                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$platformGroup->name"
+                    :placeholder="'Write a name here...'" disabled>
                 </x-blocks.form-group>
             </x-slot>
 
@@ -45,8 +40,6 @@
                 </x-buttons.submit>
             </x-slot>
         </x-forms.template>
-
-        {{-- <x-forms.delete :action="$action" :model="$user" :fields="$fields"/> --}}
 
     </x-interface.info-block>
 @endsection

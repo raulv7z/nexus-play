@@ -5,19 +5,18 @@ namespace App\Observers;
 use App\Models\Cart;
 use App\Models\Invoice;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 class CartObserver
 {
-    /**
-     * Handle the Cart "retrieved" event.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return void
-     */
     public function retrieved(Cart $cart)
     {
         $this->updateCartAmounts($cart);
+    }
+
+    public function deleting(Cart $cart) {
+        foreach ($cart->entries as $entry) {
+            $entry->delete();
+        }
     }
 
     public function deleted(Cart $cart)

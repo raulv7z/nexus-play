@@ -17,6 +17,9 @@
             </x-slot>
 
             <x-slot name="body">
+                <x-blocks.form-group :type="'file'" :field="'front_page'" :label="'Front Page'">
+                </x-blocks.form-group>
+                
                 <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :placeholder="'Write a name here...'">
                 </x-blocks.form-group>
 
@@ -33,9 +36,6 @@
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'number'" :field="'base_amount'" :label="'Base Amount'" :placeholder="'Write the base amount here...'">
-                </x-blocks.form-group>
-
-                <x-blocks.form-group :type="'file'" :field="'front_page'" :label="'Front Page'">
                 </x-blocks.form-group>
             </x-slot>
 
