@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 60);
             $table->string('description', 120);
             $table->string('front_page', 60)->default('default-fpage.png');
-            $table->string('developer', 30);
+            $table->string('distributor', 30);
             $table->string('genre', 30);
             $table->float('iva')->default(21);
             $table->decimal('base_amount', 10, 2);

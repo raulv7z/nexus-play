@@ -12,7 +12,9 @@
     <input type="hidden" name="{{ $field }}" id="{{ $field }}" value="{{ $value ?: old($field, $old) }}"
         {{ $attributes }}>
 @elseif($type === 'custom')
-    {{ $slot }}
+    <div class="form-group">
+        {{ $slot }}
+    </div>
 @elseif($type === 'textarea')
     <div class="form-group">
         <label for="{{ $field }}">{{ $label }}</label>
@@ -58,7 +60,7 @@
     </div>
 @endif
 
-@if ($type !== 'hidden')
+@if ($type !== 'hidden' && $type !== 'custom')
     @error($field)
         <p class="mt-2 text-sm text-red-600 dark:text-red-400">
             {{ $message }}

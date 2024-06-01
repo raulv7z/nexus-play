@@ -46,22 +46,5 @@
         <p class="text-base font-normal text-gray-500 dark:text-gray-400">
             {{  $review->comment }}
         </p>
-
-        {{-- !not implemented --}}
-        {{-- <div class="flex items-center gap-4">
-            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Was it helpful to you?</p>
-            <div class="flex items-center">
-                <input id="reviews-radio-5" type="radio" value="" name="reviews-radio-3"
-                    class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
-                <label for="reviews-radio-5" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"> Yes: 0
-                </label>
-            </div>
-            <div class="flex items-center">
-                <input id="reviews-radio-6" type="radio" value="" name="reviews-radio-3"
-                    class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
-                <label for="reviews-radio-6" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No: 0
-                </label>
-            </div>
-        </div> --}}
     </div>
 </div>

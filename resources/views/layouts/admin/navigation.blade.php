@@ -25,9 +25,15 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="{{ route('admin.dashboard') }}"
+                        <a href="{{ route('root.dashboard') }}"
                             class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
                             {{ __('Home') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
+                            {{ __('Dashboard') }}
                         </a>
                     </li>
                     <li>
@@ -45,7 +51,7 @@
                 </ul>
             </nav>
 
-            <x-interface.hr-xl />
+            <x-statics.hr-xl />
 
             <ul>
                 <li class="my-2">
@@ -95,9 +101,9 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
-                        <x-buttons.standard>
+                        <x-statics.submit-logout>
                             {{ __('Log Out') }}
-                        </x-buttons.standard>
+                        </x-statics.submit-logout>
                     </form>
                 </li>
             </ul>

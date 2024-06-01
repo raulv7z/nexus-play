@@ -10,7 +10,7 @@ class Videogame extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'description', 'front_page', 'developer', 'genre', 'iva', 'base_amount', 'sale_amount'];
+    protected $fillable = ['name', 'description', 'front_page', 'distributor', 'genre', 'iva', 'base_amount', 'sale_amount'];
 
     public function editions()
     {

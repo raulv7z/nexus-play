@@ -16,10 +16,11 @@ class StoreVideogameRequest extends FormRequest
         return [
             'name' => 'required|string|max:60|unique:videogames,name',
             'description' => 'required|string|max:120',
-            'front_page' => 'sometimes|string|max:60',  // Optional with a default value
-            'developer' => 'required|string|max:30',
+            'front_page' => 'required|mimes:jpeg,png,bmp,gif,svg,webp|max:4096',
+            'distributor' => 'required|string|max:30',
             'genre' => 'required|string|max:30',
-            'base_amount' => 'required|numeric|min:0'
+            'iva' => 'required|numeric|min:0|max:100',
+            'base_amount' => 'required|numeric|min:0|max:200',
         ];
     }
 }

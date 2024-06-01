@@ -31,7 +31,7 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
                 const [tableSelector, tableOptions, tableData, tableStyles] =
                     customizeDataTable({ data: dataRequest });
 
-                await initializeDataTable({
+                const obDataTable = await initializeDataTable({
                     selector: tableSelector,
                     options: tableOptions,
                     data: tableData,
@@ -85,12 +85,14 @@ function customizeDataTable({ data }) {
             { type: "text" },
             { type: "text" },
             { type: "text" },
+            { type: "text" },
             { type: "select", options: ["Si", "No"] },
             { type: null },
         ],
         columns: [
             { data: "id", title: "ID", width: '12%' },
             { data: "name", title: "NOMBRE" },
+            { data: "distributor", title: "DISTRIBUIDOR" },
             {
                 data: "iva",
                 title: "IVA",
@@ -163,8 +165,10 @@ async function initializeDataTable({ selector, options, data, styles }) {
         const tableManager = new DataTableManager(selector);
         tableManager.init(options, styles);
         tableManager.loadData(data);
+        return tableManager;
     } catch (error) {
         console.error(error);
+        return false;
     }
 }
 
