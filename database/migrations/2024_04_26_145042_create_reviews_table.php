@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('comment', 255);
             $table->boolean('verified')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

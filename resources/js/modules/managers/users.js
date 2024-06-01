@@ -31,7 +31,7 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
                 const [tableSelector, tableOptions, tableData, tableStyles] =
                     customizeDataTable({ data: dataRequest });
 
-                await initializeDataTable({
+                const obDataTable = await initializeDataTable({
                     selector: tableSelector,
                     options: tableOptions,
                     data: tableData,
@@ -54,7 +54,7 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
                 const [chartSelector, chartOptions, chartData, chartType] =
                     customizeChart({ data: dataRequest });
 
-                await initializeChart({
+                const obChart = initializeChart({
                     selector: chartSelector,
                     options: chartOptions,
                     data: chartData,
@@ -147,8 +147,10 @@ async function initializeDataTable({ selector, options, data, styles }) {
         const tableManager = new DataTableManager(selector);
         tableManager.init(options, styles);
         tableManager.loadData(data);
+        return tableManager;
     } catch (error) {
         console.error(error);
+        return false;
     }
 }
 
@@ -251,8 +253,10 @@ async function initializeChart({ selector, options, data, type }) {
     try {
         const chartManager = new ChartManager(selector);
         chartManager.init(options, data, type);
+        return chartManager;
     } catch (error) {
         console.error(error);
+        return false;
     }
 }
 
