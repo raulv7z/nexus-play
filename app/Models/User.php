@@ -84,17 +84,10 @@ class User extends Authenticatable
         }
 
         return false;
+    }
 
-        // $carts = $this->carts()->withTrashed()->get();
-
-        // foreach($carts as $cart) {
-        //     foreach($cart->entries as $entry) {
-        //         if ($entry->edition->id == $editionId) {
-        //             return true;
-        //         }
-        //     }
-        // }
-
-        // return false;
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
     }
 }

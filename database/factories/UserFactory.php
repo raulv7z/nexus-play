@@ -24,8 +24,8 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        // Establecer una fecha de creación aleatoria entre hace 4 días y hoy
-        $createdAt = Carbon::today()->subDays(rand(0, 4));
+        // Establecer una fecha de creación aleatoria entre hace 29 días y hoy (30 días total)
+        $createdAt = Carbon::today()->subDays(rand(0, 29));
 
         return [
             'name' => fake()->name(),

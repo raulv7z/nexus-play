@@ -87,7 +87,7 @@ Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->na
 
         // ajax
         Route::get('crud', [AdminCrudController::class, 'videogames'])->name('crud');
-        // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+        Route::get('chart', [AdminChartController::class, 'videogamesEditionsCount'])->name('chart');
     });
 
     Route::prefix('platform-groups')->name('platform-groups.')->group(function () {

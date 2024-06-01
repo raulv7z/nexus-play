@@ -46,25 +46,25 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
         // Charts
         ///////////
 
-        // Users registered on the last 5 days
-        // $.ajax({
-        //     url: requestChartUrl,
-        //     method: "GET",
-        //     success: async function (dataRequest) {
-        //         const [chartSelector, chartOptions, chartData, chartType] =
-        //             customizeChart({ data: dataRequest });
+        // Videogames-Editions count
+        $.ajax({
+            url: requestChartUrl,
+            method: "GET",
+            success: async function (dataRequest) {
+                const [chartSelector, chartOptions, chartData, chartType] =
+                    customizeChart({ data: dataRequest });
 
-        //         await initializeChart({
-        //             selector: chartSelector,
-        //             options: chartOptions,
-        //             data: chartData,
-        //             type: chartType,
-        //         });
-        //     },
-        //     error: function (error) {
-        //         console.error(`Error fetching chart data: ${error}`);
-        //     },
-        // });
+                await initializeChart({
+                    selector: chartSelector,
+                    options: chartOptions,
+                    data: chartData,
+                    type: chartType,
+                });
+            },
+            error: function (error) {
+                console.error(`Error fetching chart data: ${error}`);
+            },
+        });
     } catch (error) {
         console.error(error);
     }
@@ -90,23 +90,23 @@ function customizeDataTable({ data }) {
             { type: null },
         ],
         columns: [
-            { data: "id", title: "ID", width: '12%' },
+            { data: "id", title: "ID", width: "12%" },
             { data: "name", title: "NOMBRE" },
             { data: "distributor", title: "DISTRIBUIDOR" },
             {
                 data: "iva",
                 title: "IVA",
-                render: (data) => (`${data} %`),
+                render: (data) => `${data} %`,
             },
             {
                 data: "base_amount",
                 title: "PRECIO BASE",
-                render: (data) => (`${data} €`),
+                render: (data) => `${data} €`,
             },
             {
                 data: "sale_amount",
                 title: "PRECIO VENTA",
-                render: (data) => (`${data} €`),
+                render: (data) => `${data} €`,
             },
             {
                 data: "deleted_at",
@@ -173,96 +173,94 @@ async function initializeDataTable({ selector, options, data, styles }) {
 }
 
 function customizeChart({ data }) {
-    const chartSelector = "#chart-users";
+    const chartSelector = "#chart-videogames";
 
-    const chartOptions = (() => {
-        const textColor = "#a5a5a5";
-        const gridColor = "#a5a5a5";
+    const textColor = "#a5a5a5";
+    const gridColor = "#a5a5a5";
 
-        return {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: gridColor,
-                    },
-                    ticks: {
-                        color: textColor,
-                        font: {
-                            size: 12,
-                        },
-                    },
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: gridColor,
                 },
-                x: {
-                    grid: {
-                        color: gridColor,
-                    },
-                    ticks: {
-                        color: textColor,
-                        font: {
-                            size: 12,
-                        },
-                    },
-                },
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: "top",
-                    labels: {
-                        color: textColor,
-                        font: {
-                            size: 16,
-                        },
+                ticks: {
+                    color: textColor,
+                    font: {
+                        size: 12,
                     },
                 },
                 title: {
                     display: true,
-                    text: "Usuarios registrados por día",
+                    text: "Número de Ediciones",
                     color: textColor,
                     font: {
-                        size: 24,
-                    },
-                },
-                tooltip: {
-                    backgroundColor: "rgba(0, 0, 0, 0.8)",
-                    titleColor: "#fff",
-                    bodyColor: "#fff",
-                    callbacks: {
-                        label: function (tooltipItem) {
-                            return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
-                        },
+                        size: 16,
                     },
                 },
             },
-        };
-    })();
-
-    const chartData = (() => {
-        const colors = data.map((item, index) => {
-            const hue = ((360 * index) / data.length) % 360;
-            return `hsl(${hue}, 70%, 50%)`; // Saturación reducida para un aspecto más suave
-        });
-
-        return {
-            labels: data.map((item) => item.date),
-            datasets: [
-                {
-                    label: "Número de Registros",
-                    data: data.map((item) => item.count),
-                    fill: false,
-                    borderColor: colors,
-                    backgroundColor: colors,
-                    tension: 0.3, // Reducir la tensión para una curva más suave
-                    pointRadius: 3, // Tamaño de los puntos en la línea
+            x: {
+                grid: {
+                    color: gridColor,
                 },
-            ],
-        };
-    })();
+                ticks: {
+                    color: textColor,
+                    font: {
+                        size: 12,
+                    },
+                },
+                title: {
+                    display: true,
+                    text: "Videojuegos",
+                    color: textColor,
+                    font: {
+                        size: 16,
+                    },
+                },
+            },
+        },
+        plugins: {
+            legend: {
+                display: false,
+            },
+            title: {
+                display: true,
+                text: "Número de Ediciones por Videojuego",
+                color: textColor,
+                font: {
+                    size: 24,
+                },
+            },
+            tooltip: {
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                titleColor: "#fff",
+                bodyColor: "#fff",
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                    },
+                },
+            },
+        },
+    };
 
-    const chartType = "doughnut";
+    const chartData = {
+        labels: data.map((item) => item.name),
+        datasets: [
+            {
+                label: "Número de Ediciones",
+                data: data.map((item) => item.editions_count),
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const chartType = "bar";
 
     return [chartSelector, chartOptions, chartData, chartType];
 }

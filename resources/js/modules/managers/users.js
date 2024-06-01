@@ -83,13 +83,15 @@ function customizeDataTable({ data }) {
             { type: "text" },
             { type: "text" },
             { type: "text" },
+            { type: "text" },
             { type: "select", options: ["Si", "No"] },
             { type: null },
         ],
         columns: [
-            { data: "id", title: "ID", width: '12%' },
+            { data: "id", title: "ID", width: "12%" },
             { data: "name", title: "NOMBRE" },
             { data: "email", title: "CORREO ELECTRÓNICO" },
+            { data: "created_at", title: "FECHA REGISTRO" },
             {
                 data: "deleted_at",
                 title: "BORRADO",
@@ -191,8 +193,8 @@ function customizeChart({ data }) {
             },
             plugins: {
                 legend: {
-                    display: true,
-                    position: "top",
+                    display: false,
+                    // position: "top",
                     labels: {
                         color: textColor,
                         font: {
@@ -202,7 +204,7 @@ function customizeChart({ data }) {
                 },
                 title: {
                     display: true,
-                    text: "Usuarios registrados por día",
+                    text: "Usuarios registrados por día (últimos 30 días)",
                     color: textColor,
                     font: {
                         size: 24,
@@ -244,7 +246,7 @@ function customizeChart({ data }) {
         };
     })();
 
-    const chartType = "doughnut";
+    const chartType = "line";
 
     return [chartSelector, chartOptions, chartData, chartType];
 }

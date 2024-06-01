@@ -34,9 +34,9 @@
 
     <x-interface.info-block>
 
-        {{-- <x-graphs.chart :chartId="'chart-videogames'" :url="route('admin.videogames.chart')">
+        <x-graphs.chart :chartId="'chart-videogames'" :url="route('admin.videogames.chart')">
 
-        </x-graphs.chart> --}}
+        </x-graphs.chart>
 
     </x-interface.info-block>
 @endsection
