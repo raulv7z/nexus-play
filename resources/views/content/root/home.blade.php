@@ -40,14 +40,14 @@
     {{-- All editions --}}
 
     <x-interface.hidden-block>
-        <x-interface.title :title="'All editions'">
+        <x-interface.title :title="'Some reviews'">
         </x-interface.title>
     </x-interface.hidden-block>
 
     <x-interface.info-block>
 
-        <x-sections.game-section :editions="$editionsAll">
-        </x-sections.game-section>
+        <x-sections.review-section :reviews="$someReviews">
+        </x-sections.review-section>
 
     </x-interface.info-block>
 @endsection

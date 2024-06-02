@@ -21,7 +21,7 @@
             <!-- Info Section -->
             <div class="w-full py-10 xl:py-0 flex flex-col items-center justify-center">
 
-                <h2 class="text-5xl font-bold text-[#4949de] dark:text-[#938ef5]">{{ $edition->videogame->name }}</h2>
+                <h2 class="text-xl 2xl:text-2xl font-bold text-[#4949de] dark:text-[#938ef5]">{{ $edition->videogame->name }}</h2>
                 <p class="text-md text-gray-600 dark:text-gray-300">{{ $edition->platform->name }}</p>
 
                 <div class="w-fit flex content-center items-center justify-center mt-2 py-1">

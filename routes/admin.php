@@ -48,7 +48,7 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['role:admin', 'breadcrumbs', 'layouts', 'lang'])->prefix('admin')->name('admin.')->group(function () {
 
     // dashboard
     Route::get('/', [RootDashboardController::class, 'admin'])->name('dashboard');
@@ -105,7 +105,7 @@ Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->na
 
         // ajax
         Route::get('crud', [AdminCrudController::class, 'platformGroups'])->name('crud');
-        // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+        Route::get('chart', [AdminChartController::class, 'platformGroupSales'])->name('chart');
     });
 
     Route::prefix('platforms')->name('platforms.')->group(function () {
@@ -123,7 +123,7 @@ Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->na
 
         // ajax
         Route::get('crud', [AdminCrudController::class, 'platforms'])->name('crud');
-        // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+        Route::get('chart', [AdminChartController::class, 'platformsEditionsCount'])->name('chart');
     });
 
     Route::prefix('editions')->name('editions.')->group(function () {
@@ -141,6 +141,6 @@ Route::middleware(['role:admin', 'breadcrumbs', 'layouts'])->prefix('admin')->na
 
         // ajax
         Route::get('crud', [AdminCrudController::class, 'editions'])->name('crud');
-        // Route::get('chart', [AdminChartController::class, 'usersRegistrationByDate'])->name('chart');
+        Route::get('chart', [AdminChartController::class, 'editionsBestSeller'])->name('chart');
     });
 });

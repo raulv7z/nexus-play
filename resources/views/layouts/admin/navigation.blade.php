@@ -8,7 +8,7 @@
         <div class="flex flex-col justify-center items-start content-center p-4">
 
             <div id="logo-icon" class="h-12 w-12">
-                <a href="{{ route('root.dashboard') }}">
+                <a href="{{ route('admin.dashboard') }}">
                     <x-presets.white-application-logo />
                 </a>
             </div>
@@ -25,15 +25,9 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="{{ route('root.dashboard') }}"
-                            class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
-                            {{ __('Home') }}
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ route('admin.dashboard') }}"
                             class="block py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
-                            {{ __('Dashboard') }}
+                            {{ __('Home') }}
                         </a>
                     </li>
                     <li>

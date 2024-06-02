@@ -45,7 +45,7 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-Route::middleware(['auth', 'breadcrumbs', 'layouts'])->group(function () {
+Route::middleware(['auth', 'breadcrumbs', 'layouts', 'lang'])->group(function () {
 
     // Breeze routes
 

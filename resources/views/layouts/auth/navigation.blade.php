@@ -97,12 +97,22 @@
 
                     <x-slot name="content">
                         <!-- Options -->
-                        <x-presets.dropdown-link>
-                            EN
-                        </x-presets.dropdown-link>
-                        <x-presets.dropdown-link>
-                            ES
-                        </x-presets.dropdown-link>
+                        <form action="{{ route('root.lang.change') }}" method="post"
+                            class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
+                            @csrf
+                            <input type="hidden" name="locale" value="en">
+                            <button type="submit" class="w-full h-full text-left px-4 py-2">
+                                {{ __('English') }}
+                            </button>
+                        </form>
+                        <form action="{{ route('root.lang.change') }}" method="post"
+                            class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
+                            @csrf
+                            <input type="hidden" name="locale" value="es">
+                            <button type="submit" class="w-full h-full text-left px-4 py-2">
+                                {{ __('Spanish') }}
+                            </button>
+                        </form>
                     </x-slot>
                 </x-presets.dropdown>
 
@@ -147,15 +157,9 @@
 
                     <div id="cart-icon-link">
                         {{-- rendered on js --}}
-                        @include('partials.carts.icon-link', ['quantity'=>0])
+                        @include('partials.carts.icon-link', ['quantity' => 0])
                     </div>
-                    {{-- @role('admin')
-                        <!-- Admin link -->
-                        <a href="{{ route('admin.dashboard') }}" :active="request() - > routeIs('admin.dashboard')"
-                            class="ml-4">
-                            <x-interface.admin-icon />
-                        </a>
-                    @endrole --}}
+
                 </div>
 
             </div>
@@ -179,7 +183,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden lg:hidden">
         <div class="pt-1 pb-1 space-y-1">
-            <x-presets.responsive-nav-link :href="route('root.dashboard')" :active="request()->routeIs('dashboard')">
+            <x-presets.responsive-nav-link :href="route('root.dashboard')" :active="request()->routeIs('root.dashboard')">
                 {{ __('Home') }}
             </x-presets.responsive-nav-link>
         </div>
@@ -188,8 +192,7 @@
         @foreach ($platformGroups as $group)
             <div class="pt-1 pb-1 space-y-1">
 
-                <!-- //todo change links to real routes on web.php, same with :active -->
-                <x-presets.responsive-nav-link :href="route('root.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') && request()->route('id') == $group->id">
+                <x-presets.responsive-nav-link :href="route('root.platform-groups.show', $group->id)" :active="request()->routeIs('root.platform-groups.show') && request()->route('id') == $group->id">
                     {{ $group->name }}
                 </x-presets.responsive-nav-link>
             </div>
@@ -251,17 +254,33 @@
 
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
+                <div class="font-medium text-base text-gray-800 dark:text-gray-200">
+                    {{ strtoupper(App()->getLocale()) }}</div>
                 <div class="font-medium text-sm text-gray-500">
                     {{ __('Choose language') }}
                 </div>
             </div>
 
-            <x-presets.responsive-nav-link>
-                <p>ES</p>
-            </x-presets.responsive-nav-link>
-            <x-presets.responsive-nav-link>
-                <p>EN</p>
-            </x-presets.responsive-nav-link>
+            <!-- Options -->
+            <div class="mt-3 space-y-1">
+                <form action="{{ route('root.lang.change') }}" method="post"
+                    class='block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out'>
+                    @csrf
+                    <input type="hidden" name="locale" value="en">
+                    <button type="submit" class="w-full h-full text-left">
+                        {{ __('English') }}
+                    </button>
+                </form>
+                <form action="{{ route('root.lang.change') }}" method="post"
+                    class='block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out'>
+                    @csrf
+                    <input type="hidden" name="locale" value="es">
+                    <button type="submit" class="w-full h-full text-left">
+                        {{ __('Spanish') }}
+                    </button>
+                </form>
+            </div>
+
         </div>
 
         <!-- Responsive Settings Options -->

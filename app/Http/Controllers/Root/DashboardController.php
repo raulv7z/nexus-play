@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Edition;
 use App\Models\CartState;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -21,6 +22,30 @@ class DashboardController extends Controller
                 'description' => 'List of users currently registered',
                 'route' => 'admin.users.manager'
             ],  
+            [
+                'name' => 'Videogames',
+                'table' => 'videogames',
+                'description' => 'List of games currently registered',
+                'route' => 'admin.videogames.manager'
+            ],  
+            [
+                'name' => 'Platform Groups',
+                'table' => 'platform_groups',
+                'description' => 'List of platform groups currently registered',
+                'route' => 'admin.platform-groups.manager'
+            ],  
+            [
+                'name' => 'Platforms',
+                'table' => 'platforms',
+                'description' => 'List of platforms currently registered',
+                'route' => 'admin.platforms.manager'
+            ],  
+            [
+                'name' => 'Editions',
+                'table' => 'editions',
+                'description' => 'List of editions currently registered',
+                'route' => 'admin.editions.manager'
+            ],  
         ];
 
         return view('content.admin.dashboard', compact('tablesInfo'));
@@ -28,7 +53,6 @@ class DashboardController extends Controller
 
     public function root()
     {
-        $editionsAll = Edition::inRandomOrder()->get();
         $editionsMostRated = Edition::orderBy('rating', 'desc')->take(6)->get();
 
         // Obtener el id del estado "Completed"
@@ -45,6 +69,8 @@ class DashboardController extends Controller
             ->take(6)
             ->get();
 
-        return view('content.root.home', compact('editionsAll', 'editionsMostRated', 'editionsBestSeller'));
+        $someReviews = Review::inRandomOrder()->take(6)->get();
+
+        return view('content.root.home', compact('editionsMostRated', 'editionsBestSeller', 'someReviews'));
     }
 }

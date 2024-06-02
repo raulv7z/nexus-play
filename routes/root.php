@@ -10,6 +10,7 @@ use App\Http\Controllers\Root\DashboardController as RootDashboardController;
 use App\Http\Controllers\Root\RenderController as RootRenderController;
 use App\Http\Controllers\Root\EditionController as RootEditionController;
 use App\Http\Controllers\Root\PlatformGroupController as RootPlatformGroupController;
+use App\Http\Controllers\Root\LanguageController as RootLanguageController;
 
 // Breeze controllers
 
@@ -48,9 +49,13 @@ use Illuminate\Support\Facades\Route;
 // Auto Redirect
 Route::get('/', [RootHomeController::class, 'index'])->name('home');
 
-Route::middleware(['breadcrumbs', 'layouts'])->prefix('home')->name('root.')->group(function () {
+Route::middleware(['breadcrumbs', 'layouts', 'lang'])->prefix('home')->name('root.')->group(function () {
     Route::get('/', [RootDashboardController::class, 'root'])->name('dashboard');
-
+    
+    Route::prefix('lang')->name('lang.')->group(function () {
+        Route::post('/change', [RootLanguageController::class, 'changeLanguage'])->name('change');
+    });
+    
     Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
         Route::get('show/{id}', [RootPlatformGroupController::class, 'show'])->name('show');
         Route::get('filter-editions', [RootPlatformGroupController::class, 'renderFilteredEditions'])->name('filter-editions');

@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'layouts' => \App\Http\Middleware\SetLayoutMiddleware::class,
             'breadcrumbs' => \App\Http\Middleware\BreadcrumbsMiddleware::class,
+            'lang' => \App\Http\Middleware\SetLanguageMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

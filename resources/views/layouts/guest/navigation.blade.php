@@ -97,11 +97,51 @@
 
                     <x-slot name="content">
                         <!-- Options -->
-                        <x-presets.dropdown-link>
-                            EN
+                        <form action="{{ route('root.lang.change') }}" method="post" class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
+                            @csrf
+                            <input type="hidden" name="locale" value="en">
+                            <button type="submit" class="w-full h-full text-left px-4 py-2">
+                                {{ __('English') }}
+                            </button>
+                        </form>
+                        <form action="{{ route('root.lang.change') }}" method="post" class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
+                            @csrf
+                            <input type="hidden" name="locale" value="es">
+                            <button type="submit" class="w-full h-full text-left px-4 py-2">
+                                {{ __('Spanish') }}
+                            </button>
+                        </form>
+                    </x-slot>
+                </x-presets.dropdown>
+
+                <!-- Profile Dropdown -->
+                <x-presets.dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                            <div>
+                                {{ __('Access here') }}
+                            </div>
+
+                            <div class="ms-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <x-presets.dropdown-link :href="route('login')">
+                            {{ __('Log In') }}
                         </x-presets.dropdown-link>
-                        <x-presets.dropdown-link>
-                            ES
+
+                        <!-- Authentication -->
+                        <x-presets.dropdown-link :href="route('register')">
+                            {{ __('Register') }}
                         </x-presets.dropdown-link>
                     </x-slot>
                 </x-presets.dropdown>
@@ -111,7 +151,7 @@
 
                     <div id="cart-icon-link">
                         {{-- rendered on js --}}
-                        @include('partials.carts.icon-link', ['quantity'=>0])
+                        @include('partials.carts.icon-link', ['quantity' => 0])
                     </div>
                 </div>
 
@@ -136,7 +176,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden lg:hidden">
         <div class="pt-1 pb-1 space-y-1">
-            <x-presets.responsive-nav-link :href="route('root.dashboard')" :active="request()->routeIs('dashboard')">
+            <x-presets.responsive-nav-link :href="route('root.dashboard')" :active="request()->routeIs('root.dashboard')">
                 {{ __('Home') }}
             </x-presets.responsive-nav-link>
         </div>
@@ -145,8 +185,7 @@
         @foreach ($platformGroups as $group)
             <div class="pt-1 pb-1 space-y-1">
 
-                <!-- //todo change links to real routes on web.php, same with :active -->
-                <x-presets.responsive-nav-link :href="route('root.platform-groups.show', $group->id)" :active="request()->routeIs('content.platform-groups.show') && request()->route('id') == $group->id">
+                <x-presets.responsive-nav-link :href="route('root.platform-groups.show', $group->id)" :active="request()->routeIs('root.platform-groups.show') && request()->route('id') == $group->id">
                     {{ $group->name }}
                 </x-presets.responsive-nav-link>
             </div>

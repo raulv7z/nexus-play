@@ -19,7 +19,7 @@
                 <x-games.description :description="$edition->videogame->description">
                 </x-games.description>
 
-                <div class="flex justify-center space-x-4">
+                <div class="flex flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 justify-center">
 
                     <x-links.show-edition :link="route('root.editions.show', $edition->id)">
                     </x-links.show-edition>

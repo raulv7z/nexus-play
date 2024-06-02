@@ -46,25 +46,25 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
         // Charts
         ///////////
 
-        // Users registered on the last 5 days
-        // $.ajax({
-        //     url: requestChartUrl,
-        //     method: "GET",
-        //     success: async function (dataRequest) {
-        //         const [chartSelector, chartOptions, chartData, chartType] =
-        //             customizeChart({ data: dataRequest });
+        // Best seller editions
+        $.ajax({
+            url: requestChartUrl,
+            method: "GET",
+            success: async function (dataRequest) {
+                const [chartSelector, chartOptions, chartData, chartType] =
+                    customizeChart({ data: dataRequest });
 
-        //         await initializeChart({
-        //             selector: chartSelector,
-        //             options: chartOptions,
-        //             data: chartData,
-        //             type: chartType,
-        //         });
-        //     },
-        //     error: function (error) {
-        //         console.error(`Error fetching chart data: ${error}`);
-        //     },
-        // });
+                await initializeChart({
+                    selector: chartSelector,
+                    options: chartOptions,
+                    data: chartData,
+                    type: chartType,
+                });
+            },
+            error: function (error) {
+                console.error(`Error fetching chart data: ${error}`);
+            },
+        });
     } catch (error) {
         console.error(error);
     }
@@ -167,7 +167,7 @@ async function initializeDataTable({ selector, options, data, styles }) {
 }
 
 function customizeChart({ data }) {
-    const chartSelector = "#chart-users";
+    const chartSelector = "#chart-editions";
 
     const chartOptions = (() => {
         const textColor = "#a5a5a5";
@@ -188,6 +188,11 @@ function customizeChart({ data }) {
                             size: 12,
                         },
                     },
+                    title: {
+                        display: true,
+                        text: 'Número de Ventas',
+                        color: textColor,
+                    },
                 },
                 x: {
                     grid: {
@@ -199,22 +204,20 @@ function customizeChart({ data }) {
                             size: 12,
                         },
                     },
+                    title: {
+                        display: true,
+                        text: 'Ediciones',
+                        color: textColor,
+                    },
                 },
             },
             plugins: {
                 legend: {
-                    display: true,
-                    position: "top",
-                    labels: {
-                        color: textColor,
-                        font: {
-                            size: 16,
-                        },
-                    },
+                    display: false,
                 },
                 title: {
                     display: true,
-                    text: "Usuarios registrados por día",
+                    text: 'Las 15 Ediciones más Vendidas',
                     color: textColor,
                     font: {
                         size: 24,
@@ -234,29 +237,18 @@ function customizeChart({ data }) {
         };
     })();
 
-    const chartData = (() => {
-        const colors = data.map((item, index) => {
-            const hue = ((360 * index) / data.length) % 360;
-            return `hsl(${hue}, 70%, 50%)`; // Saturación reducida para un aspecto más suave
-        });
+    const chartData = {
+        labels: data.map(item => item.name),
+        datasets: [{
+            label: 'Número de Ventas',
+            data: data.map(item => item.sales_count),
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
 
-        return {
-            labels: data.map((item) => item.date),
-            datasets: [
-                {
-                    label: "Número de Registros",
-                    data: data.map((item) => item.count),
-                    fill: false,
-                    borderColor: colors,
-                    backgroundColor: colors,
-                    tension: 0.3, // Reducir la tensión para una curva más suave
-                    pointRadius: 3, // Tamaño de los puntos en la línea
-                },
-            ],
-        };
-    })();
-
-    const chartType = "doughnut";
+    const chartType = 'bar';
 
     return [chartSelector, chartOptions, chartData, chartType];
 }
