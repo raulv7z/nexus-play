@@ -53,18 +53,6 @@ Route::middleware(['role:admin', 'breadcrumbs', 'layouts', 'lang'])->prefix('adm
     // dashboard
     Route::get('/', [RootDashboardController::class, 'admin'])->name('dashboard');
 
-    // documentation
-    // Route::get('/documentation/{path?}', function ($path = null) {
-    //     $docPath = public_path('documentation');
-    //     if ($path && file_exists("$docPath/$path")) {
-    //         return file_get_contents("$docPath/$path");
-    //     } elseif ($path && file_exists("$docPath/$path/index.html")) {
-    //         return file_get_contents("$docPath/$path/index.html");
-    //     } else {
-    //         abort(404);
-    //     }
-    // })->where('path', '.*');
-
     // Users Management
     Route::prefix('users')->name('users.')->group(function () {
         // management

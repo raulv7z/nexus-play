@@ -111,7 +111,7 @@
                 </li>
                 
                 <li>
-                    <a href="" class="text-center block w-full py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
+                    <a href="docs/" class="text-center block w-full py-2 px-4 text-gray-100 hover:bg-gray-700 rounded-lg">
                         {{ __('Documentation') }}
                     </a>
                 </li>
