@@ -16,7 +16,10 @@
             class="absolute inset-0 bg-gray-800 bg-opacity-80 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-500 ease-in-out dark:bg-opacity-90">
             <div class="text-center p-6">
 
-                <x-games.description :description="$edition->videogame->description">
+                @php
+                    $desc = $edition->videogame->getTranslation('description', App::getLocale());
+                @endphp
+                <x-games.description :description="$desc">
                 </x-games.description>
 
                 <div class="flex flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 justify-center">
