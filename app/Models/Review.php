@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Translatable\HasTranslations;
 
 class Review extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasTranslations;
 
     protected $fillable = [
         'user_id',
@@ -17,6 +18,7 @@ class Review extends Model
         'comment',
         'verified',
     ];
+    public $translatable = ['comment'];
 
     public function user()
     {

@@ -34,7 +34,7 @@
                     </div>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'text'" :field="'comment'" :label="'Comment'" :placeholder="'Add a comment here (max 120 characters)...'">
+                <x-blocks.form-group :type="'text'" :field="'comment'" :label="'Comment'" :placeholder="'Add a comment here... (min: 60 characters)'">
                 </x-blocks.form-group>
 
             </x-slot>

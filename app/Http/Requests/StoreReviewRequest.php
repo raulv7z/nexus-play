@@ -25,7 +25,7 @@ class StoreReviewRequest extends FormRequest
     {
         return [
             'rating' => 'required|numeric|min:0|max:5',
-            'comment' => 'required|string|min:120|max:255',
+            'comment' => 'required|string|min:30|max:400',
             'verified' => 'boolean',
             'user_id' => 'required|exists:users,id',
             'edition_id' => 'required|exists:editions,id',

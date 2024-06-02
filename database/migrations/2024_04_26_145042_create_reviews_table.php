@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('edition_id')->constrained()->onDelete('cascade');
             $table->decimal('rating', 10, 2)->default(0);
-            $table->string('comment', 255);
+            $table->text('comment');
             $table->boolean('verified')->default(0);
             $table->timestamps();
             $table->softDeletes();

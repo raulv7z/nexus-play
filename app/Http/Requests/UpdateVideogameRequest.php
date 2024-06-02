@@ -22,7 +22,7 @@ class UpdateVideogameRequest extends FormRequest
                 'sometimes', 'string', 'max:60',
                 Rule::unique('videogames')->ignore($videogameId),
             ],
-            'description' => 'sometimes|string|max:120',
+            'description' => 'sometimes|string',
             'front_page' => 'sometimes|mimes:jpeg,png,bmp,gif,svg,webp|max:4096',
             'distributor' => 'sometimes|string|max:30',
             'genre' => 'sometimes|string|max:30',

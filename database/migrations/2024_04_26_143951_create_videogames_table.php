@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('videogames', function (Blueprint $table) {
             $table->id();
             $table->string('name', 60);
-            $table->string('description', 120);
+            $table->text('description');
             $table->string('front_page', 60)->default('default-fpage.png');
             $table->string('distributor', 30);
-            $table->string('genre', 30);
+            $table->text('genre');
             $table->float('iva')->default(21);
             $table->decimal('base_amount', 10, 2);
             $table->decimal('sale_amount', 10, 2)->default(0);

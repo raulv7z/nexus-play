@@ -15,7 +15,7 @@ class StoreVideogameRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:60|unique:videogames,name',
-            'description' => 'required|string|max:120',
+            'description' => 'required|string',
             'front_page' => 'required|mimes:jpeg,png,bmp,gif,svg,webp|max:4096',
             'distributor' => 'required|string|max:30',
             'genre' => 'required|string|max:30',
