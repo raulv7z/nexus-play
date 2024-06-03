@@ -38,20 +38,20 @@
 
         <main class="flex-1 flex flex-col p-5">
 
+            <!-- Dynamic content -->
+
+            <div class="flex-1">
+                @yield('content')
+            </div>
+
             <!-- Alerts -->
 
-            <div class="max-w-75 mx-auto">
+            <div>
                 <x-blocks.error>
                 </x-blocks.error>
 
                 <x-blocks.success>
                 </x-blocks.success>
-            </div>
-
-            <!-- Dynamic content -->
-            
-            <div class="flex-1">
-                @yield('content')
             </div>
 
         </main>
@@ -61,4 +61,5 @@
     @yield('scripts')
 
 </body>
+
 </html>

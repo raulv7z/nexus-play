@@ -106,10 +106,10 @@ function setAlertTimeouts({ alerts }) {
     alerts.forEach((alert) => {
         if (alert) {
             setTimeout(() => {
-                alert.fadeOut(500, function () {
+                alert.fadeOut(1000, function () {
                     alert.remove();
                 });
-            }, 5000); // 5000 ms = 5 seconds
+            }, 5000); // 4000 ms = 4 seconds
         }
     });
 }
@@ -136,7 +136,7 @@ function attachReactiveBehavior({ stars }) {
         stars.each(function () {
             const starOrder = $(this).data("order");
             $(this).toggleClass(
-                "text-yellow-400 dark:text-yellow-400",
+                "text-yellow-300 dark:text-yellow-300",
                 starOrder <= order
             );
         });
@@ -162,7 +162,7 @@ function attachReactiveBehavior({ stars }) {
         stars.each(function () {
             const starOrder = $(this).data("order");
             $(this).toggleClass(
-                "text-yellow-400 dark:text-yellow-400",
+                "text-yellow-300 dark:text-yellow-300",
                 starOrder <= value
             );
         });

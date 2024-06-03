@@ -74,7 +74,7 @@ function customizeDataTable({ data }) {
     const tableSelector = ".crud-table";
 
     const tableOptions = {
-        responsive: true,
+        // responsive: true,
         paging: true,
         searching: true,
         autoWidth: false,

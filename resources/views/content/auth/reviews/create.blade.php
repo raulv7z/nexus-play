@@ -28,6 +28,11 @@
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'custom'" :label="'Rating'">
+                    
+                    <label class="block text-md font-medium text-gray-700 dark:text-gray-100">
+                        {{ __('Give a rating') }}
+                    </p>
+
                     <div class="flex items-center">
                         <x-games.rating :reactive="true">
                         </x-games.rating>

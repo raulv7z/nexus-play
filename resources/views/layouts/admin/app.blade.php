@@ -25,18 +25,21 @@
 
 <body class="font-sans antialiased">
 
-    <!-- Sidebar -->
-
-    @include('layouts.admin.navigation')
-
-    <!-- Rest of board -->
+    <!-- Board -->
 
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex-1 flex flex-col">
 
         <!-- Header -->
 
-        <header class="bg-white dark:bg-gray-800 shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <header
+            class="flex justify-start items-center content-center gap-5 w-full py-6 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 shadow">
+
+            {{-- Offcanvas navigation --}}
+            <div class="flex justify-center items-center content-center">
+                @include('layouts.admin.navigation')
+            </div>
+
+            <div>
                 @yield('header')
             </div>
         </header>
@@ -45,20 +48,20 @@
 
         <main class="overflow-auto flex-1 flex flex-col p-5">
 
+            <!-- Dynamic content -->
+
+            <div class="flex-1">
+                @yield('content')
+            </div>
+
             <!-- Alerts -->
 
-            <div class="max-w-75 mx-auto">
+            <div>
                 <x-blocks.error>
                 </x-blocks.error>
 
                 <x-blocks.success>
                 </x-blocks.success>
-            </div>
-
-            <!-- Dynamic content -->
-            
-            <div class="flex-1">
-                @yield('content')
             </div>
 
         </main>

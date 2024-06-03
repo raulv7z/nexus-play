@@ -1,7 +1,7 @@
 @props(['fill' => false, 'reactive' => false, 'order'])
 
 <span
-    class="{{ $reactive ? 'reactive-1 hover:cursor-pointer' : 'reactive-0' }} {{ $fill ? 'text-yellow-300 dark:text-yellow-300' : 'text-gray-400 dark:text-gray-200' }}"
+    class="{{ $reactive ? 'reactive-1 hover:cursor-pointer' : 'reactive-0' }} {{ $fill ? 'text-yellow-300 dark:text-yellow-300' : 'text-gray-400 dark:text-gray-200' }} data-order='{{$order}}'"
     data-order="{{ $order }}">
     <svg class="h-5 w-5 fill-current" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
         fill="currentColor" viewBox="0 0 24 24">
