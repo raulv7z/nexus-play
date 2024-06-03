@@ -34,7 +34,7 @@
             x-transition:leave-end="-translate-x-full">
             <div class="mb-auto">
 
-                <div class="flex flex-col justify-center items-center content-center my-5">
+                <div class="flex flex-col justify-center items-center content-center my-1">
                     <a href="{{ route('admin.dashboard') }}" class="flex relative">
                         <div class="inline-block w-10 h-auto">
                             <x-presets.application-logo />
@@ -42,8 +42,8 @@
                     </a>
 
                     <a href="{{ route('admin.dashboard') }}" class="flex relative">
-                        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-200 px-4 mt-3 overflow-hidden">
-                            {{ __('Manager') }}
+                        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-200 mt-2 overflow-hidden">
+                            {{ __('Admin') }}
                         </h2>
                     </a>
                 </div>
@@ -65,8 +65,8 @@
                             @endphp
                             <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
                                 <a href="{{ route('admin.dashboard') }}"
-                                    class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
-                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
+                                    class="block py-2 px-4 hover:text-blue-600 dark:hover:text-blue-400
+                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : 'text-gray-700 dark:text-gray-400' }}">
                                     {{ __('Dashboard') }}
                                 </a>
                             </li>
@@ -76,8 +76,8 @@
                             @endphp
                             <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
                                 <a href="{{ route('admin.users.manager') }}"
-                                    class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
-                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
+                                    class="block py-2 px-4 hover:text-blue-600 dark:hover:text-blue-400
+                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : 'text-gray-700 dark:text-gray-400' }}">
                                     {{ __('Users') }}
                                 </a>
                             </li>
@@ -87,8 +87,8 @@
                             @endphp
                             <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
                                 <a href="{{ route('admin.videogames.manager') }}"
-                                    class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
-                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
+                                    class="block py-2 px-4 hover:text-blue-600 dark:hover:text-blue-400
+                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : 'text-gray-700 dark:text-gray-400' }}">
                                     {{ __('Videogames') }}
                                 </a>
                             </li>
@@ -98,8 +98,8 @@
                             @endphp
                             <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
                                 <a href="{{ route('admin.platform-groups.manager') }}"
-                                    class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
-                                {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
+                                    class="block py-2 px-4 hover:text-blue-600 dark:hover:text-blue-400
+                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : 'text-gray-700 dark:text-gray-400' }}">
                                     {{ __('Platform Groups') }}
                                 </a>
                             </li>
@@ -109,8 +109,8 @@
                             @endphp
                             <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
                                 <a href="{{ route('admin.platforms.manager') }}"
-                                    class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
-                                {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
+                                    class="block py-2 px-4 hover:text-blue-600 dark:hover:text-blue-400
+                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : 'text-gray-700 dark:text-gray-400' }}">
                                     {{ __('Platforms') }}
                                 </a>
                             </li>
@@ -120,19 +120,19 @@
                             @endphp
                             <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
                                 <a href="{{ route('admin.editions.manager') }}"
-                                    class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
-                                {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
+                                    class="block py-2 px-4 hover:text-blue-600 dark:hover:text-blue-400
+                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : 'text-gray-700 dark:text-gray-400' }}">
                                     {{ __('Editions') }}
                                 </a>
                             </li>
 
-                            <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
+                            {{-- <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
                                 <a href="/docs/"
                                     class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
                                 {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
                                     {{ __('Documentation') }}
                                 </a>
-                            </li>
+                            </li> --}}
 
                             <div class="my-2">
                                 <p class="font-bold text-black dark:text-white ml-2">

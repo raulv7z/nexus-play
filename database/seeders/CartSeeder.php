@@ -10,7 +10,7 @@ class CartSeeder extends Seeder
 {
     public function run()
     {
-        $carts = Cart::factory(40)->create();
+        $carts = Cart::factory(500)->create();
 
         $carts->each(function ($cart) {
 

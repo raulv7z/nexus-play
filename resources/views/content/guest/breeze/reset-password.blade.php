@@ -6,5 +6,5 @@
 @endsection
 
 @section('content')
-    @include('partials.breeze.register')
+    @include('partials.breeze.reset-password')
 @endsection
