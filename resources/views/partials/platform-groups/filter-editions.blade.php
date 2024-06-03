@@ -1,6 +1,6 @@
 @php
 $options = [
-    "" => 'Select a platform'
+    "" => 'All platforms'
 ];
 
 if ($platformGroup->platforms->count() > 0) {
