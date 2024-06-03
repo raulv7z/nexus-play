@@ -273,6 +273,8 @@
     "In stock": "Queda stock",
     "Videogame": "Videojuego",
     "Videogames": "Videojuegos",
+    "Platform Group": "Grupo de plataforma",
+    "Platform Groups": "Grupos de plataformas",
     "Platform": "Plataforma",
     "Platforms": "Plataformas",
     "Edition": "Edición",
@@ -280,5 +282,8 @@
     "Filter": "Filtrar",
     "Clear": "Limpiar",
     "Access here": "Accede aquí",
+    "Links": "Enlaces",
+    "Options": "Opciones",
+    "All rights reserved": "Todos los derechos reservados",
     "Documentation": "Documentación"
 }

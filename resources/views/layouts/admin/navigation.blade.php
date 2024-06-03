@@ -33,20 +33,6 @@
             x-transition:leave="transform transition-transform duration-300" x-transition:leave-start="translate-x-0"
             x-transition:leave-end="-translate-x-full">
             <div class="mb-auto">
-                <!--logo-->
-                {{-- <div class="mh-18 text-center px-12 mb-8">
-                    <a href="{{ route('admin.dashboard') }}" class="flex relative"> --}}
-                {{-- <h2 class="text-2xl font-semibold text-gray-200 px-4 max-h-9 overflow-hidden"> --}}
-                {{-- <img class="inline-block w-7 h-auto mr-2 -mt-1" src="../src/img/logo.png"> --}}
-                {{-- <div class="inline-block w-10 h-auto">
-                                <x-presets.application-logo />
-                            </div>
-                            <span class="text-gray-700 dark:text-gray-200">
-                                {{ __('Dashboard') }}
-                            </span>
-                        </h2>
-                    </a>
-                </div> --}}
 
                 <div class="flex flex-col justify-center items-center content-center my-5">
                     <a href="{{ route('admin.dashboard') }}" class="flex relative">
@@ -57,7 +43,7 @@
 
                     <a href="{{ route('admin.dashboard') }}" class="flex relative">
                         <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-200 px-4 mt-3 overflow-hidden">
-                            {{ __('Dashboard') }}
+                            {{ __('Manager') }}
                         </h2>
                     </a>
                 </div>
@@ -69,12 +55,21 @@
 
                             <div class="my-2">
                                 <p class="font-bold text-black dark:text-white ml-2">
-                                    {{ __('Managers') }}
+                                    {{ __('Links') }}
                                 </p>
                                 <hr class="h-px mx-2 border-0 bg-gray-300 dark:bg-gray-500">
                             </div>
 
-                            {{-- "request()->routeIs('root.dashboard')" --}}
+                            @php
+                                $active = request()->routeIs('admin.dashboard');
+                            @endphp
+                            <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
+                                <a href="{{ route('admin.dashboard') }}"
+                                    class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
+                                    {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
+                                    {{ __('Dashboard') }}
+                                </a>
+                            </li>
 
                             @php
                                 $active = request()->routeIs('admin.users.manager');
@@ -131,6 +126,14 @@
                                 </a>
                             </li>
 
+                            <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
+                                <a href="/docs/"
+                                    class="block py-3 px-4 text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400
+                                {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : '' }}">
+                                    {{ __('Documentation') }}
+                                </a>
+                            </li>
+
                             <div class="my-2">
                                 <p class="font-bold text-black dark:text-white ml-2">
                                     {{ __('Options') }}
@@ -156,7 +159,8 @@
 
                                         <!-- Icons -->
                                         <div class="flex flex-col justify-center ml-2">
-                                            <input type="checkbox" name="light-switch" class="light-switch sr-only" />
+                                            <input type="checkbox" name="light-switch"
+                                                class="light-switch sr-only" />
                                             <label class="relative cursor-pointer p-2" for="light-switch">
                                                 <svg class="dark:hidden" width="16" height="16"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -181,26 +185,73 @@
                                 </div>
                             </li>
 
-                            <li class="bg-gray-500">
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-            
-                                    <x-statics.submit-logout>
-                                        {{ __('Log Out') }}
-                                    </x-statics.submit-logout>
-                                </form>
+                            <li class="relative">
+                                <button id="dropdownBottomButton" data-dropdown-toggle="dropdownBottom"
+                                    data-dropdown-placement="bottom"
+                                    class="mx-4 me-3 mb-3 md:mb-0 text-white bg-blue-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    type="button">
+                                    {{ strtoupper(app()->getLocale()) }}
+                                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg>
+                                </button>
+
+                                <!-- Dropdown menu -->
+                                <div id="dropdownBottom"
+                                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                        aria-labelledby="dropdownBottomButton">
+                                        <li>
+                                            <!-- Options -->
+                                            <form action="{{ route('root.lang.change') }}" method="post"
+                                                class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
+                                                @csrf
+                                                <input type="hidden" name="locale" value="en">
+                                                <button type="submit" class="w-full h-full text-left px-4 py-2">
+                                                    {{ __('English') }}
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ route('root.lang.change') }}" method="post"
+                                                class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
+                                                @csrf
+                                                <input type="hidden" name="locale" value="es">
+                                                <button type="submit" class="w-full h-full text-left px-4 py-2">
+                                                    {{ __('Spanish') }}
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
-            <!-- copyright -->
 
+            {{-- close session --}}
+            <div class="flex justify-center align-center content-center">
+                <form method="POST" action="{{ route('logout') }}"
+                    class="font-bold w-fit rounded-lg bg-gray-200 dark:bg-gray-900">
+                    @csrf
+
+                    <x-presets.dropdown-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-presets.dropdown-link>
+                </form>
+            </div>
+
+            <!-- copyright -->
             <div class="bg-gray-200 dark:bg-gray-700 mt-5 text-center px-4 py-3">
                 <p class="text-center text-gray-800 dark:text-gray-200">
-                    © Nexus Play.
+                    {{ __('© Nexus Play.') }}
                 </p>
-                <p class="text-center text-gray-800 dark:text-gray-200">
+                <p class="text-center text-sm text-gray-800 dark:text-gray-200">
                     {{ __('All rights reserved') }}
                 </p>
             </div>
