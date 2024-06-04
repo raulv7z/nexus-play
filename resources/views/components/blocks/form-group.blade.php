@@ -56,8 +56,7 @@
 
         <input type="{{ $type }}" name="{{ $field }}" id="{{ $field }}"
             value="{{ $value ?: old($field, $old) }}" placeholder="{{ $placeholder }}"
-            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 dark:bg-gray-800 dark:text-white transition duration-150 ease-in-out"
-            {{ $attributes }}>
+            {{ $attributes->merge(["class"=>"mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 dark:bg-gray-800 dark:text-white transition duration-150 ease-in-out"])}}>
     </div>
 @endif
 

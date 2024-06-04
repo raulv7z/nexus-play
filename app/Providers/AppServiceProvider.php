@@ -14,6 +14,7 @@ use App\Observers\EditionObserver;
 use App\Observers\VideogameObserver;
 use App\Observers\PlatformGroupObserver;
 use App\Observers\PlatformObserver;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
         // Register model observers
         $this->registerObservers();
 
+        // Register validator functions
+        $this->registerValidatorCustomRules();
+
         // Register view composers
         View::composer('*', function ($view) {
             $view->with('platformGroups', PlatformGroup::all());
@@ -49,5 +53,29 @@ class AppServiceProvider extends ServiceProvider
         Platform::observe(PlatformObserver::class);
         Edition::observe(EditionObserver::class);
         Cart::observe(CartObserver::class);
+    }
+
+    protected function registerValidatorCustomRules(): void
+    {
+        // Luhn credit cards rule
+
+        Validator::extend('luhn_credit_card', function ($attribute, $value, $parameters, $validator) {
+            $value = preg_replace('/\D/', '', $value);
+            $digits = str_split(strrev($value));
+            $sum = 0;
+            $alt = false;
+            foreach ($digits as $digit) {
+                $digit = intval($digit);
+                if ($alt) {
+                    $digit *= 2;
+                    if ($digit > 9) {
+                        $digit -= 9;
+                    }
+                }
+                $sum += $digit;
+                $alt = !$alt;
+            }
+            return $sum % 10 === 0;
+        });
     }
 }

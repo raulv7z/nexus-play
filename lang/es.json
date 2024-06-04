@@ -304,8 +304,10 @@
     "Discounts": "Descuentos",
     "Total price": "Precio total",
     "Proceed to Checkout": "Proceder al Pago",
+    "Pay": "Pagar",
     "or": "o",
     "Continue Shopping": "Seguir Comprando",
     "You have reached the maximum amount of the shopping cart. (500 EUR)": "Has alcanzado la cantidad máxima permitida para el carrito. (500 EUR)",
+    "The item has been added to the cart successfully.": "El producto ha sido añadido correctamente al carrito.",
     "The item has been deleted from the cart successfully.": "El producto ha sido eliminado correctamente del carrito."
 }
