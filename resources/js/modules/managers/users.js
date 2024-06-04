@@ -18,8 +18,8 @@ const apiDatatableUrl = $(".crud-table").data("fetch-url");
 const apiChartUrl = $(".chart-graph").data("fetch-url");
 
 const dtDictionary = {
-    es: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json", // es
-    en: "//cdn.datatables.net/plug-ins/2.0.8/i18n/en-GB.json", // en
+    es: "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json", // es
+    en: "https://cdn.datatables.net/plug-ins/2.0.8/i18n/en-GB.json", // en
 };
 
 // Functions
