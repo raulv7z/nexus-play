@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Route;
 // Auto Redirect
 Route::get('/', [RootHomeController::class, 'index'])->name('home');
 
-Route::middleware(['breadcrumbs', 'layouts', 'lang'])->prefix('home')->name('root.')->group(function () {
+Route::middleware(['layouts', 'lang'])->prefix('home')->name('root.')->group(function () {
     
     // Dashboard
     Route::get('/', [RootDashboardController::class, 'root'])->name('dashboard');

@@ -1,5 +1,5 @@
-@props(['content' => 'Home'])
+@props(['title' => 'Home'])
 
 <h2 class="font-semibold text-xl md:text-2xl text-gray-800 dark:text-gray-300">
-    {{ __($content) }}
+    {{ __($title) }}
 </h2>
