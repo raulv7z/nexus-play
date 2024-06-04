@@ -19,9 +19,8 @@
 
         <x-interface.title :title="$platformGroup->name">
         </x-interface.title>
-        <p class="text-xl text-gray-600 dark:text-gray-400">
-            {{ __("Editions") }}
-        </p>
+        <x-interface.gray-title :title="'Editions'">
+        </x-interface.gray-title>
 
     </x-interface.hidden-block>
 

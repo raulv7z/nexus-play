@@ -11,9 +11,16 @@ window.$ = window.jQuery = $;
 
 // Vars
 ////////////////////////////////////
+
 const html = $("html");
+const lang = $(html).attr("lang");
 const apiDatatableUrl = $(".crud-table").data("fetch-url");
 const apiChartUrl = $(".chart-graph").data("fetch-url");
+
+const dtDictionary = {
+    "es": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",    // es
+    "en": "//cdn.datatables.net/plug-ins/2.0.8/i18n/en-GB.json"         // en
+};
 
 // Functions
 ////////////////////////////////////
@@ -73,8 +80,33 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
 function customizeDataTable({ data }) {
     const tableSelector = ".crud-table";
 
+    const tableColumnTitles = {
+        platformGroupName: {
+            en: "PLATFORM GROUP",
+            es: "GRUPO DE PLATAFORMA",
+        },
+        name: {
+            en: "NAME",
+            es: "NOMBRE",
+        },
+        plus: {
+            en: "PLATFORM PLUS",
+            es: "AÑADIDO DE PLATAFORMA",
+        },
+        deleted: {
+            en: "DELETED",
+            es: "BORRADO",
+        },
+        actions: {
+            en: "ACTIONS",
+            es: "ACCIONES",
+        },
+    };
+
     const tableOptions = {
-        // responsive: true,
+        language: {
+            url: dtDictionary[lang],
+        },
         paging: true,
         searching: true,
         autoWidth: false,
@@ -89,22 +121,22 @@ function customizeDataTable({ data }) {
         ],
         columns: [
             { data: "id", title: "ID", width: '12%' },
-            { data: "platform_group_name", title: "GRUPO DE PLATAFORMA" },
-            { data: "name", title: "NOMBRE" },
+            { data: "platform_group_name", title: tableColumnTitles.platformGroupName[lang] },
+            { data: "name", title: tableColumnTitles.name[lang] },
             {
                 data: "plus",
-                title: "PLUS DE PLATAFORMA",
+                title: tableColumnTitles.plus[lang],
                 render: (data) => (`${data} %`),
             },
             {
                 data: "deleted_at",
-                title: "BORRADO",
+                title: tableColumnTitles.deleted[lang],
                 render: (data) => (data ? "Si" : "No"),
             },
             {
                 orderable: false,
                 data: null,
-                title: "ACCIONES",
+                title: tableColumnTitles.actions[lang],
                 searchable: false,
                 render: function (data, type, row) {
                     const actions = {

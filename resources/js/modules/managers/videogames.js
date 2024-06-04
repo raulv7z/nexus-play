@@ -11,9 +11,16 @@ window.$ = window.jQuery = $;
 
 // Vars
 ////////////////////////////////////
+
 const html = $("html");
+const lang = $(html).attr("lang");
 const apiDatatableUrl = $(".crud-table").data("fetch-url");
 const apiChartUrl = $(".chart-graph").data("fetch-url");
+
+const dtDictionary = {
+    "es": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",    // es
+    "en": "//cdn.datatables.net/plug-ins/2.0.8/i18n/en-GB.json"         // en
+};
 
 // Functions
 ////////////////////////////////////
@@ -73,8 +80,41 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
 function customizeDataTable({ data }) {
     const tableSelector = ".crud-table";
 
+    const tableColumnTitles = {
+        name: {
+            en: "NAME",
+            es: "NOMBRE",
+        },
+        distributor: {
+            en: "DISTRIBUTOR",
+            es: "DISTRIBUIDOR/A",
+        },
+        iva: {
+            en: "IVA",
+            es: "IVA",
+        },
+        basePrice: {
+            en: "BASE PRICE",
+            es: "PRECIO BASE",
+        },
+        salePrice: {
+            en: "SALE PRICE",
+            es: "PRECIO VENTA",
+        },
+        deleted: {
+            en: "DELETED",
+            es: "BORRADO",
+        },
+        actions: {
+            en: "ACTIONS",
+            es: "ACCIONES",
+        },
+    };
+
     const tableOptions = {
-        // responsive: true,
+        language: {
+            url: dtDictionary[lang]
+        },
         paging: true,
         searching: true,
         autoWidth: false,
@@ -91,32 +131,32 @@ function customizeDataTable({ data }) {
         ],
         columns: [
             { data: "id", title: "ID", width: "12%" },
-            { data: "name", title: "NOMBRE" },
-            { data: "distributor", title: "DISTRIBUIDOR" },
+            { data: "name", title: tableColumnTitles.name[lang] },
+            { data: "distributor", title: tableColumnTitles.distributor[lang] },
             {
                 data: "iva",
-                title: "IVA",
+                title: tableColumnTitles.iva[lang],
                 render: (data) => `${data} %`,
             },
             {
                 data: "base_amount",
-                title: "PRECIO BASE",
+                title: tableColumnTitles.basePrice[lang],
                 render: (data) => `${data} €`,
             },
             {
                 data: "sale_amount",
-                title: "PRECIO VENTA",
+                title: tableColumnTitles.salePrice[lang],
                 render: (data) => `${data} €`,
             },
             {
                 data: "deleted_at",
-                title: "BORRADO",
+                title: tableColumnTitles.deleted[lang],
                 render: (data) => (data ? "Si" : "No"),
             },
             {
                 orderable: false,
                 data: null,
-                title: "ACCIONES",
+                title: tableColumnTitles.actions[lang],
                 searchable: false,
                 render: function (data, type, row) {
                     const actions = {

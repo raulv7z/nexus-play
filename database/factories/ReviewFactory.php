@@ -40,8 +40,8 @@ class ReviewFactory extends Factory
                 'es' => '¡Una obra maestra de juego! Cada aspecto está meticulosamente elaborado, desde el desarrollo de los personajes hasta el diseño del mundo del juego.',
             ],
             [
-                'en' => 'Incredible experience from start to finish. I couldn\'t tear myself away from the screen!',
-                'es' => '¡Increíble experiencia de principio a fin. ¡No podía apartar la vista de la pantalla!',
+                'en' => 'Incredible experience from start to finish. I couldn\'t tear myself away from the screen! I loved it.',
+                'es' => '¡Increíble experiencia de principio a fin. ¡No podía apartar la vista de la pantalla! Me encantó.',
             ],
             [
                 'en' => 'A true gem in the gaming world. I\'ve never felt so emotionally invested in a game before.',
@@ -107,8 +107,8 @@ class ReviewFactory extends Factory
                 'es' => 'El juego se sintió apresurado. Carecía de pulido y la historia estaba llena de agujeros argumentales.',
             ],
             [
-                'en' => 'Not recommended. Save your money for something better.',
-                'es' => 'No recomendado. Ahorra tu dinero para algo mejor.',
+                'en' => 'Not recommended. Save your money for something better. This game is a dissapointment.',
+                'es' => 'No recomendado. Ahorra tu dinero para algo mejor. Este juego es una decepción.',
             ],
             [
                 'en' => 'Underwhelming experience. It failed to capture my interest and left me wanting more.',

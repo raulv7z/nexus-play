@@ -11,7 +11,7 @@
                 {{ $review->user->name }}
             </p>
             <p class="text-gray-500 dark:text-gray-400">
-                {{ Str::limit($review->comment, 80) }}
+                {{ Str::limit($review->comment, 100) }}
             </p>
         </div>
         <div class="flex flex-row">

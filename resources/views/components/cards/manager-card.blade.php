@@ -33,9 +33,10 @@
         <div class="min-w-0 flex-auto">
             <a href="{{ route($table['route']) }}"
                 class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
-                {{ $table['name'] }}
+                {{ __($table['name']) }}
             </a>
-            <p class="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-gray-400">{{ $table['description'] }}
+            <p class="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-gray-400">
+                {{ __($table['description']) }}
             </p>
         </div>
     </div>
@@ -44,7 +45,9 @@
             <div class="flex-none rounded-full bg-emerald-500/20 p-1">
                 <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"></div>
             </div>
-            <p class="text-xs leading-5 text-gray-500 dark:text-gray-400">Active</p>
+            <p class="text-xs leading-5 text-gray-500 dark:text-gray-400">
+                {{ __('Active') }}
+            </p>
         </div>
     </div>
 </li>

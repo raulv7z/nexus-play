@@ -9,6 +9,13 @@
 @endsection
 
 @section('content')
+
+    <x-interface.hidden-block>
+        <x-interface.title :title="'Dashboard'">
+        </x-interface.title>
+        <x-interface.gray-title :title="'Managers'">
+        </x-interface.gray-title>
+    </x-interface.hidden-block>
     <x-interface.info-block>
         <x-sections.manager-section>
 

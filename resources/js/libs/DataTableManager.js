@@ -18,15 +18,18 @@ class DataTableManager {
 
     // Método para inicializar la DataTable
     init(options, styles) {
+        
+        this.styles = styles;
+
         this.options = {
             ...options,
             initComplete: () => {
                 this.addColumnSearch(options.columnSearch || []);
+                this.applyStyles(this.styles);
             },
         };
 
         $(this.table).DataTable(this.options);
-        this.styles = styles;
         this.attachListeners();
     }
 
@@ -78,14 +81,12 @@ class DataTableManager {
             let searchElement = "";
 
             if (searchType === "text") {
-                searchElement = `<input type="text" placeholder="Search ${$(
+                searchElement = `<input type="text" placeholder="${$(
                     th
-                ).text()}" />`;
+                ).text()}..." />`;
             } else if (searchType === "select") {
                 const options = columnConfig.options || [];
-                searchElement = `<select><option value="">Select ${$(
-                    th
-                ).text()}</option>`;
+                searchElement = `<select><option value="">Todos</option>`;
                 options.forEach((option) => {
                     searchElement += `<option value="${option}">${option}</option>`;
                 });

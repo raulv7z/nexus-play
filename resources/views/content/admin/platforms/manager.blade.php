@@ -12,6 +12,8 @@
     <x-interface.hidden-block>
         <x-interface.title :title="'Datatable'">
         </x-interface.title>
+        <x-interface.gray-title :title="'Platforms'">
+        </x-interface.gray-title>
     </x-interface.hidden-block>
 
     <x-interface.info-block>
@@ -30,6 +32,8 @@
     <x-interface.hidden-block>
         <x-interface.title :title="'Info graphs'">
         </x-interface.title>
+        <x-interface.gray-title :title="'Platforms'">
+        </x-interface.gray-title>
     </x-interface.hidden-block>
 
     <x-interface.info-block>

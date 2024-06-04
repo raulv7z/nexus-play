@@ -18,7 +18,7 @@
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                     <div class="space-y-6">
                         @if ($cart->entries->isEmpty())
-                            <x-interface.subtitle :subtitle="'You have no items in your cart.'">
+                            <x-interface.subtitle :subtitle="'Your shopping cart is empty.'">
                             </x-interface.subtitle>
                         @else
                             @foreach ($cart->entries as $entry)
@@ -112,7 +112,7 @@
 
                         <div class="flex items-center justify-center gap-2">
 
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
+                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400"> {{ __("or") }} </span>
 
                             {{-- link for continue shopping here --}}
 
