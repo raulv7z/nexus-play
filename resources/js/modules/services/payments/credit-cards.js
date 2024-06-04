@@ -29,16 +29,17 @@ function startApp() {
 
 function attachEventListeners({ nodes }) {
 
-    nodes.cardNumberInput.on("keyup", function () {
-        const caughtInputVal = nodes.cardNumberInput.val().replace(/\s/g, "");;
+    // Function to format card number
+    nodes.cardNumberInput.on("input", function () {
+        let caughtInputVal = nodes.cardNumberInput.val().replace(/\D/g, ""); // Only digits
 
-        let newInputVal = ""; 
-        
-        if (caughtInputVal !== "") {
-            newInputVal = caughtInputVal.match(/.{1,4}/g).join(" ");
+        // Limit to 16 digits
+        if (caughtInputVal.length > 16) {
+            caughtInputVal = caughtInputVal.substring(0, 16);
         }
 
-        // change focus when length is 16 (written card number)
+        let newInputVal = caughtInputVal.match(/.{1,4}/g)?.join("-") || "";
+
         if (caughtInputVal.length >= 16) {
             nodes.expirationDateInput.focus();
         }
@@ -46,15 +47,17 @@ function attachEventListeners({ nodes }) {
         nodes.cardNumberInput.val(newInputVal);
     });
 
-    nodes.expirationDateInput.on("keyup", function () {
-        const caughtInputVal = nodes.expirationDateInput.val().replace(/\//g, "");
-        let newInputVal = ""; 
-        
-        if (caughtInputVal !== "") {
-            newInputVal = caughtInputVal.match(/.{1,2}/g).join("/");
+    // Function to format expiration date
+    nodes.expirationDateInput.on("input", function () {
+        let caughtInputVal = nodes.expirationDateInput.val().replace(/\D/g, ""); // Only digits
+
+        // Limit to 4 digits
+        if (caughtInputVal.length > 4) {
+            caughtInputVal = caughtInputVal.substring(0, 4);
         }
 
-        // change focus when length is 4 (written expiration date)
+        let newInputVal = caughtInputVal.match(/.{1,2}/g)?.join("/") || "";
+
         if (caughtInputVal.length >= 4) {
             nodes.cvcInput.focus();
         }
@@ -62,11 +65,21 @@ function attachEventListeners({ nodes }) {
         nodes.expirationDateInput.val(newInputVal);
     });
 
+    // Prevent non-numeric input and limit to 4 digits for CVC
+    nodes.cvcInput.on("input", function () {
+        let cvcValue = nodes.cvcInput.val().replace(/\D/g, ""); // Only digits
+
+        // Limit to 4 digits
+        if (cvcValue.length > 4) {
+            cvcValue = cvcValue.substring(0, 4);
+        }
+
+        nodes.cvcInput.val(cvcValue);
+    });
 }
 
 // Main execution
 ////////////////////////////////////
-
 $(function () {
-    startApp(nodes);
+    startApp();
 });
