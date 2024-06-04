@@ -1,10 +1,10 @@
 @extends($getLayout)
 
 @section('header')
-    <x-interface.header-title>
+    <x-interface.header-title :title="'Admin'">
     </x-interface.header-title>
 
-    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs ?? []">
     </x-interface.breadcrumbs>
 @endsection
 

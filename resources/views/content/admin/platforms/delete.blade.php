@@ -16,7 +16,7 @@
     <x-interface.header-title :title="'Platforms'">
     </x-interface.header-title>
 
-    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs ?? []">
     </x-interface.breadcrumbs>
 @endsection
 

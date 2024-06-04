@@ -4,7 +4,7 @@
     <x-interface.header-title :title="'Platform Groups'">
     </x-interface.header-title>
 
-    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs">
+    <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs ?? []">
     </x-interface.breadcrumbs>
 @endsection
 
