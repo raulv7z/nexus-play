@@ -73,8 +73,7 @@ Route::middleware(['auth', 'layouts', 'lang'])->group(function () {
             Route::put('increment/{editionId}', [UserCartController::class, 'increaseQuantity'])->name('increment');
         });
 
-    
-        Route::prefix('payments')->name('payments.')->group(function () {
+        Route::middleware('verified')->prefix('payments')->name('payments.')->group(function () {
             Route::get('checkout', [UserPaymentController::class, 'checkout'])->name('checkout');
             Route::post('confirm', [UserPaymentController::class, 'confirm'])->name('confirm');
             Route::post('solidify', [UserPaymentController::class, 'solidify'])->name('solidify');
