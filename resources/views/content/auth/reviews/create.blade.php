@@ -34,7 +34,7 @@
                     </p>
 
                     <div class="flex items-center">
-                        <x-games.rating :reactive="true">
+                        <x-games.rating :reactive="true" :value="1">
                         </x-games.rating>
                     </div>
                 </x-blocks.form-group>

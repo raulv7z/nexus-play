@@ -26,6 +26,6 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
         Review::create($validated);
-        return redirect()->route('root.editions.show', $request->edition_id)->with('success', 'Review created successfully.');
+        return redirect()->route('root.editions.show', $request->edition_id)->with('success', 'Your review has been published succesfully.');
     }
 }
