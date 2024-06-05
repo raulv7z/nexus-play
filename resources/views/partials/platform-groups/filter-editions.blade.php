@@ -1,6 +1,7 @@
 @php
+$allStr = app()->getLocale() == 'en' ? 'All platforms' : 'Todas las plataformas';
 $options = [
-    "" => 'All platforms'
+    "" => $allStr
 ];
 
 if ($platformGroup->platforms->count() > 0) {
@@ -20,7 +21,7 @@ if ($platformGroup->platforms->count() > 0) {
         <x-blocks.form-group :type="'hidden'" :field="'platform_group_id'" :value="encrypt($platformGroup->id)">
         </x-blocks.form-group>
 
-        <x-blocks.form-group :type="'text'" :field="'videogame_name'" :label="'Videogame'" :placeholder="'Write a videogame name here...'">
+        <x-blocks.form-group :type="'text'" :field="'videogame_name'" :label="'Videogame'" :placeholder="'...'">
         </x-blocks.form-group>
 
         <x-blocks.form-group :type="'select'" :field="'platform_id'" :label="'Platforms'" :options="$options">

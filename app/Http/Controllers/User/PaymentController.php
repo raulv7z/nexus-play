@@ -39,22 +39,35 @@ class PaymentController extends Controller
 
     public function confirm(PaymentValidationRequest $request)
     {
+        $user = $request->user();
+        $cart = $this->cartService->getOrCreatePendingCart($user);
+
+        // Verificar si el carrito está vacío
+        if (!$cart || $cart->entries->isEmpty()) {
+            return redirect()->route('auth.carts.show')->with('error', 'The shopping cart is empty.');
+        }
+
         // Validate payment form data
         $validated = $request->validated();
 
         // Redirect back if gets an error
-        if ($validated->fails()) {
+        if (!$validated) {
             return redirect()->back()->withErrors($validated->errors())->withInput();
         }
 
-        // Validate credit card number with luhn algorythm
-        if (!self::isRealCardNumber($request->card_number)) {
-            return redirect()->back()->withErrors(['card_number' => 'El número de tarjeta de crédito no es válido'])->withInput();
-        }
-
         // Success code from then on here
+        return view('content.auth.payments.confirm', compact('cart', 'user', 'validated'));
+    }
+
+    public function solidify(Request $request)
+    {
         $user = $request->user();
         $cart = $this->cartService->getOrCreatePendingCart($user);
+
+        // Verificar si el carrito está vacío
+        if (!$cart || $cart->entries->isEmpty()) {
+            return redirect()->route('auth.carts.show')->with('error', 'The shopping cart is empty.');
+        }
 
         $paidStateId = CartState::where('state', 'Completed')->value('id');
         $cart->update(['cart_state_id' => $paidStateId]);
@@ -67,45 +80,11 @@ class PaymentController extends Controller
             return redirect()->back()->with('error', 'Failed to send email. Please contact support.');
         }
 
-        return redirect()->route('auth.payments.paid')->with('success', 'The order was completed successfully. Check your email.');
-    }
-
-    public function pay(Request $request) {
-
+        return redirect()->route('root.dashboard')->with('success', 'The order was completed successfully. Check your email.');
     }
 
     public function paid(Request $request)
     {
-        $title = 'Order Completed';
-        return view('content.auth.payments.paid', compact('title'));
-    }
-
-    private static function isRealCardNumber($cardNumber)
-    {
-        $cardNumber = preg_replace('/\D/', '', $cardNumber); // Eliminar cualquier carácter no numérico
-
-        // Convertir el número de tarjeta en un array de dígitos y revertirlo
-        $digits = str_split(strrev($cardNumber));
-
-        $sum = 0;
-        $alt = false;
-
-        foreach ($digits as $digit) {
-            $digit = intval($digit);
-
-            if ($alt) {
-                $digit *= 2;
-
-                if ($digit > 9) {
-                    $digit -= 9;
-                }
-            }
-
-            $sum += $digit;
-            $alt = !$alt;
-        }
-
-        // La suma debe ser un múltiplo de 10 para que el número sea válido
-        return $sum % 10 === 0;
+        return view('content.auth.payments.paid');
     }
 }

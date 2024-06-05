@@ -7,8 +7,6 @@ use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class InvoiceEmail extends Mailable
@@ -28,36 +26,17 @@ class InvoiceEmail extends Mailable
     }
 
     /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Invoice - ' . $this->invoice->invoice_number,
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'components.emails.invoice',
-            with: [
-                'invoice' => $this->invoice,
-                'user' => $this->user,
-            ],
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
+     * Build the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return $this
      */
-    public function attachments(): array
+    public function build()
     {
-        return [];
+        return $this->view('components.emails.invoice')
+                    ->subject('Invoice - ' . $this->invoice->invoice_number)
+                    ->with([
+                        'invoice' => $this->invoice,
+                        'user' => $this->user,
+                    ]);
     }
 }

@@ -1,7 +1,7 @@
 @extends($getLayout)
 
 @section('header')
-    <x-interface.header-title>
+    <x-interface.header-title :title="'Shopping Cart'">
     </x-interface.header-title>
 @endsection
 

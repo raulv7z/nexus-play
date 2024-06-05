@@ -1,7 +1,9 @@
-@props(['invoice', 'user', 'cart'])
+{{-- ! CHANGE TO VANILLA CSS, NOT TAILWIND CSS --}}
+
+@props(['invoice', 'user'])
 
 <div class="bg-white border rounded-lg shadow-lg px-6 py-8 max-w-md mx-auto mt-8">
-    <h1 class="font-bold text-2xl my-4 text-center text-blue-600">Nexus Play</h1>
+    <h1 class="font-bold text-2xl my-4 text-center text-blue-300">Nexus Play</h1>
     <hr class="mb-2">
     <div class="flex justify-between mb-6">
         <h1 class="text-lg font-bold">Invoice</h1>

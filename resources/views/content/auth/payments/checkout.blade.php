@@ -1,7 +1,7 @@
 @extends($getLayout)
 
 @section('header')
-    <x-interface.header-title>
+    <x-interface.header-title :title="'Payment'">
     </x-interface.header-title>
 
     <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs ?? []">
@@ -86,8 +86,8 @@
 
         <div class="flex justify-evenly items-center gap-x-2">
             <div class="h-14">
-                <x-interface.payment-icon>
-                </x-interface.payment-icon>
+                <x-interface.credit-card-icon>
+                </x-interface.credit-card-icon>
             </div>
 
             <div class="w-1/4 h-2.5 flex flex-col justify-center overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
@@ -170,5 +170,5 @@
 @endsection
 
 @section('scripts')
-    @vite('resources/js/modules/services/payments/credit-cards.js')
+    @vite('resources/js/modules/services/payments/checkout.js')
 @endsection

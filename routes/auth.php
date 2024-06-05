@@ -76,8 +76,8 @@ Route::middleware(['auth', 'layouts', 'lang'])->group(function () {
     
         Route::prefix('payments')->name('payments.')->group(function () {
             Route::get('checkout', [UserPaymentController::class, 'checkout'])->name('checkout');
-            Route::get('paid', [UserPaymentController::class, 'paid'])->name('paid');
             Route::post('confirm', [UserPaymentController::class, 'confirm'])->name('confirm');
+            Route::post('solidify', [UserPaymentController::class, 'solidify'])->name('solidify');
         });
     
         Route::prefix('reviews')->name('reviews.')->group(function () {

@@ -29,4 +29,12 @@ class PaymentValidationRequest extends FormRequest
             'card_number.luhn_credit_card' => 'El número de tarjeta de crédito no es válido',
         ];
     }
+
+    protected function prepareForValidation()
+    {
+        // Eliminar los guiones del número de tarjeta
+        $this->merge([
+            'card_number' => str_replace('-', '', $this->card_number),
+        ]);
+    }
 }
