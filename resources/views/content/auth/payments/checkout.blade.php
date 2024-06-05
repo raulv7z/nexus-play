@@ -10,101 +10,140 @@
 
 @section('content')
     <x-interface.hidden-block>
-        <div class="flex gap-5 justify-start content-center items-center">
-            <div class="h-14">
-                <svg height="auto" width="auto" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502.685 502.685" xml:space="preserve"
-                    fill="#000000">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <g>
-                            <g>
-                                <path style="fill:#e6b54c;"
-                                    d="M482.797,276.924c4.53-5.824,6.73-13.331,4.724-20.988L428.05,30.521 c-3.451-13.029-16.847-20.837-29.854-17.386L18.184,113.331C5.22,116.761-2.61,130.2,0.798,143.207L60.269,368.6 c3.408,13.007,16.868,20.816,29.876,17.408l134.278-35.419v75.476c0,42.214,69.954,64.303,139.11,64.303 c69.113,0,139.153-22.089,139.153-64.302V311.61C502.685,297.869,495.157,286.307,482.797,276.924z M439.763,199.226l6.212,23.469 l-75.541,19.953l-6.169-23.512L439.763,199.226z M395.931,50.733l11.799,44.695l-118.014,31.148l-11.799-44.695L395.931,50.733z M342.975,224.744l6.04,22.951c-27.934,1.251-55.113,6.126-76.943,14.452l-4.616-17.429L342.975,224.744z M79.984,319.224 l-6.169-23.426l75.519-19.975l6.212,23.555L79.984,319.224z M170.625,270.237l75.476-19.953l5.716,21.506 c-1.834,1.122-3.559,2.286-5.242,3.473l-69.781,18.421L170.625,270.237z M477.491,424.209c0,24.612-50.993,44.544-113.958,44.544 c-62.9,0-113.937-19.953-113.937-44.544v-27.718c0-0.928,0.539-1.769,0.69-2.653c3.602,23.34,52.654,41.847,113.247,41.847 c60.614,0,109.687-18.508,113.268-41.847c0.151,0.884,0.69,1.726,0.69,2.653V424.209z M477.491,369.678 c0,24.591-50.993,44.522-113.958,44.522c-62.9,0-113.937-19.931-113.937-44.522V341.96c0-0.906,0.539-1.769,0.69-2.653 c3.602,23.318,52.654,41.869,113.247,41.869c60.614,0,109.687-18.551,113.268-41.869c0.151,0.884,0.69,1.747,0.69,2.653V369.678z M363.532,356.11c-62.9,0-113.937-19.931-113.937-44.501c0-24.569,51.036-44.5,113.937-44.5c62.965,0,113.958,19.931,113.958,44.5 C477.491,336.179,426.497,356.11,363.532,356.11z">
-                                </path>
-                            </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                            <g> </g>
-                        </g>
-                    </g>
-                </svg>
-            </div>
-            <x-interface.title :title="'Payment Info'" />
-        </div>
+        <x-interface.title :title="'Payment'" />
+        <x-interface.gray-title :title="'Invoice Details'" />
     </x-interface.hidden-block>
 
     <x-interface.info-block>
 
-        <!-- Step Progress -->
-        <div class="flex items-center gap-x-1">
-            <div class="w-full h-2.5 flex flex-col justify-center overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
+        <x-interface.subtitle :subtitle="'This section is only informative.'">
+        </x-interface.subtitle>
+
+        <div class="flex justify-evenly items-center gap-x-2">
+            <div class="h-14">
+                <x-interface.invoice-icon>
+                </x-interface.invoice-icon>
+            </div>
+
+            <div class="w-1/4 h-2.5 flex flex-col justify-center overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
                 role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="w-full h-2.5 flex flex-col justify-center overflow-hidden bg-gray-300 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-neutral-600"
+            <div class="w-1/4 h-2.5 flex flex-col justify-center overflow-hidden bg-gray-300 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-neutral-600"
                 role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="w-full h-2.5 flex flex-col justify-center overflow-hidden bg-gray-300 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-neutral-600"
+            <div class="w-1/4 h-2.5 flex flex-col justify-center overflow-hidden bg-gray-300 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-neutral-600"
                 role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
             <div>
-                <div class="w-10 text-end">
-                    <span class="text-sm text-gray-800 dark:text-white">50%</span>
+                <div class="w-fit text-center">
+                    <span class="font-bold text-md text-gray-800 dark:text-white">{{ __('Step') }}&nbsp;1</span>
                 </div>
             </div>
         </div>
-        {{-- End Step Progress --}}
+
+        <div id="invoice-details-container">
+            <div class="w-full mt-5">
+                <button id="invoice-details-button" type="button"
+                    class="w-full h-fit p-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-100 hover:dark:bg-slate-600 rounded-lg">
+                    <div id="invoice-details-arrow-up" class="flex gap-1 h-6">
+                        <x-interface.arrow-up-icon>
+                        </x-interface.arrow-up-icon>
+                        <p>
+                            {{ __('Show details') }}
+                        </p>
+                    </div>
+                    <div id="invoice-details-arrow-down" class="hidden gap-1 h-6">
+                        <x-interface.arrow-down-icon>
+                        </x-interface.arrow-down-icon>
+                        <p>
+                            {{ __('Hide details') }}
+                        </p>
+                    </div>
+                </button>
+            </div>
+
+            <div id="invoice-details-form-container" class="hidden">
+                <x-forms.template :method="'GET'" :action="'#'">
+                    <x-slot name="header">
+                    </x-slot>
+                    <x-slot name="body">
+                        <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="auth()->user()->name"
+                            disabled>
+                        </x-blocks.form-group>
+                        <x-blocks.form-group :type="'text'" :field="'billing_address'" :label="'Billing Address'" :value="auth()->user()->email"
+                            disabled>
+                        </x-blocks.form-group>
+                    </x-slot>
+                    <x-slot name="foot">
+                    </x-slot>
+                </x-forms.template>
+            </div>
+        </div>
+    </x-interface.info-block>
+
+    <x-interface.hidden-block>
+        <x-interface.gray-title :title="'Card Details'" />
+    </x-interface.hidden-block>
+
+    <x-interface.info-block>
+
+        <div class="flex justify-evenly items-center gap-x-2">
+            <div class="h-14">
+                <x-interface.payment-icon>
+                </x-interface.payment-icon>
+            </div>
+
+            <div class="w-1/4 h-2.5 flex flex-col justify-center overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
+                role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="w-1/4 h-2.5 flex flex-col justify-center overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
+                role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="w-1/4 h-2.5 flex flex-col justify-center overflow-hidden bg-gray-300 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-neutral-600"
+                role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+            <div>
+                <div class="w-fit text-center">
+                    <span class="font-bold text-md text-gray-800 dark:text-white">{{ __('Step') }}&nbsp;2</span>
+                </div>
+            </div>
+        </div>
 
         <x-forms.template :method="'POST'" :action="route('auth.payments.confirm')">
 
             <x-slot name="header">
-                <div class="flex justify-start items-center align-center">
-                    {{-- <div class="h-32">
-                        <svg height="auto" width="auto" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502.685 502.685" xml:space="preserve"
-                            fill="#000000">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <g>
-                                    <g>
-                                        <path style="fill:#e6b54c;"
-                                            d="M482.797,276.924c4.53-5.824,6.73-13.331,4.724-20.988L428.05,30.521 c-3.451-13.029-16.847-20.837-29.854-17.386L18.184,113.331C5.22,116.761-2.61,130.2,0.798,143.207L60.269,368.6 c3.408,13.007,16.868,20.816,29.876,17.408l134.278-35.419v75.476c0,42.214,69.954,64.303,139.11,64.303 c69.113,0,139.153-22.089,139.153-64.302V311.61C502.685,297.869,495.157,286.307,482.797,276.924z M439.763,199.226l6.212,23.469 l-75.541,19.953l-6.169-23.512L439.763,199.226z M395.931,50.733l11.799,44.695l-118.014,31.148l-11.799-44.695L395.931,50.733z M342.975,224.744l6.04,22.951c-27.934,1.251-55.113,6.126-76.943,14.452l-4.616-17.429L342.975,224.744z M79.984,319.224 l-6.169-23.426l75.519-19.975l6.212,23.555L79.984,319.224z M170.625,270.237l75.476-19.953l5.716,21.506 c-1.834,1.122-3.559,2.286-5.242,3.473l-69.781,18.421L170.625,270.237z M477.491,424.209c0,24.612-50.993,44.544-113.958,44.544 c-62.9,0-113.937-19.953-113.937-44.544v-27.718c0-0.928,0.539-1.769,0.69-2.653c3.602,23.34,52.654,41.847,113.247,41.847 c60.614,0,109.687-18.508,113.268-41.847c0.151,0.884,0.69,1.726,0.69,2.653V424.209z M477.491,369.678 c0,24.591-50.993,44.522-113.958,44.522c-62.9,0-113.937-19.931-113.937-44.522V341.96c0-0.906,0.539-1.769,0.69-2.653 c3.602,23.318,52.654,41.869,113.247,41.869c60.614,0,109.687-18.551,113.268-41.869c0.151,0.884,0.69,1.747,0.69,2.653V369.678z M363.532,356.11c-62.9,0-113.937-19.931-113.937-44.501c0-24.569,51.036-44.5,113.937-44.5c62.965,0,113.958,19.931,113.958,44.5 C477.491,336.179,426.497,356.11,363.532,356.11z">
-                                        </path>
-                                    </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                    <g> </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div> --}}
-                </div>
             </x-slot>
 
             <x-slot name="body">
+                <x-blocks.form-group :type="'custom'" :field="'payment_method'">
+                    <label for="payment_method">
+                        {{ __('Payment Method') }}
+                    </label>
+
+                    <div class="w-fit flex flex-col gap-5 my-5 lg:w-full lg:flex-row justify-start">
+                        <div class="h-40">
+                            <input type="radio" id="mastercard" name="payment_method" value="mastercard" checked />
+                            <label for="mastercard" class="w-fit h-full cursor-pointer">
+                                <img src="{{Storage::url('images/templates/mastercard.png')}}" alt="MASTERCARD" class="h-full border-2 border-transparent rounded-lg peer-checked:border-blue-500" />
+                            </label>
+                        </div>
+                        <div class="h-40">
+                            <input type="radio" id="visa" name="payment_method" value="visa" />
+                            <label for="visa" class="w-fit h-full cursor-pointer">
+                                <img src="{{Storage::url('images/templates/visa.png')}}" alt="VISA" class="h-full border-2 border-transparent rounded-lg peer-checked:border-blue-500" />
+                            </label>
+                        </div>
+                        <div class="h-40">
+                            <input type="radio" id="amex" name="payment_method" value="amex" />
+                            <label for="amex" class="w-fit h-full cursor-pointer">
+                                <img src="{{Storage::url('images/templates/amex.png')}}" alt="AMEX" class="h-full border-2 border-transparent rounded-lg peer-checked:border-blue-500" />
+                            </label>
+                        </div>
+                    </div>
+                    
+
+                    @error('payment_method')
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                            {{ $message }}
+                        </p>
+                    @enderror
+
+                </x-blocks.form-group>
+
                 <x-blocks.form-group :type="'text'" :field="'card_number'" :label="'Card Number'" :placeholder="'xxxx-xxxx-xxxx-xxxx'">
                 </x-blocks.form-group>
 
@@ -117,11 +156,13 @@
             </x-slot>
 
             <x-slot name="foot">
-                <x-links.return>
-                </x-links.return>
+                <div class="flex w-full gap-5 mt-4 flex-col sm:flex-row sm:w-fit sm:gap-0 sm:mt-0">
+                    <x-links.return>
+                    </x-links.return>
 
-                <x-buttons.submit :text="'Pay'">
-                </x-buttons.submit>
+                    <x-buttons.submit :text="'Save and Continue'">
+                    </x-buttons.submit>
+                </div>
             </x-slot>
         </x-forms.template>
 

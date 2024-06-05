@@ -70,6 +70,10 @@ class PaymentController extends Controller
         return redirect()->route('auth.payments.paid')->with('success', 'The order was completed successfully. Check your email.');
     }
 
+    public function pay(Request $request) {
+
+    }
+
     public function paid(Request $request)
     {
         $title = 'Order Completed';

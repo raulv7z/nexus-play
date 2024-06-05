@@ -11,11 +11,23 @@ window.$ = window.jQuery = $;
 ////////////////////////////////////
 const html = $("html");
 
+const paymentMethodInputs = [$("#mastercard"), $("#visa"), $("#amex")];
+const invoiceDetailsContainer = $("#invoice-details-container");
+const invoiceDetailsButton = $("#invoice-details-button");
+const invoiceDetailsArrowUp = $("#invoice-details-arrow-up");
+const invoiceDetailsArrowDown = $("#invoice-details-arrow-down");
+const invoiceDetailsFormContainer = $("#invoice-details-form-container");
 const cardNumberInput = $("#card_number");
 const expirationDateInput = $("#expiration_date");
 const cvcInput = $("#cvc");
 
 const nodes = {
+    paymentMethodInputs,
+    invoiceDetailsContainer,
+    invoiceDetailsButton,
+    invoiceDetailsArrowUp,
+    invoiceDetailsArrowDown,
+    invoiceDetailsFormContainer,
     cardNumberInput,
     expirationDateInput,
     cvcInput,
@@ -28,6 +40,15 @@ function startApp() {
 }
 
 function attachEventListeners({ nodes }) {
+
+    nodes.invoiceDetailsButton.on("click", function () {
+        nodes.invoiceDetailsContainer.toggleClass("shadow-lg");
+        nodes.invoiceDetailsArrowUp.toggleClass("hidden");
+        nodes.invoiceDetailsArrowUp.toggleClass("flex");
+        nodes.invoiceDetailsArrowDown.toggleClass("hidden");
+        nodes.invoiceDetailsArrowDown.toggleClass("flex");
+        nodes.invoiceDetailsFormContainer.toggleClass("hidden");
+    });
 
     // Function to format card number
     nodes.cardNumberInput.on("input", function () {
