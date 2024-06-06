@@ -97,14 +97,16 @@
 
                     <x-slot name="content">
                         <!-- Options -->
-                        <form action="{{ route('root.lang.change') }}" method="post" class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
+                        <form action="{{ route('root.lang.change') }}" method="post"
+                            class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
                             @csrf
                             <input type="hidden" name="locale" value="en">
                             <button type="submit" class="w-full h-full text-left px-4 py-2">
                                 {{ __('English') }}
                             </button>
                         </form>
-                        <form action="{{ route('root.lang.change') }}" method="post" class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
+                        <form action="{{ route('root.lang.change') }}" method="post"
+                            class='block w-full text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out'>
                             @csrf
                             <input type="hidden" name="locale" value="es">
                             <button type="submit" class="w-full h-full text-left px-4 py-2">
@@ -247,17 +249,70 @@
 
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
+                <div class="font-medium text-base text-gray-800 dark:text-gray-200">
+                    {{ strtoupper(App()->getLocale()) }}</div>
                 <div class="font-medium text-sm text-gray-500">
                     {{ __('Choose language') }}
                 </div>
             </div>
 
-            <x-presets.responsive-nav-link>
-                <p>ES</p>
-            </x-presets.responsive-nav-link>
-            <x-presets.responsive-nav-link>
-                <p>EN</p>
-            </x-presets.responsive-nav-link>
+            <!-- Options -->
+            <div class="mt-1 space-y-1">
+                <form action="{{ route('root.lang.change') }}" method="post"
+                    class='block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out'>
+                    @csrf
+                    <input type="hidden" name="locale" value="en">
+                    <button type="submit" class="w-full h-full text-left">
+                        {{ __('English') }}
+                    </button>
+                </form>
+                <form action="{{ route('root.lang.change') }}" method="post"
+                    class='block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out'>
+                    @csrf
+                    <input type="hidden" name="locale" value="es">
+                    <button type="submit" class="w-full h-full text-left">
+                        {{ __('Spanish') }}
+                    </button>
+                </form>
+            </div>
         </div>
+
+        {{-- Shopping Cart Link --}}
+
+        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+            <div class="px-4">
+                <div class="font-medium text-sm text-gray-500">
+                    {{ __('Go shopping') }}
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="mt-1 space-y-1">
+                <x-presets.responsive-nav-link :href="route('auth.carts.show')" :active="request()->routeIs('auth.carts.show')">
+                    {{ __('My Cart') }}
+                </x-presets.responsive-nav-link>
+            </div>
+        </div>
+
+        {{-- Authentication options --}}
+
+        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+            <div class="px-4">
+                <div class="font-medium text-sm text-gray-500">
+                    {{ __('Authenticate') }}
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="mt-1 space-y-1">
+                <x-presets.responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Log In') }}
+                </x-presets.responsive-nav-link>
+                <x-presets.responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                    {{ __('Register') }}
+                </x-presets.responsive-nav-link>
+            </div>
+        </div>
+
     </div>
 </nav>
