@@ -1,6 +1,7 @@
 @extends($getLayout)
+
 @section('header')
-    <x-interface.header-title>
+    <x-interface.header-title :title="'My reviews'">
     </x-interface.header-title>
 
     <x-interface.breadcrumbs :breadcrumbs="$breadcrumbs ?? []">
