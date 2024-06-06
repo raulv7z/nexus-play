@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\PlatformGroupController as AdminPlatformGroupCont
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\PaymentController as UserPaymentController;
 use App\Http\Controllers\User\ReviewController as UserReviewController;
+use App\Http\Controllers\User\InvoiceController as UserInvoiceController;
 
 // Other includes
 
@@ -80,8 +81,13 @@ Route::middleware(['auth', 'layouts', 'lang'])->group(function () {
         });
     
         Route::prefix('reviews')->name('reviews.')->group(function () {
+            Route::get('index', [UserReviewController::class, 'index'])->name('index');
             Route::get('create/{editionId}', [UserReviewController::class, 'create'])->name('create');
             Route::post('store', [UserReviewController::class, 'store'])->name('store');
+        });
+
+        Route::prefix('invoices')->name('invoices.')->group(function () {
+            Route::get('index', [UserInvoiceController::class, 'index'])->name('index');
         });
 
     });

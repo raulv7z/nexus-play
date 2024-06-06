@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
+    public function index() {
+        
+    }
     
     public function create(Request $request, $editionId)
     {

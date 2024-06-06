@@ -136,7 +136,15 @@
 
                     <x-slot name="content">
                         <x-presets.dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('My profile') }}
+                        </x-presets.dropdown-link>
+
+                        <x-presets.dropdown-link :href="route('auth.invoices.index')">
+                            {{ __('My orders') }}
+                        </x-presets.dropdown-link>
+
+                        <x-presets.dropdown-link :href="route('auth.reviews.index')">
+                            {{ __('My reviews') }}
                         </x-presets.dropdown-link>
 
                         <!-- Authentication -->
