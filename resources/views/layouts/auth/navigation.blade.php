@@ -314,11 +314,19 @@
             </div>
 
             <div class="mt-3 space-y-1">
+
                 <x-presets.responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('My profile') }}
                 </x-presets.responsive-nav-link>
 
-                <!-- Authentication -->
+                <x-presets.responsive-nav-link :href="route('auth.invoices.index')">
+                    {{ __('My orders') }}
+                </x-presets.responsive-nav-link>
+
+                <x-presets.responsive-nav-link :href="route('auth.reviews.index')">
+                    {{ __('My reviews') }}
+                </x-presets.responsive-nav-link>
+                
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
@@ -328,6 +336,7 @@
                         {{ __('Log Out') }}
                     </x-presets.responsive-nav-link>
                 </form>
+                
             </div>
         </div>
     </div>
