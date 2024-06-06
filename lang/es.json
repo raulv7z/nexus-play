@@ -1,4 +1,5 @@
 {
+    "Greetings,": "Saludos,",
     "(and :count more error)": "(y :count error más)",
     "(and :count more errors)": "(y :count error más)|(y :count errores más)|(y :count errores más)",
     "A new verification link has been sent to the email address you provided during registration.": "Se ha enviado un nuevo enlace de verificación a la dirección de correo electrónico que proporcionó durante el registro.",
@@ -344,5 +345,17 @@
     "Card Number": "Número de Tarjeta",
     "Expiration Date": "Fecha de Expiración",
     "CVC": "CVC",
+    "Purchase Details": "Detalles de Compra",
+    "Date:": "Fecha:",
+    "Visit our site": "Visita nuestro sitio",
+    "Add a comment here... (min: 60 characters)": "Añade un comentario aquí... (min: 60 caracteres)",
+    "Write here": "Escribe aquí",
+    "Write here...": "Escribe aquí...",
+    "Invoice Code (#):": "Código de Factura (#):",
+    "Game": "Juego",
+    "Quantity": "Cantidad",
+    "Bill To:": "Cobro realizado a:",
+    "Thanks for purchasing!": "¡Gracias por su compra!",
+    "You have 30 business days to make returns.": "Dispone de 30 días hábiles para realizar devoluciones.",
     "The item has been deleted from the cart successfully.": "El producto ha sido eliminado correctamente del carrito."
 }

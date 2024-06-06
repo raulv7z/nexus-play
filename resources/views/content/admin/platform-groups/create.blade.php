@@ -17,7 +17,7 @@
             </x-slot>
 
             <x-slot name="body">
-                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :placeholder="'Write a name here...'">
+                <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :placeholder="'Write here...'">
                 </x-blocks.form-group>
             </x-slot>
 

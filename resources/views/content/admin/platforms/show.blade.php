@@ -1,6 +1,8 @@
 @php
+    $default = app()->getLocale() == 'en' ? 'Select a platform group' : 'Selecciona un grupo de plataforma';
+
     $options = [
-        '' => 'Select a platform group',
+        '' => $default,
     ];
 
     foreach ($allPlatformGroups as $platformGroup) {
@@ -38,7 +40,8 @@
                 <x-blocks.form-group :type="'number'" :field="'plus'" :label="'Plus'" :value="$platform->plus" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'select'" :field="'platform_group_id'" :label="'Platform Groups'" :options="$options" :selected="$platform->group->id" disabled>
+                <x-blocks.form-group :type="'select'" :field="'platform_group_id'" :label="'Platform Groups'" :options="$options"
+                    :selected="$platform->group->id" disabled>
                 </x-blocks.form-group>
             </x-slot>
 

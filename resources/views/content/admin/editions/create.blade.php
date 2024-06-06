@@ -1,6 +1,8 @@
 @php
+    $defaultVideogames = app()->getLocale() == 'en' ? 'Select a videogame' : 'Selecciona un videojuego';
+
     $optionsVideogames = [
-        '' => 'Select a videogame',
+        '' => $defaultVideogames,
     ];
 
     foreach ($allVideogames as $videogame) {
@@ -9,8 +11,10 @@
         $optionsVideogames[$idKey] = $name;
     }
     
+    $defaultPlatforms = app()->getLocale() == 'en' ? 'Select a platform' : 'Selecciona una plataforma';
+
     $optionsPlatforms = [
-        '' => 'Select a platform',
+        '' => $defaultPlatforms,
     ];
 
     foreach ($allPlatforms as $platform) {
@@ -45,7 +49,7 @@
                 <x-blocks.form-group :type="'select'" :field="'platform_id'" :label="'Platform'" :options="$optionsPlatforms">
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'number'" :field="'stock'" :label="'Stock'" :placeholder="'Write the stock here...'">
+                <x-blocks.form-group :type="'number'" :field="'stock'" :label="'Stock'" :placeholder="'Write here...'">
                 </x-blocks.form-group>
             </x-slot>
 

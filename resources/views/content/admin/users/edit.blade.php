@@ -27,11 +27,11 @@
 
             <x-slot name="body">
                 <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$user->name"
-                    :placeholder="'Write a name here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :value="$user->email"
-                    :placeholder="'Write an email here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 @if ($user->trashed())

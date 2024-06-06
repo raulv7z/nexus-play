@@ -27,7 +27,7 @@
 
             <x-slot name="body">
                 <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$platformGroup->name"
-                    :placeholder="'Write a name here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 @if ($platformGroup->trashed())

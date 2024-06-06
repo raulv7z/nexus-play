@@ -33,7 +33,7 @@ class InvoiceEmail extends Mailable
     public function build()
     {
         return $this->view('components.emails.invoice')
-                    ->subject('Invoice - ' . $this->invoice->invoice_number)
+                    ->subject(__("Invoice") . ' - ' . $this->invoice->invoice_number)
                     ->with([
                         'invoice' => $this->invoice,
                         'user' => $this->user,

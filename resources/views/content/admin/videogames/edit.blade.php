@@ -35,27 +35,27 @@
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$videogame->name"
-                    :placeholder="'Write a name here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'text'" :field="'description'" :label="'Description'" :value="$videogame->description"
-                    :placeholder="'Write a description here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'text'" :field="'distributor'" :label="'Distributor'" :value="$videogame->distributor"
-                    :placeholder="'Write the distributor here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'text'" :field="'genre'" :label="'Genre'" :value="$videogame->genre"
-                    :placeholder="'Write the genre here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'number'" :field="'iva'" :label="'IVA'" :value="$videogame->iva"
-                    :placeholder="'Write the iva here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'number'" :field="'base_amount'" :label="'Base Amount'" :value="$videogame->base_amount"
-                    :placeholder="'Write the base amount here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 @if ($videogame->trashed())

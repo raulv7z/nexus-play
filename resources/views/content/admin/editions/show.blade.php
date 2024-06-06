@@ -1,6 +1,8 @@
 @php
+    $defaultVideogames = app()->getLocale() == 'en' ? 'Select a videogame' : 'Selecciona un videojuego';
+
     $optionsVideogames = [
-        '' => 'Select a videogame',
+        '' => $defaultVideogames,
     ];
 
     foreach ($allVideogames as $videogame) {
@@ -8,9 +10,11 @@
         $name = $videogame->name;
         $optionsVideogames[$idKey] = $name;
     }
+    
+    $defaultPlatforms = app()->getLocale() == 'en' ? 'Select a platform' : 'Selecciona una plataforma';
 
     $optionsPlatforms = [
-        '' => 'Select a platform',
+        '' => $defaultPlatforms,
     ];
 
     foreach ($allPlatforms as $platform) {

@@ -1,6 +1,8 @@
 @php
+    $default = app()->getLocale() == 'en' ? 'Select a platform group' : 'Selecciona un grupo de plataforma';
+
     $options = [
-        '' => 'Select a platform group',
+        '' => $default,
     ];
 
     foreach ($allPlatformGroups as $platformGroup) {
@@ -39,14 +41,15 @@
 
             <x-slot name="body">
                 <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$platform->name"
-                    :placeholder="'Write a name here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'number'" :field="'plus'" :label="'Plus'" :value="$platform->plus"
-                    :placeholder="'Write a plus here...'">
+                    :placeholder="'Write here...'">
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'select'" :field="'platform_group_id'" :label="'Platform Groups'" :options="$options" :selected="$platform->platform_group_id">
+                <x-blocks.form-group :type="'select'" :field="'platform_group_id'" :label="'Platform Groups'" :options="$options"
+                    :selected="$platform->platform_group_id">
                 </x-blocks.form-group>
 
                 @if ($platform->trashed())

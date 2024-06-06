@@ -28,7 +28,7 @@
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'text'" :field="'name'" :label="'Name'" :value="$platformGroup->name"
-                    :placeholder="'Write a name here...'" disabled>
+                    :placeholder="'Write here...'" disabled>
                 </x-blocks.form-group>
             </x-slot>
 
