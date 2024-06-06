@@ -46,7 +46,7 @@ class CartController extends Controller
         } catch(MaxAmountReachedException $e) {
             return back()->with('error', $e->getMessage());
         } catch(Exception $e) {
-            return back()->with('error', '500:' + $e->getMessage());
+            return back()->with('error', '500:' . $e->getMessage());
         }
     }
 
@@ -59,7 +59,7 @@ class CartController extends Controller
     
             return redirect()->route('auth.carts.show')->with('success', 'The item has been deleted from the cart successfully.');
         } catch(Exception $e) {
-            return back()->with('error', '500:' + $e->getMessage());
+            return back()->with('error', '500:' . $e->getMessage());
         }
     }
 
@@ -75,7 +75,7 @@ class CartController extends Controller
         } catch(MaxAmountReachedException $e) {
             return back()->with('error', $e->getMessage());
         } catch(Exception $e) {
-            return back()->with('error', '500:' + $e->getMessage());
+            return back()->with('error', '500:' . $e->getMessage());
         }
     }
 

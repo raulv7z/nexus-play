@@ -52,7 +52,7 @@ class PaymentController extends Controller
 
         // Redirect back if gets an error
         if (!$validated) {
-            return redirect()->back()->withErrors($validated->errors())->withInput();
+            return back()->withErrors($validated->errors())->withInput();
         }
 
         // Success code from then on here
@@ -77,7 +77,7 @@ class PaymentController extends Controller
         try {
             Mail::to($user->email)->send(new InvoiceEmail($invoice, $user));
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to send email. Please contact support.');
+            return back()->with('error', 'Failed to send email. Please contact support.');
         }
 
         return redirect()->route('root.dashboard')->with('success', 'The order was completed successfully. Check your email.');
