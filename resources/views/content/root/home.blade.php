@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+
     {{-- Most rateds --}}
 
     <x-interface.hidden-block>
@@ -37,7 +38,7 @@
 
     </x-interface.info-block>
 
-    {{-- All editions --}}
+    {{-- Some reviews --}}
 
     <x-interface.hidden-block>
         <x-interface.title :title="'Some reviews'">
