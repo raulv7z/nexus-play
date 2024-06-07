@@ -12,6 +12,7 @@ use App\Http\Controllers\Root\EditionController as RootEditionController;
 use App\Http\Controllers\Root\PlatformGroupController as RootPlatformGroupController;
 use App\Http\Controllers\Root\LanguageController as RootLanguageController;
 use App\Http\Controllers\Root\DocumentsController as RootDocumentsController;
+use App\Http\Controllers\Root\CompanyController as RootCompanyController;
 
 // Breeze controllers
 
@@ -61,6 +62,11 @@ Route::middleware(['layouts', 'lang'])->prefix('home')->name('root.')->group(fun
     });
     
     // Serve pages
+    Route::prefix('company')->name('company.')->group(function () {
+        Route::get('contact-us', [RootCompanyController::class, 'contactUs'])->name('contact-us');
+        Route::post('send-contact-message', [RootCompanyController::class, 'sendContactMessage'])->name('send-contact-message');
+    });
+
     Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
         Route::get('show/{id}', [RootPlatformGroupController::class, 'show'])->name('show');
         Route::get('filter-editions', [RootPlatformGroupController::class, 'renderFilteredEditions'])->name('filter-editions');
