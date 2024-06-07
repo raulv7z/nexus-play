@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             CartEntrySeeder::class,
             CartSeeder::class,
             ReviewSeeder::class,
+            TicketStateSeeder::class,
+            TicketSeeder::class,
         ];
 
         foreach ($seeders as $seeder) {

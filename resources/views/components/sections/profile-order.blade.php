@@ -12,7 +12,7 @@
             <div class="flex justify-center rounded-lg py-5 text-white bg-gray-700 dark:bg-gray-900">
                 <p class="text-lg">
                     <span class="font-bold">{{ __('#') }}: </span>
-                    <span class="">{{ $order->invoice_number }}</span>
+                    <span class="">{{ $order->code_invoice }}</span>
                 </p>
             </div>
             <div class="p-5">

@@ -8,7 +8,7 @@
             {{ __('Invoice') }}
         </h1>
         <div style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
-            <p style="margin: 5px 0; font-size: 14px;"><strong>{{ __('Invoice Code (#):') }}</strong> {{ $invoice->invoice_number }}</p>
+            <p style="margin: 5px 0; font-size: 14px;"><strong>{{ __('Invoice Code (#):') }}</strong> {{ $invoice->code_invoice }}</p>
             <p style="margin: 5px 0; font-size: 14px;"><strong>{{ __('Date:') }}</strong> {{ $invoice->issued_at }}</p>
         </div>
         <div style="margin-bottom: 20px;">

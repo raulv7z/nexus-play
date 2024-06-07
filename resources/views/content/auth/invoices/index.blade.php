@@ -30,7 +30,7 @@
 
         @foreach ($orders as $order)
             <x-interface.hidden-block>
-                <x-interface.title :title="'#' . $order->invoice_number">
+                <x-interface.title :title="'#' . $order->code_invoice">
                 </x-interface.title>
             </x-interface.hidden-block>
 

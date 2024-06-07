@@ -26,7 +26,7 @@ class StoreInvoiceRequest extends FormRequest
     {
         return [
             'user_id' => 'required|exists:users,id',
-            'invoice_number' => 'required|unique:invoices,invoice_number',
+            'code_invoice' => 'required|unique:invoices,code_invoice',
             'issued_at' => 'required|date',
             'base_amount' => 'required|numeric|min:0',
             'full_amount' => 'required|numeric|min:0',

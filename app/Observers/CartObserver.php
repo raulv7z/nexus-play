@@ -34,7 +34,7 @@ class CartObserver
         $invoice = Invoice::create([
             'user_id' => $user->id,
             'cart_id' => $cart->id,
-            'invoice_number' => uniqid(), // unique invoice number
+            'code_invoice' => uniqid(), // unique invoice number
             'issued_at' => now(),
             'base_amount' => $cart->base_amount,
             'full_amount' => $cart->full_amount,
