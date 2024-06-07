@@ -10,10 +10,9 @@ use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
-    public function index() {
-
-        return view('content.auth.invoices.index');
-    
+    public function index(Request $request) {
+        $user = $request->user();
+        $orders = Invoice::where('user_id', $user->id)->paginate(3);
+        return view('content.auth.invoices.index', compact('user', 'orders'));
     }
-
 }

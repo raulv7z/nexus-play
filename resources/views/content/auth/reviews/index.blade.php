@@ -12,7 +12,7 @@
 
     <x-interface.info-block>
 
-        {{ __('Write here...') }}
+        
 
     </x-interface.info-block>
 
