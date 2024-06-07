@@ -57,6 +57,9 @@
         </main>
     </div>
 
+    <!-- footer -->
+    @include('layouts.auth.footer')
+
     <!-- specific scripts -->
     @yield('scripts')
 

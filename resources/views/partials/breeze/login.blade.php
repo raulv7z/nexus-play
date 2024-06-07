@@ -1,6 +1,6 @@
-@extends('partials.breeze.authentication-container')
+@extends('partials.interface.nexus-seal-container')
 
-@section('form-content')
+@section('content-section')
     <!-- Session Status -->
     <x-presets.auth-session-status class="mb-4" :status="session('status')" />
 

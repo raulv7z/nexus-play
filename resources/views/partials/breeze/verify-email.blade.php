@@ -1,6 +1,6 @@
-@extends('partials.breeze.authentication-container')
+@extends('partials.interface.nexus-seal-container')
 
-@section('form-content')
+@section('content-section')
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Wait a moment!') }}
     </div>

@@ -1,6 +1,6 @@
-@extends('partials.breeze.authentication-container')
+@extends('partials.interface.nexus-seal-container')
 
-@section('form-content')
+@section('content-section')
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
