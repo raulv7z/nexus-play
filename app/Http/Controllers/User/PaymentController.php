@@ -69,7 +69,7 @@ class PaymentController extends Controller
             return redirect()->route('auth.carts.show')->with('error', 'The shopping cart is empty.');
         }
 
-        $paidStateId = CartState::where('state', 'Completed')->value('id');
+        $paidStateId = CartState::where('state->en', 'Completed')->value('id');
         $cart->update(['cart_state_id' => $paidStateId]);
         $cart->delete();
         $invoice = Invoice::where('cart_id', $cart->id)->first();

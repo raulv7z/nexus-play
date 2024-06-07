@@ -56,7 +56,7 @@ class DashboardController extends Controller
         $editionsMostRated = Edition::orderBy('rating', 'desc')->take(6)->get();
 
         // Obtener el id del estado "Completed"
-        $completedStateId = CartState::where('state', 'Completed')->first()->id;
+        $completedStateId = CartState::where('state->en', 'Completed')->first()->id;
 
         // Obtener las 6 ediciones más vendidas
         $editionsBestSeller = Edition::select('editions.id', 'editions.platform_id', 'editions.videogame_id', 'editions.amount', 'editions.stock')

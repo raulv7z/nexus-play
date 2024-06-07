@@ -16,7 +16,7 @@ class CartEntryFactory extends Factory
     {
         
         // Obtener el id del estado "Completed"
-        $completedStateId = CartState::where('state', 'Completed')->first()->id;
+        $completedStateId = CartState::where('state->en', 'Completed')->first()->id;
 
         return [
             // 'cart_id' => Cart::where('cart_state_id', $completedStateId)->random()->id,
