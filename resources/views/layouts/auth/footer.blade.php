@@ -2,21 +2,21 @@
     <div class="mx-auto max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
-                <a href="localhost:8000" class="flex items-center content-center">
+                <a href="/" class="flex items-center content-center">
                     <img src="{{ Storage::url('images/interface/logo.svg') }}" class="h-10 me-3" alt="Nexus Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                         Nexus Play
                     </span>
                 </a>
             </div>
-            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-2 md:grid-cols-3">
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                        {{ __("Resources") }}
+                        {{ __('Resources') }}
                     </h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="localhost:8000" class="hover:underline">
+                            <a href="/" class="hover:underline">
                                 Nexus Play
                             </a>
                         </li>
@@ -27,7 +27,7 @@
                 </div>
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                        {{ __("Follow us") }}
+                        {{ __('Follow us') }}
                     </h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
@@ -40,14 +40,14 @@
                 </div>
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                        {{ __("Legal") }}
+                        {{ __('Legal') }}
                     </h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="#" class="hover:underline">{{ __("Contact Us") }}</a>
+                            <a href="#" class="hover:underline">{{ __('Contact Us') }}</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline">{{ __("Terms") }} &amp; {{ __("Conditions") }}</a>
+                            <a href="#" class="hover:underline">{{ __('Documentation') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -56,7 +56,7 @@
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="localhost:8080"
-                    class="hover:underline">Nexus Play™</a>. {{ __("All rights reserved.") }}
+                    class="hover:underline">Nexus Play™</a>. {{ __('All rights reserved.') }}
             </span>
             <div class="flex mt-4 sm:justify-center sm:mt-0">
                 <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">

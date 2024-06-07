@@ -56,10 +56,11 @@
             </div>
 
         </main>
-    </div>
 
-    <!-- footer -->
-    @include('layouts.auth.footer')
+        <!-- footer -->
+        @include('layouts.guest.footer')
+        
+    </div>
 
     <!-- specific scripts -->
     @yield('scripts')
