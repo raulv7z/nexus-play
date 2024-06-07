@@ -40,7 +40,7 @@ class StoreTicketRequest extends FormRequest
         $this->merge([
             'issued_at' => now(),
             'code_ticket' => strtoupper(uniqid()),
-            'ticket_state_id' => TicketState::where('state', 'Open')->first()->id,
+            'ticket_state_id' => TicketState::where('state->en', 'Open')->first()->id,
         ]);
     }
 

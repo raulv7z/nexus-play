@@ -64,7 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pendingCart()
     {
         return $this->hasOne(Cart::class)->whereHas('cartState', function ($query) {
-            $query->where('state', 'pending');
+            $query->where('state->en', 'pending');
         });
     }
     

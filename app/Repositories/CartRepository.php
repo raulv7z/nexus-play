@@ -15,13 +15,13 @@ class CartRepository
     public function getPendingCart(User $user)
     {
         return $user->carts()->whereHas('cartState', function ($query) {
-            $query->where('state', 'pending');
+            $query->where('state->en', 'pending');
         })->first();
     }
 
     public function createPendingCart(User $user)
     {
-        $pendingState = CartState::where('state', 'pending')->first();
+        $pendingState = CartState::where('state->en', 'pending')->first();
 
         return $user->carts()->create([
             'cart_state_id' => $pendingState->id,

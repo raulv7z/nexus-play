@@ -3,69 +3,70 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
-use App\Models\User;
+use App\Http\Requests\StoreTicketRequest;
+use App\Http\Requests\UpdateTicketRequest;
+use App\Models\Ticket;
+use App\Models\TicketState;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class TicketController extends Controller
 {
     public function create()
     {
-        return view('content.admin.users.create');
+        return view('content.admin.tickets.create');
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreTicketRequest $request)
     {
         $validated = $request->validated();
-        $validated['password'] = Hash::make($validated['password']); // encrypt password
+        $ticket = Ticket::create($validated);
 
-        $user = User::create($validated);
-        $user->assignRole('user');
-
-        return redirect()->route('admin.users.manager')->with('success', 'User created successfully.');
+        return redirect()->route('admin.tickets.manager')->with('success', 'Ticket created successfully.');
     }
 
     public function show($id)
     {
-        $user = User::withTrashed()->findOrFail($id);
-        return view('content.admin.users.show', compact('user'));
+        $ticket = Ticket::withTrashed()->findOrFail($id);
+        $allTicketStates = TicketState::all();
+
+        return view('content.admin.tickets.show', compact('ticket', 'allTicketStates'));
     }
 
     public function edit($id)
     {
-        $user = User::withTrashed()->findOrFail($id);
-        return view('content.admin.users.edit', compact('user'));
+        $ticket = Ticket::withTrashed()->findOrFail($id);
+        $allTicketStates = TicketState::all();
+
+        return view('content.admin.tickets.edit', compact('ticket', 'allTicketStates'));
     }
 
-    public function update(UpdateUserRequest $request, $id)
+    public function update(UpdateTicketRequest $request, $id)
     {
-        $user = User::withTrashed()->findOrFail($id);
-        $user->update($request->validated());
+        $ticket = Ticket::withTrashed()->findOrFail($id);
+        $ticket->update($request->validated());
 
-        if ($user->trashed() && $request->has('restore') && $request->restore) {
-            $user->restore();
+        if ($ticket->trashed() && $request->has('restore') && $request->restore) {
+            $ticket->restore();
         }
 
-        return redirect()->route('admin.users.manager')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.tickets.manager')->with('success', 'Ticket updated successfully.');
     }
 
     public function delete($id)
     {
-        $user = User::withTrashed()->findOrFail($id);
+        $ticket = Ticket::withTrashed()->findOrFail($id);
+        $allTicketStates = TicketState::all();
 
-        if ($user->trashed()) {
-            return redirect()->route('admin.users.manager')->with('error', 'User is already deleted. You have been redirected to manager.');
+        if ($ticket->trashed()) {
+            return redirect()->route('admin.tickets.manager')->with('error', 'Ticket is already deleted. You have been redirected to manager.');
         }
 
-        return view('content.admin.users.delete', compact('user'));
+        return view('content.admin.tickets.delete', compact('ticket', 'allTicketStates'));
     }
 
-    public function destroy(User $user)
+    public function destroy(Ticket $ticket)
     {
-        $user->delete();
-        return redirect()->route('admin.users.manager')->with('success', 'User deleted successfully.');
+        $ticket->delete();
+        return redirect()->route('admin.tickets.manager')->with('success', 'Ticket deleted successfully.');
     }
 }
