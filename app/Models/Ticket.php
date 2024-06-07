@@ -20,7 +20,13 @@ class Ticket extends Model
         'issued_at'
     ];
 
+    protected $appends = ['ticket_state_name'];
     protected $dates = ['issued_at'];
+
+    public function getTicketStateNameAttribute()
+    {
+        return $this->ticketState ? $this->ticketState->state : 'N/A';
+    }
 
     public function getIssuedAtAttribute($value)
     {

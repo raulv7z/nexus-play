@@ -9,11 +9,17 @@ use App\Models\User;
 use App\Models\Videogame;
 use App\Models\Platform;
 use App\Models\Edition;
+use App\Models\Ticket;
 
 class ManagerController extends Controller
 {
 
     // Métodos adicionales para cada tipo de CRUD
+    public function manageTickets()
+    {
+        $tickets = Ticket::withTrashed()->get();
+        return view('content.admin.tickets.manager', compact('tickets'));
+    }
 
     public function manageUsers()
     {

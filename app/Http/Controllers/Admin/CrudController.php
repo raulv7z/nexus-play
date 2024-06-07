@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Edition;
 use App\Models\Platform;
 use App\Models\PlatformGroup;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Videogame;
@@ -13,6 +14,16 @@ use Carbon\Carbon;
 class CrudController extends Controller
 {
     //
+
+    public function tickets(Request $request) {
+        
+        if ($request->ajax()) {
+            $tickets = Ticket::withTrashed()->with('ticketState')->get();
+            return response()->json($tickets);
+        }
+    
+        abort(404);
+    }
 
     public function users(Request $request) {
         

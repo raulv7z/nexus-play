@@ -29,6 +29,7 @@ use App\Http\Controllers\Breeze\ProfileController as BreezeProfileController;
 use App\Http\Controllers\Admin\ManagerController as AdminManagerController;
 use App\Http\Controllers\Admin\CrudController as AdminCrudController;
 use App\Http\Controllers\Admin\ChartController as AdminChartController;
+use App\Http\Controllers\Admin\TicketController as AdminTicketController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\VideogameController as AdminVideogameController;
 use App\Http\Controllers\Admin\PlatformController as AdminPlatformController;
@@ -52,6 +53,24 @@ Route::middleware(['role:admin', 'breadcrumbs', 'layouts', 'lang'])->prefix('adm
 
     // dashboard
     Route::get('/', [RootDashboardController::class, 'admin'])->name('dashboard');
+
+    // Tickets Management
+    Route::prefix('tickets')->name('tickets.')->group(function () {
+        // management
+        Route::get('/', [AdminManagerController::class, 'manageTickets'])->name('manager');
+
+        // actions
+        Route::get('create', [AdminTicketController::class, 'create'])->name('create');
+        Route::post('store', [AdminTicketController::class, 'store'])->name('store');
+        Route::get('show/{ticket}', [AdminTicketController::class, 'show'])->name('show');
+        Route::get('edit/{ticket}', [AdminTicketController::class, 'edit'])->name('edit');
+        Route::put('update{ticket}', [AdminTicketController::class, 'update'])->name('update');
+        Route::get('delete/{ticket}', [AdminTicketController::class, 'delete'])->name('delete');
+        Route::delete('destroy/{ticket}', [AdminTicketController::class, 'destroy'])->name('destroy');
+
+        // ajax
+        Route::get('crud', [AdminCrudController::class, 'tickets'])->name('crud');
+    });
 
     // Users Management
     Route::prefix('users')->name('users.')->group(function () {
