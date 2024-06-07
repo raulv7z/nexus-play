@@ -1,12 +1,9 @@
-{{-- !CHANGE --}}
-
-@props(['order'])
+@props(['review'])
 
 <div class="flex justify-center items-center p-3 rounded-lg bg-gray-100 dark:bg-gray-700">
-    <div class="h-24">
+    <div class="h-full">
         <p>
-            {{ $order->edition_id }}
+            {{ __($review->comment) }}
         </p>
-        {{-- <img src="{{Storage::url('images/games/front-pages/' . $order->edition->videogame->front_page)}}" alt="image"> --}}
     </div>
 </div>

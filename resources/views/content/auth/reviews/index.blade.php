@@ -9,13 +9,18 @@
 @endsection
 
 @section('content')
+    <x-interface.hidden-block>
+
+        {{-- paginate linking --}}
+        {{ $reviews->links() }}
+
+    </x-interface.hidden-block>
 
     <x-interface.info-block>
 
-        
+        <x-sections.review-section :reviews="$reviews" />
 
     </x-interface.info-block>
-
 @endsection
 
 @section('scripts')

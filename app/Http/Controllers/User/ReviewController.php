@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function index() {
-
-        return view('content.auth.reviews.index');
-
+    public function index(Request $request) {
+        $user = $request->user();
+        $reviews = Review::where('user_id', $user->id)->paginate(6);
+        return view('content.auth.reviews.index', compact('user', 'reviews'));
     }
 
     public function create(Request $request, $editionId)

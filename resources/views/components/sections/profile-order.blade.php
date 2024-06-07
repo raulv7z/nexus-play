@@ -22,7 +22,7 @@
                 </p>
                 <p class="text-lg">
                     <span class="font-bold">{{ __('Purchase date') }}: </span>
-                    <span class="text-blue-600 dark:text-blue-300">{{ $order->issued_at }}</span>
+                    <span class="font-bold text-blue-600 dark:text-blue-300">{{ $order->issued_at }}</span>
                 </p>
             </div>
         </div>
