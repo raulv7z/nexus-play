@@ -373,5 +373,9 @@
     "Bill To:": "Cobro realizado a:",
     "Thanks for purchasing!": "¡Gracias por su compra!",
     "You have 30 business days to make returns.": "Dispone de 30 días hábiles para realizar devoluciones.",
-    "The item has been deleted from the cart successfully.": "El producto ha sido eliminado correctamente del carrito."
+    "The item has been deleted from the cart successfully.": "El producto ha sido eliminado correctamente del carrito.",
+    "Wait a moment!": "¡Espere un momento!",
+    "Before continue, could you verify your email address by clicking on the link we just emailed to you?": "Antes de continuar, ¿podría verificar su dirección de correo electrónico haciendo clic en el enlace que le acabamos de enviar?",
+    "A new verification link has been sent to ": "Se ha enviado un nuevo enlace de verificación a ",
+    "If you didn't receive the email, we will gladly send you another.": "Si no recibió el correo electrónico, con gusto le enviaremos otro."
 }
