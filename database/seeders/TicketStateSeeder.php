@@ -13,14 +13,26 @@ class TicketStateSeeder extends Seeder
     public function run()
     {
         $states = [
-            ['state' => 'Open'],
-            ['state' => 'Pending'],
-            ['state' => 'Closed'],
-            ['state' => 'Cancelled'],
+            [
+                'en' => 'Open',
+                'es' => 'Abierto',
+            ],
+            [
+                'en' => 'Pending',
+                'es' => 'Pendiente',
+            ],
+            [
+                'en' => 'Closed',
+                'es' => 'Cerrado',
+            ],
+            [
+                'en' => 'Cancelled',
+                'es' => 'Cancelado',
+            ],
         ];
 
         foreach ($states as $state) {
-            TicketState::create($state);
+            TicketState::create(['state' => $state]);
         }
     }
 }

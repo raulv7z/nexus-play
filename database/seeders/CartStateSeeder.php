@@ -13,14 +13,26 @@ class CartStateSeeder extends Seeder
     public function run()
     {
         $states = [
-            ['state' => 'Pending'],
-            ['state' => 'Processing'],
-            ['state' => 'Completed'],
-            ['state' => 'Cancelled'],
+            [
+                'en' => 'Pending',
+                'es' => 'Pendiente',
+            ],
+            [
+                'en' => 'Processing',
+                'es' => 'Procesando',
+            ],
+            [
+                'en' => 'Completed',
+                'es' => 'Completado',
+            ],
+            [
+                'en' => 'Cancelled',
+                'es' => 'Cancelado',
+            ],
         ];
 
         foreach ($states as $state) {
-            CartState::create($state);
+            CartState::create(['state' => $state]);
         }
     }
 }

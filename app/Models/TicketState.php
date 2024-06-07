@@ -11,6 +11,7 @@ class TicketState extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['state'];
+    public $translatable = ['state'];
 
     public function tickets()
     {
