@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,12 +13,19 @@ class Ticket extends Model
 
     protected $fillable = [
         'ticket_state_id',
-        'ticket_code',
+        'code_ticket',
         'name',
         'email',
         'message',
         'issued_at'
     ];
+
+    protected $dates = ['issued_at'];
+
+    public function getIssuedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
 
     public function ticketState()
     {

@@ -15,7 +15,7 @@ class TicketFactory extends Factory
     {
         return [
             'ticket_state_id' => TicketState::inRandomOrder()->first()->id,
-            'ticket_code' => Str::upper(Str::random(10)),
+            'code_ticket' => Str::upper(Str::random(10)),
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'message' => $this->faker->paragraph,

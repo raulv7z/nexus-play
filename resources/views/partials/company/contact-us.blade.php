@@ -15,15 +15,30 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('root.company.send-contact-message') }}">
+    <form method="POST" action="{{ route('root.company.open-ticket') }}">
         @csrf
 
-        <!-- Message -->
         <div>
+            <x-presets.input-label for="name" :value="__('Name')" />
+
+            <x-presets.text-input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="{{__('Your name...')}}" required/>
+
+            <x-presets.input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-presets.input-label for="email" :value="__('Email')" />
+
+            <x-presets.text-input id="email" class="block mt-1 w-full" type="text" name="email" placeholder="{{__('Your e-mail address...')}}" required/>
+
+            <x-presets.input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Message -->
+        <div class="mt-4">
             <x-presets.input-label for="message" :value="__('Message')" />
 
-            <x-presets.textarea-input id="message" class="block mt-1 w-full" type="text" name="message" required
-                autocomplete="message" />
+            <x-presets.textarea-input id="message" class="block mt-1 w-full" type="text" name="message" placeholder="{{__('Write here the reasons why you contact us...')}}" required/>
 
             <x-presets.input-error :messages="$errors->get('message')" class="mt-2" />
         </div>

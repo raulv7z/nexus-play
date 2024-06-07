@@ -64,7 +64,7 @@ Route::middleware(['layouts', 'lang'])->prefix('home')->name('root.')->group(fun
     // Serve pages
     Route::prefix('company')->name('company.')->group(function () {
         Route::get('contact-us', [RootCompanyController::class, 'contactUs'])->name('contact-us');
-        Route::post('send-contact-message', [RootCompanyController::class, 'sendContactMessage'])->name('send-contact-message');
+        Route::post('open-ticket', [RootCompanyController::class, 'openTicket'])->name('open-ticket');
     });
 
     Route::prefix('platform-groups')->name('platform-groups.')->group(function () {
