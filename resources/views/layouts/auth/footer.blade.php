@@ -44,10 +44,10 @@
                     </h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="#" class="hover:underline">{{ __('Contact Us') }}</a>
+                            <a href="{{route('root.company.contact-us')}}" class="hover:underline">{{ __('Contact Us') }}</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline">{{ __('Documentation') }}</a>
+                            <a href="docs/" class="hover:underline">{{ __('Documentation') }}</a>
                         </li>
                     </ul>
                 </div>

@@ -72,6 +72,17 @@
                             </li>
 
                             @php
+                                $active = request()->routeIs('admin.tickets.manager');
+                            @endphp
+                            <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
+                                <a href="{{ route('admin.tickets.manager') }}"
+                                    class="block py-2 px-4 hover:text-blue-600 dark:hover:text-blue-400
+                                {{ $active ? 'font-bold text-blue-700 dark:text-blue-200' : 'text-gray-700 dark:text-gray-400' }}">
+                                    {{ __('Tickets') }}
+                                </a>
+                            </li>
+
+                            @php
                                 $active = request()->routeIs('admin.users.manager');
                             @endphp
                             <li class="relative {{ $active ? 'bg-blue-200 dark:bg-blue-900' : '' }}">
