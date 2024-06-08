@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Videogame;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use Illuminate\Http\Request;
@@ -16,15 +17,45 @@ class BotManController extends Controller
     {
         $botman = app('botman');
 
-        $botman->hears('.*(hi|hello|hola|buenas|buenos días|buenos dias|buenas tardes|buenas noches).*', function ($bot, $message) {
+        $botman->hears('.*(ey|hey|hi|hello|hola|buenas|buenos días|buenos dias|buenas tardes|buenas noches).*', function ($bot, $message) {
             $bot->startConversation(new WelcomeConversation());
         });
 
+        $botman->hears('.*(nexbot).*', function ($bot, $message) {
+            $bot->startConversation(new MenuConversation());
+        });
+
         $botman->fallback(function ($bot) {
-            $bot->reply('Lo siento, no entendí eso. ¿En qué puedo ayudarte?');
+            $bot->typesAndWaits(2);
+            $bot->reply('Lo siento, no te he entendido.');
+            $bot->startConversation(new DisplayCommandsConversation());
         });
 
         $botman->listen();
+    }
+}
+
+class DisplayCommandsConversation extends Conversation
+{
+
+    public function run()
+    {
+        $this->sayAvailableCommands();
+    }
+
+    public function sayAvailableCommands()
+    {
+
+        $this->bot->typesAndWaits(2);
+
+        $availableCommands = ["nexbot"];
+        $message = "Esta es la lista de comandos disponibles: <br><br>";
+
+        foreach ($availableCommands as $command) {
+            $message .= "<b>$command</b><br>";
+        }
+
+        $this->say($message);
     }
 }
 
@@ -32,83 +63,156 @@ class WelcomeConversation extends Conversation
 {
     public function run()
     {
-        $this->bot->typesAndWaits(2);
         $this->getCustomMessage();
-        $this->askWhatToDo();
+        $this->bot->startConversation(new MenuConversation());
     }
 
     public function getCustomMessage()
     {
+
+        $this->bot->typesAndWaits(2);
+
         if (auth()->user()) {
             $user = auth()->user();
-            $this->say("Hola de nuevo, {$user->name}.");
+            $this->say("Hola de nuevo, <b>{$user->name}</b>.");
+        } else {
+            $this->say("Hola, bienvenido a <b>Nexus Play</b>.");
         }
-        else {
-            $this->say("Hola, bienvenido a Nexus Play.");
-        }
+    }
+}
+
+class HelpConversation extends Conversation
+{
+    public function run()
+    {
+        $this->askForHelp();
+    }
+
+    public function askForHelp()
+    {
+
+        $this->bot->typesAndWaits(2);
+
+        $question = Question::create('¿Puedo ayudarte en algo más?')
+            ->callbackId('ask_for_help');
+
+        $this->ask($question, function (Answer $answer) {
+            switch (strtolower($answer->getValue())) {
+                case 's':
+                case 'si':
+                case 'sí':
+                case 'y':
+                case 'yes':
+                case 'yep':
+                    $this->bot->startConversation(new MenuConversation());
+                    break;
+                case 'n':
+                case 'no':
+                case 'nope':
+                case 'nah':
+                    $this->bot->typesAndWaits(2);
+                    $this->say("Está bien. Si necesitas mi ayuda, escribe \"<b>nexbot</b>\" en el chat.");
+                    break;
+                default:
+                    $this->bot->typesAndWaits(2);
+                    $this->say("Lo siento, no te he entendido.");
+                    $this->askForHelp();
+                    break;
+            }
+        });
+    }
+}
+class MenuConversation extends Conversation
+{
+    public function run()
+    {
+        $this->askWhatToDo();
     }
 
     public function askWhatToDo()
     {
+
+        $this->bot->typesAndWaits(2);
+
         $buttons = [
-            Button::create('Ver juegos disponibles')->value('view-games'),
-            Button::create('Información sobre el proceso de compra')->value('purchase-info'),
-            Button::create('Jugar al Trivial')->value('play-trivial'),
-            Button::create('Contactar con Nexus Play')->value('contact-us'),
+            Button::create('Buscar un juego')->value('search-game'),
+            Button::create('Jugar al trivial')->value('play-trivial'),
+            Button::create('Contactar con Nexus')->value('contact-us'),
             Button::create('Salir del menú')->value('exit'),
         ];
 
-        $question = Question::create('¿Qué deseas hacer?')
+        $question = Question::create('⬇️ ¿En qué puedo ayudarte?')
             ->callbackId('ask_what_to_do')
             ->addButtons($buttons);
 
         $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 switch ($answer->getValue()) {
-                    case 'view-games':
-                        $this->showAvailableGames();
+                    case 'search-game':
+                        $this->askForAGame();
                         break;
-                    case 'purchase-info':
-                        $this->providePurchaseInfo();
+                    case 'play-trivial':
+                        $this->displayTrivialGame();
                         break;
                     case 'contact-us':
-                        $this->contactNexusPlay();
+                        $this->provideContactInfo();
                         break;
                     case 'exit':
                         $this->exitMenu();
                         break;
                     default:
-                        $this->say('Lo siento, no te he entendido. ¿Puedes elegir una opción del menú?');
+                        $this->bot->typesAndWaits(2);
+                        $this->say('Lo siento, no te he entendido. <br>Por favor, selecciona una opción del menú.');
                         $this->askWhatToDo();
                         break;
                 }
             } else {
-                $this->say('Has vuelto a escribir sin pulsar un botón.');
+                $this->bot->typesAndWaits(2);
+                $this->say('Lo siento, no te he entendido. Por favor, selecciona una opción del menú.');
+                $this->askWhatToDo();
             }
         });
     }
 
-    public function showAvailableGames()
+    public function askForAGame()
     {
-        // Implementación para mostrar los juegos disponibles
-        $this->say('Aquí se mostrarían los juegos disponibles.');
+        $this->bot->typesAndWaits(2);
+
+        $question = Question::create("Escribe <span style=\"color: #273bb0\">el nombre del juego</span> que deseas buscar y lo consultaré en el catálogo.")
+            ->fallback('Lo siento, no te he entendido.')
+            ->callbackId('ask_for_a_game');
+
+        $this->ask($question, function (Answer $answer) {
+
+            $gameSearched = $answer->getText();
+            $game = Videogame::where('name', 'LIKE', '%' . $gameSearched . '%')->first();
+
+            $this->bot->typesAndWaits(2);
+
+            if ($game) {
+                $this->say("¡Buenas noticias!<br><br>El juego \"{$game->name}\" <span style=\"color: green;\">se encuentra disponible</span> en nuestro catálogo.");
+            } else {
+                $this->say("Lo sentimos.<br><br>El juego \"{$gameSearched}\" <span style=\"color: #CC0000;\">no se encuentra disponible</span> en nuestro catálogo.");
+            }
+        });
     }
 
-    public function providePurchaseInfo()
+    public function displayTrivialGame()
     {
-        // Implementación para proporcionar información sobre el proceso de compra
-        $this->say('Aquí se proporcionaría información sobre el proceso de compra.');
     }
 
-    public function contactNexusPlay()
+    public function provideContactInfo()
     {
-        // Implementación para contactar a Nexus Play
-        $this->say('Aquí se proporcionarían detalles de contacto para Nexus Play.');
+        $this->bot->typesAndWaits(2);
+        $question = Question::create("¡Claro! Puedes acceder a nuestra página de contacto a través del siguiente enlace: <br><br> https://localhost:8000/home/company/contact-us");
+
+        $this->ask($question, function (Answer $answer) {
+            // no needed code here
+        });
     }
 
     public function exitMenu()
     {
-        // Implementación para contactar a Nexus Play
-        $this->say('¡Hasta luego! Si necesitas algo más, aquí estaré.');
+        $this->bot->startConversation(new HelpConversation());
     }
 }
