@@ -41,6 +41,10 @@ const cartIconLink = $("#cart-icon-link");
 // Functions
 ////////////////////////////////////
 function startApp() {
+
+    // BotMan fixed div
+    const botmanFixedDiv = $("#botmanWidgetRoot").children("div:first");
+
     initializeTheme({
         toggleSelector: themeToggleSelector,
         toggle: themeToggle,
@@ -56,6 +60,23 @@ function startApp() {
     attachReactiveBehavior({ stars: reactiveStars });
     setAlertTimeouts({ alerts: alertsArray });
     renderCartIconLink({ linkNode: cartIconLink });
+    handleFixedBotContainer({ botContainer: botmanFixedDiv });
+}
+
+function handleFixedBotContainer({ botContainer }) {
+    const closedDivStyles = {
+        "min-width": "130px",
+        "min-height": "120px",
+    };
+    botContainer.css(closedDivStyles);
+
+    botContainer.on("click", function () {
+        botContainer.toggleClass("state-opened");
+
+        if (!botContainer.hasClass("state-opened")) {
+            botContainer.css(closedDivStyles);
+        }
+    });
 }
 
 function initializeTheme({ toggleSelector, toggle, indicator }) {
