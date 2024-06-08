@@ -95,7 +95,7 @@ return [
     */
 
     'search'            => [
-        'enabled'       => false,
+        'enabled'       => true,
         'default'       => 'algolia',
         'engines'       => [
             'internal'  => [
@@ -126,8 +126,8 @@ return [
         'fa_v4_shims'    => true, // Add FontAwesome v4 shims prevent BC break
         'show_side_bar'  => true,
         'colors'         => [
-            'primary'    => '#787AF6',
-            'secondary'  => '#2b9cf2'
+            'primary'    => '#4949de',
+            'secondary'  => '#4949de'
         ],
 
         'theme_order'    => null // ['LaRecipeDarkTheme', 'customTheme']
@@ -158,7 +158,7 @@ return [
         ]
     ],
 
-   /*
+    /*
    |--------------------------------------------------------------------------
    | Forum
    |--------------------------------------------------------------------------
@@ -171,7 +171,7 @@ return [
    |
    */
 
-  'forum'                   => [
+    'forum'                   => [
         'enabled'           => false,
         'default'           => 'disqus',
         'services'          => [
