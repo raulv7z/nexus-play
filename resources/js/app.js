@@ -109,7 +109,7 @@ function setAlertTimeouts({ alerts }) {
                 alert.fadeOut(1000, function () {
                     alert.remove();
                 });
-            }, 5000); // 4000 ms = 4 seconds
+            }, 8000); // 1000 ms = 1 second
         }
     });
 }
