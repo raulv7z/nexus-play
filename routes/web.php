@@ -45,6 +45,9 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
+// Route for BotMan
+require __DIR__ . "/botman.php";
+
 // Route for serve documentation
 require __DIR__ . "/docs.php";
 

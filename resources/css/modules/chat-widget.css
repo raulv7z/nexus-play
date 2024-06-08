@@ -1,0 +1,17 @@
+/* HTML */
+html, body {
+    padding: 0;
+    margin: 0;
+    background-image: none;
+    background-color: rgb(236, 236, 236);
+}
+
+/* Chat Bubbles */
+.msg {
+    background-color: #fff;
+}
+
+/* User Input */
+#userText {
+    
+}

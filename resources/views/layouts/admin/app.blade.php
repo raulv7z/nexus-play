@@ -19,6 +19,31 @@
     {{-- Datatable CDNs --}}
     <link rel="stylesheet" href="//cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
 
+    {{-- BotMan CDNs --}}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+
+    {{-- BotMan Widget Config --}}
+    <script>
+        const botIntroMessage =
+            "👋🏼 ¡Hola! Me llamo Nexbot. <br><br> Soy el asistente virtual de Nexus Play y estoy aquí para ayudarte.";
+        const placeholderMessage = 'Escribe tu mensaje...';
+
+        var botmanWidget = {
+            frameEndpoint: '/botman/chat-widget',
+            chatServer: '/botman',
+            introMessage: botIntroMessage,
+            placeholderText: placeholderMessage,
+            title: '🤖 • Nexbot está en línea',
+            mainColor: '#c9f0da',
+            bubbleBackground: '#ffffff',
+            bubbleAvatarUrl: 'storage/images/interface/nexbot.png',
+            aboutText: 'Nexus Play',
+            aboutLink: "http://localhost:8000",
+        };
+    </script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

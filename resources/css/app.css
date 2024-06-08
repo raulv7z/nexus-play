@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#botmanWidgetRoot > div:first-child {
+    /* background-color: red; */
+}
