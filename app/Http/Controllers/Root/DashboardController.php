@@ -17,6 +17,12 @@ class DashboardController extends Controller
     public function admin() {
         $tablesInfo = [
             [
+                'name' => 'Tickets',
+                'table' => 'tickets',
+                'description' => 'List of tickets currently registered',
+                'route' => 'admin.tickets.manager'
+            ],  
+            [
                 'name' => 'Users',
                 'table' => 'users',
                 'description' => 'List of users currently registered',
