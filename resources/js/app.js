@@ -26,11 +26,6 @@ const themeIndicatorSelector = ".toggle-dot";
 const themeToggle = $(themeToggleSelector);
 const themeIndicator = $(themeIndicatorSelector);
 
-// const themeToggleSelectorResponsive = "#theme-toggle-responsive";
-// const themeIndicatorSelectorResponsive = "#theme-dot-responsive";
-// const themeToggleResponsive = $(themeToggleSelectorResponsive);
-// const themeIndicatorResponsive = $(themeIndicatorSelectorResponsive);
-
 // Alerts
 const errorAlert = $("#error-alert");
 const successAlert = $("#success-alert");

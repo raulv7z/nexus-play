@@ -136,7 +136,6 @@ class MenuConversation extends Conversation
 
         $buttons = [
             Button::create('Buscar un juego')->value('search-game'),
-            Button::create('Jugar al trivial')->value('play-trivial'),
             Button::create('Contactar con Nexus')->value('contact-us'),
             Button::create('Salir del menú')->value('exit'),
         ];
@@ -150,9 +149,6 @@ class MenuConversation extends Conversation
                 switch ($answer->getValue()) {
                     case 'search-game':
                         $this->askForAGame();
-                        break;
-                    case 'play-trivial':
-                        $this->displayTrivialGame();
                         break;
                     case 'contact-us':
                         $this->provideContactInfo();
@@ -197,22 +193,16 @@ class MenuConversation extends Conversation
         });
     }
 
-    public function displayTrivialGame()
-    {
-    }
-
     public function provideContactInfo()
     {
         $this->bot->typesAndWaits(2);
-        $question = Question::create("¡Claro! Puedes acceder a nuestra página de contacto a través del siguiente enlace: <br><br> https://localhost:8000/home/company/contact-us");
-
-        $this->ask($question, function (Answer $answer) {
-            // no needed code here
-        });
+        $this->say("¡Claro! Puedes acceder a nuestra página de contacto a través de la siguiente url: <br><br><span style=\"color: blue;\"><b>http://localhost:8000/home/company/contact-us</b></span>");
+        $this->bot->startConversation(new HelpConversation());
     }
 
     public function exitMenu()
     {
-        $this->bot->startConversation(new HelpConversation());
+        $this->bot->typesAndWaits(2);
+        $this->say("¡Está bien! Si necesitas algo más, no dudes en consultarme.");
     }
 }
