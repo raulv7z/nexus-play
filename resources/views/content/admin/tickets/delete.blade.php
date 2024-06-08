@@ -53,7 +53,14 @@
                 <x-blocks.form-group :type="'email'" :field="'email'" :label="'Email'" :value="$ticket->email" disabled>
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'textarea'" :field="'message'" :label="'Message'" :value="$ticket->password" disabled>
+                <x-blocks.form-group :type="'custom'" disabled>
+                    <label for="message">
+                        {{ __('Message') }}
+                    </label>
+
+                    <textarea name="message" id="message" cols="50" rows="10" disabled
+                        class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 dark:bg-gray-800 dark:text-white transition duration-150 ease-in-out">{{ $ticket->message }}</textarea>
+
                 </x-blocks.form-group>
             </x-slot>
 
