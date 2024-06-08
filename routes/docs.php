@@ -52,6 +52,6 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-Route::prefix('/docs')->group(function() {
-    Route::get('/', [RootDocumentsController::class, 'index'])->name('docs');
-});
+// Route::prefix('/docs')->group(function() {
+//     Route::get('/', [RootDocumentsController::class, 'index'])->name('docs');
+// });
