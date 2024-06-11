@@ -1,0 +1,128 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#errors-container {
+    position: relative;
+    height: 100vh;
+}
+
+#errors-container .errors-container-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+#errors-container .errors-container-bg:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #4949de;
+}
+
+#errors-container .errors-container-info {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.errors-container-info {
+    max-width: 910px;
+    width: 100%;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.errors-container-info .errors-container-code {
+    position: relative;
+    height: 200px;
+}
+
+.errors-container-info .errors-container-code h1 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 220px;
+    font-weight: 900;
+    margin: 0px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+
+.errors-container-info h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.errors-container-info .home-btn,
+.errors-container-info .contact-btn {
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    font-weight: 700;
+    text-decoration: none;
+    background-color: transparent;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+    padding: 13px 25px;
+    font-size: 18px;
+    border-radius: 40px;
+    margin: 7px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.errors-container-info .home-btn:hover,
+.errors-container-info .contact-btn:hover {
+    opacity: 0.9;
+}
+
+.errors-container-info .home-btn {
+    color: #4949de;
+    background: #fff;
+}
+
+.errors-container-info .contact-btn {
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media only screen and (max-width: 767px) {
+    .errors-container-info .errors-container-code h1 {
+        font-size: 182px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .errors-container-info .errors-container-code {
+        height: 146px;
+    }
+
+    .errors-container-info .errors-container-code h1 {
+        font-size: 146px;
+    }
+
+    .errors-container-info h2 {
+        font-size: 16px;
+    }
+
+    .errors-container-info .home-btn,
+    .errors-container-info .contact-btn {
+        font-size: 14px;
+    }
+}
