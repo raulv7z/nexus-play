@@ -45,7 +45,7 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-Route::middleware('guest', 'layouts', 'lang')->group(function () {
+Route::middleware(['guest', 'layouts', 'lang'])->group(function () {
 
     // Breeze routes
     Route::get('register', [BreezeRegisteredUserController::class, 'create'])->name('register');
@@ -60,8 +60,6 @@ Route::middleware('guest', 'layouts', 'lang')->group(function () {
     // Own routes
 
     Route::name('guest')->group(function() {
-
-
 
     });
     

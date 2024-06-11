@@ -65,6 +65,16 @@ Route::middleware(['auth', 'layouts', 'lang'])->group(function () {
 
     Route::name('auth.')->group(function() {
 
+        // Verified
+
+        Route::middleware('verified')->prefix('payments')->name('payments.')->group(function () {
+            Route::get('checkout', [UserPaymentController::class, 'checkout'])->name('checkout');
+            Route::post('confirm', [UserPaymentController::class, 'confirm'])->name('confirm');
+            Route::post('solidify', [UserPaymentController::class, 'solidify'])->name('solidify');
+        });
+
+        // Not verified
+        
         Route::prefix('carts')->name('carts.')->group(function () {
 
             Route::get('show', [UserCartController::class, 'show'])->name('show');
@@ -72,12 +82,6 @@ Route::middleware(['auth', 'layouts', 'lang'])->group(function () {
             Route::delete('remove/{editionId}', [UserCartController::class, 'removeFromCart'])->name('remove');
             Route::put('decrement/{editionId}', [UserCartController::class, 'decreaseQuantity'])->name('decrement');
             Route::put('increment/{editionId}', [UserCartController::class, 'increaseQuantity'])->name('increment');
-        });
-
-        Route::middleware('verified')->prefix('payments')->name('payments.')->group(function () {
-            Route::get('checkout', [UserPaymentController::class, 'checkout'])->name('checkout');
-            Route::post('confirm', [UserPaymentController::class, 'confirm'])->name('confirm');
-            Route::post('solidify', [UserPaymentController::class, 'solidify'])->name('solidify');
         });
     
         Route::prefix('reviews')->name('reviews.')->group(function () {
