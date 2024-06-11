@@ -51,5 +51,4 @@ Route::middleware(['ajax'])->prefix('api')->name('api.')->group(function () {
         Route::get('/cart-icon-link', [RootRenderController::class, 'renderCartIconLink'])->name('cart-icon-link');
         Route::get('/editions', [RootRenderController::class, 'renderEditionSection'])->name('editions');
     });
-
 });
