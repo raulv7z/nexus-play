@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-Route::middleware(['role:admin', 'breadcrumbs', 'layouts', 'lang'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['role:admin', 'layouts', 'lang'])->prefix('admin')->name('admin.')->group(function () {
 
     // dashboard
     Route::get('/', [RootDashboardController::class, 'admin'])->name('dashboard');
