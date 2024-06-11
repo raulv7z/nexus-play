@@ -126,3 +126,22 @@ body {
         font-size: 14px;
     }
 }
+
+@media only screen and (max-width: 350px) {
+    .errors-container-info .errors-container-code {
+        height: 100px;
+    }
+
+    .errors-container-info .errors-container-code h1 {
+        font-size: 100px;
+    }
+
+    .errors-container-info h2 {
+        font-size: 14px;
+    }
+
+    .errors-container-info .home-btn,
+    .errors-container-info .contact-btn {
+        font-size: 12px;
+    }
+}
