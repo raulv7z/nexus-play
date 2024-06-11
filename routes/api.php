@@ -45,7 +45,7 @@ use Illuminate\Support\Facades\Route;
 //! Routes
 ///////////////////////////////////////////////////////////////////
 
-Route::prefix('api')->name('api.')->group(function () {
+Route::middleware(['ajax'])->prefix('api')->name('api.')->group(function () {
 
     Route::prefix('render')->name('render.')->group(function () {
         Route::get('/cart-icon-link', [RootRenderController::class, 'renderCartIconLink'])->name('cart-icon-link');

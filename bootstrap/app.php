@@ -16,8 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'layouts' => \App\Http\Middleware\SetLayoutMiddleware::class,
-            'breadcrumbs' => \App\Http\Middleware\BreadcrumbsMiddleware::class,
+            'breadcrumbs' => \App\Http\Middleware\SetBreadcrumbsMiddleware::class,
             'lang' => \App\Http\Middleware\SetLanguageMiddleware::class,
+            'ajax' => \App\Http\Middleware\EnsureAjaxRequestMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class BreadcrumbsMiddleware
+class SetBreadcrumbsMiddleware
 {
     public function handle($request, Closure $next)
     {
