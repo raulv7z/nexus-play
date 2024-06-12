@@ -79,7 +79,7 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
 
 function customizeDataTable({ data }) {
     const tableSelector = ".crud-table";
-    
+
     const tableColumnTitles = {
         ticketCode: {
             en: "TICKET CODE",
@@ -101,6 +101,14 @@ function customizeDataTable({ data }) {
             en: "DELETED",
             es: "BORRADO",
         },
+        deletedTrueReadable: {
+            en: "Yes",
+            es: "Si",
+        },
+        deletedFalseReadable: {
+            en: "No",
+            es: "No",
+        },
         actions: {
             en: "ACTIONS",
             es: "ACCIONES",
@@ -121,13 +129,22 @@ function customizeDataTable({ data }) {
             { type: "text" },
             { type: "text" },
             { type: "text" },
-            { type: "select", options: ["Si", "No"] },
+            {
+                type: "select",
+                options: [
+                    tableColumnTitles.deletedTrueReadable[lang],
+                    tableColumnTitles.deletedFalseReadable[lang],
+                ],
+            },
             { type: null },
         ],
         columns: [
             { data: "id", title: "ID", width: "12%" },
             { data: "code_ticket", title: tableColumnTitles.ticketCode[lang] },
-            { data: "ticket_state_name", title: tableColumnTitles.ticketStateName[lang] },
+            {
+                data: "ticket_state_name",
+                title: tableColumnTitles.ticketStateName[lang],
+            },
             { data: "email", title: tableColumnTitles.email[lang] },
             {
                 data: "issued_at",
@@ -136,7 +153,10 @@ function customizeDataTable({ data }) {
             {
                 data: "deleted_at",
                 title: tableColumnTitles.deleted[lang],
-                render: (data) => (data ? "Si" : "No"),
+                render: (data) =>
+                    data
+                        ? tableColumnTitles.deletedTrueReadable[lang]
+                        : tableColumnTitles.deletedFalseReadable[lang],
             },
             {
                 orderable: false,

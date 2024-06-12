@@ -89,15 +89,23 @@ function customizeDataTable({ data }) {
             en: "DELETED",
             es: "BORRADO",
         },
+        deletedTrueReadable: {
+            en: "Yes",
+            es: "Si",
+        },
+        deletedFalseReadable: {
+            en: "No",
+            es: "No",
+        },
         actions: {
             en: "ACTIONS",
             es: "ACCIONES",
         },
-    }
+    };
 
     const tableOptions = {
         language: {
-            url: dtDictionary[lang]
+            url: dtDictionary[lang],
         },
         paging: true,
         searching: true,
@@ -106,16 +114,25 @@ function customizeDataTable({ data }) {
         columnSearch: [
             { type: "text" },
             { type: "text" },
-            { type: "select", options: ["Si", "No"] },
+            {
+                type: "select",
+                options: [
+                    tableColumnTitles.deletedTrueReadable[lang],
+                    tableColumnTitles.deletedFalseReadable[lang],
+                ],
+            },
             { type: null },
         ],
         columns: [
-            { data: "id", title: "ID", width: '12%' },
+            { data: "id", title: "ID", width: "12%" },
             { data: "name", title: tableColumnTitles.name[lang] },
             {
                 data: "deleted_at",
                 title: tableColumnTitles.deleted[lang],
-                render: (data) => (data ? "Si" : "No"),
+                render: (data) =>
+                    data
+                        ? tableColumnTitles.deletedTrueReadable[lang]
+                        : tableColumnTitles.deletedFalseReadable[lang],
             },
             {
                 orderable: false,
@@ -200,7 +217,7 @@ function customizeChart({ data }) {
                     },
                     title: {
                         display: true,
-                        text: 'Número de Ventas',
+                        text: "Número de Ventas",
                         color: textColor,
                     },
                 },
@@ -216,7 +233,7 @@ function customizeChart({ data }) {
                     },
                     title: {
                         display: true,
-                        text: 'Grupos de Plataforma',
+                        text: "Grupos de Plataforma",
                         color: textColor,
                     },
                 },
@@ -227,7 +244,7 @@ function customizeChart({ data }) {
                 },
                 title: {
                     display: true,
-                    text: 'Ventas por Grupo de Plataforma',
+                    text: "Ventas por Grupo de Plataforma",
                     color: textColor,
                     font: {
                         size: 24,
@@ -248,17 +265,19 @@ function customizeChart({ data }) {
     })();
 
     const chartData = {
-        labels: data.map(item => item.name),
-        datasets: [{
-            label: 'Número de Ventas',
-            data: data.map(item => item.sales_count),
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
+        labels: data.map((item) => item.name),
+        datasets: [
+            {
+                label: "Número de Ventas",
+                data: data.map((item) => item.sales_count),
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+            },
+        ],
     };
 
-    const chartType = 'bar';
+    const chartType = "bar";
 
     return [chartSelector, chartOptions, chartData, chartType];
 }

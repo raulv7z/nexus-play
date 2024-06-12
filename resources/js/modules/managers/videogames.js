@@ -105,6 +105,14 @@ function customizeDataTable({ data }) {
             en: "DELETED",
             es: "BORRADO",
         },
+        deletedTrueReadable: {
+            en: "Yes",
+            es: "Si",
+        },
+        deletedFalseReadable: {
+            en: "No",
+            es: "No",
+        },
         actions: {
             en: "ACTIONS",
             es: "ACCIONES",
@@ -113,7 +121,7 @@ function customizeDataTable({ data }) {
 
     const tableOptions = {
         language: {
-            url: dtDictionary[lang]
+            url: dtDictionary[lang],
         },
         paging: true,
         searching: true,
@@ -126,7 +134,13 @@ function customizeDataTable({ data }) {
             { type: "text" },
             { type: "text" },
             { type: "text" },
-            { type: "select", options: ["Si", "No"] },
+            {
+                type: "select",
+                options: [
+                    tableColumnTitles.deletedTrueReadable[lang],
+                    tableColumnTitles.deletedFalseReadable[lang],
+                ],
+            },
             { type: null },
         ],
         columns: [
@@ -151,7 +165,10 @@ function customizeDataTable({ data }) {
             {
                 data: "deleted_at",
                 title: tableColumnTitles.deleted[lang],
-                render: (data) => (data ? "Si" : "No"),
+                render: (data) =>
+                    data
+                        ? tableColumnTitles.deletedTrueReadable[lang]
+                        : tableColumnTitles.deletedFalseReadable[lang],
             },
             {
                 orderable: false,

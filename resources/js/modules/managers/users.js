@@ -79,7 +79,7 @@ async function startApp({ requestDatatableUrl, requestChartUrl }) {
 
 function customizeDataTable({ data }) {
     const tableSelector = ".crud-table";
-    
+
     const tableColumnTitles = {
         name: {
             en: "NAME",
@@ -96,6 +96,14 @@ function customizeDataTable({ data }) {
         deleted: {
             en: "DELETED",
             es: "BORRADO",
+        },
+        deletedTrueReadable: {
+            en: "Yes",
+            es: "Si",
+        },
+        deletedFalseReadable: {
+            en: "No",
+            es: "No",
         },
         actions: {
             en: "ACTIONS",
@@ -116,7 +124,13 @@ function customizeDataTable({ data }) {
             { type: "text" },
             { type: "text" },
             { type: "text" },
-            { type: "select", options: ["Si", "No"] },
+            {
+                type: "select",
+                options: [
+                    tableColumnTitles.deletedTrueReadable[lang],
+                    tableColumnTitles.deletedFalseReadable[lang],
+                ],
+            },
             { type: null },
         ],
         columns: [
@@ -130,7 +144,10 @@ function customizeDataTable({ data }) {
             {
                 data: "deleted_at",
                 title: tableColumnTitles.deleted[lang],
-                render: (data) => (data ? "Si" : "No"),
+                render: (data) =>
+                    data
+                        ? tableColumnTitles.deletedTrueReadable[lang]
+                        : tableColumnTitles.deletedFalseReadable[lang],
             },
             {
                 orderable: false,

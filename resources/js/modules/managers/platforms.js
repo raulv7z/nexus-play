@@ -97,6 +97,14 @@ function customizeDataTable({ data }) {
             en: "DELETED",
             es: "BORRADO",
         },
+        deletedTrueReadable: {
+            en: "Yes",
+            es: "Si",
+        },
+        deletedFalseReadable: {
+            en: "No",
+            es: "No",
+        },
         actions: {
             en: "ACTIONS",
             es: "ACCIONES",
@@ -116,22 +124,34 @@ function customizeDataTable({ data }) {
             { type: "text" },
             { type: "text" },
             { type: "text" },
-            { type: "select", options: ["Si", "No"] },
+            {
+                type: "select",
+                options: [
+                    tableColumnTitles.deletedTrueReadable[lang],
+                    tableColumnTitles.deletedFalseReadable[lang],
+                ],
+            },
             { type: null },
         ],
         columns: [
-            { data: "id", title: "ID", width: '12%' },
-            { data: "platform_group_name", title: tableColumnTitles.platformGroupName[lang] },
+            { data: "id", title: "ID", width: "12%" },
+            {
+                data: "platform_group_name",
+                title: tableColumnTitles.platformGroupName[lang],
+            },
             { data: "name", title: tableColumnTitles.name[lang] },
             {
                 data: "plus",
                 title: tableColumnTitles.plus[lang],
-                render: (data) => (`${data} %`),
+                render: (data) => `${data} %`,
             },
             {
                 data: "deleted_at",
                 title: tableColumnTitles.deleted[lang],
-                render: (data) => (data ? "Si" : "No"),
+                render: (data) =>
+                    data
+                        ? tableColumnTitles.deletedTrueReadable[lang]
+                        : tableColumnTitles.deletedFalseReadable[lang],
             },
             {
                 orderable: false,
@@ -215,7 +235,7 @@ function customizeChart({ data }) {
                     },
                     title: {
                         display: true,
-                        text: 'Número de Ediciones',
+                        text: "Número de Ediciones",
                         color: textColor,
                     },
                 },
@@ -231,7 +251,7 @@ function customizeChart({ data }) {
                     },
                     title: {
                         display: true,
-                        text: 'Plataformas',
+                        text: "Plataformas",
                         color: textColor,
                     },
                 },
@@ -242,7 +262,7 @@ function customizeChart({ data }) {
                 },
                 title: {
                     display: true,
-                    text: 'Número de Ediciones por Plataforma',
+                    text: "Número de Ediciones por Plataforma",
                     color: textColor,
                     font: {
                         size: 24,
@@ -263,17 +283,19 @@ function customizeChart({ data }) {
     })();
 
     const chartData = {
-        labels: data.map(item => item.name),
-        datasets: [{
-            label: 'Número de Ediciones',
-            data: data.map(item => item.editions_count),
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
+        labels: data.map((item) => item.name),
+        datasets: [
+            {
+                label: "Número de Ediciones",
+                data: data.map((item) => item.editions_count),
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+            },
+        ],
     };
 
-    const chartType = 'bar';
+    const chartType = "bar";
 
     return [chartSelector, chartOptions, chartData, chartType];
 }

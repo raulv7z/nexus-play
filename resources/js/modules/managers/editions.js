@@ -101,6 +101,14 @@ function customizeDataTable({ data }) {
             en: "DELETED",
             es: "BORRADO",
         },
+        deletedTrueReadable: {
+            en: "Yes",
+            es: "Si",
+        },
+        deletedFalseReadable: {
+            en: "No",
+            es: "No",
+        },
         actions: {
             en: "ACTIONS",
             es: "ACCIONES",
@@ -109,7 +117,7 @@ function customizeDataTable({ data }) {
 
     const tableOptions = {
         language: {
-            url: dtDictionary[lang]
+            url: dtDictionary[lang],
         },
         paging: true,
         searching: true,
@@ -121,27 +129,42 @@ function customizeDataTable({ data }) {
             { type: "text" },
             { type: "text" },
             { type: "text" },
-            { type: "select", options: ["Si", "No"] },
+            {
+                type: "select",
+                options: [
+                    tableColumnTitles.deletedTrueReadable[lang],
+                    tableColumnTitles.deletedFalseReadable[lang],
+                ],
+            },
             { type: null },
         ],
         columns: [
-            { data: "id", title: "ID", width: '12%' },
-            { data: "videogame_name", title: tableColumnTitles.videogameName[lang] },
-            { data: "platform_name", title: tableColumnTitles.platformName[lang] },
+            { data: "id", title: "ID", width: "12%" },
+            {
+                data: "videogame_name",
+                title: tableColumnTitles.videogameName[lang],
+            },
+            {
+                data: "platform_name",
+                title: tableColumnTitles.platformName[lang],
+            },
             {
                 data: "stock",
                 title: tableColumnTitles.stock[lang],
-                render: (data) => (`${data} u.`),
+                render: (data) => `${data} u.`,
             },
             {
                 data: "amount",
                 title: tableColumnTitles.salePrice[lang],
-                render: (data) => (`${data} €`),
+                render: (data) => `${data} €`,
             },
             {
                 data: "deleted_at",
                 title: tableColumnTitles.deleted[lang],
-                render: (data) => (data ? "Si" : "No"),
+                render: (data) =>
+                    data
+                        ? tableColumnTitles.deletedTrueReadable[lang]
+                        : tableColumnTitles.deletedFalseReadable[lang],
             },
             {
                 orderable: false,
@@ -226,7 +249,7 @@ function customizeChart({ data }) {
                     },
                     title: {
                         display: true,
-                        text: 'Número de Ventas',
+                        text: "Número de Ventas",
                         color: textColor,
                     },
                 },
@@ -242,7 +265,7 @@ function customizeChart({ data }) {
                     },
                     title: {
                         display: true,
-                        text: 'Ediciones',
+                        text: "Ediciones",
                         color: textColor,
                     },
                 },
@@ -253,7 +276,7 @@ function customizeChart({ data }) {
                 },
                 title: {
                     display: true,
-                    text: 'Las 15 Ediciones más Vendidas',
+                    text: "Las 15 Ediciones más Vendidas",
                     color: textColor,
                     font: {
                         size: 24,
@@ -274,17 +297,19 @@ function customizeChart({ data }) {
     })();
 
     const chartData = {
-        labels: data.map(item => `${item.name} (${item.platform_name})`),
-        datasets: [{
-            label: 'Número de Ventas',
-            data: data.map(item => item.sales_count),
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
+        labels: data.map((item) => `${item.name} (${item.platform_name})`),
+        datasets: [
+            {
+                label: "Número de Ventas",
+                data: data.map((item) => item.sales_count),
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+            },
+        ],
     };
 
-    const chartType = 'bar';
+    const chartType = "bar";
 
     return [chartSelector, chartOptions, chartData, chartType];
 }
