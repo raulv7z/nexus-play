@@ -77,7 +77,7 @@ class PaymentController extends Controller
         try {
             Mail::to($user->email)->send(new InvoiceEmail($invoice, $user));
         } catch (\Exception $e) {
-            return back()->with('error', 'Failed to send email. Please contact support.');
+            return back()->with('error', 'Failed to send invoice mail. Please, contact support.');
         }
 
         return redirect()->route('root.dashboard')->with('success', 'The order was completed successfully. Check your email.');

@@ -27,7 +27,7 @@ class EditionController extends Controller
         $validated = $request->validated();
         $edition = Edition::create($validated);
 
-        return redirect()->route('admin.editions.manager')->with('success', 'Edition created successfully.');
+        return redirect()->route('admin.editions.manager')->with('success', 'Record created successfully.');
     }
 
     public function show($id)
@@ -58,7 +58,7 @@ class EditionController extends Controller
             $edition->restore();
         }
 
-        return redirect()->route('admin.editions.manager')->with('success', 'Edition updated successfully.');
+        return redirect()->route('admin.editions.manager')->with('success', 'Record updated successfully.');
     }
 
     public function delete($id)
@@ -66,7 +66,7 @@ class EditionController extends Controller
         $edition = Edition::withTrashed()->findOrFail($id);
         
         if ($edition->trashed()) {
-            return redirect()->route('admin.editions.manager')->with('error', 'Edition is already deleted. You have been redirected to manager.');
+            return redirect()->route('admin.editions.manager')->with('error', 'This record is already deleted. You have been redirected to manager.');
         }
 
         $allPlatforms = Platform::all();
@@ -78,6 +78,6 @@ class EditionController extends Controller
     public function destroy(Edition $edition)
     {
         $edition->delete();
-        return redirect()->route('admin.editions.manager')->with('success', 'Edition deleted successfully.');
+        return redirect()->route('admin.editions.manager')->with('success', 'Record deleted successfully.');
     }
 }

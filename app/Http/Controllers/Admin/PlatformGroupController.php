@@ -24,7 +24,7 @@ class PlatformGroupController extends Controller
         $validated = $request->validated();
         $platformGroup = PlatformGroup::create($validated);
 
-        return redirect()->route('admin.platform-groups.manager')->with('success', 'PlatformGroup created successfully.');
+        return redirect()->route('admin.platform-groups.manager')->with('success', 'Record created successfully.');
     }
 
     public function show($id)
@@ -49,7 +49,7 @@ class PlatformGroupController extends Controller
             $platformGroup->restore();
         }
 
-        return redirect()->route('admin.platform-groups.manager')->with('success', 'PlatformGroup updated successfully.');
+        return redirect()->route('admin.platform-groups.manager')->with('success', 'Record updated successfully.');
     }
 
     public function delete($id)
@@ -57,7 +57,7 @@ class PlatformGroupController extends Controller
         $platformGroup = PlatformGroup::withTrashed()->findOrFail($id);
 
         if ($platformGroup->trashed()) {
-            return redirect()->route('admin.platform-groups.manager')->with('error', 'PlatformGroup is already deleted. You have been redirected to manager.');
+            return redirect()->route('admin.platform-groups.manager')->with('error', 'This record is already deleted. You have been redirected to manager.');
         }
 
         return view('content.admin.platform-groups.delete', compact('platformGroup'));
@@ -66,6 +66,6 @@ class PlatformGroupController extends Controller
     public function destroy(PlatformGroup $platformGroup)
     {
         $platformGroup->delete();
-        return redirect()->route('admin.platform-groups.manager')->with('success', 'PlatformGroup deleted successfully.');
+        return redirect()->route('admin.platform-groups.manager')->with('success', 'Record deleted successfully.');
     }
 }

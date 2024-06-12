@@ -38,7 +38,7 @@ class VideogameController extends Controller
 
         $videogame = Videogame::create($validated);
 
-        return redirect()->route('admin.videogames.manager')->with('success', 'Videogame created successfully.');
+        return redirect()->route('admin.videogames.manager')->with('success', 'Record created successfully.');
     }
 
     public function show($id)
@@ -78,7 +78,7 @@ class VideogameController extends Controller
             $videogame->restore();
         }
 
-        return redirect()->route('admin.videogames.manager')->with('success', 'Videogame updated successfully.');
+        return redirect()->route('admin.videogames.manager')->with('success', 'Record updated successfully.');
     }
 
     public function delete($id)
@@ -86,7 +86,7 @@ class VideogameController extends Controller
         $videogame = Videogame::withTrashed()->findOrFail($id);
 
         if ($videogame->trashed()) {
-            return redirect()->route('admin.videogames.manager')->with('error', 'Videogame is already deleted. You have been redirected to manager.');
+            return redirect()->route('admin.videogames.manager')->with('error', 'This record is already deleted. You have been redirected to manager.');
         }
 
         return view('content.admin.videogames.delete', compact('videogame'));
@@ -95,6 +95,6 @@ class VideogameController extends Controller
     public function destroy(Videogame $videogame)
     {
         $videogame->delete();
-        return redirect()->route('admin.videogames.manager')->with('success', 'Videogame deleted successfully.');
+        return redirect()->route('admin.videogames.manager')->with('success', 'Record deleted successfully.');
     }
 }

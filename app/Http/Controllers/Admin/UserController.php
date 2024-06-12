@@ -25,7 +25,7 @@ class UserController extends Controller
         $user = User::create($validated);
         $user->assignRole('user');
 
-        return redirect()->route('admin.users.manager')->with('success', 'User created successfully.');
+        return redirect()->route('admin.users.manager')->with('success', 'Record created successfully.');
     }
 
     public function show($id)
@@ -49,7 +49,7 @@ class UserController extends Controller
             $user->restore();
         }
 
-        return redirect()->route('admin.users.manager')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.users.manager')->with('success', 'Record updated successfully.');
     }
 
     public function delete($id)
@@ -57,7 +57,7 @@ class UserController extends Controller
         $user = User::withTrashed()->findOrFail($id);
 
         if ($user->trashed()) {
-            return redirect()->route('admin.users.manager')->with('error', 'User is already deleted. You have been redirected to manager.');
+            return redirect()->route('admin.users.manager')->with('error', 'This record is already deleted. You have been redirected to manager.');
         }
 
         return view('content.admin.users.delete', compact('user'));
@@ -66,6 +66,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.users.manager')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.users.manager')->with('success', 'Record deleted successfully.');
     }
 }

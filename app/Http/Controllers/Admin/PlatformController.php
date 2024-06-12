@@ -25,7 +25,7 @@ class PlatformController extends Controller
         $validated = $request->validated();
         $platform = Platform::create($validated);
 
-        return redirect()->route('admin.platforms.manager')->with('success', 'Platform created successfully.');
+        return redirect()->route('admin.platforms.manager')->with('success', 'Record created successfully.');
     }
 
     public function show($id)
@@ -52,7 +52,7 @@ class PlatformController extends Controller
             $platform->restore();
         }
 
-        return redirect()->route('admin.platforms.manager')->with('success', 'Platform updated successfully.');
+        return redirect()->route('admin.platforms.manager')->with('success', 'Record updated successfully.');
     }
 
     public function delete($id)
@@ -60,7 +60,7 @@ class PlatformController extends Controller
         $platform = Platform::withTrashed()->findOrFail($id);
 
         if ($platform->trashed()) {
-            return redirect()->route('admin.platforms.manager')->with('error', 'Platform is already deleted. You have been redirected to manager.');
+            return redirect()->route('admin.platforms.manager')->with('error', 'This record is already deleted. You have been redirected to manager.');
         }
 
         $allPlatformGroups = PlatformGroup::all();
@@ -71,6 +71,6 @@ class PlatformController extends Controller
     public function destroy(Platform $platform)
     {
         $platform->delete();
-        return redirect()->route('admin.platforms.manager')->with('success', 'Platform deleted successfully.');
+        return redirect()->route('admin.platforms.manager')->with('success', 'Record deleted successfully.');
     }
 }

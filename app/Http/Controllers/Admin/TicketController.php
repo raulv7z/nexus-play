@@ -21,7 +21,7 @@ class TicketController extends Controller
         $validated = $request->validated();
         $ticket = Ticket::create($validated);
 
-        return redirect()->route('admin.tickets.manager')->with('success', 'Ticket created successfully.');
+        return redirect()->route('admin.tickets.manager')->with('success', 'Record created successfully.');
     }
 
     public function show($id)
@@ -49,7 +49,7 @@ class TicketController extends Controller
             $ticket->restore();
         }
 
-        return redirect()->route('admin.tickets.manager')->with('success', 'Ticket updated successfully.');
+        return redirect()->route('admin.tickets.manager')->with('success', 'Record updated successfully.');
     }
 
     public function delete($id)
@@ -58,7 +58,7 @@ class TicketController extends Controller
         $allTicketStates = TicketState::all();
 
         if ($ticket->trashed()) {
-            return redirect()->route('admin.tickets.manager')->with('error', 'Ticket is already deleted. You have been redirected to manager.');
+            return redirect()->route('admin.tickets.manager')->with('error', 'This record is already deleted. You have been redirected to manager.');
         }
 
         return view('content.admin.tickets.delete', compact('ticket', 'allTicketStates'));
@@ -67,6 +67,6 @@ class TicketController extends Controller
     public function destroy(Ticket $ticket)
     {
         $ticket->delete();
-        return redirect()->route('admin.tickets.manager')->with('success', 'Ticket deleted successfully.');
+        return redirect()->route('admin.tickets.manager')->with('success', 'Record deleted successfully.');
     }
 }
