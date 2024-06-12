@@ -86,7 +86,10 @@ class DataTableManager {
                 ).text()}..." />`;
             } else if (searchType === "select") {
                 const options = columnConfig.options || [];
-                searchElement = `<select><option value="">Todos</option>`;
+
+                const optionAllText = "*";
+                
+                searchElement = `<select><option value="">${optionAllText}</option>`;
                 options.forEach((option) => {
                     searchElement += `<option value="${option}">${option}</option>`;
                 });
