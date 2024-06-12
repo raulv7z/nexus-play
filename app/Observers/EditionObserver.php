@@ -33,9 +33,9 @@ class EditionObserver
             $cartEntry->delete();
         }
 
-        // foreach ($edition->reviews as $review) {
-        //     $review->delete();
-        // }
+        foreach ($edition->reviews as $review) {
+            $review->delete();
+        }
     }
 
     /**

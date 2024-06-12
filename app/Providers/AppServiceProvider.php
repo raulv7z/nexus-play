@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\View;
 use App\Models\PlatformGroup;
 use App\Models\Edition;
 use App\Models\Platform;
+use App\Models\User;
 use App\Models\Videogame;
 use App\Observers\CartObserver;
 use App\Observers\EditionObserver;
 use App\Observers\VideogameObserver;
 use App\Observers\PlatformGroupObserver;
 use App\Observers\PlatformObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
@@ -53,6 +55,7 @@ class AppServiceProvider extends ServiceProvider
         Platform::observe(PlatformObserver::class);
         Edition::observe(EditionObserver::class);
         Cart::observe(CartObserver::class);
+        User::observe(UserObserver::class);
     }
 
     protected function registerValidatorCustomRules(): void
