@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
@@ -20,12 +21,14 @@ class UserSeeder extends Seeder
                 'name' => 'Nexus Admin',
                 'email' => 'nexus.play.info@gmail.com',
                 'password' => Hash::make('nexusplay'),
+                'email_verified_at' => Carbon::today(),
                 'role' => 'admin',
             ],
             [
                 'name' => 'Raúl',
                 'email' => 'rmm0.academics@gmail.com',
-                'password' => Hash::make('nexusplay'), 
+                'password' => Hash::make('nexusplay'),
+                'email_verified_at' => Carbon::today(), 
                 'role' => 'user',
             ]
         ];
@@ -35,6 +38,7 @@ class UserSeeder extends Seeder
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'password' => $user['password'],
+                'email_verified_at' => $user['email_verified_at'],
             ]);
 
             // assign role
