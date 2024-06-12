@@ -273,8 +273,9 @@ function customizeChart({ data }) {
         };
     })();
 
+    console.log(data);
     const chartData = {
-        labels: data.map(item => item.name),
+        labels: data.map(item => `${item.name} (${item.platform_name})`),
         datasets: [{
             label: 'Número de Ventas',
             data: data.map(item => item.sales_count),

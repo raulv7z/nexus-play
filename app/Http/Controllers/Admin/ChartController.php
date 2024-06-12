@@ -99,6 +99,7 @@ class ChartController extends Controller
         $data = $editions->map(function ($edition) {
             return [
                 'name' => $edition->videogame->name,
+                'platform_name' => $edition->platform->name,
                 'sales_count' => $edition->invoice_entries_count
             ];
         });
