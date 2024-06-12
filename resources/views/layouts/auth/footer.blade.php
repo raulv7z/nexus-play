@@ -36,7 +36,7 @@
                             <a href="#" class="hover:underline ">Twitter</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline">Discord</a>
+                            <a href="https://discord.com/" class="hover:underline">Discord</a>
                         </li>
                     </ul>
                 </div>
@@ -58,7 +58,7 @@
                     class="hover:underline">Nexus Play™</a>. {{ __('All rights reserved.') }}
             </span>
             <div class="flex mt-4 sm:justify-center sm:mt-0">
-                <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                <a href="https://www.facebook.com/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 8 19">
                         <path fill-rule="evenodd"
@@ -67,7 +67,7 @@
                     </svg>
                     <span class="sr-only">Facebook page</span>
                 </a>
-                <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                <a href="https://discord.com/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 21 16">
                         <path
@@ -75,7 +75,7 @@
                     </svg>
                     <span class="sr-only">Discord community</span>
                 </a>
-                <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                <a href="https://x.com/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 20 17">
                         <path fill-rule="evenodd"
@@ -84,15 +84,12 @@
                     </svg>
                     <span class="sr-only">Twitter page</span>
                 </a>
-                <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
-                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
-                            clip-rule="evenodd" />
+                <a href="https://www.instagram.com/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.206.058 2.036.244 2.517.511.56.303 1.012.698 1.44 1.126.428.428.823.88 1.126 1.44.267.48.453 1.311.511 2.517.058 1.267.07 1.646.07 4.851s-.012 3.584-.07 4.85c-.058 1.206-.244 2.036-.511 2.517-.303.56-.698 1.012-1.126 1.44-.428.428-.88.823-1.44 1.126-.48.267-1.311.453-2.517.511-1.267.058-1.646.07-4.851.07s-3.584-.012-4.85-.07c-1.206-.058-2.036-.244-2.517-.511-.56-.303-1.012-.698-1.44-1.126-.428-.428-.823-.88-1.126-1.44-.267-.48-.453-1.311-.511-2.517C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.058-1.206.244-2.036.511-2.517.303-.56.698-1.012 1.126-1.44.428-.428.88-.823 1.44-1.126.48-.267 1.311-.453 2.517-.511C8.416 2.175 8.796 2.163 12 2.163M12 0C8.741 0 8.332.013 7.052.072c-1.27.06-2.145.27-2.897.57-.784.317-1.465.742-2.146 1.423-.68.681-1.105 1.362-1.423 2.146-.3.752-.51 1.627-.57 2.897C.013 8.332 0 8.741 0 12c0 3.259.013 3.668.072 4.948.06 1.27.27 2.145.57 2.897.317.784.742 1.465 1.423 2.146.681.68 1.362 1.105 2.146 1.423.752.3 1.627.51 2.897.57 1.28.059 1.689.072 4.948.072s3.668-.013 4.948-.072c1.27-.06 2.145-.27 2.897-.57.784-.317 1.465-.742 2.146-1.423.68-.681 1.105-1.362 1.423-2.146.3-.752.51-1.627.57-2.897.059-1.28.072-1.689.072-4.948s-.013-3.668-.072-4.948c-.06-1.27-.27-2.145-.57-2.897-.317-.784-.742-1.465-1.423-2.146-.681-.68-1.362-1.105-2.146-1.423-.752-.3-1.627-.51-2.897-.57C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
                     </svg>
-                    <span class="sr-only">Dribbble account</span>
-                </a>
+                    <span class="sr-only">Instagram page</span>
+                </a>                
             </div>
         </div>
     </div>
