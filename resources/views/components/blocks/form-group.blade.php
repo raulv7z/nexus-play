@@ -29,7 +29,8 @@
         <label for="{{ $field }}">{{ __($label) }}</label>
 
         <select onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' name="{{ $field }}" id="{{ $field }}"
-            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 dark:bg-gray-800 dark:text-white transition duration-150 ease-in-out"
+            class="block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            {{-- class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 dark:bg-gray-800 dark:text-white transition duration-150 ease-in-out" --}}
             {{ $attributes }}>
             @foreach ($options as $optionValue => $optionLabel)
                 <option value="{{ $optionValue }}"
