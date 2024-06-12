@@ -249,11 +249,9 @@
                     class="font-bold w-fit rounded-lg bg-gray-200 dark:bg-gray-900">
                     @csrf
 
-                    <x-presets.dropdown-link :href="route('logout')"
-                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                    <x-presets.primary-button>
                         {{ __('Log Out') }}
-                    </x-presets.dropdown-link>
+                    </x-presets.primary-button>
                 </form>
             </div>
 
