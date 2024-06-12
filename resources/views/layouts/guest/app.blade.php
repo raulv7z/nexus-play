@@ -27,7 +27,7 @@
     {{-- BotMan Widget Config --}}
     <script>
 
-        const botIntroMessage = "👋🏼 ¡Hola! Me llamo Nexbot. <br><br> Soy el asistente virtual de Nexus Play y estoy aquí para ayudarte.";
+        const botIntroMessage = "👋🏼 <b>¡Hola!</b> Me llamo <span style=\"color:steelblue;\">Nexbot</span>. <br><br> Soy el asistente virtual de Nexus Play y estoy aquí para ayudarte.";
         const placeholderMessage = 'Escribe tu mensaje...';
         const avatarGifUrl = '{{ url('storage/images/interface/nexbot.gif') }}';
 
