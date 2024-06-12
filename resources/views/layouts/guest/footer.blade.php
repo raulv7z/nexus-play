@@ -46,9 +46,6 @@
                         <li class="mb-4">
                             <a href="{{route('root.company.contact-us')}}" class="hover:underline">{{ __('Contact Us') }}</a>
                         </li>
-                        <li>
-                            <a href="docs/" class="hover:underline">{{ __('Documentation') }}</a>
-                        </li>
                     </ul>
                 </div>
             </div>
