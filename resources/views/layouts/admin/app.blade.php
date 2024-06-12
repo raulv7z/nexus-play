@@ -37,8 +37,8 @@
             placeholderText: placeholderMessage,
             title: '🤖 • Nexbot está en línea',
             mainColor: '#c9f0da',
-            bubbleBackground: '#ffffff',
-            bubbleAvatarUrl: 'storage/images/interface/nexbot.png',
+            bubbleBackground: '#4949de',
+            bubbleAvatarUrl: 'storage/images/interface/nexbot.gif',
             aboutText: 'Nexus Play',
             aboutLink: "http://localhost:8000",
         };
