@@ -12,16 +12,18 @@
             <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-2 md:grid-cols-3">
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                        {{ __('Resources') }}
+                        {{ __('Links') }}
                     </h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="/" class="hover:underline">
-                                Nexus Play
+                            <a href="/home" class="hover:underline">
+                                {{ __("Home") }}
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline">Link</a>
+                            <a href="/profile" class="hover:underline">
+                                {{ __("Profile") }}
+                            </a>
                         </li>
                     </ul>
                 </div>
