@@ -21,8 +21,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/home" class="hover:underline">
-                                {{ __("Catalog" )}}
+                            <a href="/admin/tickets" class="hover:underline">
+                                {{ __("Tickets" )}}
                             </a>
                         </li>
                     </ul>
@@ -46,9 +46,6 @@
                     </h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="{{route('root.company.contact-us')}}" class="hover:underline">{{ __('Contact Us') }}</a>
-                        </li>
-                        <li>
                             <a href="docs/" class="hover:underline">{{ __('Documentation') }}</a>
                         </li>
                     </ul>
