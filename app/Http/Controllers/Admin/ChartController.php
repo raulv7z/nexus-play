@@ -22,20 +22,23 @@ class ChartController extends Controller
     {
         $startDate = now()->subYear();
         $endDate = now();
-
+    
         $users = User::selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as date, count(*) as count")
             ->whereBetween('created_at', [$startDate, $endDate])
             ->groupBy('date')
             ->orderBy('date')
             ->get();
-
+    
         $data = $users->map(function ($user) {
+
+            $formattedDate = \Carbon\Carbon::createFromFormat('Y-m-d', $user->date)->format('d/m/Y');
+            
             return [
-                'date' => $user->date,
+                'date' => $formattedDate,
                 'count' => $user->count
             ];
         });
-
+    
         return response()->json($data);
     }
 
