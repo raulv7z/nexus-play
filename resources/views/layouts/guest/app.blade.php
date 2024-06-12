@@ -29,6 +29,7 @@
 
         const botIntroMessage = "👋🏼 ¡Hola! Me llamo Nexbot. <br><br> Soy el asistente virtual de Nexus Play y estoy aquí para ayudarte.";
         const placeholderMessage = 'Escribe tu mensaje...';
+        const avatarGifUrl = '{{ url('storage/images/interface/nexbot.gif') }}';
 
         var botmanWidget = {
             frameEndpoint: '/botman/chat-widget',
@@ -38,7 +39,7 @@
             title: '🤖 • Nexbot está en línea',
             mainColor: '#c9f0da',
             bubbleBackground: '#ffffff',
-            bubbleAvatarUrl: 'storage/images/interface/nexbot.gif',
+            bubbleAvatarUrl: avatarGifUrl,
             aboutText: 'Nexus Play',
             aboutLink: "http://localhost:8000",
         };
