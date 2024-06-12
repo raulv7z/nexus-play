@@ -62,6 +62,9 @@
                 <x-links.return>
                 </x-links.return>
 
+                <x-links.reply :url="route('admin.tickets.reply', $ticket->id)">
+                </x-links.reply>
+
                 <x-links.edit :url="route('admin.tickets.edit', $ticket->id)">
                 </x-links.edit>
 
