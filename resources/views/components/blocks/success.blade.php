@@ -1,5 +1,5 @@
 @if (session('success'))
-    <div id="success-alert" class="fixed bottom-4 right-4 bg-green-600 text-white px-6 py-4 border-0 rounded-lg shadow-lg dark:bg-green-800 z-50">
+    <div id="success-alert" class="fixed bottom-4 left-4 bg-green-600 text-white px-6 py-4 border-0 rounded-lg shadow-lg dark:bg-green-800 z-50">
         <div class="flex items-center">
             <div class="h-6 w-6 mr-4">
                 <svg class="fill-current h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
