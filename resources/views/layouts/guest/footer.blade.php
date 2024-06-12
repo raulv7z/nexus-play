@@ -1,7 +1,7 @@
 <footer style="box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.05);" class="w-full bg-white dark:bg-gray-800">
     <div class="mx-auto max-w-screen-xl p-4 py-6 lg:py-8">
-        <div class="md:flex md:justify-between">
-            <div class="mb-6 md:mb-0">
+        <div class="2xl:flex 2xl:justify-between">
+            <div class="mb-6 2xl:mb-0">
                 <a href="/" class="flex items-center content-center">
                     <img src="{{ Storage::url('images/interface/logo.svg') }}" class="h-10 me-3" alt="Nexus Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
@@ -51,11 +51,11 @@
             </div>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div class="sm:flex sm:items-center sm:justify-between">
+        <div class="2xl:flex 2xl:items-center 2xl:justify-between">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="localhost:8080"
                     class="hover:underline">Nexus Play™</a>. {{ __('All rights reserved.') }}
             </span>
-            <div class="flex mt-4 sm:justify-center sm:mt-0">
+            <div class="flex mt-5 sm:justify-center 2xl:mt-0">
                 <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 8 19">
