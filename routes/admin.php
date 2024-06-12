@@ -67,6 +67,8 @@ Route::middleware(['role:admin', 'layouts', 'lang'])->prefix('admin')->name('adm
         Route::put('update{ticket}', [AdminTicketController::class, 'update'])->name('update');
         Route::get('delete/{ticket}', [AdminTicketController::class, 'delete'])->name('delete');
         Route::delete('destroy/{ticket}', [AdminTicketController::class, 'destroy'])->name('destroy');
+        Route::get('reply/{ticket}', [AdminTicketController::class, 'reply'])->name('reply');
+        Route::post('send-response/{ticket}', [AdminTicketController::class, 'sendResponse'])->name('send-response');
 
         // ajax
         Route::get('crud', [AdminCrudController::class, 'tickets'])->name('crud');

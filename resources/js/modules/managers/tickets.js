@@ -168,6 +168,7 @@ function customizeDataTable({ data }) {
                         viewUrl: "/admin/tickets/show/:id",
                         editUrl: "/admin/tickets/edit/:id",
                         deleteUrl: "/admin/tickets/delete/:id",
+                        replyUrl: "/admin/tickets/reply/:id",
                     };
 
                     return `
@@ -189,6 +190,12 @@ function customizeDataTable({ data }) {
                             row.id
                         )}" class="p-2 text-red-500 hover:text-red-700 transition duration-150 ease-in-out">
                             <i class="fas fa-trash" title="Borrar"></i>
+                        </a>
+                        <a href="${actions.replyUrl.replace(
+                            ":id",
+                            row.id
+                        )}" class="p-2 text-yellow-500 hover:text-yellow-700 transition duration-150 ease-in-out">
+                            <i class="fas fa-reply" title="Responder"></i>
                         </a>
                     </div>
                 `;

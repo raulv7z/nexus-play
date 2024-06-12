@@ -1,4 +1,4 @@
-@props(['ticket'])
+@props(['ticket', 'reply'])
 
 @extends('partials.mails.template')
 
@@ -13,7 +13,7 @@
         </div>
         <div style="margin-bottom: 20px;">
             <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
-                {{ __('Sender Details') }}:
+                {{ __('Contact Details') }}:
             </h2>
             <div style="padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
                 <p style="margin: 5px 0; font-size: 14px;"><strong>{{ __('Name') }}:</strong> {{ $ticket->name }}</p>
@@ -22,9 +22,9 @@
         </div>
         <div style="margin-bottom: 20px;">
             <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
-                {{ __('Sender Message') }}:
+                {{ __('Nexus support reply') }}:
             </h2>
-            <p style="margin: 5px 0; font-size: 12px;"> {{ $ticket->message }} </p>
+            <p style="margin: 5px 0; font-size: 12px;"> {{ $reply }} </p>
         </div>
     </div>
     <div style="text-align: center; margin-top: 20px;">
