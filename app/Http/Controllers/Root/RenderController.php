@@ -26,10 +26,17 @@ class RenderController extends Controller
 
     public function renderCartIconLink(Request $request)
     {
+        // Verifica si el usuario está autenticado
+        if (!$request->user()) {
+            return response()->json(['error' => 'Unauthorized'], 401); // Respuesta 401 si no está autenticado
+        }
+    
+        // Usuario autenticado, continúa con la lógica existente
         $user = $request->user();
         $cart = $this->services['cartService']->getOrCreatePendingCart($user);
         $cartEntries = $cart->entries;
         $quantity = count($cartEntries) ?? 0;
+        
         return view('partials.carts.icon-link', compact('quantity'))->render();
     }
 }

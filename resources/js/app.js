@@ -41,10 +41,7 @@ const cartIconLink = $("#cart-icon-link");
 // Functions
 ////////////////////////////////////
 function startApp() {
-
-    // BotMan fixed div
-    const botmanFixedDiv = $("#botmanWidgetRoot").children("div:first");
-
+    // Initialize the first parts of the application
     initializeTheme({
         toggleSelector: themeToggleSelector,
         toggle: themeToggle,
@@ -60,7 +57,24 @@ function startApp() {
     attachReactiveBehavior({ stars: reactiveStars });
     setAlertTimeouts({ alerts: alertsArray });
     renderCartIconLink({ linkNode: cartIconLink });
-    handleFixedBotContainer({ botContainer: botmanFixedDiv });
+
+    // Verify if the botman container was initialized with an interval
+    const checkInterval = setInterval(function () {
+
+        const botmanWidgetRoot = $("#botmanWidgetRoot");
+
+        if (botmanWidgetRoot.length > 0) {
+            clearInterval(checkInterval); // Clear the interval when the container is loaded
+
+            const botmanFixedDiv = botmanWidgetRoot.children("div:first");
+
+            if (botmanFixedDiv.length > 0) {
+                handleFixedBotContainer({ botContainer: botmanFixedDiv });
+            } else {
+                console.warn("[SAFE WARN] Nexbot was not loaded.");
+            }
+        }
+    }, 100); // verify each 100 ms = 0.1 s
 }
 
 function handleFixedBotContainer({ botContainer }) {
@@ -137,6 +151,15 @@ function renderCartIconLink({ linkNode }) {
         dataType: "html",
         success: function (data) {
             linkNode.html(data);
+        },
+        error: function (xhr, status, error) {
+            if (xhr.status === 401) {
+                console.warn("[SAFE WARN] User not authenticated. Cart icon was not dynamically rendered.");
+            } else {
+                console.warn("[SAFE WARN] Cart icon was not dynamically rendered.");
+                console.warn("Status:", status);
+                console.warn("Error:", error);
+            }
         },
     });
 }
