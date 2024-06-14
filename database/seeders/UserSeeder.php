@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'name' => 'Raúl',
                 'email' => 'rmm0.academics@gmail.com',
                 'password' => Hash::make('nexusplay'),
-                'email_verified_at' => Carbon::today(), 
+                'email_verified_at' => null, 
                 'role' => 'user',
             ]
         ];
