@@ -114,7 +114,7 @@
                         {{ __('Payment Method') }}
                     </label>
 
-                    <div class="w-fit flex flex-col gap-5 my-5 lg:w-full lg:flex-row justify-start">
+                    <div class="w-fit flex flex-col gap-5 my-5 lg:w-full lg:flex-row lg:justify-evenly">
                         <div class="h-40">
                             <input type="radio" id="mastercard" name="payment_method" value="mastercard" checked />
                             <label for="mastercard" class="w-fit h-full cursor-pointer">
