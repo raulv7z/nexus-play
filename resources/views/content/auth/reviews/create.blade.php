@@ -48,7 +48,7 @@
                 <x-links.return>
                 </x-links.return>
 
-                <x-buttons.submit>
+                <x-buttons.submit :text="'Publish'">
                 </x-buttons.submit>
             </x-slot>
         </x-forms.template>
