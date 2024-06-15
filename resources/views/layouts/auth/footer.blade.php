@@ -33,7 +33,7 @@
                     </h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="#" class="hover:underline ">Twitter</a>
+                            <a href="https://x.com/" class="hover:underline ">Twitter</a>
                         </li>
                         <li>
                             <a href="https://discord.com/" class="hover:underline">Discord</a>
