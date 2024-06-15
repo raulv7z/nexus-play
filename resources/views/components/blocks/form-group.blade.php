@@ -63,14 +63,13 @@
 
 @if ($type !== 'hidden' && $type !== 'custom')
     @error($field)
-
-    @php
-        $labelFormatted = __($label);
-        $errorFormatted = str_replace(" $field", " $labelFormatted", $message);
-    @endphp
+        @php
+            $labelFormatted = strtolower(__($label));
+            $errorFormatted = str_replace(str_replace('_', ' ', $field), $labelFormatted, $message);
+        @endphp
     
         <p class="mt-2 text-sm text-red-600 dark:text-red-400">
-            {{ __($errorFormatted )}}
+            {{ __($errorFormatted) }}
         </p>
     @enderror
 @endif
