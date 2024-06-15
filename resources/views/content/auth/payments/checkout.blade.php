@@ -144,7 +144,7 @@
 
                 </x-blocks.form-group>
 
-                <x-blocks.form-group :type="'text'" :field="'card_number'" :label="'Card Number'" :placeholder="'xxxx-xxxx-xxxx-xxxx'">
+                <x-blocks.form-group :type="'text'" :field="'iban'" :label="'IBAN Code'" :placeholder="'xxxx-xxxx-xxxx-xxxx'">
                 </x-blocks.form-group>
 
                 <x-blocks.form-group :type="'text'" :field="'expiration_date'" :label="'Expiration Date'" :placeholder="'MM/YY'">

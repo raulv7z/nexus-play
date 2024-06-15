@@ -17,7 +17,7 @@ const invoiceDetailsButton = $("#invoice-details-button");
 const invoiceDetailsArrowUp = $("#invoice-details-arrow-up");
 const invoiceDetailsArrowDown = $("#invoice-details-arrow-down");
 const invoiceDetailsFormContainer = $("#invoice-details-form-container");
-const cardNumberInput = $("#card_number");
+const cardNumberInput = $("#iban");
 const expirationDateInput = $("#expiration_date");
 const cvcInput = $("#cvc");
 

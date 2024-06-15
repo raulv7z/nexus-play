@@ -14,7 +14,7 @@ class PaymentValidationRequest extends FormRequest
     public function rules()
     {
         return [
-            'card_number' => 'required|numeric|digits:16|luhn_credit_card',
+            'iban' => 'required|numeric|digits:16|luhn_credit_card',
             'expiration_date' => 'required|date_format:m/y|after_or_equal:today',
             'cvc' => 'required|digits:3',
         ];
@@ -23,10 +23,7 @@ class PaymentValidationRequest extends FormRequest
     public function messages()
     {
         return [
-            'card_number.required' => 'El número de tarjeta de crédito es obligatorio',
-            'card_number.numeric' => 'El número de tarjeta de crédito debe ser numérico',
-            'card_number.digits' => 'El número de tarjeta de crédito debe tener :digits dígitos',
-            'card_number.luhn_credit_card' => 'El número de tarjeta de crédito no es válido',
+            'iban.luhn_credit_card' => 'El campo IBAN no es válido.',
         ];
     }
 
@@ -34,7 +31,7 @@ class PaymentValidationRequest extends FormRequest
     {
         // Eliminar los guiones del número de tarjeta
         $this->merge([
-            'card_number' => str_replace('-', '', $this->card_number),
+            'iban' => str_replace('-', '', $this->iban),
         ]);
     }
 }
