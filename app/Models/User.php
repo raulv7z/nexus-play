@@ -73,12 +73,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Review::class);
     }
 
-    public function hasBoughtEdition($editionId) {
+    public function hasBoughtEdition($editionId) : bool {
+
         $invoices = $this->invoices()->get();
 
         foreach ($invoices as $invoice) {
             foreach ($invoice->entries as $entry) {
-                if ($entry->edition->id == $editionId) {
+                $id = $entry->edition->id ?? 0;
+
+                if ($id == $editionId) {
                     return true;
                 }
             }

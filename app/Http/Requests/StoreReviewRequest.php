@@ -26,7 +26,7 @@ class StoreReviewRequest extends FormRequest
         return [
             'rating' => 'required|numeric|min:0|max:5',
             'comment' => 'required|string|min:30|max:400',
-            'verified' => 'boolean',
+            'verified' => 'sometimes|boolean',
             'user_id' => 'required|exists:users,id',
             'edition_id' => 'required|exists:editions,id',
         ];
@@ -37,7 +37,7 @@ class StoreReviewRequest extends FormRequest
         $userId = decrypt($this->input('user_id')) ?: auth()->id();
         $editionId = decrypt($this->input('edition_id'));
         $verified = $this->user()->hasBoughtEdition($editionId);
-
+        
         $this->merge([
             'user_id' => $userId,
             'edition_id' => $editionId,
