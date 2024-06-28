@@ -96,9 +96,13 @@ For detailed documentation, please refer to the files located in the [docs direc
 
 The documentation is available in **PDF** format and is currently only available in **Spanish**.
 
+## Considerations
+
+In case of any inconvenience or doubt, please contact me at [rmm0.office@gmail.com](mailto:rmm0.office@gmail.com).
+
 ## License
-Nexus Play © 2024 by raulv7z is licensed under CC BY-NC 4.0.
+Nexus Play © 2024 by raulv7z is licensed under CC BY-NC-ND 4.0.
 
-For more details, please refer to the [license terms](http://creativecommons.org/licenses/by-nc/4.0/) or the [LICENSE](https://github.com/raulv7z/nexus-play/blob/main/LICENSE) file.
+For more details, please refer to the [license terms](http://creativecommons.org/licenses/by-nc-nd/4.0/) or the [LICENSE](https://github.com/raulv7z/nexus-play/blob/main/LICENSE) file.
 
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC_ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
