@@ -68,8 +68,8 @@ php artisan migrate --seed
 ```
 ### Add resources
 
-Download real images from games and add it to their storage/ folder.
-Thereafter link the storage folder to public/ folder following the command:
+I provide real images for some game examples from the database.
+The first time you install you must to link the storage folder. You can do it as follows:
 
 ```bash
 php artisan storage:link
