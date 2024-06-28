@@ -40,6 +40,14 @@ Clone the repository to your local machine:
 git clone https://github.com/raulv7z/nexus-play-proj.git
 ```
 
+### Generate an App Key
+
+Regenerate a random app key with artisan after clone the repository:
+
+```bash
+php artisan key:generate
+```
+
 ### Configure the .env File
 
 Copy the `.env.example` file to `.env` and configure the necessary values in the `.env` file. You can use the following command to copy the file:
