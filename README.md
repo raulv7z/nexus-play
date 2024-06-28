@@ -18,7 +18,7 @@ Follow these steps to set up and run the project in your local environment.
 
 ### Clone the Repository
 
-Clone the repository to your local machine using HTTPS:
+Clone the repository to your local machine:
 
 ```bash
 git clone https://github.com/raulv7z/nexus-play-proj.git
@@ -50,6 +50,14 @@ Run the database migrations and seeders to populate the initial records:
 ```bash
 php artisan migrate --seed
 ```
+### Add resources
+
+Download real images from games and add it to their storage/ folder.
+Thereafter link the storage folder to public/ folder following the command:
+
+```bash
+php artisan storage:link
+```
 
 ## Running the Application
 
@@ -66,3 +74,8 @@ For development, run the following command to compile your assets:
 ```bash
 npm run dev
 ```
+
+## License
+NEXUS PLAY © 2024 by raulv7z is licensed under CC BY-NC 4.0.
+
+For more details, please refer to the (license terms)[http://creativecommons.org/licenses/by-nc/4.0/] or look at the (LICENSE)[https://github.com/raulv7z/nexus-play/blob/main/LICENSE] file.
