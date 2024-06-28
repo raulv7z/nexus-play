@@ -18,7 +18,7 @@ To run this project, you need to have a LAMP stack (Linux, Apache, MySQL, PHP) a
 - Composer
 - Node.js
 
-## Installation
+## Quick Installation
 
 Follow these steps to set up and run the project in your local environment.
 
