@@ -66,7 +66,7 @@ Run the database migrations and seeders to populate the initial records:
 ```bash
 php artisan migrate --seed
 ```
-### Add resources
+### Link storage folder
 
 I provide real images for some game examples from the database.
 The first time you install you must to link the storage folder. You can do it as follows:
