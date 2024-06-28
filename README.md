@@ -8,6 +8,8 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) &nbsp;
 ![Laravel](https://ziadoua.github.io/m3-Markdown-Badges/badges/Laravel/laravel1.svg) &nbsp;
+![JQuery](https://ziadoua.github.io/m3-Markdown-Badges/badges/jQuery/jquery1.svg) &nbsp;
+![Tailwind CSS](https://ziadoua.github.io/m3-Markdown-Badges/badges/TailwindCSS/tailwindcss1.svg) &nbsp;
 
 ## Introduction
 
