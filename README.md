@@ -100,9 +100,9 @@ npm run dev
 ```
 ## Documentation
 
-For detailed documentation, please refer to the files located in the [docs directory](metadata/docs/) within the [metadata folder](metadata).
+**Currently not available** due to update reasons.
 
-The documentation is available in **PDF** format and is currently only available in **Spanish**.
+For detailed documentation, please refer to the files located in the [docs directory](metadata/docs/) within the [metadata folder](metadata).
 
 ## Considerations
 
