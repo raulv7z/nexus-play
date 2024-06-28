@@ -1,7 +1,7 @@
 # Nexus Play
 
-This project is a comprehensive web application developed using the Laravel framework.
-Its primary aim is to facilitate the sale of digital video game licenses,
+This project is a comprehensive web application developed using the **Laravel** framework.
+Its primary aim is to facilitate the *sale of digital video game licenses*,
 ensuring a seamless and secure user experience for both buyers and sellers of digital video game content.
 
 <p align="center">
@@ -80,6 +80,11 @@ For development, run the following command to compile your assets:
 ```bash
 npm run dev
 ```
+## Documentation
+
+For detailed documentation, please refer to the files located in the [docs directory](metadata/docs/) within the [metadata folder](metadata).
+
+The documentation is available in **PDF** format and is currently only available in **Spanish**.
 
 ## License
 Nexus Play © 2024 by raulv7z is licensed under CC BY-NC 4.0.
