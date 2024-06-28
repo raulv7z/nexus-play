@@ -2,6 +2,8 @@
 
 This project is a web application developed in Laravel aimed at selling digital video game licenses.
 
+![Home-page preview](metadata/images/preview-homepage.png)
+
 ## Environment Requirements
 
 To run this project, you need to have a LAMP stack (Linux, Apache, MySQL, PHP) and Node.js configured in your development environment. The specific requirements are as follows:
