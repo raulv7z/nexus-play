@@ -76,6 +76,6 @@ npm run dev
 ```
 
 ## License
-NEXUS PLAY © 2024 by raulv7z is licensed under CC BY-NC 4.0.
+Nexus Play © 2024 by raulv7z is licensed under CC BY-NC 4.0.
 
 For more details, please refer to the [license terms](http://creativecommons.org/licenses/by-nc/4.0/) or the [LICENSE](https://github.com/raulv7z/nexus-play/blob/main/LICENSE) file.
