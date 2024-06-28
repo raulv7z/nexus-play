@@ -19,18 +19,18 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => 'Nexus Admin',
-                'email' => 'nexus.play.info@gmail.com',
-                'password' => Hash::make('nexusplay'),
+                'email' => 'your-support-email@example.com',
+                'password' => Hash::make('nexusplay'), // ! --> highly recommended to change password
                 'email_verified_at' => Carbon::today(),
                 'role' => 'admin',
             ],
             [
-                'name' => 'Raúl',
-                'email' => 'rmm0.academics@gmail.com',
-                'password' => Hash::make('nexusplay'),
-                'email_verified_at' => null, 
+                'name' => 'Nexus User',
+                'email' => 'your-user-email@example.com',
+                'password' => Hash::make('nexusplay'), // ! --> highly recommended to change password
+                'email_verified_at' => Carbon::today(),
                 'role' => 'user',
-            ]
+            ],
         ];
 
         foreach ($users as $user) {
@@ -51,7 +51,5 @@ class UserSeeder extends Seeder
         User::factory()->count(30)->create()->each(function ($user) {
             $user->assignRole('user'); // Regular users
         });
-        
-        
     }
 }
