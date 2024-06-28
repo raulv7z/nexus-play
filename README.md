@@ -1,6 +1,8 @@
 # Nexus Play
 
-This project is a web application developed in Laravel aimed at selling digital video game licenses.
+This project is a comprehensive web application developed using the Laravel framework.
+Its primary aim is to facilitate the sale of digital video game licenses,
+ensuring a seamless and secure user experience for both buyers and sellers of digital video game content.
 
 <p align="center">
     <img src="metadata/images/preview-homepage.png" alt="Home-page preview">
