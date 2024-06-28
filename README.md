@@ -2,7 +2,9 @@
 
 This project is a web application developed in Laravel aimed at selling digital video game licenses.
 
-![Home-page preview](metadata/images/preview-homepage.png)
+<div style="text-align: center;">
+    <img src="metadata/images/preview-homepage.png" alt="Home-page preview">
+</div>
 
 ## Environment Requirements
 
