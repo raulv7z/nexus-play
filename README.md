@@ -7,8 +7,7 @@
 </p>
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) &nbsp;
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) &nbsp;
-![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white) &nbsp;
+![Laravel](https://ziadoua.github.io/m3-Markdown-Badges/badges/Laravel/laravel1.svg) &nbsp;
 
 ## Introduction
 
