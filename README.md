@@ -100,3 +100,5 @@ The documentation is available in **PDF** format and is currently only available
 Nexus Play © 2024 by raulv7z is licensed under CC BY-NC 4.0.
 
 For more details, please refer to the [license terms](http://creativecommons.org/licenses/by-nc/4.0/) or the [LICENSE](https://github.com/raulv7z/nexus-play/blob/main/LICENSE) file.
+
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
