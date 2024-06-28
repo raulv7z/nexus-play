@@ -11,7 +11,7 @@ ensuring a seamless and secure user experience for both buyers and sellers of di
 
 ## Environment Requirements
 
-To run this project, you need to have a LAMP stack (Linux, Apache, MySQL, PHP) and Node.js configured in your development environment. The specific requirements are as follows:
+To run this project, you need to have a **LAMP** stack (Linux, Apache, MySQL, PHP) and **Node.js** configured in your development environment. The specific requirements are as follows:
 
 - Apache
 - MySQL
@@ -43,7 +43,7 @@ Make sure to configure the database connection and other necessary values in the
 
 ### Install Dependencies
 
-Install PHP and Node.js dependencies using Composer and npm:
+Install **PHP** and **Node.js** dependencies using Composer and npm:
 
 ```bash
 composer install
