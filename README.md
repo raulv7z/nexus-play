@@ -100,7 +100,7 @@ npm run dev
 ```
 ## Documentation
 
-**Currently not available** due to update reasons.
+The documentation is **currently not available** due to update reasons.
 
 For detailed documentation, please refer to the files located in the [docs directory](metadata/docs/) within the [metadata folder](metadata).
 
